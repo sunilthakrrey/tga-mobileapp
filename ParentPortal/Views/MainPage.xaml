@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             NavigationPage.HasBackButton="False"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:NavigationPage.HideNavigationBarSeparator="true"
+             x:Class="ParentPortal.MainPage">
+
+    <ContentPage.Content>
+        <!--region content and footer-->
+        <Grid Style="{StaticResource MainPageMainContainerStyle}">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height=".90*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Grid  Style="{StaticResource ImageMenuIconContainerStyle}">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid>
+                    <!--<Grid.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="GetMenuItems_Tapped"/>
+                    </Grid.GestureRecognizers>-->
+                    <ffsvg:SvgCachedImage Source="HamburgerNav.svg" Style="{StaticResource ImageMenuIconStyle}"/>
+
+                </Grid>
+                <Label Grid.Column="1" Style="{StaticResource lblMainTitleStyle}"   Text="Home Page" />
+
+            </Grid>
+            
+            <ContentView Grid.Row="1"
+                                 x:Name="CView"
+                                 VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
+
+
+            <Frame Padding="0,10"  BackgroundColor="Gray" VerticalOptions="FillAndExpand"    IsClippedToBounds="True" Grid.Row="2" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--Region Home-->
+
+                    <Grid HorizontalOptions="Center" VerticalOptions="Center">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <ffsvg:SvgCachedImage Style="{StaticResource TabImgStyle}"/>
+                        <Label Style="{StaticResource TabLblStyle}" Grid.Row="1" Text="Health"/>
+                    </Grid>
+
+
+                    <!--#end Region
+
+
+                Region Free-->
+
+                    <Grid Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <ffsvg:SvgCachedImage Style="{StaticResource TabImgStyle}"/>
+                        <Label Style="{StaticResource TabLblStyle}" Grid.Row="1" Text="Education"/>
+                    </Grid>
+
+
+                    <!--#end Region
+                Region Category-->
+
+                    <Grid  Grid.Column="2"   HorizontalOptions="Center" VerticalOptions="Center">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <ffsvg:SvgCachedImage Style="{StaticResource TabImgStyle}"/>
+                        <Label Style="{StaticResource TabLblStyle}" Grid.Row="1" Text="Home"/>
+                    </Grid>
+
+
+                    <!--#end Region-->
+
+                    <Grid Grid.Column="3"  HorizontalOptions="Center" VerticalOptions="Center">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <ffsvg:SvgCachedImage Style="{StaticResource TabImgStyle}"/>
+                        <Label Style="{StaticResource TabLblStyle}" Grid.Row="1" Text="Calendar"/>
+                    </Grid>
+
+                    <Grid Grid.Column="4"  HorizontalOptions="Center" VerticalOptions="Center">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <ffsvg:SvgCachedImage Style="{StaticResource TabImgStyle}"/>
+                        <Label Style="{StaticResource TabLblStyle}" Grid.Row="1" Text="Messages"/>
+                    </Grid>
+                </Grid>
+            </Frame>
+        </Grid>
+        <!--end region content and footer-->
+    </ContentPage.Content>
+</ContentPage>

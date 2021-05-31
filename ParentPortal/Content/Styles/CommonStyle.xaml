@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             x:Class="ParentPortal.Content.Styles.CommonStyle">
+
+    <Style x:Key="CommonStyleTestingBase" TargetType="Label">
+        <Setter Property="VerticalOptions" Value="CenterAndExpand"></Setter>
+        <Setter Property="HorizontalOptions" Value="CenterAndExpand"></Setter>
+    </Style>
+
+
+    <!--MainPage Style-->
+
+    <Style x:Key="MainPageMainContainerStyle" TargetType="Grid">
+        <Setter Property="RowSpacing" Value="0"/>
+    </Style>
+
+    <Style x:Key="ImageMenuIconContainerStyle" TargetType="Grid">
+        <Setter Property="Margin" Value="0,0,0,10"/>
+        <Setter Property="Padding" Value="15"/>
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="1,0" EndPoint="0,1">
+                    <GradientStop Color="#1976d2" Offset="0.1"/>
+                    <GradientStop Color="#6200ea" Offset="1.0"/>
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ImageMenuIconStyle" TargetType="ffsvg:SvgCachedImage">
+        <Setter Property="HeightRequest" Value="20"/>
+        <Setter Property="WidthRequest" Value="20"/>
+        <Setter Property="Margin" Value="0,0,10,0"/>
+    </Style>
+
+    <Style x:Key="lblMainTitleStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="White"/>
+        <Setter Property="HorizontalOptions" Value="Start"/>
+        <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+        <Setter Property="LineBreakMode" Value="TailTruncation"/>
+        <Setter Property="FontSize">
+            <Setter.Value>
+                <OnIdiom x:TypeArguments="x:Double" Phone="10" Tablet="12"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="TabLblStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="10"/>
+        <Setter Property="TextColor" Value="#fff"/>
+    </Style>
+
+    <Style x:Key="TabImgStyle" TargetType="ffsvg:SvgCachedImage">
+        <Setter Property="WidthRequest" Value="20"/>
+        <Setter Property="HeightRequest" Value="20"/>
+    </Style>
+
+    <!--MainPage Style-->
+</ResourceDictionary>

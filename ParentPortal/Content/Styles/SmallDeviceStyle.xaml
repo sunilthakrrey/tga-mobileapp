@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ParentPortal.Content.Styles.SmallDeviceStyle">
+    <!--#region Login Page-->
+    <Style x:Key="lblLoginTagLine" TargetType="Label" BasedOn="{StaticResource CommonStyleTestingBase}">
+        <Setter Property="FontSize" Value="12"></Setter>
+        <Setter Property="TextColor" Value="Green"></Setter>
+    </Style>
+    <!--#endregion Login Page-->
+</ResourceDictionary>
