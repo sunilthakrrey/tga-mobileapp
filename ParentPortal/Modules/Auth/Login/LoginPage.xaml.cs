@@ -18,7 +18,7 @@ namespace ParentPortal.Modules.Auth.Login
         #region Data Members
         private View _View;
         IdentityService identityService = new IdentityService();
-        Storage.AccountCredentialsStorage accountCredentialStorage = new Storage.AccountCredentialsStorage();
+        Storage.AccountCredentialStorage accountCredentialStorage = new Storage.AccountCredentialStorage();
         SecureStorageService secureStorageService = new SecureStorageService();
 
         #endregion
