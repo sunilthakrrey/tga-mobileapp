@@ -73,7 +73,7 @@ namespace ParentPortal.Modules.Auth.Login
 
             if (LoginRequestModel.RememberMe)
             {
-             //   await accountCredentialStorage.SaveCredential(LoginRequestModel.Email, LoginRequestModel.Password, LoginRequestModel.RememberMe);
+                await accountCredentialStorage.SaveCredential(LoginRequestModel.Email, LoginRequestModel.Password, LoginRequestModel.RememberMe);
             }
             else
             {

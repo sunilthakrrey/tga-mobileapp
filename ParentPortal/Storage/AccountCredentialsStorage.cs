@@ -5,17 +5,12 @@ using System.Threading.Tasks;
 
 namespace ParentPortal.Storage
 {
-   public class AccountCredentialsStorage
+    public interface IAccountCredentialStorage
     {
+        Task<bool> SaveCredential(string username, string password, bool isRememberMe);
 
-
-        public interface IAccountCredentialStorage
-        {
-            Task<bool> SaveCredential(string username, string password, bool isRememberMe);
-
-            Task<LoginRequestModel> GetCredentials();
-        }
-
+        Task<LoginRequestModel> GetCredentials();
+    }
         public class AccountCredentialStorage : SecureStorageService, IAccountCredentialStorage
         {
 
@@ -48,7 +43,5 @@ namespace ParentPortal.Storage
                 return userCredentialsInfo;
             }
         }
-
-
-    }
+ 
 }
