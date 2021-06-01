@@ -14,8 +14,8 @@
 
             <Grid VerticalOptions="FillAndExpand"  Padding="30" >
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="45*"/>
-                    <RowDefinition Height="25*"/>
+                    <RowDefinition Height="35*"/>
+                    <RowDefinition Height="35*"/>
                     <RowDefinition Height="20*"/>
                     <!--<RowDefinition Height="10*"/>-->
                     <RowDefinition Height="10*"/>
@@ -24,25 +24,44 @@
                 <Label Grid.Row="0" Text="Welcome back" TextColor="#fff"  VerticalOptions="EndAndExpand" HorizontalOptions="Center" FontFamily="Pacifico-Regular" FontSize="40"/>
 
                 <StackLayout Grid.Row="1" Spacing="16" Margin="0,25,0,0">
+                    <StackLayout x:Name="LoginRequestModel_StackError" IsVisible="false">
+                        <StackLayout  Orientation="Horizontal">
+                            <ffsvg:SvgCachedImage Source="Error.svg" HeightRequest="20" WidthRequest="20" x:Name="ErrorImage" />
+                            <Label x:Name="LoginRequestModel_Error"    FontSize="14" FontFamily="Montserrat-Regular"></Label>
+                        </StackLayout>
+                        <StackLayout>
+                            <Label Text="Click Here" />
 
+                        </StackLayout>
+                           
+                      
+                    </StackLayout>
+                   
+                    
+                    
                     <Frame CornerRadius="50" BackgroundColor="#B1DD96" HasShadow="False" Padding="15,1">
-                        <customControls:CustomEntry PlaceholderColor="#fff" Placeholder="Email or Username" FontSize="14" FontFamily="Montserrat-SemiBold">
+                        <customControls:CustomEntry PlaceholderColor="#fff" Placeholder="Email or Username" FontSize="14" FontFamily="Montserrat-SemiBold" Text="{Binding LoginRequestModel.Email, Mode=TwoWay}">
 
                         </customControls:CustomEntry>
                     </Frame>
 
                     <Frame CornerRadius="50" BackgroundColor="#B1DD96" HasShadow="False" Margin="0" Padding="15,1">
-                        <customControls:CustomEntry PlaceholderColor="#fff"  Placeholder="Password" FontSize="14" FontFamily="Montserrat-SemiBold">
+                        <customControls:CustomEntry PlaceholderColor="#fff"  Placeholder="Password" FontSize="14" FontFamily="Montserrat-SemiBold" Text="{Binding LoginRequestModel.Password, Mode=TwoWay}">
 
                         </customControls:CustomEntry>
                     </Frame>
 
-
-                    <Label Text="Forgot your password?" TextColor="#fff" FontSize="13" FontFamily="Montserrat-SemiBold" HorizontalOptions="End"/>
+                    <StackLayout>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ForgotPasswordButton_Clicked"></TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                        <Label Text="Forgot your password?" TextColor="#fff" FontSize="13" FontFamily="Montserrat-SemiBold" HorizontalOptions="End"/>
+                    </StackLayout>
+                   
 
                     <StackLayout  VerticalOptions="Center" Padding="0" Spacing="0" Orientation="Horizontal">
-                        <CheckBox Color="#fff" />
-                        <Label Text="Remember me" VerticalOptions="Center" FontSize="13" FontFamily="Montserrat-SemiBold" TextColor="#fff"/>
+                        <CheckBox Color="#fff" IsChecked="{Binding LoginRequestModel.RememberMe, Mode=TwoWay}" />
+                        <Label Text="Remember me"  VerticalOptions="Center" FontSize="13" FontFamily="Montserrat-SemiBold" TextColor="#fff"/>
                     </StackLayout>
 
                 </StackLayout>
@@ -53,7 +72,7 @@
                         <panckeview:DropShadow BlurRadius="10" Opacity="0.9"   x:Name="shadow" Color="Black" Offset="20,20" />
                     </panckeview:PancakeView.Shadow>
 
-                    <Button Text="Login"  CornerRadius="50" TextTransform="None" HorizontalOptions="Center" FontSize="18" VerticalOptions="Center" BackgroundColor="#FCC443" TextColor="#fff" FontFamily="Montserrat-Bold"  HeightRequest="45" WidthRequest="159"/>
+                    <Button Text="Login"  Clicked="LoginBtn_Clicked" CornerRadius="50" TextTransform="None" HorizontalOptions="Center" FontSize="18" VerticalOptions="Center" BackgroundColor="#FCC443" TextColor="#fff" FontFamily="Montserrat-Bold"  HeightRequest="45" WidthRequest="159"/>
                 </panckeview:PancakeView>
 
 

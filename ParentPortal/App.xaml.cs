@@ -28,6 +28,12 @@ namespace ParentPortal
             MainPage = AppNavigation = new NavigationPage(new LoginPage());
         }
 
+        public static void HandleError(Exception ex)
+        {
+            Current.MainPage.DisplayAlert("Error", ex.Message, "OK");
+        }
+
+
         protected override void OnStart()
         {
         }

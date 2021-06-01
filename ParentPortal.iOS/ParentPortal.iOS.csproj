@@ -175,4 +175,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\youtube.svg" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Error.svg" />
+  </ItemGroup>
 </Project>
