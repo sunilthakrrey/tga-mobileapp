@@ -73,18 +73,7 @@ namespace ParentPortal
             }
         }
 
-        public static bool IsAMediumDevice()
-        {
-            // Get Metrics
-            var mainDisplayInfo = DeviceDisplay.MainDisplayInfo;
-
-            // Width (in pixels)
-            var width = mainDisplayInfo.Width;
-
-            // Height (in pixels)
-            var height = mainDisplayInfo.Height;
-            return (width <= mediumWidthResolution && height <= mediumHeightResolution);
-        }
+        
 
         public static bool IsASmallDevice()
         {
@@ -97,6 +86,20 @@ namespace ParentPortal
             // Height (in pixels)
             var height = mainDisplayInfo.Height;
             return (width <= smallWidthResolution && height <= smallHeightResolution);
+        }
+
+
+        public static bool IsAMediumDevice()
+        {
+            // Get Metrics
+            var mainDisplayInfo = DeviceDisplay.MainDisplayInfo;
+
+            // Width (in pixels)
+            var width = mainDisplayInfo.Width;
+
+            // Height (in pixels)
+            var height = mainDisplayInfo.Height;
+            return (width <= mediumWidthResolution && height <= mediumHeightResolution);
         }
 
     }

@@ -34,6 +34,7 @@ namespace ParentPortal.Modules.Auth.Login
         private async void LoginButton_Clicked(object sender, EventArgs e)
         {
             await App.AppNavigation.PushAsync(new MainPage() { ContentView = new DashboardView() });
+            //await App.AppNavigation.PushAsync(new ForgotPasswordPage());
         }
 
     }

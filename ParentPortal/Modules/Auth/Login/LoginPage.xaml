@@ -1,66 +1,62 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms" xmlns:customControls="clr-namespace:ParentPortal.Custom.Controls" xmlns:panckeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:customControls="clr-namespace:ParentPortal.Custom.Controls" 
+             xmlns:panckeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              NavigationPage.HasNavigationBar="False"
              x:Class="ParentPortal.Modules.Auth.Login.LoginPage">
     <ContentPage.Content>
-        <Grid Padding="0" Margin="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+        <Grid Style="{StaticResource LoginPageMainContainerStyle}">
 
             <StackLayout>
                 <ffsvg:SvgCachedImage Source="login_background.svg"/>
             </StackLayout>
 
-
-            <Grid VerticalOptions="FillAndExpand"  Padding="30" >
+            <Grid Style="{StaticResource LoginPageSubContainerStyle}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="45*"/>
                     <RowDefinition Height="25*"/>
                     <RowDefinition Height="20*"/>
-                    <!--<RowDefinition Height="10*"/>-->
                     <RowDefinition Height="10*"/>
                 </Grid.RowDefinitions>
 
-                <Label Grid.Row="0" Text="Welcome back" TextColor="#fff"  VerticalOptions="EndAndExpand" HorizontalOptions="Center" FontFamily="Pacifico-Regular" FontSize="40"/>
+                <Label Grid.Row="0" Text="Welcome back" Style="{StaticResource lblWelcomeBackStyle}"/>
 
-                <StackLayout Grid.Row="1" Spacing="16" Margin="0,25,0,0">
+                <StackLayout Grid.Row="1" Style="{StaticResource EmailEntryMainContainerStyle}">
 
-                    <Frame CornerRadius="50" BackgroundColor="#B1DD96" HasShadow="False" Padding="15,1">
-                        <customControls:CustomEntry PlaceholderColor="#fff" Placeholder="Email or Username" FontSize="14" FontFamily="Montserrat-SemiBold">
-
-                        </customControls:CustomEntry>
-                    </Frame>
-
-                    <Frame CornerRadius="50" BackgroundColor="#B1DD96" HasShadow="False" Margin="0" Padding="15,1">
-                        <customControls:CustomEntry PlaceholderColor="#fff"  Placeholder="Password" FontSize="14" FontFamily="Montserrat-SemiBold">
+                    <Frame Style="{StaticResource EmailEntryContainerStyle}">
+                        <customControls:CustomEntry  Placeholder="Email or Username" Style="{StaticResource CommonCustomEntryStyle}">
 
                         </customControls:CustomEntry>
                     </Frame>
 
+                    <Frame Style="{StaticResource EmailEntryContainerStyle}">
+                        <customControls:CustomEntry Placeholder="Password"  Style="{StaticResource CommonCustomEntryStyle}">
 
-                    <Label Text="Forgot your password?" TextColor="#fff" FontSize="13" FontFamily="Montserrat-SemiBold" HorizontalOptions="End"/>
+                        </customControls:CustomEntry>
+                    </Frame>
 
-                    <StackLayout  VerticalOptions="Center" Padding="0" Spacing="0" Orientation="Horizontal">
-                        <CheckBox Color="#fff" />
-                        <Label Text="Remember me" VerticalOptions="Center" FontSize="13" FontFamily="Montserrat-SemiBold" TextColor="#fff"/>
+                    <Label Text="Forgot your password?" Style="{StaticResource lblForgetPasswordStyle}"/>
+
+                    <StackLayout  Style="{StaticResource lblRememberMeContainerStyle}">
+                        <CheckBox Style="{StaticResource CheckBoxStyle}"/>
+                        <Label Text="Remember me" Style="{StaticResource lblRememberMeStyle}"/>
                     </StackLayout>
-
                 </StackLayout>
 
-
-                <panckeview:PancakeView Grid.Row="2" VerticalOptions="Center" CornerRadius="50" HeightRequest="45" WidthRequest="159"  Padding="0" HorizontalOptions="Center">
+                <panckeview:PancakeView Grid.Row="2" Style="{StaticResource BtnLoginContainerStyle}">
                     <panckeview:PancakeView.Shadow>
                         <panckeview:DropShadow BlurRadius="10" Opacity="0.9"   x:Name="shadow" Color="Black" Offset="20,20" />
                     </panckeview:PancakeView.Shadow>
 
-                    <Button Text="Login"  CornerRadius="50" TextTransform="None" HorizontalOptions="Center" FontSize="18" VerticalOptions="Center" BackgroundColor="#FCC443" TextColor="#fff" FontFamily="Montserrat-Bold"  HeightRequest="45" WidthRequest="159"/>
+                    <Button Text="Login" Clicked="LoginButton_Clicked" Style="{StaticResource BtnLoginStyle}"/>
                 </panckeview:PancakeView>
 
-
-                <StackLayout Grid.Row="3" Spacing="18" Margin="0,0,0,10" Orientation="Horizontal" VerticalOptions="End" HorizontalOptions="Center">
-                    <ffsvg:SvgCachedImage Source="facebook.svg" HeightRequest="30" WidthRequest="15"  />
-                    <ffsvg:SvgCachedImage Source="instagram.svg"  HeightRequest="30" WidthRequest="30" />
-                    <ffsvg:SvgCachedImage Source="youtube.svg"  HeightRequest="30" WidthRequest="30" />
+                <StackLayout Grid.Row="3" Style="{StaticResource ImageSocialIconContainerStyle}">
+                    <ffsvg:SvgCachedImage Source="facebook.svg" WidthRequest="15" Style="{StaticResource ImageSocialIconStyle}" />
+                    <ffsvg:SvgCachedImage Source="instagram.svg"  Style="{StaticResource ImageSocialIconStyle}" />
+                    <ffsvg:SvgCachedImage Source="youtube.svg"  Style="{StaticResource ImageSocialIconStyle}" />
                 </StackLayout>
 
             </Grid>

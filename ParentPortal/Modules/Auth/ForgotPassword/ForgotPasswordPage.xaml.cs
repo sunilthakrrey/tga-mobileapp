@@ -21,7 +21,8 @@ namespace ParentPortal.Modules.Auth.ForgotPassword
 
         private async void ResetPasswordButton_Clicked(object sender, EventArgs e)
         {
-            await App.AppNavigation.PushAsync(new LoginPage());
+            //await App.AppNavigation.PushAsync(new LoginPage());
+            await App.AppNavigation.PushAsync(new ForgotPasswordPopup());
         }
     }
 }
