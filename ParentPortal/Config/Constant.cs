@@ -23,5 +23,9 @@
         {
             public static string AuthorizationKey = "";
         }
+        public class ValidationMesages
+        {
+            public static string LoginErrorMessage = "ERROR: Invalid credentials, please try again. If you have forgotten your password";
+        }
     }
 }

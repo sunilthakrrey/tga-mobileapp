@@ -8,6 +8,7 @@ using ParentPortal.Services.TGA;
 using Storage = ParentPortal.Storage;
 using System.Threading.Tasks;
 using ParentPortal.Enums;
+using static ParentPortal.Config.Constant;
 
 namespace ParentPortal.Modules.Auth.Login
 {
@@ -30,7 +31,7 @@ namespace ParentPortal.Modules.Auth.Login
             get { return _loginRequestModel; }
             set
             {
-                _loginRequestModel = value ;
+                _loginRequestModel = value;
                 OnPropertyChanged("LoginRequestModel");
             }
         }
@@ -44,22 +45,21 @@ namespace ParentPortal.Modules.Auth.Login
             NavigationPage.SetHasNavigationBar(this, false);
         }
 
-        private  void LoginBtn_ClickedAsync(object sender, EventArgs e)
+        private async void LoginBtn_Clicked(object sender, EventArgs e)
         {
-
-            _View = this.Content;   
-            if (!ValidationHelper.IsFormValid(LoginRequestModel, _View))
+            LoginRequestModel_StackError.IsVisible = false;
+            _View = this.Content;
+            if (!ValidationHelper.IsFormValid(LoginRequestModel))
             {
+                LoginRequestModel_Error.Text = ValidationMesages.LoginErrorMessage;
+                LoginRequestModel_StackError.IsVisible = true;
                 return;
             }
-         // ResponseModel.LoginResponseModel loginResponseModel =   await identityService.LoginAsync(LoginRequestModel);
+            // ResponseModel.LoginResponseModel loginResponseModel =   await identityService.LoginAsync(LoginRequestModel);
 
+            //add credentials to storage
+            await AddCredentialsToStorageAsync();
 
-            //if rememberme checked then add credentials to storage
-            if(LoginRequestModel.RememberMe)
-            {
-                //add credentials to storage
-            }
         }
 
         private async void ForgotPasswordButton_Clicked(object sender, EventArgs e)
