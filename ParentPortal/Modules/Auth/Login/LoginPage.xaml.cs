@@ -44,7 +44,7 @@ namespace ParentPortal.Modules.Auth.Login
             BindingContext = this;
             NavigationPage.SetHasNavigationBar(this, false);
         }
-
+        #endregion
         private async void LoginBtn_Clicked(object sender, EventArgs e)
         {
             LoginRequestModel_StackError.IsVisible = false;
@@ -81,7 +81,7 @@ namespace ParentPortal.Modules.Auth.Login
             }
 
         }
-        #endregion
+       
 
 
     }

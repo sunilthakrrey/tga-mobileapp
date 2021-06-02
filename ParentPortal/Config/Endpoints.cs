@@ -6,6 +6,7 @@
         public static class Identity
         {
             public static string LOGIN = baseURL + "identity/login";
+            public static string FORGOT = "";
         }
     }
 }
