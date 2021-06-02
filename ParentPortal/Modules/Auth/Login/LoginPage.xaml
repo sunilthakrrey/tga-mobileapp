@@ -15,10 +15,10 @@
 
             <Grid Style="{StaticResource LoginPageSubContainerStyle}">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="45*"/>
-                    <RowDefinition Height="25*"/>
-                    <RowDefinition Height="20*"/>
-                    <RowDefinition Height="10*"/>
+                    <RowDefinition Height="35*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="18*"/>
+                    <RowDefinition Height="5*"/>
                 </Grid.RowDefinitions>
 
                 <Label Grid.Row="0" Text="Welcome back" Style="{StaticResource lblWelcomeBackStyle}"/>
@@ -26,15 +26,14 @@
                 <StackLayout Grid.Row="1" Style="{StaticResource EmailEntryMainContainerStyle}">
 
                     <StackLayout x:Name="LoginRequestModel_StackError" IsVisible="false">
-                        <StackLayout  Orientation="Horizontal">
-                            <ffsvg:SvgCachedImage Source="Error.svg" HeightRequest="20" WidthRequest="20" x:Name="ErrorImage" />
-                            <Label x:Name="LoginRequestModel_Error"    FontSize="14" FontFamily="Montserrat-Regular"></Label>
-                        </StackLayout>
-                        <StackLayout>
-                            <Label Text="Click Here" />
 
+                        <StackLayout  Style="{StaticResource lblWarningContainerStyle}">
+                            <ffsvg:SvgCachedImage Source="error_warning_icon.svg" Style="{StaticResource ImageWarningIconStyle}"  x:Name="ErrorImage" />
+                            <Label x:Name="LoginRequestModel_Error" Style="{StaticResource lblWarningStyle}"></Label>
                         </StackLayout>
-
+                        <StackLayout Style="{StaticResource lblForClickHereContainerStyle}">
+                            <Label Text="Click Here" Style="{StaticResource lblForClickHereStyle}"/>
+                        </StackLayout>
 
                     </StackLayout>
 
@@ -63,7 +62,7 @@
                     </StackLayout>
                 </StackLayout>
 
-                <panckeview:PancakeView Grid.Row="2" Style="{StaticResource BtnLoginContainerStyle}">
+                <panckeview:PancakeView Grid.Row="2" VerticalOptions="Start" Style="{StaticResource BtnLoginContainerStyle}">
                     <panckeview:PancakeView.Shadow>
                         <panckeview:DropShadow BlurRadius="10" Opacity="0.9"   x:Name="shadow" Color="Black" Offset="20,20" />
                     </panckeview:PancakeView.Shadow>

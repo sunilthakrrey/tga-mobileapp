@@ -16981,7 +16981,7 @@ namespace ParentPortal.Droid
 			public const int design_snackbar_background = 2131165291;
 			
 			// aapt resource value: 0x7F07006C
-			public const int Error = 2131165292;
+			public const int error_warning_icon = 2131165292;
 			
 			// aapt resource value: 0x7F07006D
 			public const int events_Icon = 2131165293;
