@@ -179,4 +179,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\Error.svg" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\cross_icon.svg" />
+  </ItemGroup>
 </Project>

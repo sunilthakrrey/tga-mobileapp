@@ -62,6 +62,9 @@
     <EmbeddedResource Update="Content\Styles\SmallDeviceStyle.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Custom\Controls\CustomPopUpContainer.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Modules\Auth\ForgotPassword\ForgotPasswordPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -80,6 +83,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
+    <None Update="Custom\Controls\CustomPopUpContainer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
   </ItemGroup>
 </Project>

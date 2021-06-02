@@ -58,7 +58,7 @@
         
 
                     <StackLayout  Style="{StaticResource lblRememberMeContainerStyle}">
-                        <CheckBox Style="{StaticResource CheckBoxStyle}"/>
+                        <CheckBox Style="{StaticResource CheckBoxStyle}" IsChecked="{Binding LoginRequestModel.RememberMe, Mode=TwoWay}"/>
                         <Label Text="Remember me" Style="{StaticResource lblRememberMeStyle}"/>
                     </StackLayout>
                 </StackLayout>
