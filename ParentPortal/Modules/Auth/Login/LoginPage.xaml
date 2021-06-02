@@ -25,19 +25,37 @@
 
                 <StackLayout Grid.Row="1" Style="{StaticResource EmailEntryMainContainerStyle}">
 
+                    <StackLayout x:Name="LoginRequestModel_StackError" IsVisible="false">
+                        <StackLayout  Orientation="Horizontal">
+                            <ffsvg:SvgCachedImage Source="Error.svg" HeightRequest="20" WidthRequest="20" x:Name="ErrorImage" />
+                            <Label x:Name="LoginRequestModel_Error"    FontSize="14" FontFamily="Montserrat-Regular"></Label>
+                        </StackLayout>
+                        <StackLayout>
+                            <Label Text="Click Here" />
+
+                        </StackLayout>
+
+
+                    </StackLayout>
+
                     <Frame Style="{StaticResource EmailEntryContainerStyle}">
-                        <customControls:CustomEntry  Placeholder="Email or Username" Style="{StaticResource CommonCustomEntryStyle}">
+                        <customControls:CustomEntry  Placeholder="Email or Username" Style="{StaticResource CommonCustomEntryStyle}" Text="{Binding LoginRequestModel.Email, Mode=TwoWay}">
 
                         </customControls:CustomEntry>
                     </Frame>
 
                     <Frame Style="{StaticResource EmailEntryContainerStyle}">
-                        <customControls:CustomEntry Placeholder="Password"  Style="{StaticResource CommonCustomEntryStyle}">
+                        <customControls:CustomEntry Placeholder="Password"  Style="{StaticResource CommonCustomEntryStyle}" Text="{Binding LoginRequestModel.Password, Mode=TwoWay}">
 
                         </customControls:CustomEntry>
                     </Frame>
-
-                    <Label Text="Forgot your password?" Style="{StaticResource lblForgetPasswordStyle}"/>
+                    <StackLayout>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ForgotPasswordButton_Clicked"></TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                        <Label Text="Forgot your password?" Style="{StaticResource lblForgetPasswordStyle}"/>
+                    </StackLayout>
+        
 
                     <StackLayout  Style="{StaticResource lblRememberMeContainerStyle}">
                         <CheckBox Style="{StaticResource CheckBoxStyle}"/>
@@ -50,7 +68,7 @@
                         <panckeview:DropShadow BlurRadius="10" Opacity="0.9"   x:Name="shadow" Color="Black" Offset="20,20" />
                     </panckeview:PancakeView.Shadow>
 
-                    <Button Text="Login" Clicked="LoginButton_Clicked" Style="{StaticResource BtnLoginStyle}"/>
+                    <Button Text="Login" Clicked="LoginBtn_Clicked" Style="{StaticResource BtnLoginStyle}"/>
                 </panckeview:PancakeView>
 
                 <StackLayout Grid.Row="3" Style="{StaticResource ImageSocialIconContainerStyle}">

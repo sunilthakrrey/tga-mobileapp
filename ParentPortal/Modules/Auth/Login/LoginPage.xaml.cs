@@ -1,15 +1,43 @@
-﻿using GalaSoft.MvvmLight.Command;
-using ParentPortal.Modules.Auth.ForgotPassword;
-using ParentPortal.Modules.Secure.Dashboard;
-using System;
+﻿using RequestModel = ParentPortal.Contracts.Requests;
+using ResponseModel = ParentPortal.Contracts.Responses;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System;
+using ParentPortal.Helpers;
+using ParentPortal.Services.TGA;
+using Storage = ParentPortal.Storage;
+using System.Threading.Tasks;
+using ParentPortal.Enums;
+using static ParentPortal.Config.Constant;
 
 namespace ParentPortal.Modules.Auth.Login
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
     {
+
+        #region Data Members
+        private View _View;
+        IdentityService identityService = new IdentityService();
+        Storage.AccountCredentialStorage accountCredentialStorage = new Storage.AccountCredentialStorage();
+        SecureStorageService secureStorageService = new SecureStorageService();
+
+        #endregion
+
+        #region Properties
+        private RequestModel.LoginRequestModel _loginRequestModel = new RequestModel.LoginRequestModel();
+        public RequestModel.LoginRequestModel LoginRequestModel
+        {
+            get { return _loginRequestModel; }
+            set
+            {
+                _loginRequestModel = value;
+                OnPropertyChanged("LoginRequestModel");
+            }
+        }
+        #endregion
+
+        #region Ctor
         public LoginPage()
         {
             InitializeComponent();
@@ -17,25 +45,44 @@ namespace ParentPortal.Modules.Auth.Login
             NavigationPage.SetHasNavigationBar(this, false);
         }
 
-
-        private RelayCommand _loadForgotPasswordPage;
-
-        public RelayCommand LoadForgotPasswordPage
+        private async void LoginBtn_Clicked(object sender, EventArgs e)
         {
-            get
+            LoginRequestModel_StackError.IsVisible = false;
+            _View = this.Content;
+            if (!ValidationHelper.IsFormValid(LoginRequestModel))
             {
-                return _loadForgotPasswordPage ?? (_loadForgotPasswordPage = new RelayCommand(async () =>
-                {
-                    await App.AppNavigation.PushAsync(new ForgotPasswordPage());
-                }));
+                LoginRequestModel_Error.Text = ValidationMesages.LoginErrorMessage;
+                LoginRequestModel_StackError.IsVisible = true;
+                return;
             }
+            // ResponseModel.LoginResponseModel loginResponseModel =   await identityService.LoginAsync(LoginRequestModel);
+
+            //add credentials to storage
+            await AddCredentialsToStorageAsync();
+
         }
 
-        private async void LoginButton_Clicked(object sender, EventArgs e)
+        private async void ForgotPasswordButton_Clicked(object sender, EventArgs e)
         {
-            await App.AppNavigation.PushAsync(new MainPage() { ContentView = new DashboardView() });
-            //await App.AppNavigation.PushAsync(new ForgotPasswordPage());
+            await App.AppNavigation.PushAsync(new ForgotPassword.ForgotPasswordPage());
         }
+
+
+        private async Task AddCredentialsToStorageAsync()
+        {
+
+            if (LoginRequestModel.RememberMe)
+            {
+                await accountCredentialStorage.SaveCredential(LoginRequestModel.Email, LoginRequestModel.Password, LoginRequestModel.RememberMe);
+            }
+            else
+            {
+                await secureStorageService.RemoveAsync(SecureStorageKey.AccountCredential);
+            }
+
+        }
+        #endregion
+
 
     }
 }

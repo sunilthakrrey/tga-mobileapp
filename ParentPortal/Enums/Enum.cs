@@ -9,4 +9,23 @@ namespace ParentPortal.Enums
         Light,
         Dark
     }
+    public enum MessageCenterAuthenticator
+    {
+        PageTitle,
+        RequestStarted,
+        RequestCompleted,
+        NavigationBar
+    }
+
+    public enum Page
+    {
+        None
+    }
+
+    public enum SecureStorageKey
+    {
+       
+        AuthorizedUserInfo,
+        AccountCredential,
+    }
 }

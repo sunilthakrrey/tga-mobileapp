@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="Renderers\CustomEntryRenderer.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -176,48 +177,6 @@
     <BundleResource Include="Resources\youtube.svg" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\cross_icon.svg" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\tga_comments_icon.svg" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\tga_Fruits.svg" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\tga_like.svg" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\tga_Water.svg" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\bookmark_icon.svg" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Bottle_icon.svg" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\Meal_icon.svg" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\user_f.svg" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\user_s.svg" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\home.svg" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\education.svg" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\health.svg" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\messages.svg" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\calendar.svg" />
+    <BundleResource Include="Resources\Error.svg" />
   </ItemGroup>
 </Project>
