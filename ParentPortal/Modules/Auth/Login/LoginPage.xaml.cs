@@ -9,6 +9,7 @@ using Storage = ParentPortal.Storage;
 using System.Threading.Tasks;
 using ParentPortal.Enums;
 using static ParentPortal.Config.Constant;
+using ParentPortal.Modules.Secure.Dashboard;
 
 namespace ParentPortal.Modules.Auth.Login
 {
@@ -44,7 +45,7 @@ namespace ParentPortal.Modules.Auth.Login
             BindingContext = this;
             NavigationPage.SetHasNavigationBar(this, false);
         }
-
+        #endregion
         private async void LoginBtn_Clicked(object sender, EventArgs e)
         {
             LoginRequestModel_StackError.IsVisible = false;
@@ -59,6 +60,9 @@ namespace ParentPortal.Modules.Auth.Login
 
             //add credentials to storage
             await AddCredentialsToStorageAsync();
+
+
+            await App.AppNavigation.PushAsync(new MainPage() { ContentView = new DashboardView() });
 
         }
 
@@ -81,7 +85,7 @@ namespace ParentPortal.Modules.Auth.Login
             }
 
         }
-        #endregion
+       
 
 
     }

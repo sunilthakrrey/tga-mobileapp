@@ -1,6 +1,8 @@
 ﻿using ParentPortal.Content.Styles;
+using ParentPortal.Contracts.Requests;
 using ParentPortal.Enums;
 using ParentPortal.Modules.Auth.Login;
+using ParentPortal.Modules.Secure.Dashboard;
 using System;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -11,6 +13,7 @@ namespace ParentPortal
     public partial class App : Application
     {
 
+        Storage.AccountCredentialStorage accountCredentialStorage = new Storage.AccountCredentialStorage();
         public static Theme AppTheme { get; set; }
 
         const int smallWidthResolution = 500;
@@ -36,6 +39,16 @@ namespace ParentPortal
 
         protected override void OnStart()
         {
+            LoginRequestModel loginRequestModel =  accountCredentialStorage.GetAsync<LoginRequestModel>(SecureStorageKey.AccountCredential).Result;
+            
+            //Login through following credentials
+
+            
+            if(loginRequestModel !=null)
+            {
+                App.AppNavigation.PushAsync(new MainPage() { ContentView = new DashboardView() });
+            }
+
         }
 
         protected override void OnSleep()
