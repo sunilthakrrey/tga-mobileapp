@@ -10,7 +10,7 @@
 
 
         <ScrollView>
-            <Grid Padding="20,0">
+            <Grid Style="{StaticResource DashboardMainContainerStyle}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
@@ -21,26 +21,26 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <Grid Grid.Row="0" Margin="0,20">
+                <Grid Grid.Row="0" Style="{StaticResource DashboardSubContainerStyle}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
                     <StackLayout Grid.Column="0" Spacing="0">
-                        <Label Text="Tues 12 Oct" TextTransform="Uppercase" FontSize="14" TextColor="#A0D083" FontFamily="Montserrat-Bold"/>
-                        <Label Text="Hi, Jane" FontSize="28" TextColor="#000" FontFamily="Montserrat-SemiBold"/>
+                        <Label Text="Tues 12 Oct" Style="{StaticResource lblForDateStyle}"/>
+                        <Label Text="Hi, Jane" Style="{StaticResource lblGreetingStyle}"/>
                     </StackLayout>
 
-                    <StackLayout HorizontalOptions="End" Grid.Column="1" Orientation="Horizontal">
-                        <Frame Padding="10,0" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="#9E9E9E" CornerRadius="25">
-                            <Label Text="All" VerticalOptions="Center" TextColor="#fff" FontSize="10" FontFamily="Montserrat-SemiBold"/>
+                    <StackLayout Grid.Column="1" Style="{StaticResource lblForAllLabelMainContainerStyle}">
+                        <Frame Style="{StaticResource lblForAllLabelContainerStyle}">
+                            <Label Text="All" Style="{StaticResource lblForAllLabelStyle}"/>
                         </Frame>
-                        <Frame Padding="3" BorderColor="#A0D083" HeightRequest="50" WidthRequest="50" CornerRadius="100" HorizontalOptions="Center" VerticalOptions="Center">
-                            <ffsvg:SvgCachedImage Source="user_f.svg" HeightRequest="50" WidthRequest="50"/>
+                        <Frame Style="{StaticResource ImageUserPicContainerStyle}">
+                            <ffsvg:SvgCachedImage Source="user_f.svg" Style="{StaticResource ImageUserPicStyle}"/>
                         </Frame>
-                        <Frame Padding="3" BorderColor="#A0D083" HeightRequest="50" WidthRequest="50" CornerRadius="100" HorizontalOptions="Center" VerticalOptions="Center">
-                            <ffsvg:SvgCachedImage Source="user_s.svg" HeightRequest="50" WidthRequest="50"/>
+                        <Frame Style="{StaticResource ImageUserPicContainerStyle}">
+                            <ffsvg:SvgCachedImage Source="user_s.svg" Style="{StaticResource ImageUserPicStyle}"/>
                         </Frame>
                     </StackLayout>
 
@@ -55,54 +55,54 @@
                     </Grid.ColumnDefinitions>
 
 
-                    <Frame Grid.Column="0" CornerRadius="100" BackgroundColor="#d7ebe6" HorizontalOptions="Center" HeightRequest="40" WidthRequest="40" HasShadow="False" VerticalOptions="Center">
-                        <StackLayout Spacing="3" Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="Center">
-                            <ffsvg:SvgCachedImage Source="food_Icon.svg" HeightRequest="30" WidthRequest="30"/>
-                            <Label Text="Food" TextColor="#88cab9" FontSize="11" FontFamily="Montserrat-SemiBold"/>
+                    <Frame Grid.Column="0" Style="{StaticResource lblFoodTitleMainContainerStyle}">
+                        <StackLayout  Style="{StaticResource lblFoodTitleContainerStyle}">
+                            <ffsvg:SvgCachedImage Source="food_Icon.svg" Style="{StaticResource ImageEventIconStyle}"/>
+                            <Label Text="Food" Style="{StaticResource lblFoodTitleStyle}"/>
                         </StackLayout>
                     </Frame>
 
-                    <Frame Grid.Column="1" CornerRadius="100" BackgroundColor="#d6dcec" HorizontalOptions="Center" HeightRequest="40" WidthRequest="40" HasShadow="False" VerticalOptions="Center">
-                        <StackLayout Spacing="3" Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="Center">
-                            <ffsvg:SvgCachedImage Source="sleep_Icon.svg" HeightRequest="30" WidthRequest="30"/>
-                            <Label Text="Sleep" TextColor="#8498cd" FontSize="11" FontFamily="Montserrat-SemiBold"/>
+                    <Frame Grid.Column="1" Style="{StaticResource lblSleepTitleMainContainerStyle}">
+                        <StackLayout Style="{StaticResource lblFoodTitleContainerStyle}">
+                            <ffsvg:SvgCachedImage Source="sleep_Icon.svg" Style="{StaticResource ImageEventIconStyle}"/>
+                            <Label Text="Sleep" Style="{StaticResource lblSleepTitleStyle}"/>
                         </StackLayout>
                     </Frame>
 
-                    <Frame Grid.Column="2" CornerRadius="100" BackgroundColor="#fae9c2" HorizontalOptions="Center" HeightRequest="40" WidthRequest="40" HasShadow="False" VerticalOptions="Center">
-                        <StackLayout Spacing="3" Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="Center">
-                            <ffsvg:SvgCachedImage Source="photos_Icon.svg" HeightRequest="30" WidthRequest="30"/>
-                            <Label Text="Photos" TextColor="#fcc926" FontSize="11" FontFamily="Montserrat-SemiBold"/>
+                    <Frame Grid.Column="2" Style="{StaticResource lblPhotosTitleMainContainerStyle}">
+                        <StackLayout Style="{StaticResource lblFoodTitleContainerStyle}">
+                            <ffsvg:SvgCachedImage Source="photos_Icon.svg" Style="{StaticResource ImageEventIconStyle}"/>
+                            <Label Text="Photos" Style="{StaticResource lblPhotosTitleStyle}"/>
                         </StackLayout>
                     </Frame>
 
-                    <Frame Grid.Column="3" CornerRadius="100" BackgroundColor="#f2cdcd" HorizontalOptions="Center" HeightRequest="40" WidthRequest="40" HasShadow="False" VerticalOptions="Center">
-                        <StackLayout Spacing="3" Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="Center">
-                            <ffsvg:SvgCachedImage Source="events_Icon.svg" HeightRequest="30" WidthRequest="30"/>
-                            <Label Text="Events" TextColor="#e26765" FontSize="11" FontFamily="Montserrat-SemiBold"/>
+                    <Frame Grid.Column="3" Style="{StaticResource lblEventsTitleMainContainerStyle}">
+                        <StackLayout Style="{StaticResource lblFoodTitleContainerStyle}">
+                            <ffsvg:SvgCachedImage Source="events_Icon.svg" Style="{StaticResource ImageEventIconStyle}"/>
+                            <Label Text="Events" Style="{StaticResource lblEventTitleStyle}"/>
                         </StackLayout>
                     </Frame>
 
                 </Grid>
 
-                <Grid Grid.Row="2" Margin="0,20">
+                <Grid Grid.Row="2" Style="{StaticResource DashboardSubContainerStyle}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
-                    <Grid Grid.Row="0" Margin="0,10">
+                    <Grid Grid.Row="0" Style="{StaticResource lblAnnouncementContainerStyle}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Label Grid.Column="0" Text="Announcements" HorizontalOptions="Start" FontSize="16" TextColor="#000" FontFamily="Montserrat-SemiBold" VerticalOptions="Center"/>
-                        <Frame Grid.Column="1" Padding="15,3" BackgroundColor="#9E9E9E" HorizontalOptions="End" VerticalOptions="Center" CornerRadius="25">
-                            <Label Text="View All" TextColor="#fff" FontSize="11" FontFamily="Montserrat-SemiBold"/>
+                        <Label Grid.Column="0" Text="Announcements" Style="{StaticResource lblAnnouncementStyle}"/>
+                        <Frame Grid.Column="1" Style="{StaticResource lblForViewAllLabelContainerStyle}">
+                            <Label Text="View All" Style="{StaticResource lblForViewAllLabelStyle}"/>
                         </Frame>
                     </Grid>
 
-                    <panckeview:PancakeView Grid.Row="1" CornerRadius="15" HorizontalOptions="Center" BackgroundGradientStartPoint="0,0" BackgroundGradientEndPoint="1,1" VerticalOptions="Center" BackgroundColor="#fff" Padding="25">
+                    <panckeview:PancakeView Grid.Row="1" Style="{StaticResource lblMonthOnlyMainContainerStyle}">
                         <panckeview:PancakeView.Shadow>
                             <panckeview:DropShadow BlurRadius="12" Opacity="0.7"   x:Name="shadow" Color="Black" Offset="10,10" />
                         </panckeview:PancakeView.Shadow>
@@ -112,35 +112,35 @@
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
 
-                            <StackLayout Grid.Column="0" VerticalOptions="Center" Spacing="0" HorizontalOptions="Start" Orientation="Vertical">
-                                <Label Text="12" CharacterSpacing="2" TextColor="#a0d083" FontSize="34" FontFamily="Montserrat-Bold" HorizontalTextAlignment="Center"/>
-                                <Label Text="Mar" TextTransform="Uppercase" TextColor="#808080" FontSize="20" FontFamily="Montserrat-Bold" HorizontalTextAlignment="Center"/>
+                            <StackLayout Grid.Column="0" Style="{StaticResource lblMonthOnlyContainerStyle}">
+                                <Label Text="12" Style="{StaticResource lblDateOnlyStyle}"/>
+                                <Label Text="Mar" Style="{StaticResource lblMonthOnlyStyle}"/>
                             </StackLayout>
 
-                            <StackLayout VerticalOptions="Center" Grid.Column="1" Spacing="5" Orientation="Vertical" >
-                                <Label Text="Sarah's Speech Tips: Sound Production" Margin="0,0,10,0" TextColor="#000" FontSize="16" FontFamily="Montserrat-SemiBold" HorizontalTextAlignment="Start"/>
-                                <Label Text="10:35am" TextTransform="None" HorizontalOptions="Start" TextColor="#808080" FontSize="13" FontFamily="Montserrat-Bold" HorizontalTextAlignment="Center"/>
+                            <StackLayout Grid.Column="1"  Style="{StaticResource lblSpeechTimeContainerStyle}">
+                                <Label Text="Sarah's Speech Tips: Sound Production" Style="{StaticResource lblSpeechTipsStyle}"/>
+                                <Label Text="10:35am" Style="{StaticResource lblSpeechTimeStyle}"/>
                             </StackLayout>
                         </Grid>
                     </panckeview:PancakeView>
                 </Grid>
 
-                <Grid Grid.Row="3" Margin="0,20,0,0">
+                <Grid Grid.Row="3" Style="{StaticResource DashboardSubContainerStyle}">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
-                    <Grid Grid.Row="0" Margin="0,0">
+                    <Grid Grid.Row="0" Style="{StaticResource lblNewsFeedContainerStyle}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Label Grid.Column="0" Text="News Feed" HorizontalOptions="Start" FontSize="16" TextColor="#000" FontFamily="Montserrat-SemiBold" VerticalOptions="Center"/>
-                        <ffsvg:SvgCachedImage Grid.Column="1" Margin="10,0" HorizontalOptions="End" Source="Filter_icon.svg" HeightRequest="25" WidthRequest="25"/>
+                        <Label Grid.Column="0" Text="News Feed" Style="{StaticResource lblNewsFeedStyle}"/>
+                        <ffsvg:SvgCachedImage Grid.Column="1" Source="Filter_icon.svg" Style="{StaticResource ImageFilterIconStyle}"/>
                     </Grid>
 
-                    <panckeview:PancakeView Grid.Row="1" CornerRadius="15" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="#fff">
+                    <panckeview:PancakeView Grid.Row="1" Style="{StaticResource NewsFeedBannerContainerStyle}">
                         <panckeview:PancakeView.Shadow>
                             <panckeview:DropShadow BlurRadius="10" Opacity="0.9"    Color="Black" Offset="20,20" />
                         </panckeview:PancakeView.Shadow>
@@ -157,31 +157,31 @@
 
                             <ffsvg:SvgCachedImage Grid.Row="0" Source="https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg"/>
 
-                            <Grid Grid.Row="1" Padding="20,10,20,2">
+                            <Grid Grid.Row="1" Style="{StaticResource lblWaterPlayMainContainerStyle}">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <StackLayout Grid.Column="0" Spacing="1">
-                                    <Label Text="Waterplay in the yard" TextColor="#A0D083" FontSize="16" FontFamily="Montserrat-SemiBold"/>
-                                    <Label Text="3 March 2021, 11:30 am" FontSize="12" TextColor="#808080" FontFamily="Montserrat-SemiBold"/>
+                                <StackLayout Grid.Column="0" Style="{StaticResource lblWaterPlayContainerStyle}">
+                                    <Label Text="Waterplay in the yard" Style="{StaticResource lblWaterPlayStyle}"/>
+                                    <Label Text="3 March 2021, 11:30 am" Style="{StaticResource lblDateTimeStyle}"/>
                                 </StackLayout>
 
-                                <ffsvg:SvgCachedImage Grid.Column="1" HorizontalOptions="End" Source="sun_icon.svg" HeightRequest="40" WidthRequest="40"/>
+                                <ffsvg:SvgCachedImage Grid.Column="1" Source="sun_icon.svg" Style="{StaticResource ImageSunIconStyle}"/>
                             </Grid>
 
-                            <Grid Grid.Row="2" Padding="20,0">
+                            <Grid Grid.Row="2" Style="{StaticResource lblNewsFeedContentContainerStyle}">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="80*"/>
                                     <ColumnDefinition Width="20*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Label Grid.Column="0" FontSize="12" LineHeight="1.2" TextColor="#000" FontFamily="Montserrat-Regular" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Porta egestas aenean viverra molestie non."/>
+                                <Label Grid.Column="0" Style="{StaticResource lblNewsFeedContentStyle}" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Porta egestas aenean viverra molestie non."/>
                             </Grid>
 
 
-                            <Grid Grid.Row="3" Padding="20,0" RowSpacing="4">
+                            <Grid Grid.Row="3" Style="{StaticResource BorderBoxViewContainerStyle}">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="*"/>
@@ -191,19 +191,19 @@
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
 
-                                <StackLayout Grid.Column="0" Grid.Row="0" Spacing="20" Orientation="Horizontal" VerticalOptions="Center">
-                                    <Label Text="7 Likes" FontSize="10" TextColor="#808080" FontFamily="Montserrat-Regular"/>
-                                    <Label Text="3 Comments" FontSize="10" TextColor="#808080" FontFamily="Montserrat-Regular"/>
+                                <StackLayout Grid.Column="0" Grid.Row="0" Style="{StaticResource lblLikeCommentContainerStyle}">
+                                    <Label Text="7 Likes" Style="{StaticResource lblLikeCommentStyle}"/>
+                                    <Label Text="3 Comments" Style="{StaticResource lblLikeCommentStyle}"/>
                                 </StackLayout>
 
-                                <StackLayout Grid.Column="1" Grid.Row="0" Spacing="5" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="End">
-                                    <Label Text="Lily" FontSize="10" TextColor="#808080" FontFamily="Montserrat-SemiBold" VerticalOptions="Center"/>
-                                    <Frame Padding="0" BorderColor="#808080" HeightRequest="25" WidthRequest="25" HasShadow="False" CornerRadius="100" HorizontalOptions="Center" VerticalOptions="Center">
-                                        <ffsvg:SvgCachedImage Source="user_f.svg" HeightRequest="25" WidthRequest="25"/>
+                                <StackLayout Grid.Column="1" Grid.Row="0" Style="{StaticResource lblLillyContainerStyle}">
+                                    <Label Text="Lily" Style="{StaticResource lblLillyStyle}"/>
+                                    <Frame Padding="0" Style="{StaticResource ImageLillyIconContainerStyle}">
+                                        <ffsvg:SvgCachedImage Source="user_f.svg" Style="{StaticResource ImageLillyIconStyle}"/>
                                     </Frame>
                                 </StackLayout>
 
-                                <BoxView Grid.Row="1" Grid.ColumnSpan="2" HeightRequest="1"  Color="#808080"/>
+                                <BoxView Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource BorderBoxViewStyle}"/>
 
                             </Grid>
 
@@ -215,28 +215,28 @@
                                 </Grid.ColumnDefinitions>
 
                                 <StackLayout Grid.Column="0" Spacing="5" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Start">
-                                    <ffsvg:SvgCachedImage Source="tga_like.svg" HeightRequest="15" WidthRequest="23"/>
-                                    <Label Text="Like" FontSize="10" VerticalOptions="End" TextColor="#808080" FontFamily="Montserrat-Regular"/>
+                                    <ffsvg:SvgCachedImage Source="tga_like.svg" Style="{StaticResource ImageLikeIconkStyle}"/>
+                                    <Label Text="Like" Style="{StaticResource lblBookmarkStyle}"/>
                                 </StackLayout>
 
                                 <StackLayout Grid.Column="1" Spacing="5" Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
-                                    <ffsvg:SvgCachedImage Source="tga_comments_icon.svg" HeightRequest="15" WidthRequest="15"/>
-                                    <Label Text="Comment" FontSize="10" VerticalOptions="Center" TextColor="#808080" FontFamily="Montserrat-Regular"/>
+                                    <ffsvg:SvgCachedImage Source="tga_comments_icon.svg" Style="{StaticResource ImageBookmarkStyle}"/>
+                                    <Label Text="Comment" Style="{StaticResource lblBookmarkStyle}"/>
                                 </StackLayout>
 
                                 <StackLayout Grid.Column="2" Spacing="5" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="End">
-                                    <ffsvg:SvgCachedImage Source="bookmark_icon.svg" HeightRequest="15" WidthRequest="15"/>
-                                    <Label Text="Bookmark" FontSize="10" VerticalOptions="Center" TextColor="#808080" FontFamily="Montserrat-Regular"/>
+                                    <ffsvg:SvgCachedImage Source="bookmark_icon.svg" Style="{StaticResource ImageBookmarkStyle}"/>
+                                    <Label Text="Bookmark" Style="{StaticResource lblBookmarkStyle}"/>
                                 </StackLayout>
 
                             </Grid>
 
-                            <panckeview:PancakeView Grid.Row="5" VerticalOptions="Center"  CornerRadius="0,0,15,15" BackgroundColor="#a0d083"  Padding="0" >
+                            <panckeview:PancakeView Grid.Row="5" Style="{StaticResource BtnReadMoreContainerStyle}" >
                                 <panckeview:PancakeView.Shadow>
                                     <panckeview:DropShadow BlurRadius="10" Opacity="0.9"    Color="Black" Offset="20,20" />
                                 </panckeview:PancakeView.Shadow>
 
-                                <Button  Text="Read more" TextTransform="None" FontSize="15" VerticalOptions="Center" FontFamily="Montserrat-SemiBold" TextColor="#fff" HeightRequest="30" BackgroundColor="#a0d083" Padding="0"/>
+                                <Button  Text="Read more" Style="{StaticResource BtnReadMoreStyle}"/>
                             </panckeview:PancakeView>
                         </Grid>
                     </panckeview:PancakeView>
@@ -244,7 +244,7 @@
 
 
 
-                <panckeview:PancakeView  Grid.Row="4" Margin="0,20,0,0" HorizontalOptions="Center" VerticalOptions="Center"   CornerRadius="15"  BackgroundColor="#fff">
+                <panckeview:PancakeView  Grid.Row="4" Style="{StaticResource YogaWithGinaMainContainerStyle}">
                     <panckeview:PancakeView.Shadow>
                         <panckeview:DropShadow BlurRadius="10" Opacity="0.9"    Color="Black" Offset="20,20" />
                     </panckeview:PancakeView.Shadow>
@@ -260,60 +260,62 @@
 
                         <ffsvg:SvgCachedImage Grid.Row="0"  Source="https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg"/>
 
-                        <Grid Grid.Row="1" Padding="20,10,20,2">
+                        <Grid Grid.Row="1" Style="{StaticResource YogaWithGinaSubContainerStyle}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
-                            <StackLayout Grid.Column="0" Spacing="1">
-                                <Label Text="Yoga with Gina" TextColor="#E26765" FontSize="16" FontFamily="Montserrat-SemiBold"/>
-                                <Label Text="3 March 2021, 11:30 am" FontSize="12" TextColor="#808080" FontFamily="Montserrat-SemiBold"/>
+                            <StackLayout Grid.Column="0" Style="{StaticResource lblWaterPlayContainerStyle}">
+                                <Label Text="Yoga with Gina" Style="{StaticResource lblYogaWithGinaStyle}"/>
+                                <Label Text="3 March 2021, 11:30 am" Style="{StaticResource lblDateTimeStyle}"/>
                             </StackLayout>
 
-                            <ffsvg:SvgCachedImage Grid.Column="1" HorizontalOptions="End" Source="events_Icon.svg" HeightRequest="35" WidthRequest="35"/>
+                            <ffsvg:SvgCachedImage Grid.Column="1" Source="events_Icon.svg" Style="{StaticResource ImageSunIconStyle}"/>
                         </Grid>
 
-                        <Grid Grid.Row="2" Padding="20,0">
+                        <Grid Grid.Row="2" Style="{StaticResource lblNewsFeedContentContainerStyle}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="80*"/>
                                 <ColumnDefinition Width="20*"/>
                             </Grid.ColumnDefinitions>
 
-                            <Label Grid.Column="0" FontSize="12" TextColor="#000" LineHeight="1.2" FontFamily="Montserrat-Regular" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Porta egestas aenean viverra molestie non."/>
+                            <Label Grid.Column="0" Style="{StaticResource lblNewsFeedContentStyle}" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Porta egestas aenean viverra molestie non."/>
                         </Grid>
 
-                        <Grid Grid.Row="3" Padding="20,0,20,8" RowSpacing="4">
+                        <Grid Grid.Row="3" Style="{StaticResource lblGoingToEventMainContainerStyle}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
-                            <StackLayout Grid.Column="0" Grid.Row="0" Spacing="20" Orientation="Horizontal" VerticalOptions="Center">
-                                <Label Text="You are going to this event" FontSize="12" TextColor="#E26765" FontFamily="Montserrat-SemiBold"/>
-                            </StackLayout>
+                            <!--<StackLayout Grid.Column="0" Grid.Row="0" Spacing="20" Orientation="Horizontal" VerticalOptions="Center">
+                                <Label Grid.Column="0" Grid.Row="0" Text="You are going to this event" Style="{StaticResource lblGoingToEventStyle}"/>
+                            </StackLayout>-->
 
-                            <StackLayout Grid.Column="1" Grid.Row="0" Spacing="5" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="End">
-                                <Label Text="Lily" FontSize="10" TextColor="#808080" FontFamily="Montserrat-SemiBold" VerticalOptions="Center"/>
-                                <Frame Padding="0" BorderColor="#808080" HeightRequest="25" WidthRequest="25" HasShadow="False" CornerRadius="100" HorizontalOptions="Center" VerticalOptions="Center">
-                                    <ffsvg:SvgCachedImage Source="user_f.svg" HeightRequest="25" WidthRequest="25"/>
+                            <Label Grid.Column="0" Grid.Row="0" Text="You are going to this event" Style="{StaticResource lblGoingToEventStyle}"/>
+
+                            <StackLayout Grid.Column="1" Grid.Row="0" Style="{StaticResource lblLillyContainerStyle}">
+                                <Label Text="Lily" Style="{StaticResource lblLillyStyle}"/>
+                                <Frame  Style="{StaticResource ImageLillyIconContainerStyle}" >
+                                    <ffsvg:SvgCachedImage Source="user_f.svg" Style="{StaticResource ImageLillyIconStyle}"/>
                                 </Frame>
                             </StackLayout>
 
                         </Grid>
 
-                        <panckeview:PancakeView Grid.Row="4" VerticalOptions="Center" CornerRadius="0,0,15,15" BackgroundColor="#E26765"  Padding="0" >
+                        <panckeview:PancakeView Grid.Row="4" Style="{StaticResource BtnReadMoreRedContainerStyle}">
                             <panckeview:PancakeView.Shadow>
                                 <panckeview:DropShadow BlurRadius="10" Opacity="0.9"    Color="Black" Offset="20,20" />
                             </panckeview:PancakeView.Shadow>
 
-                            <Button  Text="Read more" TextTransform="None" FontSize="15" VerticalOptions="Center" FontFamily="Montserrat-SemiBold" TextColor="#fff" HeightRequest="30" BackgroundColor="#E26765" Padding="0"/>
+                            <Button  Text="Read more" Style="{StaticResource BtnReadMoreRedStyle}"/>
                         </panckeview:PancakeView>
                     </Grid>
                 </panckeview:PancakeView>
 
 
-                <panckeview:PancakeView  Grid.Row="5" Margin="0,20,0,0" BackgroundGradientStartPoint="0,1" BackgroundGradientEndPoint="1,0"  CornerRadius="15"  BackgroundColor="#fff">
+                <panckeview:PancakeView  Grid.Row="5" Style="{StaticResource ImageMorningTeaMainContainerStyle}">
                     <panckeview:PancakeView.Shadow>
                         <panckeview:DropShadow BlurRadius="10" Opacity="0.9"    Color="Black" Offset="20,20" />
                     </panckeview:PancakeView.Shadow>
@@ -325,21 +327,21 @@
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
 
-                        <Grid Grid.Row="0" Padding="20,10,20,15" BackgroundColor="#88CAB9">
+                        <Grid Grid.Row="0" Style="{StaticResource ImageMorningTeaContainerStyle}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
-                            <StackLayout Grid.Column="0" Spacing="1">
-                                <Label Text="Morning Tea" TextColor="#fff" FontSize="16" FontFamily="Montserrat-SemiBold"/>
-                                <Label Text="Toast with jam" FontSize="12" TextColor="#fff" FontFamily="Montserrat-SemiBold"/>
+                            <StackLayout Grid.Column="0" Style="{StaticResource lblToastWithJamContainerStyle}">
+                                <Label Text="Morning Tea" Style="{StaticResource lblMorningTeaStyle}"/>
+                                <Label Text="Toast with jam" Style="{StaticResource lblToastWithJamStyle}"/>
                             </StackLayout>
 
-                            <ffsvg:SvgCachedImage Grid.Column="1" HorizontalOptions="End" Source="morning_tea_icon.svg" HeightRequest="35" WidthRequest="35"/>
+                            <ffsvg:SvgCachedImage Grid.Column="1" Source="morning_tea_icon.svg" Style="{StaticResource ImageMorningTeaStyle}"/>
                         </Grid>
 
-                        <Grid Grid.Row="1" RowSpacing="15" Padding="20,10">
+                        <Grid Grid.Row="1" Style="{StaticResource MorningTeaMainContainerStyle}">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
@@ -347,84 +349,84 @@
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
 
-                            <Grid Grid.Row="0" ColumnSpacing="15">
+                            <Grid Grid.Row="0" Style="{StaticResource lblForMorningFoodContainerStyle}">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="40*"/>
                                     <ColumnDefinition Width="60*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Label Grid.Column="0" Text="Morning Tea" FontSize="16" TextColor="#000" FontFamily="Montserrat-SemiBold" HorizontalOptions="End" VerticalOptions="Center"/>
+                                <Label Grid.Column="0" Text="Morning Tea" Style="{StaticResource lblForMorningFoodStyle}"/>
 
-                                <StackLayout Grid.Column="1" HorizontalOptions="Start" Orientation="Horizontal">
-                                    <ffsvg:SvgCachedImage Grid.Column="1" HorizontalOptions="End" Source="Meal_icon.svg" HeightRequest="35" WidthRequest="35"/>
+                                <StackLayout Grid.Column="1" Style="{StaticResource ImageMorningFoodContainerStyle}">
+                                    <ffsvg:SvgCachedImage Grid.Column="1" Source="Meal_icon.svg" Style="{StaticResource ImageMorningFoodStyle}"/>
                                 </StackLayout>
                             </Grid>
 
-                            <Grid Grid.Row="1" ColumnSpacing="15">
+                            <Grid Grid.Row="1" Style="{StaticResource lblForMorningFoodContainerStyle}">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="40*"/>
                                     <ColumnDefinition Width="60*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Label Grid.Column="0" Text="Fruit" FontSize="16" TextColor="#000" FontFamily="Montserrat-SemiBold" HorizontalOptions="End" VerticalOptions="Center"/>
+                                <Label Grid.Column="0" Text="Fruit" Style="{StaticResource lblForMorningFoodStyle}"/>
 
-                                <StackLayout Grid.Column="1" HorizontalOptions="Start" Orientation="Horizontal">
-                                    <ffsvg:SvgCachedImage Grid.Column="1" HorizontalOptions="End" Source="tga_Fruits.svg" HeightRequest="30" WidthRequest="30"/>
-                                    <ffsvg:SvgCachedImage Grid.Column="1" HorizontalOptions="End" Source="tga_Fruits.svg" HeightRequest="30" WidthRequest="30"/>
+                                <StackLayout Grid.Column="1" Style="{StaticResource ImageMorningFoodContainerStyle}">
+                                    <ffsvg:SvgCachedImage Grid.Column="1" Source="tga_Fruits.svg" Style="{StaticResource ImageMorningFoodStyle}"/>
+                                    <ffsvg:SvgCachedImage Grid.Column="1" Source="tga_Fruits.svg" Style="{StaticResource ImageMorningFoodStyle}"/>
                                 </StackLayout>
                             </Grid>
 
-                            <Grid Grid.Row="2" ColumnSpacing="15">
+                            <Grid Grid.Row="2" Style="{StaticResource lblForMorningFoodContainerStyle}">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="40*"/>
                                     <ColumnDefinition Width="60*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Label Grid.Column="0" Text="Water" FontSize="16" TextColor="#000" FontFamily="Montserrat-SemiBold" HorizontalOptions="End" VerticalOptions="Center"/>
+                                <Label Grid.Column="0" Text="Water" Style="{StaticResource lblForMorningFoodStyle}"/>
 
-                                <StackLayout Grid.Column="1" HorizontalOptions="Start" Orientation="Horizontal">
-                                    <ffsvg:SvgCachedImage Grid.Column="1" HorizontalOptions="End" Source="tga_Water.svg" HeightRequest="30" WidthRequest="25"/>
-                                    <ffsvg:SvgCachedImage Grid.Column="1" HorizontalOptions="End" Source="tga_Water.svg" HeightRequest="30" WidthRequest="25"/>
-                                    <ffsvg:SvgCachedImage Grid.Column="1" HorizontalOptions="End" Source="tga_Water.svg" HeightRequest="30" WidthRequest="25"/>
+                                <StackLayout Grid.Column="1" Style="{StaticResource ImageMorningFoodContainerStyle}">
+                                    <ffsvg:SvgCachedImage Grid.Column="1"  Source="tga_Water.svg" Style="{StaticResource ImageMorningFoodStyle}"/>
+                                    <ffsvg:SvgCachedImage Grid.Column="1"  Source="tga_Water.svg" Style="{StaticResource ImageMorningFoodStyle}"/>
+                                    <ffsvg:SvgCachedImage Grid.Column="1"  Source="tga_Water.svg" Style="{StaticResource ImageMorningFoodStyle}"/>
                                 </StackLayout>
                             </Grid>
 
-                            <Grid Grid.Row="3" ColumnSpacing="15">
+                            <Grid Grid.Row="3" Style="{StaticResource lblForMorningFoodContainerStyle}">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="40*"/>
-                                    <ColumnDefinition Width="40*"/>
-                                    <ColumnDefinition Width="20*"/>
+                                    <ColumnDefinition Width="35*"/>
+                                    <ColumnDefinition Width="25*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Label Grid.Column="0" Text="Bottles" FontSize="16" TextColor="#000" FontFamily="Montserrat-SemiBold" HorizontalOptions="End" VerticalOptions="Center"/>
+                                <Label Grid.Column="0" Text="Bottles" Style="{StaticResource lblForMorningFoodStyle}"/>
 
-                                <StackLayout Grid.Column="1" HorizontalOptions="Start" Spacing="0" Orientation="Horizontal">
-                                    <ffsvg:SvgCachedImage Grid.Column="1" HorizontalOptions="End" Source="Bottle_icon.svg" HeightRequest="35" WidthRequest="30"/>
-                                    <ffsvg:SvgCachedImage Grid.Column="1" HorizontalOptions="End" Source="Bottle_icon.svg" HeightRequest="35" WidthRequest="30"/>
+                                <StackLayout Grid.Column="1" Style="{StaticResource ImageMorningFoodContainerStyle}">
+                                    <ffsvg:SvgCachedImage Grid.Column="1"  Source="Bottle_icon.svg" Style="{StaticResource ImageMorningFoodStyle}"/>
+                                    <ffsvg:SvgCachedImage Grid.Column="1"  Source="Bottle_icon.svg" Style="{StaticResource ImageMorningFoodStyle}"/>
                                 </StackLayout>
 
-                                <StackLayout Grid.Column="2" Orientation="Horizontal">
-                                    <Label Text="Lily" FontSize="10" TextColor="#808080" FontFamily="Montserrat-SemiBold" VerticalOptions="Center"/>
-                                    <Frame Padding="0" BorderColor="#808080" HeightRequest="25" WidthRequest="25" HasShadow="False" CornerRadius="100" HorizontalOptions="Center" VerticalOptions="Center">
-                                        <ffsvg:SvgCachedImage Source="user_f.svg" HeightRequest="25" WidthRequest="25"/>
+                                <StackLayout Grid.Column="2"  Style="{StaticResource lblLillyForMorningTeaContainerStyle}">
+                                    <Label Text="Lily" Style="{StaticResource lblLillyStyle}"/>
+                                    <Frame Style="{StaticResource ImageLillyIconContainerStyle}">
+                                        <ffsvg:SvgCachedImage Source="user_f.svg" Style="{StaticResource ImageLillyIconStyle}"/>
                                     </Frame>
                                 </StackLayout>
                             </Grid>
 
                         </Grid>
 
-                        <panckeview:PancakeView Grid.Row="2" VerticalOptions="End" CornerRadius="0,0,15,15" BackgroundColor="#88CAB9" HeightRequest="30"  Padding="0" >
+                        <panckeview:PancakeView Grid.Row="2"  Style="{StaticResource BtnReadMoreGreenContainerStyle}">
                             <panckeview:PancakeView.Shadow>
                                 <panckeview:DropShadow BlurRadius="10" Opacity="0.9"    Color="Black" Offset="20,20" />
                             </panckeview:PancakeView.Shadow>
 
-                            <Button  Text="See more" TextTransform="None" FontSize="15" VerticalOptions="Center" FontFamily="Montserrat-SemiBold" TextColor="#fff" HeightRequest="30" BackgroundColor="#88CAB9" Padding="0"/>
+                            <Button  Text="See more" Style="{StaticResource BtnReadMoreGreenStyle}"/>
                         </panckeview:PancakeView>
                     </Grid>
                 </panckeview:PancakeView>
 
 
-                <panckeview:PancakeView  Grid.Row="6" Margin="0,20,0,20" Padding="0"  CornerRadius="15"  VerticalOptions="Center" BackgroundColor="#fff">
+                <panckeview:PancakeView  Grid.Row="6" Style="{StaticResource OptionsMainContainerStyle}">
                     <panckeview:PancakeView.Shadow>
                         <panckeview:DropShadow BlurRadius="10" Opacity="0.9"    Color="Black" Offset="20,20" />
                     </panckeview:PancakeView.Shadow>
@@ -435,41 +437,41 @@
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
 
-                        <Grid Grid.Row="0" Padding="20,10,20,15" BackgroundColor="#A0D083">
-                            <Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit?" TextColor="#fff" FontSize="16" FontFamily="Montserrat-SemiBold"/>
+                        <Grid Grid.Row="0" Style="{StaticResource OptionsSubContainerStyle}">
+                            <Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit?" Style="{StaticResource lblMorningTeaStyle}"/>
                         </Grid>
 
-                        <Grid Grid.Row="1" RowSpacing="15"  Margin="25">
+                        <Grid Grid.Row="1" Style="{StaticResource AllOptionsSubContainerStyle}">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
 
-                            <Frame Padding="6" HasShadow="False" BorderColor="#808080" CornerRadius="20">
-                                <StackLayout Orientation="Horizontal" Spacing="20">
-                                    <Frame Padding="0" HorizontalOptions="Center" HasShadow="False" VerticalOptions="Center" HeightRequest="30" WidthRequest="30" CornerRadius="100" BorderColor="#808080">
-                                        <Label Text="A" FontSize="13" FontFamily="Montserrat-SemiBold" HorizontalTextAlignment="Center" VerticalOptions="Center" VerticalTextAlignment="Center"/>
+                            <Frame Style="{StaticResource lblOptionsTitleMainContainerStyle}">
+                                <StackLayout Style="{StaticResource lblOptionsTitleContainerStyle}">
+                                    <Frame Style="{StaticResource lblOptionsNoContainerStyle}">
+                                        <Label Text="A" Style="{StaticResource lblOptionsNoStyle}"/>
                                     </Frame>
-                                    <Label Text="Lorem ipsum dolor sit amet" VerticalOptions="Center" FontSize="12" FontFamily="Montserrat-SemiBold"/>
+                                    <Label Text="Lorem ipsum dolor sit amet" Style="{StaticResource lblOptionsTitleStyle}"/>
                                 </StackLayout>
                             </Frame>
 
-                            <Frame Grid.Row="1" Padding="6" HasShadow="False" BorderColor="#808080" CornerRadius="20">
-                                <StackLayout Orientation="Horizontal" Spacing="20">
-                                    <Frame Padding="0" HorizontalOptions="Center" HasShadow="False" VerticalOptions="Center" HeightRequest="30" WidthRequest="30" CornerRadius="100" BorderColor="#808080">
-                                        <Label Text="B" FontSize="13" FontFamily="Montserrat-SemiBold" HorizontalTextAlignment="Center" VerticalOptions="Center" VerticalTextAlignment="Center"/>
+                            <Frame Grid.Row="1" Style="{StaticResource lblOptionsTitleMainContainerStyle}">
+                                <StackLayout Style="{StaticResource lblOptionsTitleContainerStyle}">
+                                    <Frame Style="{StaticResource lblOptionsNoContainerStyle}">
+                                        <Label Text="B" Style="{StaticResource lblOptionsNoStyle}"/>
                                     </Frame>
-                                    <Label Text="Lorem ipsum dolor sit amet" VerticalOptions="Center" FontSize="12" FontFamily="Montserrat-SemiBold"/>
+                                    <Label Text="Lorem ipsum dolor sit amet" Style="{StaticResource lblOptionsTitleStyle}"/>
                                 </StackLayout>
                             </Frame>
 
-                            <Frame Grid.Row="2" Padding="6" HasShadow="False" BorderColor="#808080" CornerRadius="20">
-                                <StackLayout Orientation="Horizontal" Spacing="20">
-                                    <Frame Padding="0" HorizontalOptions="Center" HasShadow="False" VerticalOptions="Center" HeightRequest="30" WidthRequest="30" CornerRadius="100" BorderColor="#808080">
-                                        <Label Text="C" FontSize="13" FontFamily="Montserrat-SemiBold" HorizontalTextAlignment="Center" VerticalOptions="Center" VerticalTextAlignment="Center"/>
+                            <Frame Grid.Row="2" Style="{StaticResource lblOptionsTitleMainContainerStyle}">
+                                <StackLayout Style="{StaticResource lblOptionsTitleContainerStyle}">
+                                    <Frame Style="{StaticResource lblOptionsNoContainerStyle}">
+                                        <Label Text="C" Style="{StaticResource lblOptionsNoStyle}"/>
                                     </Frame>
-                                    <Label Text="Lorem ipsum dolor sit amet" VerticalOptions="Center" FontSize="12" FontFamily="Montserrat-SemiBold"/>
+                                    <Label Text="Lorem ipsum dolor sit amet" Style="{StaticResource lblOptionsTitleStyle}"/>
                                 </StackLayout>
                             </Frame>
                         </Grid>
@@ -486,8 +488,6 @@
 
 
 
-        <!--<StackLayout>
-            <Label Text="Welcome To Dashboard view..!!" />
-        </StackLayout>-->
+   
     </ContentView.Content>
 </shared:BaseContentView>

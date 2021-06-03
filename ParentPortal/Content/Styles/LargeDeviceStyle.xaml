@@ -7,15 +7,27 @@
              x:Class="ParentPortal.Content.Styles.LargeDeviceStyle">
 
 
-    <x:Double x:Key="lblXtraSmall">10</x:Double>
+    <!--<x:Double x:Key="lblXtraSmall">10</x:Double>
     <x:Double x:Key="lblSmall">14</x:Double>
     <x:Double x:Key="lblMedium">15</x:Double>
     <x:Double x:Key="lblNormal">16</x:Double>
     <x:Double x:Key="lblLarge">18</x:Double>
     <x:Double x:Key="lblXtraLarge">20</x:Double>
-    <x:Double x:Key="lblExceptionLarge">42</x:Double>
 
+    <x:Double x:Key="lblExceptionSmall">30</x:Double>
+    <x:Double x:Key="lblExceptionLarge">42</x:Double>-->
 
+    <x:Double x:Key="lblXtraSmall">10</x:Double>
+    <x:Double x:Key="lblSmall">12</x:Double>
+    <x:Double x:Key="lblMedium">13</x:Double>
+    <x:Double x:Key="lblNormal">14</x:Double>
+    <x:Double x:Key="lblLarge">16</x:Double>
+    <x:Double x:Key="lblXtraLarge">18</x:Double>
+    <x:Double x:Key="lblXXtraLarge">20</x:Double>
+
+    <x:Double x:Key="lblExceptionMedium">34</x:Double>
+    <x:Double x:Key="lblExceptionLarge">40</x:Double>
+    <x:Double x:Key="lblExceptionSmall">28</x:Double>
 
 
     <!--Common Styles Start-->
@@ -284,9 +296,506 @@
     </Style>
 
     <Style x:Key="DashboardSubContainerStyle" TargetType="Grid">
+        <Setter Property="Margin" Value="0,20"/>
+    </Style>
+
+    <Style x:Key="lblForDateStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource lblNormal}"/>
+        <Setter Property="TextTransform" Value="Uppercase"/>
+        <Setter Property="TextColor" Value="#A0D083"/>
+        <Setter Property="FontFamily" Value="Montserrat-Bold"/>
+    </Style>
+
+    <Style x:Key="lblGreetingStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource lblExceptionSmall}"/>
+        <Setter Property="TextColor" Value="#000"/>
+        <Setter Property="FontFamily" Value="Montserrat-SemiBold"/>
+    </Style>
+
+    <Style x:Key="lblForAllLabelStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource lblXtraSmall}"/>
+        <Setter Property="TextColor" Value="#fff"/>
+        <Setter Property="FontFamily" Value="Montserrat-SemiBold"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+    </Style>
+
+    <Style x:Key="lblForAllLabelContainerStyle" TargetType="Frame">
+        <Setter Property="HorizontalOptions" Value="Center"/>
+        <Setter Property="BackgroundColor" Value="#9E9E9E"/>
+        <Setter Property="CornerRadius" Value="25"/>
+        <Setter Property="Padding" Value="10,0"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+    </Style>
+
+    <Style x:Key="lblForAllLabelMainContainerStyle" TargetType="StackLayout">
+        <Setter Property="HorizontalOptions" Value="End"/>
+        <Setter Property="Orientation" Value="Horizontal"/>
+    </Style>
+
+    <Style x:Key="ImageUserPicContainerStyle" TargetType="Frame">
+        <Setter Property="HeightRequest" Value="50"/>
+        <Setter Property="WidthRequest" Value="50"/>
+        <Setter Property="CornerRadius" Value="100"/>
+        <Setter Property="Padding" Value="3"/>
+        <Setter Property="HorizontalOptions" Value="Center"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="BorderColor" Value="#A0D083"/>
+    </Style>
+
+    <Style x:Key="ImageUserPicStyle" TargetType="ffsvg:SvgCachedImage">
+        <Setter Property="HeightRequest" Value="50"/>
+        <Setter Property="WidthRequest" Value="50"/>
+    </Style>
+
+    <Style x:Key="ImageEventIconStyle" TargetType="ffsvg:SvgCachedImage">
+        <Setter Property="HeightRequest" Value="30"/>
+        <Setter Property="WidthRequest" Value="30"/>
+    </Style>
+
+    <Style x:Key="lblEventTitleStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource lblXtraSmall}"/>
+        <Setter Property="TextColor" Value="#e26765"/>
+        <Setter Property="FontFamily" Value="Montserrat-SemiBold"/>
+    </Style>
+
+    <Style x:Key="lblPhotosTitleStyle" TargetType="Label" BasedOn="{StaticResource lblEventTitleStyle}">
+        <Setter Property="TextColor" Value="#fcc926"/>
+    </Style>
+
+
+    <Style x:Key="lblSleepTitleStyle" TargetType="Label" BasedOn="{StaticResource lblEventTitleStyle}">
+        <Setter Property="TextColor" Value="#8498cd"/>
+    </Style>
+
+
+    <Style x:Key="lblFoodTitleStyle" TargetType="Label" BasedOn="{StaticResource lblEventTitleStyle}">
+        <Setter Property="TextColor" Value="#88cab9"/>
+    </Style>
+
+    <Style x:Key="lblFoodTitleContainerStyle" TargetType="StackLayout">
+        <Setter Property="HorizontalOptions" Value="Center"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="Orientation" Value="Vertical"/>
+        <Setter Property="Spacing" Value="3"/>
+    </Style>
+
+    <Style x:Key="lblFoodTitleMainContainerStyle" TargetType="Frame">
+        <Setter Property="CornerRadius" Value="100"/>
+        <Setter Property="BackgroundColor" Value="#d7ebe6"/>
+        <Setter Property="HorizontalOptions" Value="Center"/>
+        <Setter Property="HasShadow" Value="False"/>
+        <Setter Property="HeightRequest" Value="40"/>
+        <Setter Property="WidthRequest" Value="40"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+    </Style>
+
+    <Style x:Key="lblSleepTitleMainContainerStyle" TargetType="Frame" BasedOn="{StaticResource lblFoodTitleMainContainerStyle}">
+        <Setter Property="BackgroundColor" Value="#d6dcec"/>
+    </Style>
+
+    <Style x:Key="lblPhotosTitleMainContainerStyle" TargetType="Frame" BasedOn="{StaticResource lblFoodTitleMainContainerStyle}">
+        <Setter Property="BackgroundColor" Value="#fae9c2"/>
+    </Style>
+
+    <Style x:Key="lblEventsTitleMainContainerStyle" TargetType="Frame" BasedOn="{StaticResource lblFoodTitleMainContainerStyle}">
+        <Setter Property="BackgroundColor" Value="#f2cdcd"/>
+    </Style>
+
+    <Style x:Key="lblAnnouncementStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource lblLarge}"/>
+        <Setter Property="TextColor" Value="#000"/>
+        <Setter Property="FontFamily" Value="Montserrat-SemiBold"/>
+        <Setter Property="HorizontalOptions" Value="Start"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+    </Style>
+
+    <Style x:Key="lblAnnouncementContainerStyle" TargetType="Grid">
+        <Setter Property="Margin" Value="0,10"/>
+    </Style>
+
+
+    <Style x:Key="lblForViewAllLabelStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource lblSmall}"/>
+        <Setter Property="TextColor" Value="#fff"/>
+        <Setter Property="FontFamily" Value="Montserrat-SemiBold"/>
+    </Style>
+
+    <Style x:Key="lblForViewAllLabelContainerStyle" TargetType="Frame">
+        <Setter Property="HorizontalOptions" Value="End"/>
+        <Setter Property="BackgroundColor" Value="#9E9E9E"/>
+        <Setter Property="CornerRadius" Value="25"/>
+        <Setter Property="Padding" Value="15,3"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+    </Style>
+
+    <Style x:Key="lblSpeechTipsStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource lblLarge}"/>
+        <Setter Property="TextColor" Value="#000"/>
+        <Setter Property="FontFamily" Value="Montserrat-SemiBold"/>
+        <Setter Property="HorizontalTextAlignment" Value="Start"/>
+        <Setter Property="Margin" Value="0,0,10,0"/>
+    </Style>
+
+
+    <Style x:Key="lblSpeechTimeStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource lblMedium}"/>
+        <Setter Property="TextColor" Value="#808080"/>
+        <Setter Property="FontFamily" Value="Montserrat-Bold"/>
+        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        <Setter Property="HorizontalOptions" Value="Start"/>
+        <Setter Property="TextTransform" Value="None"/>
+    </Style>
+
+    <Style x:Key="lblSpeechTimeContainerStyle" TargetType="StackLayout">
+        <Setter Property="Orientation" Value="Vertical"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="Spacing" Value="5"/>
+    </Style>
+
+    <Style x:Key="lblDateOnlyStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource lblExceptionMedium}"/>
+        <Setter Property="TextColor" Value="#a0d083"/>
+        <Setter Property="FontFamily" Value="Montserrat-Bold"/>
+        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        <Setter Property="CharacterSpacing" Value="2"/>
+    </Style>
+
+    <Style x:Key="lblMonthOnlyStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource lblXXtraLarge}"/>
+        <Setter Property="TextColor" Value="#808080"/>
+        <Setter Property="FontFamily" Value="Montserrat-Bold"/>
+        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+        <Setter Property="TextTransform" Value="Uppercase"/>
+    </Style>
+
+    <Style x:Key="lblMonthOnlyContainerStyle" TargetType="StackLayout">
+        <Setter Property="Orientation" Value="Vertical"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="HorizontalOptions" Value="Start"/>
+        <Setter Property="Spacing" Value="0"/>
+    </Style>
+
+    <Style x:Key="lblMonthOnlyMainContainerStyle" TargetType="panckeview:PancakeView">
+        <Setter Property="CornerRadius" Value="15"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="HorizontalOptions" Value="Start"/>
+        <Setter Property="BackgroundColor" Value="#fff"/>
+        <Setter Property="Padding" Value="25"/>
+    </Style>
+
+    <Style x:Key="lblNewsFeedStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource lblLarge}"/>
+        <Setter Property="TextColor" Value="#000"/>
+        <Setter Property="FontFamily" Value="Montserrat-SemiBold"/>
+        <Setter Property="HorizontalOptions" Value="Start"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+    </Style>
+
+    <Style x:Key="lblNewsFeedContainerStyle" TargetType="Grid">
+        <Setter Property="Margin" Value="0"/>
+    </Style>
+
+    <Style x:Key="ImageFilterIconStyle" TargetType="ffsvg:SvgCachedImage">
+        <Setter Property="HeightRequest" Value="25"/>
+        <Setter Property="WidthRequest" Value="25"/>
+        <Setter Property="HorizontalOptions" Value="End"/>
+        <Setter Property="Margin" Value="10,0"/>
+    </Style>
+
+    <Style x:Key="NewsFeedBannerContainerStyle" TargetType="panckeview:PancakeView">
+        <Setter Property="CornerRadius" Value="15"/>
+        <Setter Property="BackgroundColor" Value="#fff"/>
+        <Setter Property="HorizontalOptions" Value="Center"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+    </Style>
+
+    <Style x:Key="lblWaterPlayStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource lblLarge}"/>
+        <Setter Property="TextColor" Value="#A0D083"/>
+        <Setter Property="FontFamily" Value="Montserrat-SemiBold"/>
+    </Style>
+
+    <Style x:Key="lblDateTimeStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource lblSmall}"/>
+        <Setter Property="TextColor" Value="#808080"/>
+        <Setter Property="FontFamily" Value="Montserrat-SemiBold"/>
+    </Style>
+
+    <Style x:Key="lblWaterPlayContainerStyle" TargetType="StackLayout">
+        <Setter Property="Spacing" Value="1"/>
+    </Style>
+
+    <Style x:Key="lblWaterPlayMainContainerStyle" TargetType="Grid">
+        <Setter Property="Padding" Value="20,10,20,2"/>
+    </Style>
+
+    <Style x:Key="ImageSunIconStyle" TargetType="ffsvg:SvgCachedImage">
+        <Setter Property="HeightRequest" Value="40"/>
+        <Setter Property="WidthRequest" Value="40"/>
+        <Setter Property="HorizontalOptions" Value="End"/>
+    </Style>
+
+    <Style x:Key="lblNewsFeedContentStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource lblSmall}"/>
+        <Setter Property="TextColor" Value="#000"/>
+        <Setter Property="LineHeight" Value="1.2"/>
+        <Setter Property="FontFamily" Value="Montserrat-Regular"/>
+    </Style>
+
+    <Style x:Key="lblNewsFeedContentContainerStyle" TargetType="Grid">
         <Setter Property="Padding" Value="20,0"/>
     </Style>
 
+    <Style x:Key="lblLikeCommentStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource lblXtraSmall}"/>
+        <Setter Property="TextColor" Value="#808080"/>
+        <Setter Property="FontFamily" Value="Montserrat-Regular"/>
+    </Style>
+
+    <Style x:Key="lblLikeCommentContainerStyle" TargetType="StackLayout">
+        <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="Spacing" Value="20"/>
+    </Style>
+
+    <Style x:Key="lblLillyStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource lblXtraSmall}"/>
+        <Setter Property="TextColor" Value="#808080"/>
+        <Setter Property="FontFamily" Value="Montserrat-SemiBold"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+    </Style>
+
+    <Style x:Key="lblLillyContainerStyle" TargetType="StackLayout">
+        <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="HorizontalOptions" Value="End"/>
+        <Setter Property="Spacing" Value="5"/>
+    </Style>
+
+    <Style x:Key="ImageLillyIconStyle" TargetType="ffsvg:SvgCachedImage">
+        <Setter Property="HeightRequest" Value="25"/>
+        <Setter Property="WidthRequest" Value="25"/>
+    </Style>
+
+    <Style x:Key="ImageLillyIconContainerStyle" TargetType="Frame">
+        <Setter Property="HeightRequest" Value="25"/>
+        <Setter Property="WidthRequest" Value="25"/>
+        <Setter Property="BorderColor" Value="#808080"/>
+        <Setter Property="HasShadow" Value="False"/>
+        <Setter Property="CornerRadius" Value="100"/>
+        <Setter Property="HorizontalOptions" Value="Center"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="Padding" Value="0"/>
+    </Style>
+
+    <Style x:Key="BorderBoxViewStyle" TargetType="BoxView">
+        <Setter Property="HeightRequest" Value="1"/>
+        <Setter Property="Color" Value="#808080"/>
+    </Style>
+
+    <Style x:Key="BorderBoxViewContainerStyle" TargetType="Grid">
+        <Setter Property="Padding" Value="20,0"/>
+        <Setter Property="RowSpacing" Value="4"/>
+    </Style>
+
+    <Style x:Key="lblBookmarkStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource lblXtraSmall}"/>
+        <Setter Property="TextColor" Value="#808080"/>
+        <Setter Property="FontFamily" Value="Montserrat-Regular"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+    </Style>
+
+    <Style x:Key="ImageBookmarkStyle" TargetType="ffsvg:SvgCachedImage">
+        <Setter Property="HeightRequest" Value="15"/>
+        <Setter Property="WidthRequest" Value="15"/>
+    </Style>
+
+    <Style x:Key="ImageLikeIconkStyle" TargetType="ffsvg:SvgCachedImage" BasedOn="{StaticResource ImageBookmarkStyle}">
+        <Setter Property="WidthRequest" Value="23"/>
+    </Style>
+
+    <Style x:Key="BtnReadMoreStyle" TargetType="Button">
+        <Setter Property="FontSize" Value="{StaticResource lblLarge}"/>
+        <Setter Property="TextColor" Value="#fff"/>
+        <Setter Property="FontFamily" Value="Montserrat-SemiBold"/>
+        <Setter Property="TextTransform" Value="None"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="HeightRequest" Value="35"/>
+        <Setter Property="BackgroundColor" Value="#a0d083"/>
+        <Setter Property="Padding" Value="0"/>
+    </Style>
+
+    <Style x:Key="BtnReadMoreContainerStyle" TargetType="panckeview:PancakeView">
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="CornerRadius" Value="0,0,15,15"/>
+        <Setter Property="BackgroundColor" Value="#a0d083"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="HeightRequest" Value="35"/>
+    </Style>
+
+    <Style x:Key="YogaWithGinaMainContainerStyle" TargetType="panckeview:PancakeView" BasedOn="{StaticResource NewsFeedBannerContainerStyle}">
+        <Setter Property="Margin" Value="0,20,0,0"/>
+    </Style>
+
+    <Style x:Key="YogaWithGinaSubContainerStyle" TargetType="Grid">
+        <Setter Property="Margin" Value="20,10,20,2"/>
+    </Style>
+
+    <Style x:Key="lblYogaWithGinaStyle" TargetType="Label" BasedOn="{StaticResource lblWaterPlayStyle}">
+        <Setter Property="TextColor" Value="#E26765"/>
+    </Style>
+
+    <Style x:Key="lblGoingToEventMainContainerStyle" TargetType="Grid">
+        <Setter Property="Padding" Value="20,0,20,8"/>
+        <Setter Property="RowSpacing" Value="4"/>
+    </Style>
+
+    <Style x:Key="lblGoingToEventStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource lblSmall}"/>
+        <Setter Property="TextColor" Value="#E26765"/>
+        <Setter Property="FontFamily" Value="Montserrat-SemiBold"/>
+        <Setter Property="HorizontalOptions" Value="Start"/>
+    </Style>
+
+    <Style x:Key="BtnReadMoreRedStyle" TargetType="Button" BasedOn="{StaticResource BtnReadMoreStyle}">
+        <Setter Property="BackgroundColor" Value="#E26765"/>
+    </Style>
+
+    <Style x:Key="BtnReadMoreRedContainerStyle" TargetType="panckeview:PancakeView" BasedOn="{StaticResource BtnReadMoreContainerStyle}">
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="CornerRadius" Value="0,0,15,15"/>
+        <Setter Property="BackgroundColor" Value="#a0d083"/>
+        <Setter Property="Padding" Value="0"/>
+    </Style>
+
+    <Style x:Key="lblLillyForMorningTeaContainerStyle" TargetType="StackLayout">
+        <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="HorizontalOptions" Value="End"/>
+    </Style>
+
+    <Style x:Key="MorningTeaMainContainerStyle" TargetType="Grid">
+        <Setter Property="Padding" Value="20,10"/>
+        <Setter Property="RowSpacing" Value="15"/>
+    </Style>
+
+    <Style x:Key="ImageMorningFoodStyle" TargetType="ffsvg:SvgCachedImage">
+        <Setter Property="HeightRequest" Value="25"/>
+        <Setter Property="WidthRequest" Value="25"/>
+    </Style>
+
+    <Style x:Key="ImageMorningFoodContainerStyle" TargetType="StackLayout">
+        <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="HorizontalOptions" Value="Start"/>
+        <Setter Property="Spacing" Value="0"/>
+    </Style>
+
+    <Style x:Key="lblForMorningFoodStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource lblLarge}"/>
+        <Setter Property="TextColor" Value="#000"/>
+        <Setter Property="FontFamily" Value="Montserrat-SemiBold"/>
+        <Setter Property="HorizontalOptions" Value="End"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+    </Style>
+
+    <Style x:Key="lblForMorningFoodContainerStyle" TargetType="Grid">
+        <Setter Property="ColumnSpacing" Value="15"/>
+    </Style>
+
+    <Style x:Key="lblMorningTeaStyle" TargetType="Label" BasedOn="{StaticResource lblForMorningFoodStyle}">
+        <Setter Property="TextColor" Value="#fff"/>
+    </Style>
+
+    <Style x:Key="lblToastWithJamStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource lblSmall}"/>
+        <Setter Property="TextColor" Value="#fff"/>
+        <Setter Property="FontFamily" Value="Montserrat-SemiBold"/>
+    </Style>
+
+    <Style x:Key="lblToastWithJamContainerStyle" TargetType="StackLayout">
+        <Setter Property="Spacing" Value="1"/>
+    </Style>
+
+    <Style x:Key="ImageMorningTeaStyle" TargetType="ffsvg:SvgCachedImage">
+        <Setter Property="HeightRequest" Value="35"/>
+        <Setter Property="WidthRequest" Value="35"/>
+        <Setter Property="HorizontalOptions" Value="End"/>
+    </Style>
+
+    <Style x:Key="ImageMorningTeaContainerStyle" TargetType="Grid">
+        <Setter Property="Padding" Value="20,10,20,15"/>
+        <Setter Property="BackgroundColor" Value="#88CAB9"/>
+    </Style>
+
+    <Style x:Key="ImageMorningTeaMainContainerStyle" TargetType="panckeview:PancakeView">
+        <Setter Property="Margin" Value="0,20,0,0"/>
+        <Setter Property="BackgroundColor" Value="#fff"/>
+        <Setter Property="CornerRadius" Value="15"/>
+    </Style>
+
+    <Style x:Key="BtnReadMoreGreenStyle" TargetType="Button" BasedOn="{StaticResource BtnReadMoreStyle}">
+        <Setter Property="BackgroundColor" Value="#88CAB9"/>
+    </Style>
+
+    <Style x:Key="BtnReadMoreGreenContainerStyle" TargetType="panckeview:PancakeView" BasedOn="{StaticResource BtnReadMoreContainerStyle}">
+        <Setter Property="BackgroundColor" Value="#88CAB9"/>
+    </Style>
+
+    <Style x:Key="OptionsMainContainerStyle" TargetType="panckeview:PancakeView">
+        <Setter Property="Margin" Value="0,20"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="CornerRadius" Value="15"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="BackgroundColor" Value="#fff"/>
+    </Style>
+
+    <Style x:Key="OptionsSubContainerStyle" TargetType="Grid">
+        <Setter Property="BackgroundColor" Value="#A0D083"/>
+        <Setter Property="Padding" Value="20,10,20,15"/>
+    </Style>
+
+    <Style x:Key="lblOptionsNoStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource lblMedium}"/>
+        <Setter Property="TextColor" Value="#808080"/>
+        <Setter Property="FontFamily" Value="Montserrat-SemiBold"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="VerticalTextAlignment" Value="Center"/>
+        <Setter Property="HorizontalTextAlignment" Value="Center"/>
+    </Style>
+
+    <Style x:Key="lblOptionsNoContainerStyle" TargetType="Frame">
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="BorderColor" Value="#808080"/>
+        <Setter Property="HasShadow" Value="False"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="HorizontalOptions" Value="Center"/>
+        <Setter Property="HeightRequest" Value="30"/>
+        <Setter Property="WidthRequest" Value="30"/>
+        <Setter Property="CornerRadius" Value="100"/>
+    </Style>
+
+    <Style x:Key="lblOptionsTitleStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource lblSmall}"/>
+        <Setter Property="TextColor" Value="#808080"/>
+        <Setter Property="FontFamily" Value="Montserrat-SemiBold"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+    </Style>
+
+    <Style x:Key="AllOptionsSubContainerStyle" TargetType="Grid">
+        <Setter Property="RowSpacing" Value="15"/>
+        <Setter Property="Margin" Value="25"/>
+    </Style>
+
+    <Style x:Key="lblOptionsTitleContainerStyle" TargetType="StackLayout">
+        <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="Spacing" Value="20"/>
+    </Style>
+
+    <Style x:Key="lblOptionsTitleMainContainerStyle" TargetType="Frame">
+        <Setter Property="HasShadow" Value="False"/>
+        <Setter Property="CornerRadius" Value="20"/>
+        <Setter Property="Padding" Value="6"/>
+        <Setter Property="BorderColor" Value="#808080"/>
+    </Style>
 
 
     <!--DashboardView Style End-->
