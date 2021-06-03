@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms" xmlns:converters="clr-namespace:ParentPortal.Converters"
+             x:Class="ParentPortal.Custom.Controls.FeedBackLayoutComponent">
+    <StackLayout.Resources>
+        <converters:BooleanToReverseConverter x:Key="booltoreverseconveter">
+
+        </converters:BooleanToReverseConverter>
+    </StackLayout.Resources>
+    <StackLayout>
+        <Grid  Style="{StaticResource BorderBoxViewContainerStyle}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <StackLayout IsVisible="{Binding IsfeebackLayoutVisible, Mode=TwoWay}" Grid.Column="0" Grid.Row="0" Style="{StaticResource lblLikeCommentContainerStyle}">
+                <Label Text="{Binding Likes,StringFormat='{0} Likes'}" Style="{StaticResource lblLikeCommentStyle}"/>
+                <Label Text="{Binding Comments,StringFormat='{0} Comments'}" Style="{StaticResource lblLikeCommentStyle}"/>
+            </StackLayout>
+            <StackLayout IsVisible="{Binding IsfeebackLayoutVisible,Converter={StaticResource booltoreverseconveter}}" Grid.Column="0" Grid.Row="0" Style="{StaticResource lblLikeCommentContainerStyle}">
+                <Label  Text="You are going to this event" Style="{StaticResource lblGoingToEventStyle}"/>
+            </StackLayout>
+
+            <StackLayout Grid.Column="1" Grid.Row="0" Style="{StaticResource lblLillyContainerStyle}">
+                <Label Text="Lily" Style="{StaticResource lblLillyStyle}"/>
+                <Frame Padding="0" Style="{StaticResource ImageLillyIconContainerStyle}">
+                    <ffsvg:SvgCachedImage Source="user_f.svg" Style="{StaticResource ImageLillyIconStyle}"/>
+                </Frame>
+            </StackLayout>
+
+            <BoxView Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource BorderBoxViewStyle}"/>
+
+        </Grid>
+
+        <Grid  Padding="20,5" IsVisible="{Binding IsfeebackLayoutVisible, Mode=TwoWay}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackLayout Grid.Column="0" Spacing="5" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Start">
+                <ffsvg:SvgCachedImage Source="tga_like.svg" Style="{StaticResource ImageLikeIconkStyle}"/>
+                <Label Text="Like" Style="{StaticResource lblBookmarkStyle}"/>
+            </StackLayout>
+
+            <StackLayout Grid.Column="1" Spacing="5" Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                <ffsvg:SvgCachedImage Source="tga_comments_icon.svg" Style="{StaticResource ImageBookmarkStyle}"/>
+                <Label Text="Comment" Style="{StaticResource lblBookmarkStyle}"/>
+            </StackLayout>
+
+            <StackLayout Grid.Column="2" Spacing="5" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="End">
+                <ffsvg:SvgCachedImage Source="bookmark_icon.svg" Style="{StaticResource ImageBookmarkStyle}"/>
+                <Label Text="Bookmark" Style="{StaticResource lblBookmarkStyle}"/>
+            </StackLayout>
+
+        </Grid>
+    </StackLayout>
+</StackLayout>

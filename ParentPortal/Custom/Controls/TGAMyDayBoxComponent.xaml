@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:panckeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             x:Class="ParentPortal.Custom.Controls.TGAMyDayBoxComponent">
+    <panckeview:PancakeView  Style="{StaticResource ImageMorningTeaMainContainerStyle}">
+        <panckeview:PancakeView.Shadow>
+            <panckeview:DropShadow BlurRadius="10" Opacity="0.9"    Color="Black" Offset="20,20" />
+        </panckeview:PancakeView.Shadow>
+
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Style="{StaticResource ImageMorningTeaContainerStyle}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackLayout Grid.Column="0" Style="{StaticResource lblToastWithJamContainerStyle}">
+                    <Label Text="{Binding Title, Mode=TwoWay}" Style="{StaticResource lblMorningTeaStyle}"/>
+                    <Label Text="{Binding Description,Mode=TwoWay}" Style="{StaticResource lblToastWithJamStyle}"/>
+                </StackLayout>
+
+                <ffsvg:SvgCachedImage Grid.Column="1" Source="{Binding Type}" Style="{StaticResource ImageMorningTeaStyle}"/>
+            </Grid>
+
+            <Grid Grid.Row="1" Style="{StaticResource MorningTeaMainContainerStyle}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0" Style="{StaticResource lblForMorningFoodContainerStyle}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40*"/>
+                        <ColumnDefinition Width="60*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="0" Text="Morning Tea" Style="{StaticResource lblForMorningFoodStyle}"/>
+
+                    <StackLayout x:Name="MorningTeaStack" Grid.Column="1" BindableLayout.ItemsSource="{Binding NoOfMorningtea}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout  Style="{StaticResource ImageMorningFoodContainerStyle}">
+                                    <ffsvg:SvgCachedImage Grid.Column="1" Source="Meal_icon.svg" Style="{StaticResource ImageMorningFoodStyle}"/>
+                                </StackLayout>
+                            </DataTemplate>
+
+                        </BindableLayout.ItemTemplate>
+
+                    </StackLayout>
+
+                </Grid>
+
+                <Grid Grid.Row="1" Style="{StaticResource lblForMorningFoodContainerStyle}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40*"/>
+                        <ColumnDefinition Width="60*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="0" Text="Fruit" Style="{StaticResource lblForMorningFoodStyle}"/>
+                    <StackLayout  x:Name="MorningFruitsStack" Grid.Column="1" BindableLayout.ItemsSource="{Binding NoOfFruits}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Style="{StaticResource ImageMorningFoodContainerStyle}">
+                                    <ffsvg:SvgCachedImage Grid.Column="1" Source="tga_Fruits.svg" Style="{StaticResource ImageMorningFoodStyle}"/>
+                                </StackLayout>
+                            </DataTemplate>
+
+                        </BindableLayout.ItemTemplate>
+
+                    </StackLayout>
+
+                </Grid>
+
+                <Grid Grid.Row="2" Style="{StaticResource lblForMorningFoodContainerStyle}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40*"/>
+                        <ColumnDefinition Width="60*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="0" Text="Water" Style="{StaticResource lblForMorningFoodStyle}"/>
+                    <StackLayout  x:Name="MorningWaterStack" Grid.Column="1" BindableLayout.ItemsSource="{Binding NoOfFruits}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Style="{StaticResource ImageMorningFoodContainerStyle}">
+                                    <ffsvg:SvgCachedImage Grid.Column="1"  Source="tga_Water.svg" Style="{StaticResource ImageMorningFoodStyle}"/>
+                                    <ffsvg:SvgCachedImage Grid.Column="1"  Source="tga_Water.svg" Style="{StaticResource ImageMorningFoodStyle}"/>
+                                    <ffsvg:SvgCachedImage Grid.Column="1"  Source="tga_Water.svg" Style="{StaticResource ImageMorningFoodStyle}"/>
+                                </StackLayout>
+                            </DataTemplate>
+
+                        </BindableLayout.ItemTemplate>
+
+                    </StackLayout>
+                </Grid>
+
+                <Grid Grid.Row="3" Style="{StaticResource lblForMorningFoodContainerStyle}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40*"/>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="25*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="0" Text="Bottles" Style="{StaticResource lblForMorningFoodStyle}"/>
+                    <StackLayout  x:Name="MorningBottleStack" Grid.Column="1" BindableLayout.ItemsSource="{Binding NoOfFruits}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Grid.Column="1" Style="{StaticResource ImageMorningFoodContainerStyle}">
+                                    <ffsvg:SvgCachedImage Grid.Column="1"  Source="Bottle_icon.svg" Style="{StaticResource ImageMorningFoodStyle}"/>
+
+                                </StackLayout>
+                            </DataTemplate>
+
+                        </BindableLayout.ItemTemplate>
+
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="2"  Style="{StaticResource lblLillyForMorningTeaContainerStyle}">
+                        <Label Text="{Binding Kid.Name}" Style="{StaticResource lblLillyStyle}"/>
+                        <Frame Style="{StaticResource ImageLillyIconContainerStyle}">
+                            <ffsvg:SvgCachedImage Source="{Binding Kid.Avtaar}" Style="{StaticResource ImageLillyIconStyle}"/>
+                        </Frame>
+                    </StackLayout>
+                </Grid>
+
+            </Grid>
+
+            <panckeview:PancakeView Grid.Row="2"  Style="{StaticResource BtnReadMoreGreenContainerStyle}">
+                <panckeview:PancakeView.Shadow>
+                    <panckeview:DropShadow BlurRadius="10" Opacity="0.9"    Color="Black" Offset="20,20" />
+                </panckeview:PancakeView.Shadow>
+
+                <Button  Text="See more" Style="{StaticResource BtnReadMoreGreenStyle}"/>
+            </panckeview:PancakeView>
+        </Grid>
+    </panckeview:PancakeView>
+
+</StackLayout>

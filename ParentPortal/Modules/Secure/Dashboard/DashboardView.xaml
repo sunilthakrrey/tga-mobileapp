@@ -140,7 +140,11 @@
                         <ffsvg:SvgCachedImage Grid.Column="1" Source="Filter_icon.svg" Style="{StaticResource ImageFilterIconStyle}"/>
                     </Grid>
 
-                    <panckeview:PancakeView Grid.Row="1" Style="{StaticResource NewsFeedBannerContainerStyle}">
+                    <!--newsfeeds-->
+
+                    <customControls:TGANewsFeedContainerComponent Grid.Row="1" BindingContext="{Binding NewsFeedBoxComponentModel, Mode=TwoWay}"></customControls:TGANewsFeedContainerComponent>
+                    
+                    <!--<panckeview:PancakeView Grid.Row="1" Style="{StaticResource NewsFeedBannerContainerStyle}">
                         <panckeview:PancakeView.Shadow>
                             <panckeview:DropShadow BlurRadius="10" Opacity="0.9"    Color="Black" Offset="20,20" />
                         </panckeview:PancakeView.Shadow>
@@ -239,12 +243,12 @@
                                 <Button  Text="Read more" Style="{StaticResource BtnReadMoreStyle}"/>
                             </panckeview:PancakeView>
                         </Grid>
-                    </panckeview:PancakeView>
+                    </panckeview:PancakeView>-->
                 </Grid>
 
+                <customControls:TGANewsFeedContainerComponent Grid.Row="4" BindingContext="{Binding NewsFeedBoxComponentYoga, Mode=TwoWay}"></customControls:TGANewsFeedContainerComponent>
 
-
-                <panckeview:PancakeView  Grid.Row="4" Style="{StaticResource YogaWithGinaMainContainerStyle}">
+                <!--<panckeview:PancakeView  Grid.Row="4" Style="{StaticResource YogaWithGinaMainContainerStyle}">
                     <panckeview:PancakeView.Shadow>
                         <panckeview:DropShadow BlurRadius="10" Opacity="0.9"    Color="Black" Offset="20,20" />
                     </panckeview:PancakeView.Shadow>
@@ -289,9 +293,9 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
-                            <!--<StackLayout Grid.Column="0" Grid.Row="0" Spacing="20" Orientation="Horizontal" VerticalOptions="Center">
+                            --><!--<StackLayout Grid.Column="0" Grid.Row="0" Spacing="20" Orientation="Horizontal" VerticalOptions="Center">
                                 <Label Grid.Column="0" Grid.Row="0" Text="You are going to this event" Style="{StaticResource lblGoingToEventStyle}"/>
-                            </StackLayout>-->
+                            </StackLayout>--><!--
 
                             <Label Grid.Column="0" Grid.Row="0" Text="You are going to this event" Style="{StaticResource lblGoingToEventStyle}"/>
 
@@ -312,10 +316,14 @@
                             <Button  Text="Read more" Style="{StaticResource BtnReadMoreRedStyle}"/>
                         </panckeview:PancakeView>
                     </Grid>
-                </panckeview:PancakeView>
+                </panckeview:PancakeView>-->
 
+                
+                <!--my day Meals-->
 
-                <panckeview:PancakeView  Grid.Row="5" Style="{StaticResource ImageMorningTeaMainContainerStyle}">
+                <customControls:TGAMyDayBoxComponent  Grid.Row="5" BindingContext="{Binding ComponentData, Mode=TwoWay}"></customControls:TGAMyDayBoxComponent>
+
+                <!--<panckeview:PancakeView  Grid.Row="5" Style="{StaticResource ImageMorningTeaMainContainerStyle}">
                     <panckeview:PancakeView.Shadow>
                         <panckeview:DropShadow BlurRadius="10" Opacity="0.9"    Color="Black" Offset="20,20" />
                     </panckeview:PancakeView.Shadow>
@@ -423,7 +431,7 @@
                             <Button  Text="See more" Style="{StaticResource BtnReadMoreGreenStyle}"/>
                         </panckeview:PancakeView>
                     </Grid>
-                </panckeview:PancakeView>
+                </panckeview:PancakeView>-->
 
 
                 <panckeview:PancakeView  Grid.Row="6" Style="{StaticResource OptionsMainContainerStyle}">
