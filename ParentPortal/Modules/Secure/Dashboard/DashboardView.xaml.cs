@@ -67,6 +67,7 @@ namespace ParentPortal.Modules.Secure.Dashboard
 
         private void ConfigureSource()
         {
+            var date = new System.DateTime(2021, 3, 3, 11, 30, 00);
             ComponentData = new MyDayBoxComponenetModel
             {
                 Title = "Morning Tea",
@@ -87,7 +88,7 @@ namespace ParentPortal.Modules.Secure.Dashboard
             NewsFeedBoxComponentModel = new NewsFeedBoxComponentModel
             {
                 BackGroundImage = ImageSource.FromUri(new System.Uri("https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg")),
-                Date = new System.DateTime(2021, 3, 3, 11, 30, 00),
+                Date = date.ToString("dd MMMM yyyy, hh:mm"),
                 Title = "WaterPlay In The Yard",
                 Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Porta egestas aenean viverra molestie non.",
                 Image = ImageSource.FromFile("sun_icon.svg"),
@@ -108,7 +109,7 @@ namespace ParentPortal.Modules.Secure.Dashboard
              NewsFeedBoxComponentYoga = new NewsFeedBoxComponentModel
              {
                  BackGroundImage = ImageSource.FromUri(new System.Uri("https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg")),
-                 Date = new System.DateTime(2021, 3, 3, 11, 30, 00),
+                 Date = date.ToString("dd MMMM yyyy, hh:mm"),// new System.DateTime(2021, 3, 3, 11, 30, 00),
                  Title = "WaterPlay In The Yard",
                  Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Porta egestas aenean viverra molestie non.",
                  Image = ImageSource.FromFile("events_Icon.svg"),
@@ -120,7 +121,6 @@ namespace ParentPortal.Modules.Secure.Dashboard
                          Id = "1",
                          Name = "Lily",
                          Avtaar = ImageSource.FromFile("user_f.svg"),
-
                      }
                  }
              };

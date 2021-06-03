@@ -10,7 +10,7 @@ namespace ParentPortal.Models
         public ImageSource BackGroundImage { get; set; }
         public string Title { get; set; }
         public ImageSource Image { get; set; }
-        public DateTime Date { get; set; }
+        public string Date { get; set; }
         public string Description { get; set; }
         public FeedBackComponentModel FeedBackComponentModel { get; set; }
     }
