@@ -21,148 +21,84 @@
 
 
 
-
     <!--Common Styles Start-->
 
-    <Style x:Key="CommonCustomEntryStyle" TargetType="customControls:CustomEntry">
+    <Style x:Key="CustomEntryStyle" TargetType="customControls:CustomEntry">
         <Setter Property="FontSize" Value="{StaticResource lblNormal}"/>
         <Setter Property="FontFamily" Value="Montserrat-SemiBold"/>
-        <Setter Property="PlaceholderColor" Value="#fff"/>
     </Style>
 
-    <Style x:Key="CommonBtnOrangeStyle" TargetType="Button">
+    <Style x:Key="BtnOrangeStyle" TargetType="Button" BasedOn="{StaticResource CommonBtnOrangeStyle}">
         <Setter Property="FontSize" Value="{StaticResource lblXtraLarge}"/>
-        <Setter Property="TextColor" Value="#fff"/>
         <Setter Property="FontFamily" Value="Montserrat-Bold"/>
         <Setter Property="CornerRadius" Value="50"/>
-        <Setter Property="TextTransform" Value="None"/>
-        <Setter Property="VerticalOptions" Value="Center"/>
-        <Setter Property="HorizontalOptions" Value="Center"/>
-        <Setter Property="BackgroundColor" Value="#FCC443"/>
+        <Setter Property="Padding" Value="35,5"/>
     </Style>
 
-    <Style x:Key="CommonBtnOrangeContainerStyle" TargetType="panckeview:PancakeView">
+    <Style x:Key="BtnOrangeFrameStyle" TargetType="panckeview:PancakeView" BasedOn="{StaticResource CommonBtnOrangeFrameStyle}">
         <Setter Property="CornerRadius" Value="50"/>
-        <Setter Property="HeightRequest" Value="45"/>
-        <Setter Property="WidthRequest" Value="159"/>
-        <Setter Property="Padding" Value="0"/>
-        <Setter Property="HorizontalOptions" Value="Center"/>
-        <Setter Property="VerticalOptions" Value="Start"/>
     </Style>
 
     <!--Common Styles Start-->
-
-
 
 
 
     <!--#region Login Page-->
 
-    <Style x:Key="LoginPageMainContainerStyle" TargetType="Grid">
-        <Setter Property="Padding" Value="0"/>
-        <Setter Property="Margin" Value="0"/>
-        <Setter Property="VerticalOptions" Value="FillAndExpand"/>
-        <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+    <Style x:Key="AuthMainGridStyle" TargetType="Grid">
+        <Setter Property="Padding" Value="30,0"/>
     </Style>
 
-    <Style x:Key="LoginPageSubContainerStyle" TargetType="Grid">
-        <Setter Property="Padding" Value="30"/>
-        <Setter Property="VerticalOptions" Value="FillAndExpand"/>
-    </Style>
-
-    <Style x:Key="lblWelcomeBackStyle" TargetType="Label">
+    <Style x:Key="lblAuthMainHeadingStyle" TargetType="Label">
         <Setter Property="FontSize" Value="{StaticResource lblExceptionLarge}"/>
-        <Setter Property="TextColor" Value="#fff"/>
-        <Setter Property="VerticalOptions" Value="EndAndExpand"/>
-        <Setter Property="HorizontalOptions" Value="Center"/>
         <Setter Property="FontFamily" Value="Pacifico-Regular"/>
     </Style>
 
     <Style x:Key="EmailEntryMainContainerStyle" TargetType="StackLayout">
         <Setter Property="Spacing" Value="16"/>
         <Setter Property="Margin" Value="0,25,0,0"/>
-        <Setter Property="VerticalOptions" Value="End"/>
     </Style>
 
-    <Style x:Key="EmailEntryContainerStyle" TargetType="Frame">
-        <Setter Property="BackgroundColor" Value="#B1DD96"/>
-        <Setter Property="HasShadow" Value="False"/>
+    <Style x:Key="EntryFrameStyle" TargetType="Frame">
         <Setter Property="CornerRadius" Value="50"/>
-        <Setter Property="Margin" Value="0"/>
         <Setter Property="Padding" Value="15,1"/>
     </Style>
 
-    <Style x:Key="lblForClickHereContainerStyle" TargetType="StackLayout">
-        <Setter Property="Margin" Value="40,0"/>
-    </Style>
-
-    <Style x:Key="lblForClickHereStyle" TargetType="Label">
+    <Style x:Key="lblAuthClickHereStyle" TargetType="Label">
         <Setter Property="FontSize" Value="{StaticResource lblSmall}"/>
-        <Setter Property="TextColor" Value="#fff"/>
         <Setter Property="FontFamily" Value="Montserrat-Regular"/>
-    </Style>
-
-    <Style x:Key="lblWarningContainerStyle" TargetType="StackLayout">
-        <Setter Property="Orientation" Value="Horizontal"/>
     </Style>
 
     <Style x:Key="ImageWarningIconStyle" TargetType="ffsvg:SvgCachedImage">
         <Setter Property="HeightRequest" Value="20"/>
         <Setter Property="WidthRequest" Value="20"/>
-        <Setter Property="Aspect" Value="AspectFit"/>
-        <Setter Property="VerticalOptions" Value="Start"/>
         <Setter Property="Margin" Value="0,5"/>
     </Style>
 
-    <Style x:Key="lblWarningStyle" TargetType="Label" BasedOn="{StaticResource lblForClickHereStyle}">
-        <Setter Property="LineHeight" Value="1.2"/>
+    <Style x:Key="lblWarningStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource lblSmall}"/>
+        <Setter Property="FontFamily" Value="Montserrat-Regular"/>
         <Setter Property="Padding" Value="15,0,0,0"/>
-    </Style>
-
-    <Style x:Key="EmailEntryStyle" TargetType="customControls:CustomEntry" BasedOn="{StaticResource CommonCustomEntryStyle}">
-
     </Style>
 
     <Style x:Key="lblForgetPasswordStyle" TargetType="Label">
         <Setter Property="FontSize" Value="{StaticResource lblSmall}"/>
-        <Setter Property="TextColor" Value="#fff"/>
         <Setter Property="FontFamily" Value="Montserrat-SemiBold"/>
-        <Setter Property="HorizontalOptions" Value="End"/>
-    </Style>
-
-    <Style x:Key="lblRememberMeContainerStyle" TargetType="StackLayout">
-        <Setter Property="Padding" Value="0"/>
-        <Setter Property="Spacing" Value="0"/>
-        <Setter Property="Orientation" Value="Horizontal"/>
-        <Setter Property="VerticalOptions" Value="Center"/>
     </Style>
 
     <Style x:Key="lblRememberMeStyle" TargetType="Label">
         <Setter Property="FontSize" Value="{StaticResource lblMedium}"/>
-        <Setter Property="TextColor" Value="#fff"/>
         <Setter Property="FontFamily" Value="Montserrat-SemiBold"/>
-        <Setter Property="VerticalOptions" Value="Center"/>
     </Style>
 
-    <Style x:Key="CheckBoxStyle" TargetType="CheckBox">
-        <Setter Property="Color" Value="#fff"/>
-    </Style>
-
-    <Style x:Key="BtnLoginStyle" TargetType="Button" BasedOn="{StaticResource CommonBtnOrangeStyle}">
+    <Style x:Key="BtnLoginStyle" TargetType="Button" BasedOn="{StaticResource BtnOrangeStyle}">
         <Setter Property="HeightRequest" Value="45"/>
         <Setter Property="WidthRequest" Value="159"/>
-    </Style>
-
-    <Style x:Key="BtnLoginContainerStyle" TargetType="panckeview:PancakeView" BasedOn="{StaticResource CommonBtnOrangeContainerStyle}">
-        <Setter Property="Margin" Value="0,15,0,0"/>
     </Style>
 
     <Style x:Key="ImageSocialIconContainerStyle" TargetType="StackLayout">
         <Setter Property="Spacing" Value="18"/>
         <Setter Property="Margin" Value="0,0,0,10"/>
-        <Setter Property="Orientation" Value="Horizontal"/>
-        <Setter Property="VerticalOptions" Value="End"/>
-        <Setter Property="HorizontalOptions" Value="Center"/>
     </Style>
 
     <Style x:Key="ImageSocialIconStyle" TargetType="ffsvg:SvgCachedImage">
@@ -170,117 +106,47 @@
         <Setter Property="WidthRequest" Value="30"/>
     </Style>
 
+    <!--<Style x:Key="lblLoginTagLine" TargetType="Label" BasedOn="{StaticResource CommonStyleTestingBase}">
+        <Setter Property="FontSize" Value="20"></Setter>
+        <Setter Property="TextColor" Value="blue"></Setter>
+    </Style>-->
 
-
-
-
-
-
-
-    <Style x:Key="lblLoginTagLine" TargetType="Label" BasedOn="{StaticResource CommonStyleTestingBase}">
-        <Setter Property="FontSize" Value="12"></Setter>
-        <Setter Property="TextColor" Value="Green"></Setter>
-    </Style>
     <!--#endregion Login Page-->
-
 
 
     <!--ForgotPasswordPage Style Begin-->
 
-    <Style x:Key="ForgotPasswordMainContainerStyle" TargetType="Grid" BasedOn="{StaticResource LoginPageMainContainerStyle}">
-
-    </Style>
-
-    <Style x:Key="ForgotPasswordSubContainerStyle" TargetType="Grid" BasedOn="{StaticResource LoginPageSubContainerStyle}">
-
-    </Style>
-
-    <Style x:Key="lblResetPasswordStyle" TargetType="Label" BasedOn="{StaticResource lblWelcomeBackStyle}">
-
-    </Style>
-
-    <Style x:Key="EntryEmailEnterMainContainerStyle" TargetType="StackLayout">
-        <Setter Property="VerticalOptions" Value="Center"></Setter>
-    </Style>
-
-    <Style x:Key="EntryEmailEnterContainerStyle" TargetType="Frame" BasedOn="{StaticResource EmailEntryContainerStyle}">
-
-    </Style>
-
-    <Style x:Key="EntryEmailEnterStyle" TargetType="customControls:CustomEntry" BasedOn="{StaticResource CommonCustomEntryStyle}">
-
-    </Style>
-
-    <Style x:Key="BtnResetPasswordStyle" TargetType="Button" BasedOn="{StaticResource CommonBtnOrangeStyle}">
-        <Setter Property="Padding" Value="35,5"/>
-    </Style>
-
-    <Style x:Key="BtnResetPasswordContainerStyle" TargetType="panckeview:PancakeView">
-        <Setter Property="VerticalOptions" Value="Start"/>
-        <Setter Property="CornerRadius" Value="50"/>
-        <Setter Property="Padding" Value="0"/>
-        <Setter Property="HorizontalOptions" Value="Center"/>
-    </Style>
-
-    <Style x:Key="lblDidntReceivedMailStyle" TargetType="Label">
+    <Style x:Key="lblResendMailStyle" TargetType="Label">
         <Setter Property="FontSize" Value="{StaticResource lblNormal}"/>
-        <Setter Property="TextColor" Value="#fff"/>
         <Setter Property="FontFamily" Value="Montserrat-SemiBold"/>
-        <Setter Property="HorizontalOptions" Value="Center"/>
-    </Style>
-
-    <Style x:Key="lblDidntReceivedMailContainerStyle" TargetType="StackLayout">
-        <Setter Property="Orientation" Value="Vertical"/>
-        <Setter Property="HorizontalOptions" Value="Center"/>
-        <Setter Property="VerticalOptions" Value="Start"/>
-    </Style>
-
-
-
-
-    <Style x:Key="ForgotPasswordPopupMainContainerStyle" TargetType="StackLayout">
-        <Setter Property="BackgroundColor" Value="Transparent"/>
-        <Setter Property="VerticalOptions" Value="EndAndExpand"/>
     </Style>
 
     <Style x:Key="ForgotPasswordPopupSubContainerStyle" TargetType="panckeview:PancakeView">
         <Setter Property="CornerRadius" Value="30,30,0,0"/>
-        <Setter Property="BackgroundColor" Value="#A0D083"/>
         <Setter Property="Padding" Value="30,0"/>
         <Setter Property="HeightRequest" Value="320"/>
-        <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
     </Style>
 
     <Style x:Key="SliderDownIconStyle" TargetType="BoxView">
         <Setter Property="HeightRequest" Value="8"/>
         <Setter Property="WidthRequest" Value="45"/>
-        <Setter Property="BackgroundColor" Value="#7EBE58"/>
         <Setter Property="Margin" Value="20"/>
-        <Setter Property="CornerRadius" Value="5"/>
-        <Setter Property="VerticalOptions" Value="Start"/>
-        <Setter Property="HorizontalOptions" Value="Center"/>
     </Style>
 
     <Style x:Key="lblResetPasswordNotificationStyle" TargetType="Label">
         <Setter Property="FontSize" Value="{StaticResource lblLarge}"/>
-        <Setter Property="Padding" Value="30,0"/>
-        <Setter Property="TextColor" Value="#fff"/>
-        <Setter Property="LineHeight" Value="1.2"/>
+        <Setter Property="Margin" Value="25,0"/>
         <Setter Property="FontFamily" Value="Montserrat-SemiBold"/>
-        <Setter Property="HorizontalTextAlignment" Value="Center"/>
     </Style>
 
     <Style x:Key="ImageCrossIconStyle" TargetType="ffsvg:SvgCachedImage">
         <Setter Property="HeightRequest" Value="28"/>
         <Setter Property="WidthRequest" Value="28"/>
         <Setter Property="Margin" Value="20"/>
-        <Setter Property="VerticalOptions" Value="End"/>
-        <Setter Property="HorizontalOptions" Value="Center"/>
     </Style>
 
+
     <!--ForgotPasswordPage Style End-->
-
-
 
 
 

@@ -7,13 +7,13 @@
              NavigationPage.HasNavigationBar="False"
              x:Class="ParentPortal.Modules.Auth.Login.LoginPage">
     <ContentPage.Content>
-        <Grid Style="{StaticResource LoginPageMainContainerStyle}">
+        <Grid Padding="0" Margin="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
 
             <StackLayout>
                 <ffsvg:SvgCachedImage Source="login_background.svg"/>
             </StackLayout>
 
-            <Grid Style="{StaticResource LoginPageSubContainerStyle}">
+            <Grid VerticalOptions="FillAndExpand" Style="{StaticResource AuthMainGridStyle}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="35*"/>
                     <RowDefinition Height="Auto"/>
@@ -21,30 +21,29 @@
                     <RowDefinition Height="5*"/>
                 </Grid.RowDefinitions>
 
-                <Label Grid.Row="0" Text="Welcome back" Style="{StaticResource lblWelcomeBackStyle}"/>
+                <Label Grid.Row="0" Text="Welcome back" VerticalOptions="EndAndExpand" HorizontalOptions="Center" TextColor="{DynamicResource White}"  Style="{StaticResource lblAuthMainHeadingStyle}"/>
 
-                <StackLayout Grid.Row="1" Style="{StaticResource EmailEntryMainContainerStyle}">
-
+                <StackLayout Grid.Row="1" VerticalOptions="End" Style="{StaticResource EmailEntryMainContainerStyle}">
                     <StackLayout x:Name="LoginRequestModel_StackError" IsVisible="false">
 
-                        <StackLayout  Style="{StaticResource lblWarningContainerStyle}">
-                            <ffsvg:SvgCachedImage Source="error_warning_icon.svg" Style="{StaticResource ImageWarningIconStyle}"  x:Name="ErrorImage" />
-                            <Label x:Name="LoginRequestModel_Error" Style="{StaticResource lblWarningStyle}"></Label>
+                        <StackLayout  Orientation="Horizontal">
+                            <ffsvg:SvgCachedImage Source="error_warning_icon.svg" VerticalOptions="Start" Style="{StaticResource ImageWarningIconStyle}"  x:Name="ErrorImage" />
+                            <Label x:Name="LoginRequestModel_Error" LineHeight="1.2" TextColor="{DynamicResource White}" Style="{StaticResource lblWarningStyle}"></Label>
                         </StackLayout>
-                        <StackLayout Style="{StaticResource lblForClickHereContainerStyle}">
-                            <Label Text="Click Here" Style="{StaticResource lblForClickHereStyle}"/>
+                        <StackLayout Margin="40,0">
+                            <Label Text="Click Here" TextDecorations="Underline" TextColor="{DynamicResource White}" Style="{StaticResource lblAuthClickHereStyle}"/>
                         </StackLayout>
 
                     </StackLayout>
 
-                    <Frame Style="{StaticResource EmailEntryContainerStyle}">
-                        <customControls:CustomEntry  Placeholder="Email or Username" Style="{StaticResource CommonCustomEntryStyle}" Text="{Binding LoginRequestModel.Email, Mode=TwoWay}">
+                    <Frame BackgroundColor="{DynamicResource FeijoaLight}" HasShadow="False" Margin="0" Style="{StaticResource EntryFrameStyle}">
+                        <customControls:CustomEntry  Placeholder="Email or Username" PlaceholderColor="{DynamicResource White}" Style="{StaticResource CustomEntryStyle}" Text="{Binding LoginRequestModel.Email, Mode=TwoWay}">
 
                         </customControls:CustomEntry>
                     </Frame>
 
-                    <Frame Style="{StaticResource EmailEntryContainerStyle}">
-                        <customControls:CustomEntry Placeholder="Password"  Style="{StaticResource CommonCustomEntryStyle}" Text="{Binding LoginRequestModel.Password, Mode=TwoWay}">
+                    <Frame BackgroundColor="{DynamicResource FeijoaLight}" HasShadow="False" Margin="0" Style="{StaticResource EntryFrameStyle}">
+                        <customControls:CustomEntry Placeholder="Password" PlaceholderColor="{DynamicResource White}"  Style="{StaticResource CustomEntryStyle}" Text="{Binding LoginRequestModel.Password, Mode=TwoWay}">
 
                         </customControls:CustomEntry>
                     </Frame>
@@ -52,25 +51,24 @@
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Tapped="ForgotPasswordButton_Clicked"></TapGestureRecognizer>
                         </StackLayout.GestureRecognizers>
-                        <Label Text="Forgot your password?" Style="{StaticResource lblForgetPasswordStyle}"/>
+                        <Label Text="Forgot your password?" HorizontalOptions="End" TextColor="{DynamicResource White}" Style="{StaticResource lblForgetPasswordStyle}"/>
                     </StackLayout>
-        
 
-                    <StackLayout  Style="{StaticResource lblRememberMeContainerStyle}">
-                        <CheckBox Style="{StaticResource CheckBoxStyle}" IsChecked="{Binding LoginRequestModel.RememberMe, Mode=TwoWay}"/>
-                        <Label Text="Remember me" Style="{StaticResource lblRememberMeStyle}"/>
+                    <StackLayout Padding="0" Spacing="0" Orientation="Horizontal" VerticalOptions="Center">
+                        <CheckBox Color="{DynamicResource White}" IsChecked="{Binding LoginRequestModel.RememberMe, Mode=TwoWay}"/>
+                        <Label Text="Remember me" VerticalOptions="Center" TextColor="{DynamicResource White}" Style="{StaticResource lblRememberMeStyle}"/>
                     </StackLayout>
                 </StackLayout>
 
-                <panckeview:PancakeView Grid.Row="2" VerticalOptions="Start" Style="{StaticResource BtnLoginContainerStyle}">
+                <panckeview:PancakeView Grid.Row="2" Margin="0,15,0,0" VerticalOptions="Start" Style="{StaticResource BtnOrangeFrameStyle}">
                     <panckeview:PancakeView.Shadow>
                         <panckeview:DropShadow BlurRadius="10" Opacity="0.9"   x:Name="shadow" Color="Black" Offset="20,20" />
                     </panckeview:PancakeView.Shadow>
 
-                    <Button Text="Login" Clicked="LoginBtn_Clicked" Style="{StaticResource BtnLoginStyle}"/>
+                    <Button Text="Login" Clicked="LoginBtn_Clicked" TextColor="{DynamicResource White}" BackgroundColor="{DynamicResource BrightSun}" Style="{StaticResource BtnLoginStyle}"/>
                 </panckeview:PancakeView>
 
-                <StackLayout Grid.Row="3" Style="{StaticResource ImageSocialIconContainerStyle}">
+                <StackLayout Grid.Row="3" Orientation="Horizontal" VerticalOptions="End" HorizontalOptions="Center" Style="{StaticResource ImageSocialIconContainerStyle}">
                     <ffsvg:SvgCachedImage Source="facebook.svg" WidthRequest="15" Style="{StaticResource ImageSocialIconStyle}" />
                     <ffsvg:SvgCachedImage Source="instagram.svg"  Style="{StaticResource ImageSocialIconStyle}" />
                     <ffsvg:SvgCachedImage Source="youtube.svg"  Style="{StaticResource ImageSocialIconStyle}" />

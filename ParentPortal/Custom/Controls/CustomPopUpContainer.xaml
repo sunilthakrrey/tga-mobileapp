@@ -3,41 +3,40 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:panckeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
              x:Class="ParentPortal.Custom.Controls.CustomPopUpContainer">
     <ContentView.Content>
-        <StackLayout  x:Name="RecordPlayFrame"   Style="{StaticResource ForgotPasswordPopupMainContainerStyle}">
+        <StackLayout  x:Name="RecordPlayFrame" VerticalOptions="End" BackgroundColor="{DynamicResource Transparent}" >
                 <StackLayout.GestureRecognizers>
                     <PanGestureRecognizer  PanUpdated="PanGestureRecognizer_PanUpdated" />
                 </StackLayout.GestureRecognizers>
-                <panckeview:PancakeView Style="{StaticResource ForgotPasswordPopupSubContainerStyle}">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="20*"/>
-                            <RowDefinition Height="30*"/>
-                            <RowDefinition Height="30*"/>
-                            <RowDefinition Height="20*"/>
-                        </Grid.RowDefinitions>
+            <panckeview:PancakeView HorizontalOptions="FillAndExpand" Padding="20,0,20,30" BackgroundColor="{DynamicResource Feijoa}" Style="{StaticResource ForgotPasswordPopupSubContainerStyle}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20*"/>
+                        <RowDefinition Height="30*"/>
+                        <RowDefinition Height="30*"/>
+                        <RowDefinition Height="20*"/>
+                    </Grid.RowDefinitions>
 
-                        <BoxView Grid.Row="0" Style="{StaticResource SliderDownIconStyle}"/>
+                    <BoxView Grid.Row="0" CornerRadius="5" VerticalOptions="Start" HorizontalOptions="Center" BackgroundColor="{DynamicResource Mantis}" Style="{StaticResource SliderDownIconStyle}"/>
 
-                        <Label Grid.Row="1" Style="{StaticResource lblResetPasswordNotificationStyle}" Text="{Binding Message}"></Label>
+                    <Label Grid.Row="1" LineHeight="1.2" HorizontalTextAlignment="Center" TextColor="{DynamicResource White}" Style="{StaticResource lblResetPasswordNotificationStyle}" Text="{Binding Message}"></Label>
 
-                        <panckeview:PancakeView Grid.Row="2" Style="{StaticResource BtnLoginContainerStyle}">
-                            <panckeview:PancakeView.Shadow>
-                                <panckeview:DropShadow BlurRadius="10" Opacity="0.9"   x:Name="shadow" Color="Black" Offset="20,20" />
-                            </panckeview:PancakeView.Shadow>
+                    <panckeview:PancakeView Grid.Row="2" Margin="0,15,0,0" Style="{StaticResource BtnOrangeFrameStyle}">
+                        <panckeview:PancakeView.Shadow>
+                            <panckeview:DropShadow BlurRadius="10" Opacity="0.9"   x:Name="shadow" Color="Black" Offset="20,20" />
+                        </panckeview:PancakeView.Shadow>
 
-                            <Button Text="Login" Command="{Binding PopUpNavigatioButtonCommand}"  Style="{StaticResource BtnLoginStyle}"/>
-                        </panckeview:PancakeView>
-                        <StackLayout Grid.Row="3" BackgroundColor="Red" Padding="10">
-                            <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="ClosePopup_Clicked"></TapGestureRecognizer>
-                            </StackLayout.GestureRecognizers>
-                            <ffsvg:SvgCachedImage  Style="{StaticResource ImageCrossIconStyle}" Source="cross_icon.svg"/>
-                        </StackLayout>
+                        <Button Text="Login" Command="{Binding PopUpNavigatioButtonCommand}" TextColor="{DynamicResource White}" BackgroundColor="{DynamicResource BrightSun}" Style="{StaticResource BtnLoginStyle}"/>
+                    </panckeview:PancakeView>
+                    <StackLayout Grid.Row="3" Padding="10">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ClosePopup_Clicked"></TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                        <ffsvg:SvgCachedImage VerticalOptions="End" HorizontalOptions="Center" Style="{StaticResource ImageCrossIconStyle}" Source="cross_icon.svg"/>
+                    </StackLayout>
 
-                    </Grid>
-                </panckeview:PancakeView>
-
-            </StackLayout>
+                </Grid>
+            </panckeview:PancakeView>
+        </StackLayout>
        
     </ContentView.Content>
 

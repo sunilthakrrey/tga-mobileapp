@@ -87,11 +87,24 @@
         <Setter Property="HorizontalTextAlignment" Value="Center"/>
     </Style>
 
-
-
-
-
     <!--DashboardView Common Style Begin-->
+
+
+    <!--Login, ForgotPassword Common Style Begin-->
+
+    <Style x:Key="CommonBtnOrangeFrameStyle" TargetType="panckeview:PancakeView">
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="HorizontalOptions" Value="Center"/>
+        <Setter Property="VerticalOptions" Value="Start"/>
+    </Style>
+
+    <Style x:Key="CommonBtnOrangeStyle" TargetType="Button">
+        <Setter Property="TextTransform" Value="None"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="HorizontalOptions" Value="Center"/>
+    </Style>
+
+    <!--Login, ForgotPassword Common Style Begin-->
 
 
 
