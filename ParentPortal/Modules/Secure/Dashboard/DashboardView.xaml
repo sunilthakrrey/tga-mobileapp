@@ -33,15 +33,23 @@
                     </StackLayout>
 
                     <StackLayout Grid.Column="1" Orientation="Horizontal" HorizontalOptions="End">
-                        <Frame BackgroundColor="{DynamicResource SilverChalice}" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource lblForAllLabelContainerStyle}">
+                        <Frame  BackgroundColor="{DynamicResource SilverChalice}" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource lblForAllLabelContainerStyle}">
                             <Label Text="All" VerticalOptions="Center" TextColor="{DynamicResource White}" Style="{StaticResource lblForAllLabelStyle}"/>
                         </Frame>
-                        <Frame BorderColor="{DynamicResource Feijoa}" Style="{StaticResource ImageUserCircleStyle}">
+                        <!--<Frame BorderColor="{DynamicResource Feijoa}" Style="{StaticResource ImageUserCircleStyle}">
                             <ffsvg:SvgCachedImage Source="user_f.svg" Style="{StaticResource ImageUserPicStyle}"/>
                         </Frame>
                         <Frame BorderColor="{DynamicResource Feijoa}" Style="{StaticResource ImageUserCircleStyle}">
                             <ffsvg:SvgCachedImage Source="user_s.svg" Style="{StaticResource ImageUserPicStyle}"/>
-                        </Frame>
+                        </Frame>-->
+                        <StackLayout Orientation="Horizontal" BindableLayout.ItemsSource="{Binding KidsDetails}">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <customControls:IndividualFrameComponent BindingContext="{Binding .}"></customControls:IndividualFrameComponent>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
+                        
                     </StackLayout>
                     
                 </Grid>
@@ -138,7 +146,13 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="0" Text="News Feed" TextColor="{DynamicResource Black}" Style="{StaticResource SubHeadingStyle}"/>
-                        <ffsvg:SvgCachedImage Grid.Column="1" Source="Filter_icon.svg" HorizontalOptions="End" Style="{StaticResource ImageFilterIconStyle}"/>
+                        <StackLayout Grid.Column="1">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="FilterPopupRequest_Clicked"/>
+                            </StackLayout.GestureRecognizers>
+                            <ffsvg:SvgCachedImage  Source="Filter_icon.svg" HorizontalOptions="End" Style="{StaticResource ImageFilterIconStyle}"/>
+                        </StackLayout>
+                      
                     </Grid>
 
                     <!--<customControls:TGANewsFeedContainerComponent Grid.Row="1" BindingContext="{Binding NewsFeedBoxComponentModel, Mode=TwoWay}"></customControls:TGANewsFeedContainerComponent>-->

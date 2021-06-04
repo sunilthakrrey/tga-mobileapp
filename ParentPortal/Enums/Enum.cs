@@ -29,4 +29,9 @@ namespace ParentPortal.Enums
         AccountCredential,
         AuthorizedToken
     }
+    public enum ImageSize
+    { 
+        Small,
+        Large
+    }
 }

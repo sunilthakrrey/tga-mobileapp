@@ -1,4 +1,6 @@
 ﻿using ParentPortal.Models;
+using ParentPortal.Views.Shared;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,27 +12,33 @@ using Xamarin.Forms.Xaml;
 
 namespace ParentPortal.Custom.Controls
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class FeedBackLayoutComponent : StackLayout
-	{
-		public FeedBackLayoutComponent ()
-		{
-			InitializeComponent ();
-			BindingContext = FeedBackComponentModel;
-		}
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class FeedBackLayoutComponent : StackLayout
+    {
+        public FeedBackLayoutComponent()
+        {
+            InitializeComponent();
+            BindingContext = FeedBackComponentModel;
+        }
 
-		private FeedBackComponentModel _feedBackComponentModel;
-        public FeedBackComponentModel FeedBackComponentModel 
-		{
+        private FeedBackComponentModel _feedBackComponentModel;
+        public FeedBackComponentModel FeedBackComponentModel
+        {
             get
             {
-				return _feedBackComponentModel;
+                return _feedBackComponentModel;
             }
             set
             {
-				_feedBackComponentModel = value;
-				OnPropertyChanged(nameof(FeedBackComponentModel));
+                _feedBackComponentModel = value;
+                OnPropertyChanged(nameof(FeedBackComponentModel));
             }
-		}
+        }
+
+        private async void CreateComment_Clicked(object sender, EventArgs e)
+        {
+            await PopupNavigation.Instance.PushAsync(new CommentSectionPopup());
+        }
+
     }
 }

@@ -72,15 +72,7 @@ namespace ParentPortal.Modules.Auth.ForgotPassword
          
         }
        
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected override void OnPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            var changed = PropertyChanged;
-            if (changed == null)
-                return;
-
-            changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        
 
     }
 }

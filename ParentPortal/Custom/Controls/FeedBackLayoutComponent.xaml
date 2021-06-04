@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms" xmlns:converters="clr-namespace:ParentPortal.Converters"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms" xmlns:converters="clr-namespace:ParentPortal.Converters" xmlns:customControls="clr-namespace:ParentPortal.Custom.Controls"
              x:Class="ParentPortal.Custom.Controls.FeedBackLayoutComponent">
     <StackLayout.Resources>
         <converters:BooleanToReverseConverter x:Key="booltoreverseconveter">
@@ -24,12 +24,13 @@
                 <Label Text="{Binding Comments,StringFormat='{0} Comments'}" TextColor="{DynamicResource Gray}" Style="{StaticResource lblLikeCommentStyle}"/>
             </StackLayout>
             <Label Grid.Column="0" IsVisible="{Binding IsfeebackLayoutVisible,Converter={StaticResource booltoreverseconveter}}" Grid.Row="0" Text="You are going to this event" HorizontalOptions="Start" TextColor="{DynamicResource Sunglo}" Style="{StaticResource lblGoingToEventStyle}"/>
-            <StackLayout  Grid.Column="1" Grid.Row="0" Spacing="5" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="End">
+            <!--<StackLayout  Grid.Column="1" Grid.Row="0" Spacing="5" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="End">
                 <Label Text="{Binding KidDetail.Name}" TextColor="{StaticResource Gray}" VerticalOptions="Center" Style="{StaticResource lblForNameStyle}"/>
                 <Frame Padding="0" BorderColor="{DynamicResource Gray}" Style="{StaticResource ImageCircleFrameStyle}">
                     <ffsvg:SvgCachedImage Source="{Binding KidDetail.Avtaar}" Style="{StaticResource ImageUserIconStyle}"/>
                 </Frame>
-            </StackLayout>
+            </StackLayout>-->
+            <customControls:IndividualFrameComponent Grid.Column="1" Grid.Row="0" Spacing="5" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="End"  BindingContext="{Binding KidDetail}"></customControls:IndividualFrameComponent>
 
             <BoxView IsVisible="{Binding IsfeebackLayoutVisible, Mode=TwoWay}" Grid.Row="1" Grid.ColumnSpan="2" Color="{DynamicResource Gray}" HeightRequest="1"/>
 
@@ -48,6 +49,9 @@
             </StackLayout>
 
             <StackLayout Grid.Column="1" Spacing="5" Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="CreateComment_Clicked"/>
+                </StackLayout.GestureRecognizers>
                 <ffsvg:SvgCachedImage Source="tga_comments_icon.svg" Style="{StaticResource ImageReactionsStyle}"/>
                 <Label Text="Comment" TextColor="{DynamicResource Gray}" Style="{StaticResource lblReactionsNameStyle}"/>
             </StackLayout>

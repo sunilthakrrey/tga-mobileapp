@@ -1,5 +1,7 @@
 ﻿using ParentPortal.Models;
 using ParentPortal.Views.Shared;
+using Rg.Plugins.Popup.Services;
+using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -18,46 +20,18 @@ namespace ParentPortal.Modules.Secure.Dashboard
 
         #region Properties
 
-        private MyDayBoxComponenetModel _componentData;
-        public MyDayBoxComponenetModel ComponentData
+        private List<KidDetail> _kidsDetails;
+        public List<KidDetail> KidsDetails
         {
             get
             {
-                return _componentData;
+                return _kidsDetails;
+
             }
             set
             {
-                _componentData = value;
-                OnPropertyChanged(nameof(ComponentData));
-            }
-        }
-
-
-        private NewsFeedBoxComponentModel _newsFeedBoxComponentModel;
-        public NewsFeedBoxComponentModel NewsFeedBoxComponentModel
-        {
-            get
-            {
-                return _newsFeedBoxComponentModel;
-            }
-            set
-            {
-                _newsFeedBoxComponentModel = value;
-                OnPropertyChanged(nameof(NewsFeedBoxComponentModel));
-            }
-        }
-
-        private NewsFeedBoxComponentModel _newsFeedBoxComponentYoga;
-        public NewsFeedBoxComponentModel NewsFeedBoxComponentYoga
-        {
-            get
-            {
-                return _newsFeedBoxComponentYoga;
-            }
-            set
-            {
-                _newsFeedBoxComponentYoga = value;
-                OnPropertyChanged(nameof(NewsFeedBoxComponentYoga));
+                _kidsDetails = value;
+                OnPropertyChanged(nameof(KidsDetails));
             }
         }
 
@@ -95,6 +69,36 @@ namespace ParentPortal.Modules.Secure.Dashboard
         private void ConfigureSource()
         {
             var date = new System.DateTime(2021, 3, 3, 11, 30, 00);
+
+           
+            
+
+            //Kids Info Component
+
+            KidsDetails = new List<KidDetail>
+            {
+                new KidDetail
+                {
+                    Id = "1",
+                        Name = "Lily",
+                        Avtaar = ImageSource.FromFile("user_f.svg"),
+                        IsShowImage=true,
+                        IsShowName=false,
+                        Size=Enums.ImageSize.Large
+                },
+
+                  new KidDetail
+                {
+                    Id = "1",
+                        Name = "Lily",
+                        Avtaar = ImageSource.FromFile("user_f.svg"),
+                        IsShowImage=true,
+                        IsShowName=false,
+                        Size=Enums.ImageSize.Large
+                }
+            };
+
+            //my meal day
             ComponentCollectionData = new List<MyDayBoxComponenetModel> {
                  new MyDayBoxComponenetModel
                 {
@@ -109,7 +113,10 @@ namespace ParentPortal.Modules.Secure.Dashboard
                     {
                         Id = "1",
                         Name = "Lily",
-                        Avtaar = ImageSource.FromFile("user_f.svg")
+                        Avtaar = ImageSource.FromFile("user_f.svg"),
+                        IsShowImage=true,
+                        IsShowName=true,
+                        Size=Enums.ImageSize.Small
                     }
                 },
                  new MyDayBoxComponenetModel
@@ -125,11 +132,16 @@ namespace ParentPortal.Modules.Secure.Dashboard
                     {
                         Id = "1",
                         Name = "Lily",
-                        Avtaar = ImageSource.FromFile("user_f.svg")
+                        Avtaar = ImageSource.FromFile("user_f.svg"),
+                        IsShowImage=true,
+                        IsShowName=true,
+                        Size=Enums.ImageSize.Small
                     }
                 }
             };
 
+
+            //news feeds
             NewsFeedBoxCollectionData = new List<NewsFeedBoxComponentModel>
             {
             new NewsFeedBoxComponentModel
@@ -149,6 +161,9 @@ namespace ParentPortal.Modules.Secure.Dashboard
                         Id = "1",
                         Name = "Lily",
                         Avtaar = ImageSource.FromFile("user_f.svg"),
+                        IsShowImage=true,
+                        IsShowName=true,
+                        Size=Enums.ImageSize.Small
 
                     }
                 }
@@ -168,10 +183,17 @@ namespace ParentPortal.Modules.Secure.Dashboard
                         Id = "1",
                         Name = "Lily",
                         Avtaar = ImageSource.FromFile("user_f.svg"),
+                        IsShowImage=true,
+                        IsShowName=true,
+                        Size=Enums.ImageSize.Small
                     }
                 }
             }
         };
+        }
+        private async void FilterPopupRequest_Clicked(object sender, EventArgs e)
+        {
+            await PopupNavigation.Instance.PushAsync(new FilterPopup());
         }
     }
 }

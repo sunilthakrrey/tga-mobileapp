@@ -44,6 +44,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Custom\Controls\IndividualFrameComponent.xaml.cs">
+      <DependentUpon>IndividualFrameComponent.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Shared\CommentSectionPopup.xaml.cs">
+      <DependentUpon>CommentSectionPopup.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
     <EmbeddedResource Update="Content\Styles\CommonStyle.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -68,6 +77,9 @@
     <EmbeddedResource Update="Custom\Controls\FeedBackLayoutComponent.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Custom\Controls\IndividualFrameComponent.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Custom\Controls\TGAMyDayBoxComponent.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -84,6 +96,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Modules\Secure\Dashboard\DashboardView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Shared\FilterPopup.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Shared\SideNavPopup.xaml">

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             x:Class="ParentPortal.Custom.Controls.IndividualFrameComponent">
+
+    <Label Text="{Binding Name}" IsVisible="{Binding IsShowName}"  TextColor="{StaticResource Gray}" VerticalOptions="Center" Style="{StaticResource lblForNameStyle}"/>
+    <Frame BorderColor="{DynamicResource Gray}" IsVisible="{Binding IsShowImage}" Style="{Binding FrameStyle}">
+        <ffsvg:SvgCachedImage Source="{Binding Avtaar}" Style="{Binding ImageStyle}"/>
+        </Frame>
+    
+</StackLayout>
