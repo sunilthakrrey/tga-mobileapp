@@ -13,25 +13,51 @@ namespace ParentPortal.Models
         public string NoOfFruits { get; set; }
         public string NoOfWater { get; set; }
         public string NoOfBootles { get; set; }
-        public List<int> Fruites
+        public List<int> MorningTea
         {
             get
             {
-                List<int> retval = new List<int> { };
-                int result;
-
-                if (int.TryParse(NoOfFruits, out result))
-                {
-                    for (int index = 0; index <= result - 1; index++)
-                    {
-                        retval.Add(index);
-                    }
-                }
-
-                return retval;
+                return GetList(NoOfMorningtea);
+            }
+        }
+        public List<int> Fruits
+        {
+            get
+            {
+                return GetList(NoOfFruits);
+            }
+        }
+        public List<int> WaterIntake
+        {
+            get
+            {
+                return GetList(NoOfWater);
+            }
+        }
+        public List<int> Bottles
+        {
+            get
+            {
+                return GetList(NoOfBootles);
             }
         }
         public KidDetail Kid { get; set; }
+
+        public List<int> GetList(string count)
+        {
+            List<int> retval = new List<int> { };
+            int result;
+
+            if (int.TryParse(count, out result))
+            {
+                for (int index = 0; index <= result - 1; index++)
+                {
+                    retval.Add(index);
+                }
+            }
+
+            return retval;
+        }
 
     }
 
@@ -43,5 +69,7 @@ namespace ParentPortal.Models
         public ImageSource Avtaar { get; set; }
 
     }
+
+   
 
 }

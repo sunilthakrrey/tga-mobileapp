@@ -19,7 +19,7 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
-                    <ffsvg:SvgCachedImage Grid.Row="0" Source="https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg"/>
+                    <ffsvg:SvgCachedImage Grid.Row="0" Source="{Binding BackGroundImage}"/>
 
                     <Grid Grid.Row="1" Padding="20,10,20,2">
                         <Grid.ColumnDefinitions>
