@@ -46,10 +46,6 @@
                     
                 </Grid>
                 
-                
-                
-                
-                
 
                 <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>
@@ -89,11 +85,6 @@
                     </Frame>
 
                 </Grid>
-                
-                
-                
-                
-                
 
                 <Grid Grid.Row="2" Margin="0,20">
                     <Grid.RowDefinitions>
@@ -134,10 +125,6 @@
                         </Grid>
                     </panckeview:PancakeView>
                 </Grid>
-                
-                
-                
-                
 
                 <Grid Grid.Row="3" Margin="0,20">
                     <Grid.RowDefinitions>
@@ -154,7 +141,9 @@
                         <ffsvg:SvgCachedImage Grid.Column="1" Source="Filter_icon.svg" HorizontalOptions="End" Style="{StaticResource ImageFilterIconStyle}"/>
                     </Grid>
 
-                    <panckeview:PancakeView Grid.Row="1" Style="{StaticResource CircularCornerPancakeStyle}">
+                    <!--<customControls:TGANewsFeedContainerComponent Grid.Row="1" BindingContext="{Binding NewsFeedBoxComponentModel, Mode=TwoWay}"></customControls:TGANewsFeedContainerComponent>-->
+
+                    <!--<panckeview:PancakeView Grid.Row="1" Style="{StaticResource CircularCornerPancakeStyle}">
                         <panckeview:PancakeView.Shadow>
                             <panckeview:DropShadow BlurRadius="10" Opacity="0.9"    Color="Black" Offset="20,20" />
                         </panckeview:PancakeView.Shadow>
@@ -253,12 +242,12 @@
                                 <Button  Text="Read more" TextColor="{DynamicResource White}" BackgroundColor="{DynamicResource Feijoa}" Style="{StaticResource BtnReadMoreStyle}"/>
                             </panckeview:PancakeView>
                         </Grid>
-                    </panckeview:PancakeView>
+                    </panckeview:PancakeView>-->
                 </Grid>
 
+                <customControls:TGANewsFeedContainerComponent Grid.Row="4" BindingContext="{Binding NewsFeedBoxCollectionData, Mode=TwoWay}"></customControls:TGANewsFeedContainerComponent>
 
-
-                <panckeview:PancakeView  Grid.Row="4" Margin="0,20,0,0" Style="{StaticResource CircularCornerPancakeStyle}">
+                <!--<panckeview:PancakeView  Grid.Row="4" Margin="0,20,0,0" Style="{StaticResource CircularCornerPancakeStyle}">
                     <panckeview:PancakeView.Shadow>
                         <panckeview:DropShadow BlurRadius="10" Opacity="0.9"    Color="Black" Offset="20,20" />
                     </panckeview:PancakeView.Shadow>
@@ -303,9 +292,6 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
-                            <!--<StackLayout Grid.Column="0" Grid.Row="0" Spacing="20" Orientation="Horizontal" VerticalOptions="Center">
-                                <Label Grid.Column="0" Grid.Row="0" Text="You are going to this event" Style="{StaticResource lblGoingToEventStyle}"/>
-                            </StackLayout>-->
 
                             <Label Grid.Column="0" Grid.Row="0" Text="You are going to this event" HorizontalOptions="Start" TextColor="{DynamicResource Sunglo}" Style="{StaticResource lblGoingToEventStyle}"/>
 
@@ -326,10 +312,15 @@
                             <Button  Text="Read more" TextColor="{DynamicResource White}" BackgroundColor="{DynamicResource Sunglo}"/>
                         </panckeview:PancakeView>
                     </Grid>
-                </panckeview:PancakeView>
+                </panckeview:PancakeView>-->
 
 
-                <panckeview:PancakeView  Grid.Row="5" BackgroundColor="{DynamicResource White}" Style="{StaticResource ImageMorningTeaMainContainerStyle}">
+                <!--my day Meals-->
+
+                <customControls:TGAMyDayBoxComponent  Grid.Row="5" BindingContext="{Binding ComponentCollectionData, Mode=TwoWay}"></customControls:TGAMyDayBoxComponent>
+
+
+                <!--<panckeview:PancakeView  Grid.Row="5" BackgroundColor="{DynamicResource White}" Style="{StaticResource ImageMorningTeaMainContainerStyle}">
                     <panckeview:PancakeView.Shadow>
                         <panckeview:DropShadow BlurRadius="10" Opacity="0.9"    Color="Black" Offset="20,20" />
                     </panckeview:PancakeView.Shadow>
@@ -437,7 +428,7 @@
                             <Button  Text="See more" TextColor="{DynamicResource White}" BackgroundColor="{DynamicResource MonteCarlo}"/>
                         </panckeview:PancakeView>
                     </Grid>
-                </panckeview:PancakeView>
+                </panckeview:PancakeView>-->
 
 
                 <panckeview:PancakeView  Grid.Row="6" VerticalOptions="Center" Padding="0" BackgroundColor="{DynamicResource White}" Style="{StaticResource OptionsMainContainerStyle}">
