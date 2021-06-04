@@ -16,7 +16,7 @@ namespace ParentPortal.Custom.Controls
 		public TGANewsFeedContainerComponent ()
 		{
 			InitializeComponent ();
-			BindingContext = NewsFeedBoxComponentModel;
+			BindingContext = NewsFeedBoxComponentCollection;
 		}
 
 		private NewsFeedBoxComponentModel _newsFeedBoxComponentModel;
@@ -33,6 +33,21 @@ namespace ParentPortal.Custom.Controls
             }
         }
 
-		
+
+		private  List<NewsFeedBoxComponentModel> _newsFeedBoxComponentCollection;
+		public List<NewsFeedBoxComponentModel> NewsFeedBoxComponentCollection
+		{
+			get
+			{
+				return _newsFeedBoxComponentCollection;
+			}
+			set
+			{
+				_newsFeedBoxComponentCollection = value;
+				OnPropertyChanged(nameof(NewsFeedBoxComponentCollection));
+			}
+		}
+
+
 	}
 }

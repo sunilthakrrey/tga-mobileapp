@@ -61,31 +61,78 @@ namespace ParentPortal.Modules.Secure.Dashboard
             }
         }
 
+        private List<MyDayBoxComponenetModel> _componentCollectionData;
+        public List<MyDayBoxComponenetModel> ComponentCollectionData
+        {
+            get
+            {
+                return _componentCollectionData;
+            }
+            set
+            {
+                _componentCollectionData = value;
+                OnPropertyChanged(nameof(ComponentCollectionData));
+            }
+        }
 
+
+        private List<NewsFeedBoxComponentModel> _newsFeedBoxCollectionData;
+        public List<NewsFeedBoxComponentModel> NewsFeedBoxCollectionData
+        {
+            get
+            {
+                return _newsFeedBoxCollectionData;
+            }
+            set
+            {
+                _newsFeedBoxCollectionData = value;
+                OnPropertyChanged(nameof(NewsFeedBoxCollectionData));
+            }
+        }
 
         #endregion
 
         private void ConfigureSource()
         {
             var date = new System.DateTime(2021, 3, 3, 11, 30, 00);
-            ComponentData = new MyDayBoxComponenetModel
-            {
-                Title = "Morning Tea",
-                Type = ImageSource.FromFile("morning_tea_icon.svg"),
-                Description = "Toast with Jam",
-                NoOfMorningtea = 1.ToString(),
-                NoOfFruits = 2.ToString(),
-                NoOfWater = 3.ToString(),
-                NoOfBootles = 2.ToString(),
-                Kid = new KidDetail
+            ComponentCollectionData = new List<MyDayBoxComponenetModel> {
+                 new MyDayBoxComponenetModel
                 {
-                    Id = "1",
-                    Name = "Lily",
-                    Avtaar = ImageSource.FromFile("user_f.svg")
+                    Title = "Morning Tea",
+                    Type = ImageSource.FromFile("morning_tea_icon.svg"),
+                    Description = "Toast with Jam",
+                    NoOfMorningtea = 1.ToString(),
+                    NoOfFruits = 2.ToString(),
+                    NoOfWater = 3.ToString(),
+                    NoOfBootles = 2.ToString(),
+                    Kid = new KidDetail
+                    {
+                        Id = "1",
+                        Name = "Lily",
+                        Avtaar = ImageSource.FromFile("user_f.svg")
+                    }
+                },
+                 new MyDayBoxComponenetModel
+                {
+                    Title = "Morning Tea",
+                    Type = ImageSource.FromFile("morning_tea_icon.svg"),
+                    Description = "Toast with Jam",
+                    NoOfMorningtea = 1.ToString(),
+                    NoOfFruits = 2.ToString(),
+                    NoOfWater = 3.ToString(),
+                    NoOfBootles = 2.ToString(),
+                    Kid = new KidDetail
+                    {
+                        Id = "1",
+                        Name = "Lily",
+                        Avtaar = ImageSource.FromFile("user_f.svg")
+                    }
                 }
             };
 
-            NewsFeedBoxComponentModel = new NewsFeedBoxComponentModel
+            NewsFeedBoxCollectionData = new List<NewsFeedBoxComponentModel>
+            {
+            new NewsFeedBoxComponentModel
             {
                 BackGroundImage = ImageSource.FromUri(new System.Uri("https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg")),
                 Date = date.ToString("dd MMMM yyyy, hh:mm"),
@@ -105,29 +152,26 @@ namespace ParentPortal.Modules.Secure.Dashboard
 
                     }
                 }
-            };
-             NewsFeedBoxComponentYoga = new NewsFeedBoxComponentModel
-             {
-                 BackGroundImage = ImageSource.FromUri(new System.Uri("https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg")),
-                 Date = date.ToString("dd MMMM yyyy, hh:mm"),// new System.DateTime(2021, 3, 3, 11, 30, 00),
-                 Title = "WaterPlay In The Yard",
-                 Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Porta egestas aenean viverra molestie non.",
-                 Image = ImageSource.FromFile("events_Icon.svg"),
-                 FeedBackComponentModel = new FeedBackComponentModel
-                 {
-                     IsfeebackLayoutVisible = false,
-                     KidDetail = new KidDetail
-                     {
-                         Id = "1",
-                         Name = "Lily",
-                         Avtaar = ImageSource.FromFile("user_f.svg"),
-                     }
-                 }
-             };
-
-            
-
-
+            },
+            new NewsFeedBoxComponentModel
+            {
+                BackGroundImage = ImageSource.FromUri(new System.Uri("https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg")),
+                Date = date.ToString("dd MMMM yyyy, hh:mm"),// new System.DateTime(2021, 3, 3, 11, 30, 00),
+                Title = "WaterPlay In The Yard",
+                Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Porta egestas aenean viverra molestie non.",
+                Image = ImageSource.FromFile("events_Icon.svg"),
+                FeedBackComponentModel = new FeedBackComponentModel
+                {
+                    IsfeebackLayoutVisible = false,
+                    KidDetail = new KidDetail
+                    {
+                        Id = "1",
+                        Name = "Lily",
+                        Avtaar = ImageSource.FromFile("user_f.svg"),
+                    }
+                }
+            }
+        };
         }
     }
 }

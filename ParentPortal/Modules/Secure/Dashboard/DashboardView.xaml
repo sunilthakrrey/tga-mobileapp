@@ -141,7 +141,7 @@
                         <ffsvg:SvgCachedImage Grid.Column="1" Source="Filter_icon.svg" HorizontalOptions="End" Style="{StaticResource ImageFilterIconStyle}"/>
                     </Grid>
 
-                    <customControls:TGANewsFeedContainerComponent Grid.Row="1" BindingContext="{Binding NewsFeedBoxComponentModel, Mode=TwoWay}"></customControls:TGANewsFeedContainerComponent>
+                    <!--<customControls:TGANewsFeedContainerComponent Grid.Row="1" BindingContext="{Binding NewsFeedBoxComponentModel, Mode=TwoWay}"></customControls:TGANewsFeedContainerComponent>-->
 
                     <!--<panckeview:PancakeView Grid.Row="1" Style="{StaticResource CircularCornerPancakeStyle}">
                         <panckeview:PancakeView.Shadow>
@@ -245,7 +245,7 @@
                     </panckeview:PancakeView>-->
                 </Grid>
 
-                <customControls:TGANewsFeedContainerComponent Grid.Row="4" BindingContext="{Binding NewsFeedBoxComponentYoga, Mode=TwoWay}"></customControls:TGANewsFeedContainerComponent>
+                <customControls:TGANewsFeedContainerComponent Grid.Row="4" BindingContext="{Binding NewsFeedBoxCollectionData, Mode=TwoWay}"></customControls:TGANewsFeedContainerComponent>
 
                 <!--<panckeview:PancakeView  Grid.Row="4" Margin="0,20,0,0" Style="{StaticResource CircularCornerPancakeStyle}">
                     <panckeview:PancakeView.Shadow>
@@ -317,7 +317,7 @@
 
                 <!--my day Meals-->
 
-                <customControls:TGAMyDayBoxComponent  Grid.Row="5" BindingContext="{Binding ComponentData, Mode=TwoWay}"></customControls:TGAMyDayBoxComponent>
+                <customControls:TGAMyDayBoxComponent  Grid.Row="5" BindingContext="{Binding ComponentCollectionData, Mode=TwoWay}"></customControls:TGAMyDayBoxComponent>
 
 
                 <!--<panckeview:PancakeView  Grid.Row="5" BackgroundColor="{DynamicResource White}" Style="{StaticResource ImageMorningTeaMainContainerStyle}">

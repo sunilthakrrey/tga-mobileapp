@@ -1,6 +1,7 @@
 ﻿using FFImageLoading.Svg.Forms;
 using ParentPortal.Models;
 using System;
+using System.Collections.Generic;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,7 +13,7 @@ namespace ParentPortal.Custom.Controls
 		public TGAMyDayBoxComponent ()
 		{
 			InitializeComponent ();
-            BindingContext = ComponentData;
+            BindingContext = ComponentCollectionData;
             //for(int i = 1;i <= ComponentData.NoOfMorningtea; i++)
             //{
             //    MorningTeaStack.Children.Add(new StackLayout
@@ -39,7 +40,20 @@ namespace ParentPortal.Custom.Controls
                 OnPropertyChanged(nameof(ComponentData));
             }
 		}
-       
+        private List<MyDayBoxComponenetModel> _componentCollectionData;
+        public List<MyDayBoxComponenetModel> ComponentCollectionData
+        {
+            get
+            {
+                return _componentCollectionData;
+            }
+            set
+            {
+                _componentCollectionData = value;
+                OnPropertyChanged(nameof(ComponentCollectionData));
+            }
+        }
+
 
         #endregion
     }
