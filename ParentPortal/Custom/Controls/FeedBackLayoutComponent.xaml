@@ -8,7 +8,8 @@
         </converters:BooleanToReverseConverter>
     </StackLayout.Resources>
     <StackLayout>
-        <Grid  Style="{StaticResource BorderBoxViewContainerStyle}">
+
+        <Grid  Padding="20,0" RowSpacing="4">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
@@ -18,26 +19,23 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <StackLayout IsVisible="{Binding IsfeebackLayoutVisible, Mode=TwoWay}" Grid.Column="0" Grid.Row="0" Style="{StaticResource lblLikeCommentContainerStyle}">
-                <Label Text="{Binding Likes,StringFormat='{0} Likes'}" Style="{StaticResource lblLikeCommentStyle}"/>
-                <Label Text="{Binding Comments,StringFormat='{0} Comments'}" Style="{StaticResource lblLikeCommentStyle}"/>
+            <StackLayout IsVisible="{Binding IsfeebackLayoutVisible, Mode=TwoWay}" Grid.Column="0" Grid.Row="0" Orientation="Horizontal" Spacing="20" VerticalOptions="Center">
+                <Label Text="{Binding Likes,StringFormat='{0} Likes'}" TextColor="{DynamicResource Gray}" Style="{StaticResource lblLikeCommentStyle}"/>
+                <Label Text="{Binding Comments,StringFormat='{0} Comments'}" TextColor="{DynamicResource Gray}" Style="{StaticResource lblLikeCommentStyle}"/>
             </StackLayout>
-            <StackLayout IsVisible="{Binding IsfeebackLayoutVisible,Converter={StaticResource booltoreverseconveter}}" Grid.Column="0" Grid.Row="0" Style="{StaticResource lblLikeCommentContainerStyle}">
-                <Label  Text="You are going to this event" Style="{StaticResource lblGoingToEventStyle}"/>
-            </StackLayout>
-
-            <StackLayout Grid.Column="1" Grid.Row="0" Style="{StaticResource lblLillyContainerStyle}">
-                <Label Text="Lily" Style="{StaticResource lblLillyStyle}"/>
-                <Frame Padding="0" Style="{StaticResource ImageLillyIconContainerStyle}">
-                    <ffsvg:SvgCachedImage Source="user_f.svg" Style="{StaticResource ImageLillyIconStyle}"/>
+            <Label Grid.Column="0" IsVisible="{Binding IsfeebackLayoutVisible,Converter={StaticResource booltoreverseconveter}}" Grid.Row="0" Text="You are going to this event" HorizontalOptions="Start" TextColor="{DynamicResource Sunglo}" Style="{StaticResource lblGoingToEventStyle}"/>
+            <StackLayout  Grid.Column="1" Grid.Row="0" Spacing="5" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="End">
+                <Label Text="{Binding KidDetail.Name}" TextColor="{StaticResource Gray}" VerticalOptions="Center" Style="{StaticResource lblForNameStyle}"/>
+                <Frame Padding="0" BorderColor="{DynamicResource Gray}" Style="{StaticResource ImageCircleFrameStyle}">
+                    <ffsvg:SvgCachedImage Source="{Binding KidDetail.Avtaar}" Style="{StaticResource ImageUserIconStyle}"/>
                 </Frame>
             </StackLayout>
 
-            <BoxView Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource BorderBoxViewStyle}"/>
+            <BoxView IsVisible="{Binding IsfeebackLayoutVisible, Mode=TwoWay}" Grid.Row="1" Grid.ColumnSpan="2" Color="{DynamicResource Gray}" HeightRequest="1"/>
 
         </Grid>
 
-        <Grid  Padding="20,5" IsVisible="{Binding IsfeebackLayoutVisible, Mode=TwoWay}">
+        <Grid  IsVisible="{Binding IsfeebackLayoutVisible, Mode=TwoWay}" Padding="20,5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -45,18 +43,18 @@
             </Grid.ColumnDefinitions>
 
             <StackLayout Grid.Column="0" Spacing="5" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Start">
-                <ffsvg:SvgCachedImage Source="tga_like.svg" Style="{StaticResource ImageLikeIconkStyle}"/>
-                <Label Text="Like" Style="{StaticResource lblBookmarkStyle}"/>
+                <ffsvg:SvgCachedImage Source="tga_like.svg" Style="{StaticResource ImageLikeReactionStyle}"/>
+                <Label Text="Like" TextColor="{DynamicResource Gray}" Style="{StaticResource lblReactionsNameStyle}"/>
             </StackLayout>
 
             <StackLayout Grid.Column="1" Spacing="5" Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
-                <ffsvg:SvgCachedImage Source="tga_comments_icon.svg" Style="{StaticResource ImageBookmarkStyle}"/>
-                <Label Text="Comment" Style="{StaticResource lblBookmarkStyle}"/>
+                <ffsvg:SvgCachedImage Source="tga_comments_icon.svg" Style="{StaticResource ImageReactionsStyle}"/>
+                <Label Text="Comment" TextColor="{DynamicResource Gray}" Style="{StaticResource lblReactionsNameStyle}"/>
             </StackLayout>
 
             <StackLayout Grid.Column="2" Spacing="5" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="End">
-                <ffsvg:SvgCachedImage Source="bookmark_icon.svg" Style="{StaticResource ImageBookmarkStyle}"/>
-                <Label Text="Bookmark" Style="{StaticResource lblBookmarkStyle}"/>
+                <ffsvg:SvgCachedImage Source="bookmark_icon.svg" Style="{StaticResource ImageReactionsStyle}"/>
+                <Label Text="Bookmark" TextColor="{DynamicResource Gray}" Style="{StaticResource lblReactionsNameStyle}"/>
             </StackLayout>
 
         </Grid>

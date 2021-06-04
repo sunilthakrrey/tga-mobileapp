@@ -73,10 +73,10 @@ namespace ParentPortal.Modules.Secure.Dashboard
                 Title = "Morning Tea",
                 Type = ImageSource.FromFile("morning_tea_icon.svg"),
                 Description = "Toast with Jam",
-                NoOfMorningtea = 1,
-                NoOfFruits = 2,
-                NoOfWater = 3,
-                NoOfBootles = 2,
+                NoOfMorningtea = 1.ToString(),
+                NoOfFruits = 2.ToString(),
+                NoOfWater = 3.ToString(),
+                NoOfBootles = 2.ToString(),
                 Kid = new KidDetail
                 {
                     Id = "1",
