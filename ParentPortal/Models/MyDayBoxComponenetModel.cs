@@ -1,4 +1,6 @@
 ﻿
+using Newtonsoft.Json;
+using ParentPortal.Enums;
 using System.Collections.Generic;
 using Xamarin.Forms;
 
@@ -66,10 +68,60 @@ namespace ParentPortal.Models
     {
         public string Id { get; set; }
         public string Name { get; set; }
+        [JsonProperty("avtar")]
         public ImageSource Avtaar { get; set; }
+        [JsonIgnore]
+        public bool IsShowName { get; set; }
+        [JsonIgnore]
+        public bool IsShowImage { get; set; }
+        [JsonIgnore]
+        public ImageSize Size { get; set; }
+        public Style FrameStyle
+        {
+            get
+            {
+                Style style = null;
+                switch (Size)
+                {
+                    
+                    case ImageSize.Small:
+                        style= (Style)Application.Current.Resources["ImageCircleFrameStyle"];
+                        break;
+                    case ImageSize.Large:
+                        style = (Style)Application.Current.Resources["ImageUserCircleStyle"];
+                        break;
+                    default:
+                        break;
+                }
+                return style;
+            }
+        
+        }
+
+        public Style ImageStyle
+        {
+            get
+            {
+                Style style = null;
+                switch (Size)
+                {
+
+                    case ImageSize.Small:
+                        style = (Style)Application.Current.Resources["ImageUserIconStyle"];
+                        break;
+                    case ImageSize.Large:
+                        style = (Style)Application.Current.Resources["ImageUserPicStyle"];
+                        break;
+                    default:
+                        break;
+                }
+                return style;
+            }
+
+        }
 
     }
 
-   
+
 
 }

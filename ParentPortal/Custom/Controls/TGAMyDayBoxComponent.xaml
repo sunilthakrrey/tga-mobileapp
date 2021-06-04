@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <StackLayout BindableLayout.ItemsSource="{Binding .}" xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             xmlns:panckeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:panckeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms" xmlns:customControls="clr-namespace:ParentPortal.Custom.Controls"
              x:Class="ParentPortal.Custom.Controls.TGAMyDayBoxComponent">
     <BindableLayout.ItemTemplate>
 
@@ -121,13 +121,13 @@
 
                             </StackLayout>
 
-
-                            <StackLayout Grid.Column="2" Orientation="Horizontal" HorizontalOptions="End">
+                            <customControls:IndividualFrameComponent Grid.Column="2" HorizontalOptions="End" BindingContext="{Binding Kid}"></customControls:IndividualFrameComponent>
+                            <!--<StackLayout Grid.Column="2" Orientation="Horizontal" HorizontalOptions="End">
                                 <Label Text="{Binding Kid.Name}"  TextColor="{StaticResource Gray}" VerticalOptions="Center" Style="{StaticResource lblForNameStyle}"/>
                                 <Frame BorderColor="{DynamicResource Gray}" Style="{StaticResource ImageCircleFrameStyle}">
                                     <ffsvg:SvgCachedImage Source="{Binding Kid.Avtaar}" Style="{StaticResource ImageUserIconStyle}"/>
                                 </Frame>
-                            </StackLayout>
+                            </StackLayout>-->
                         </Grid>
 
                     </Grid>
