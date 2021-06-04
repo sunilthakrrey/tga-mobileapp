@@ -10,7 +10,7 @@
 
 
         <ScrollView>
-            <Grid Style="{StaticResource DashboardMainContainerStyle}">
+            <Grid Padding="20,0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
@@ -21,30 +21,35 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <Grid Grid.Row="0" Style="{StaticResource DashboardSubContainerStyle}">
+                <Grid Grid.Row="0" Margin="0,20">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
                     <StackLayout Grid.Column="0" Spacing="0">
-                        <Label Text="Tues 12 Oct" Style="{StaticResource lblForDateStyle}"/>
-                        <Label Text="Hi, Jane" Style="{StaticResource lblGreetingStyle}"/>
+                        <Label Text="Tues 12 Oct" TextTransform="Uppercase" TextColor="{DynamicResource Feijoa}" Style="{StaticResource lblForDateStyle}"/>
+                        <Label Text="Hi, Jane" TextColor="{DynamicResource Black}" Style="{StaticResource lblGreetingStyle}"/>
                     </StackLayout>
 
-                    <StackLayout Grid.Column="1" Style="{StaticResource lblForAllLabelMainContainerStyle}">
-                        <Frame Style="{StaticResource lblForAllLabelContainerStyle}">
-                            <Label Text="All" Style="{StaticResource lblForAllLabelStyle}"/>
+                    <StackLayout Grid.Column="1" Orientation="Horizontal" HorizontalOptions="End">
+                        <Frame BackgroundColor="{DynamicResource SilverChalice}" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource lblForAllLabelContainerStyle}">
+                            <Label Text="All" VerticalOptions="Center" TextColor="{DynamicResource White}" Style="{StaticResource lblForAllLabelStyle}"/>
                         </Frame>
-                        <Frame Style="{StaticResource ImageUserPicContainerStyle}">
+                        <Frame BorderColor="{DynamicResource Feijoa}" Style="{StaticResource ImageUserCircleStyle}">
                             <ffsvg:SvgCachedImage Source="user_f.svg" Style="{StaticResource ImageUserPicStyle}"/>
                         </Frame>
-                        <Frame Style="{StaticResource ImageUserPicContainerStyle}">
+                        <Frame BorderColor="{DynamicResource Feijoa}" Style="{StaticResource ImageUserCircleStyle}">
                             <ffsvg:SvgCachedImage Source="user_s.svg" Style="{StaticResource ImageUserPicStyle}"/>
                         </Frame>
                     </StackLayout>
-
+                    
                 </Grid>
+                
+                
+                
+                
+                
 
                 <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>
@@ -55,54 +60,59 @@
                     </Grid.ColumnDefinitions>
 
 
-                    <Frame Grid.Column="0" Style="{StaticResource lblFoodTitleMainContainerStyle}">
-                        <StackLayout  Style="{StaticResource lblFoodTitleContainerStyle}">
+                    <Frame Grid.Column="0" BackgroundColor="{DynamicResource Skeptic}" Style="{StaticResource DashboardCircularFrameStyle}">
+                        <StackLayout  Style="{StaticResource CommonDashboardCircularStackStyle}">
                             <ffsvg:SvgCachedImage Source="food_Icon.svg" Style="{StaticResource ImageEventIconStyle}"/>
-                            <Label Text="Food" Style="{StaticResource lblFoodTitleStyle}"/>
+                            <Label Text="Food" TextColor="{DynamicResource MonteCarlo}" Style="{StaticResource lblEventTitleStyle}"/>
                         </StackLayout>
                     </Frame>
 
-                    <Frame Grid.Column="1" Style="{StaticResource lblSleepTitleMainContainerStyle}">
-                        <StackLayout Style="{StaticResource lblFoodTitleContainerStyle}">
+                    <Frame Grid.Column="1" BackgroundColor="{DynamicResource PeriwinkleGray}" Style="{StaticResource DashboardCircularFrameStyle}">
+                        <StackLayout Style="{StaticResource CommonDashboardCircularStackStyle}">
                             <ffsvg:SvgCachedImage Source="sleep_Icon.svg" Style="{StaticResource ImageEventIconStyle}"/>
-                            <Label Text="Sleep" Style="{StaticResource lblSleepTitleStyle}"/>
+                            <Label Text="Sleep" TextColor="{DynamicResource PoloBlue}" Style="{StaticResource lblEventTitleStyle}"/>
                         </StackLayout>
                     </Frame>
 
-                    <Frame Grid.Column="2" Style="{StaticResource lblPhotosTitleMainContainerStyle}">
-                        <StackLayout Style="{StaticResource lblFoodTitleContainerStyle}">
+                    <Frame Grid.Column="2" BackgroundColor="{DynamicResource DairyCream}" Style="{StaticResource DashboardCircularFrameStyle}">
+                        <StackLayout Style="{StaticResource CommonDashboardCircularStackStyle}">
                             <ffsvg:SvgCachedImage Source="photos_Icon.svg" Style="{StaticResource ImageEventIconStyle}"/>
-                            <Label Text="Photos" Style="{StaticResource lblPhotosTitleStyle}"/>
+                            <Label Text="Photos" TextColor="{DynamicResource LightningYellow}" Style="{StaticResource lblEventTitleStyle}"/>
                         </StackLayout>
                     </Frame>
 
-                    <Frame Grid.Column="3" Style="{StaticResource lblEventsTitleMainContainerStyle}">
-                        <StackLayout Style="{StaticResource lblFoodTitleContainerStyle}">
+                    <Frame Grid.Column="3" BackgroundColor="{DynamicResource BeautyBush}" Style="{StaticResource DashboardCircularFrameStyle}">
+                        <StackLayout Style="{StaticResource CommonDashboardCircularStackStyle}">
                             <ffsvg:SvgCachedImage Source="events_Icon.svg" Style="{StaticResource ImageEventIconStyle}"/>
-                            <Label Text="Events" Style="{StaticResource lblEventTitleStyle}"/>
+                            <Label Text="Events" TextColor="{DynamicResource Sunglo}" Style="{StaticResource lblEventTitleStyle}"/>
                         </StackLayout>
                     </Frame>
 
                 </Grid>
+                
+                
+                
+                
+                
 
-                <Grid Grid.Row="2" Style="{StaticResource DashboardSubContainerStyle}">
+                <Grid Grid.Row="2" Margin="0,20">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
-                    <Grid Grid.Row="0" Style="{StaticResource lblAnnouncementContainerStyle}">
+                    <Grid Grid.Row="0" Margin="0,10">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Label Grid.Column="0" Text="Announcements" Style="{StaticResource lblAnnouncementStyle}"/>
-                        <Frame Grid.Column="1" Style="{StaticResource lblForViewAllLabelContainerStyle}">
-                            <Label Text="View All" Style="{StaticResource lblForViewAllLabelStyle}"/>
+                        <Label Grid.Column="0" Text="Announcements" TextColor="{DynamicResource Black}" Style="{StaticResource SubHeadingStyle}"/>
+                        <Frame Grid.Column="1" VerticalOptions="Center" HorizontalOptions="End" BackgroundColor="{DynamicResource SilverChalice}" Style="{StaticResource lblForViewAllLabelContainerStyle}">
+                            <Label Text="View All" TextColor="{DynamicResource White}" Style="{StaticResource lblForViewAllLabelStyle}"/>
                         </Frame>
                     </Grid>
 
-                    <panckeview:PancakeView Grid.Row="1" Style="{StaticResource lblMonthOnlyMainContainerStyle}">
+                    <panckeview:PancakeView Grid.Row="1" HorizontalOptions="Start" VerticalOptions="Center" BackgroundColor="{DynamicResource White}" Style="{StaticResource lblMonthOnlyMainContainerStyle}">
                         <panckeview:PancakeView.Shadow>
                             <panckeview:DropShadow BlurRadius="12" Opacity="0.7"   x:Name="shadow" Color="Black" Offset="10,10" />
                         </panckeview:PancakeView.Shadow>
@@ -112,35 +122,39 @@
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
 
-                            <StackLayout Grid.Column="0" Style="{StaticResource lblMonthOnlyContainerStyle}">
-                                <Label Text="12" Style="{StaticResource lblDateOnlyStyle}"/>
-                                <Label Text="Mar" Style="{StaticResource lblMonthOnlyStyle}"/>
+                            <StackLayout Grid.Column="0" Spacing="0" HorizontalOptions="Start" VerticalOptions="Center" Orientation="Vertical">
+                                <Label Text="12" TextColor="{DynamicResource Feijoa}" HorizontalTextAlignment="Center" Style="{StaticResource lblDateOnlyStyle}"/>
+                                <Label Text="Mar" TextColor="{DynamicResource Gray}" TextTransform="Uppercase" HorizontalTextAlignment="Center" Style="{StaticResource lblMonthOnlyStyle}"/>
                             </StackLayout>
 
-                            <StackLayout Grid.Column="1"  Style="{StaticResource lblSpeechTimeContainerStyle}">
-                                <Label Text="Sarah's Speech Tips: Sound Production" Style="{StaticResource lblSpeechTipsStyle}"/>
-                                <Label Text="10:35am" Style="{StaticResource lblSpeechTimeStyle}"/>
+                            <StackLayout Grid.Column="1" Spacing="5" Orientation="Vertical" VerticalOptions="Center">
+                                <Label Text="Sarah's Speech Tips: Sound Production" TextColor="{DynamicResource Black}" HorizontalTextAlignment="Start" Style="{StaticResource lblSpeechTipsStyle}"/>
+                                <Label Text="10:35am" TextColor="{DynamicResource Gray}" TextTransform="None" HorizontalOptions="Start" HorizontalTextAlignment="Center" Style="{StaticResource lblSpeechTimeStyle}"/>
                             </StackLayout>
                         </Grid>
                     </panckeview:PancakeView>
                 </Grid>
+                
+                
+                
+                
 
-                <Grid Grid.Row="3" Style="{StaticResource DashboardSubContainerStyle}">
+                <Grid Grid.Row="3" Margin="0,20">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
-                    <Grid Grid.Row="0" Style="{StaticResource lblNewsFeedContainerStyle}">
+                    <Grid Grid.Row="0" Margin="0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Label Grid.Column="0" Text="News Feed" Style="{StaticResource lblNewsFeedStyle}"/>
-                        <ffsvg:SvgCachedImage Grid.Column="1" Source="Filter_icon.svg" Style="{StaticResource ImageFilterIconStyle}"/>
+                        <Label Grid.Column="0" Text="News Feed" TextColor="{DynamicResource Black}" Style="{StaticResource SubHeadingStyle}"/>
+                        <ffsvg:SvgCachedImage Grid.Column="1" Source="Filter_icon.svg" HorizontalOptions="End" Style="{StaticResource ImageFilterIconStyle}"/>
                     </Grid>
 
-                    <panckeview:PancakeView Grid.Row="1" Style="{StaticResource NewsFeedBannerContainerStyle}">
+                    <panckeview:PancakeView Grid.Row="1" Style="{StaticResource CircularCornerPancakeStyle}">
                         <panckeview:PancakeView.Shadow>
                             <panckeview:DropShadow BlurRadius="10" Opacity="0.9"    Color="Black" Offset="20,20" />
                         </panckeview:PancakeView.Shadow>
@@ -157,31 +171,31 @@
 
                             <ffsvg:SvgCachedImage Grid.Row="0" Source="https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg"/>
 
-                            <Grid Grid.Row="1" Style="{StaticResource lblWaterPlayMainContainerStyle}">
+                            <Grid Grid.Row="1" Padding="20,10,20,2">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <StackLayout Grid.Column="0" Style="{StaticResource lblWaterPlayContainerStyle}">
-                                    <Label Text="Waterplay in the yard" Style="{StaticResource lblWaterPlayStyle}"/>
-                                    <Label Text="3 March 2021, 11:30 am" Style="{StaticResource lblDateTimeStyle}"/>
+                                <StackLayout Grid.Column="0" Spacing="1">
+                                    <Label Text="Waterplay in the yard" TextColor="{DynamicResource Feijoa}" Style="{StaticResource lblWorkTitleStyle}"/>
+                                    <Label Text="3 March 2021, 11:30 am" TextColor="{DynamicResource Gray}" Style="{StaticResource lblDateWithTimeStyle}"/>
                                 </StackLayout>
 
-                                <ffsvg:SvgCachedImage Grid.Column="1" Source="sun_icon.svg" Style="{StaticResource ImageSunIconStyle}"/>
+                                <ffsvg:SvgCachedImage Grid.Column="1" Source="sun_icon.svg" HorizontalOptions="End" Style="{StaticResource ImageForWorkTitleIconStyle}"/>
                             </Grid>
 
-                            <Grid Grid.Row="2" Style="{StaticResource lblNewsFeedContentContainerStyle}">
+                            <Grid Grid.Row="2" Padding="20,0">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="80*"/>
                                     <ColumnDefinition Width="20*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Label Grid.Column="0" Style="{StaticResource lblNewsFeedContentStyle}" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Porta egestas aenean viverra molestie non."/>
+                                <Label Grid.Column="0" TextColor="{DynamicResource Black}" LineHeight="1.2" Style="{StaticResource lblNewsFeedDescriptionStyle}" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Porta egestas aenean viverra molestie non."/>
                             </Grid>
 
 
-                            <Grid Grid.Row="3" Style="{StaticResource BorderBoxViewContainerStyle}">
+                            <Grid Grid.Row="3" Padding="20,0" RowSpacing="4">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="*"/>
@@ -191,19 +205,19 @@
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
 
-                                <StackLayout Grid.Column="0" Grid.Row="0" Style="{StaticResource lblLikeCommentContainerStyle}">
-                                    <Label Text="7 Likes" Style="{StaticResource lblLikeCommentStyle}"/>
-                                    <Label Text="3 Comments" Style="{StaticResource lblLikeCommentStyle}"/>
+                                <StackLayout Grid.Column="0" Grid.Row="0" Orientation="Horizontal" Spacing="20" VerticalOptions="Center">
+                                    <Label Text="7 Likes" TextColor="{DynamicResource Gray}" Style="{StaticResource lblLikeCommentStyle}"/>
+                                    <Label Text="3 Comments" TextColor="{DynamicResource Gray}" Style="{StaticResource lblLikeCommentStyle}"/>
                                 </StackLayout>
 
-                                <StackLayout Grid.Column="1" Grid.Row="0" Style="{StaticResource lblLillyContainerStyle}">
-                                    <Label Text="Lily" Style="{StaticResource lblLillyStyle}"/>
-                                    <Frame Padding="0" Style="{StaticResource ImageLillyIconContainerStyle}">
-                                        <ffsvg:SvgCachedImage Source="user_f.svg" Style="{StaticResource ImageLillyIconStyle}"/>
+                                <StackLayout Grid.Column="1" Grid.Row="0" Spacing="5" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="End">
+                                    <Label Text="Lily" TextColor="{StaticResource Gray}" VerticalOptions="Center" Style="{StaticResource lblForNameStyle}"/>
+                                    <Frame Padding="0" BorderColor="{DynamicResource Gray}" Style="{StaticResource ImageCircleFrameStyle}">
+                                        <ffsvg:SvgCachedImage Source="user_f.svg" Style="{StaticResource ImageUserIconStyle}"/>
                                     </Frame>
                                 </StackLayout>
 
-                                <BoxView Grid.Row="1" Grid.ColumnSpan="2" Style="{StaticResource BorderBoxViewStyle}"/>
+                                <BoxView Grid.Row="1" Grid.ColumnSpan="2" Color="{DynamicResource Gray}" HeightRequest="1"/>
 
                             </Grid>
 
@@ -215,28 +229,28 @@
                                 </Grid.ColumnDefinitions>
 
                                 <StackLayout Grid.Column="0" Spacing="5" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Start">
-                                    <ffsvg:SvgCachedImage Source="tga_like.svg" Style="{StaticResource ImageLikeIconkStyle}"/>
-                                    <Label Text="Like" Style="{StaticResource lblBookmarkStyle}"/>
+                                    <ffsvg:SvgCachedImage Source="tga_like.svg" Style="{StaticResource ImageLikeReactionStyle}"/>
+                                    <Label Text="Like" TextColor="{DynamicResource Gray}" Style="{StaticResource lblReactionsNameStyle}"/>
                                 </StackLayout>
 
                                 <StackLayout Grid.Column="1" Spacing="5" Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
-                                    <ffsvg:SvgCachedImage Source="tga_comments_icon.svg" Style="{StaticResource ImageBookmarkStyle}"/>
-                                    <Label Text="Comment" Style="{StaticResource lblBookmarkStyle}"/>
+                                    <ffsvg:SvgCachedImage Source="tga_comments_icon.svg" Style="{StaticResource ImageReactionsStyle}"/>
+                                    <Label Text="Comment" TextColor="{DynamicResource Gray}" Style="{StaticResource lblReactionsNameStyle}"/>
                                 </StackLayout>
 
                                 <StackLayout Grid.Column="2" Spacing="5" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="End">
-                                    <ffsvg:SvgCachedImage Source="bookmark_icon.svg" Style="{StaticResource ImageBookmarkStyle}"/>
-                                    <Label Text="Bookmark" Style="{StaticResource lblBookmarkStyle}"/>
+                                    <ffsvg:SvgCachedImage Source="bookmark_icon.svg" Style="{StaticResource ImageReactionsStyle}"/>
+                                    <Label Text="Bookmark" TextColor="{DynamicResource Gray}" Style="{StaticResource lblReactionsNameStyle}"/>
                                 </StackLayout>
 
                             </Grid>
 
-                            <panckeview:PancakeView Grid.Row="5" Style="{StaticResource BtnReadMoreContainerStyle}" >
+                            <panckeview:PancakeView Grid.Row="5" BackgroundColor="{DynamicResource Feijoa}" Style="{StaticResource BtnReadMoreContainerStyle}" >
                                 <panckeview:PancakeView.Shadow>
                                     <panckeview:DropShadow BlurRadius="10" Opacity="0.9"    Color="Black" Offset="20,20" />
                                 </panckeview:PancakeView.Shadow>
 
-                                <Button  Text="Read more" Style="{StaticResource BtnReadMoreStyle}"/>
+                                <Button  Text="Read more" TextColor="{DynamicResource White}" BackgroundColor="{DynamicResource Feijoa}" Style="{StaticResource BtnReadMoreStyle}"/>
                             </panckeview:PancakeView>
                         </Grid>
                     </panckeview:PancakeView>
@@ -244,7 +258,7 @@
 
 
 
-                <panckeview:PancakeView  Grid.Row="4" Style="{StaticResource YogaWithGinaMainContainerStyle}">
+                <panckeview:PancakeView  Grid.Row="4" Margin="0,20,0,0" Style="{StaticResource CircularCornerPancakeStyle}">
                     <panckeview:PancakeView.Shadow>
                         <panckeview:DropShadow BlurRadius="10" Opacity="0.9"    Color="Black" Offset="20,20" />
                     </panckeview:PancakeView.Shadow>
@@ -260,27 +274,27 @@
 
                         <ffsvg:SvgCachedImage Grid.Row="0"  Source="https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg"/>
 
-                        <Grid Grid.Row="1" Style="{StaticResource YogaWithGinaSubContainerStyle}">
+                        <Grid Grid.Row="1" Margin="20,10,20,2">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
-                            <StackLayout Grid.Column="0" Style="{StaticResource lblWaterPlayContainerStyle}">
-                                <Label Text="Yoga with Gina" Style="{StaticResource lblYogaWithGinaStyle}"/>
-                                <Label Text="3 March 2021, 11:30 am" Style="{StaticResource lblDateTimeStyle}"/>
+                            <StackLayout Grid.Column="0" Spacing="1">
+                                <Label Text="Yoga with Gina" TextColor="{DynamicResource Sunglo}" Style="{StaticResource lblWorkTitleStyle}"/>
+                                <Label Text="3 March 2021, 11:30 am" TextColor="{DynamicResource Gray}" Style="{StaticResource lblDateWithTimeStyle}"/>
                             </StackLayout>
 
-                            <ffsvg:SvgCachedImage Grid.Column="1" Source="events_Icon.svg" Style="{StaticResource ImageSunIconStyle}"/>
+                            <ffsvg:SvgCachedImage Grid.Column="1" Source="events_Icon.svg" HorizontalOptions="End" Style="{StaticResource ImageForWorkTitleIconStyle}"/>
                         </Grid>
 
-                        <Grid Grid.Row="2" Style="{StaticResource lblNewsFeedContentContainerStyle}">
+                        <Grid Grid.Row="2" Padding="20,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="80*"/>
                                 <ColumnDefinition Width="20*"/>
                             </Grid.ColumnDefinitions>
 
-                            <Label Grid.Column="0" Style="{StaticResource lblNewsFeedContentStyle}" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Porta egestas aenean viverra molestie non."/>
+                            <Label Grid.Column="0" TextColor="{DynamicResource Black}" LineHeight="1.2" Style="{StaticResource lblNewsFeedDescriptionStyle}" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Porta egestas aenean viverra molestie non."/>
                         </Grid>
 
                         <Grid Grid.Row="3" Style="{StaticResource lblGoingToEventMainContainerStyle}">
@@ -293,29 +307,29 @@
                                 <Label Grid.Column="0" Grid.Row="0" Text="You are going to this event" Style="{StaticResource lblGoingToEventStyle}"/>
                             </StackLayout>-->
 
-                            <Label Grid.Column="0" Grid.Row="0" Text="You are going to this event" Style="{StaticResource lblGoingToEventStyle}"/>
+                            <Label Grid.Column="0" Grid.Row="0" Text="You are going to this event" HorizontalOptions="Start" TextColor="{DynamicResource Sunglo}" Style="{StaticResource lblGoingToEventStyle}"/>
 
-                            <StackLayout Grid.Column="1" Grid.Row="0" Style="{StaticResource lblLillyContainerStyle}">
-                                <Label Text="Lily" Style="{StaticResource lblLillyStyle}"/>
-                                <Frame  Style="{StaticResource ImageLillyIconContainerStyle}" >
-                                    <ffsvg:SvgCachedImage Source="user_f.svg" Style="{StaticResource ImageLillyIconStyle}"/>
+                            <StackLayout Grid.Column="1" Grid.Row="0" Spacing="5" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="End">
+                                <Label Text="Lily" TextColor="{StaticResource Gray}" VerticalOptions="Center" Style="{StaticResource lblForNameStyle}"/>
+                                <Frame BorderColor="{DynamicResource Gray}" Style="{StaticResource ImageCircleFrameStyle}" >
+                                    <ffsvg:SvgCachedImage Source="user_f.svg" Style="{StaticResource ImageUserIconStyle}"/>
                                 </Frame>
                             </StackLayout>
 
                         </Grid>
 
-                        <panckeview:PancakeView Grid.Row="4" Style="{StaticResource BtnReadMoreRedContainerStyle}">
+                        <panckeview:PancakeView Grid.Row="4" BackgroundColor="{DynamicResource Feijoa}">
                             <panckeview:PancakeView.Shadow>
                                 <panckeview:DropShadow BlurRadius="10" Opacity="0.9"    Color="Black" Offset="20,20" />
                             </panckeview:PancakeView.Shadow>
 
-                            <Button  Text="Read more" Style="{StaticResource BtnReadMoreRedStyle}"/>
+                            <Button  Text="Read more" TextColor="{DynamicResource White}" BackgroundColor="{DynamicResource Sunglo}"/>
                         </panckeview:PancakeView>
                     </Grid>
                 </panckeview:PancakeView>
 
 
-                <panckeview:PancakeView  Grid.Row="5" Style="{StaticResource ImageMorningTeaMainContainerStyle}">
+                <panckeview:PancakeView  Grid.Row="5" BackgroundColor="{DynamicResource White}" Style="{StaticResource ImageMorningTeaMainContainerStyle}">
                     <panckeview:PancakeView.Shadow>
                         <panckeview:DropShadow BlurRadius="10" Opacity="0.9"    Color="Black" Offset="20,20" />
                     </panckeview:PancakeView.Shadow>
@@ -327,18 +341,18 @@
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
 
-                        <Grid Grid.Row="0" Style="{StaticResource ImageMorningTeaContainerStyle}">
+                        <Grid Grid.Row="0" BackgroundColor="{DynamicResource MonteCarlo}" Style="{StaticResource ImageMorningTeaContainerStyle}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
-                            <StackLayout Grid.Column="0" Style="{StaticResource lblToastWithJamContainerStyle}">
-                                <Label Text="Morning Tea" Style="{StaticResource lblMorningTeaStyle}"/>
-                                <Label Text="Toast with jam" Style="{StaticResource lblToastWithJamStyle}"/>
+                            <StackLayout Grid.Column="0" Spacing="1">
+                                <Label Text="Morning Tea" TextColor="{DynamicResource White}" Style="{StaticResource lblMealTitleStyle}"/>
+                                <Label Text="Toast with jam" TextColor="{DynamicResource White}" Style="{StaticResource lblToastWithJamStyle}"/>
                             </StackLayout>
 
-                            <ffsvg:SvgCachedImage Grid.Column="1" Source="morning_tea_icon.svg" Style="{StaticResource ImageMorningTeaStyle}"/>
+                            <ffsvg:SvgCachedImage Grid.Column="1" Source="morning_tea_icon.svg" HorizontalOptions="End" Style="{StaticResource ImageMorningTeaStyle}"/>
                         </Grid>
 
                         <Grid Grid.Row="1" Style="{StaticResource MorningTeaMainContainerStyle}">
@@ -349,26 +363,26 @@
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
 
-                            <Grid Grid.Row="0" Style="{StaticResource lblForMorningFoodContainerStyle}">
+                            <Grid Grid.Row="0" ColumnSpacing="15">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="40*"/>
                                     <ColumnDefinition Width="60*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Label Grid.Column="0" Text="Morning Tea" Style="{StaticResource lblForMorningFoodStyle}"/>
+                                <Label Grid.Column="0" Text="Morning Tea" TextColor="{DynamicResource Black}" Style="{StaticResource lblMealTitleStyle}"/>
 
                                 <StackLayout Grid.Column="1" Style="{StaticResource ImageMorningFoodContainerStyle}">
                                     <ffsvg:SvgCachedImage Grid.Column="1" Source="Meal_icon.svg" Style="{StaticResource ImageMorningFoodStyle}"/>
                                 </StackLayout>
                             </Grid>
 
-                            <Grid Grid.Row="1" Style="{StaticResource lblForMorningFoodContainerStyle}">
+                            <Grid Grid.Row="1" ColumnSpacing="15">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="40*"/>
                                     <ColumnDefinition Width="60*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Label Grid.Column="0" Text="Fruit" Style="{StaticResource lblForMorningFoodStyle}"/>
+                                <Label Grid.Column="0" Text="Fruit" TextColor="{DynamicResource Black}"  Style="{StaticResource lblMealTitleStyle}"/>
 
                                 <StackLayout Grid.Column="1" Style="{StaticResource ImageMorningFoodContainerStyle}">
                                     <ffsvg:SvgCachedImage Grid.Column="1" Source="tga_Fruits.svg" Style="{StaticResource ImageMorningFoodStyle}"/>
@@ -376,13 +390,13 @@
                                 </StackLayout>
                             </Grid>
 
-                            <Grid Grid.Row="2" Style="{StaticResource lblForMorningFoodContainerStyle}">
+                            <Grid Grid.Row="2" ColumnSpacing="15">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="40*"/>
                                     <ColumnDefinition Width="60*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Label Grid.Column="0" Text="Water" Style="{StaticResource lblForMorningFoodStyle}"/>
+                                <Label Grid.Column="0" Text="Water" TextColor="{DynamicResource Black}"  Style="{StaticResource lblMealTitleStyle}"/>
 
                                 <StackLayout Grid.Column="1" Style="{StaticResource ImageMorningFoodContainerStyle}">
                                     <ffsvg:SvgCachedImage Grid.Column="1"  Source="tga_Water.svg" Style="{StaticResource ImageMorningFoodStyle}"/>
@@ -391,42 +405,42 @@
                                 </StackLayout>
                             </Grid>
 
-                            <Grid Grid.Row="3" Style="{StaticResource lblForMorningFoodContainerStyle}">
+                            <Grid Grid.Row="3" ColumnSpacing="15">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="40*"/>
                                     <ColumnDefinition Width="35*"/>
                                     <ColumnDefinition Width="25*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Label Grid.Column="0" Text="Bottles" Style="{StaticResource lblForMorningFoodStyle}"/>
+                                <Label Grid.Column="0" Text="Bottles" TextColor="{DynamicResource Black}"  Style="{StaticResource lblMealTitleStyle}"/>
 
                                 <StackLayout Grid.Column="1" Style="{StaticResource ImageMorningFoodContainerStyle}">
                                     <ffsvg:SvgCachedImage Grid.Column="1"  Source="Bottle_icon.svg" Style="{StaticResource ImageMorningFoodStyle}"/>
                                     <ffsvg:SvgCachedImage Grid.Column="1"  Source="Bottle_icon.svg" Style="{StaticResource ImageMorningFoodStyle}"/>
                                 </StackLayout>
 
-                                <StackLayout Grid.Column="2"  Style="{StaticResource lblLillyForMorningTeaContainerStyle}">
-                                    <Label Text="Lily" Style="{StaticResource lblLillyStyle}"/>
-                                    <Frame Style="{StaticResource ImageLillyIconContainerStyle}">
-                                        <ffsvg:SvgCachedImage Source="user_f.svg" Style="{StaticResource ImageLillyIconStyle}"/>
+                                <StackLayout Grid.Column="2" Orientation="Horizontal" HorizontalOptions="End">
+                                    <Label Text="Lily" TextColor="{StaticResource Gray}" VerticalOptions="Center" Style="{StaticResource lblForNameStyle}"/>
+                                    <Frame BorderColor="{DynamicResource Gray}" Style="{StaticResource ImageCircleFrameStyle}">
+                                        <ffsvg:SvgCachedImage Source="user_f.svg" Style="{StaticResource ImageUserIconStyle}"/>
                                     </Frame>
                                 </StackLayout>
                             </Grid>
 
                         </Grid>
 
-                        <panckeview:PancakeView Grid.Row="2"  Style="{StaticResource BtnReadMoreGreenContainerStyle}">
+                        <panckeview:PancakeView Grid.Row="2" BackgroundColor="{DynamicResource MonteCarlo}" >
                             <panckeview:PancakeView.Shadow>
                                 <panckeview:DropShadow BlurRadius="10" Opacity="0.9"    Color="Black" Offset="20,20" />
                             </panckeview:PancakeView.Shadow>
 
-                            <Button  Text="See more" Style="{StaticResource BtnReadMoreGreenStyle}"/>
+                            <Button  Text="See more" TextColor="{DynamicResource White}" BackgroundColor="{DynamicResource MonteCarlo}"/>
                         </panckeview:PancakeView>
                     </Grid>
                 </panckeview:PancakeView>
 
 
-                <panckeview:PancakeView  Grid.Row="6" Style="{StaticResource OptionsMainContainerStyle}">
+                <panckeview:PancakeView  Grid.Row="6" VerticalOptions="Center" Padding="0" BackgroundColor="{DynamicResource White}" Style="{StaticResource OptionsMainContainerStyle}">
                     <panckeview:PancakeView.Shadow>
                         <panckeview:DropShadow BlurRadius="10" Opacity="0.9"    Color="Black" Offset="20,20" />
                     </panckeview:PancakeView.Shadow>
@@ -437,8 +451,8 @@
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
 
-                        <Grid Grid.Row="0" Style="{StaticResource OptionsSubContainerStyle}">
-                            <Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit?" Style="{StaticResource lblMorningTeaStyle}"/>
+                        <Grid Grid.Row="0" BackgroundColor="{DynamicResource Feijoa}" Style="{StaticResource OptionsSubContainerStyle}">
+                            <Label Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit?" TextColor="{DynamicResource White}" Style="{StaticResource lblMealTitleStyle}"/>
                         </Grid>
 
                         <Grid Grid.Row="1" Style="{StaticResource AllOptionsSubContainerStyle}">
@@ -448,30 +462,30 @@
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
 
-                            <Frame Style="{StaticResource lblOptionsTitleMainContainerStyle}">
-                                <StackLayout Style="{StaticResource lblOptionsTitleContainerStyle}">
-                                    <Frame Style="{StaticResource lblOptionsNoContainerStyle}">
-                                        <Label Text="A" Style="{StaticResource lblOptionsNoStyle}"/>
+                            <Frame HasShadow="False" BorderColor="{DynamicResource Gray}" Style="{StaticResource lblOptionsTitleMainContainerStyle}">
+                                <StackLayout Orientation="Horizontal" Style="{StaticResource lblOptionsTitleContainerStyle}">
+                                    <Frame BorderColor="{DynamicResource Gray}" Style="{StaticResource lblOptionsCircleStyle}">
+                                        <Label Text="A" TextColor="{DynamicResource Gray}" Style="{StaticResource lblOptionsNoStyle}"/>
                                     </Frame>
-                                    <Label Text="Lorem ipsum dolor sit amet" Style="{StaticResource lblOptionsTitleStyle}"/>
+                                    <Label Text="Lorem ipsum dolor sit amet" VerticalOptions="Center" TextColor="{DynamicResource Gray}" Style="{StaticResource lblOptionsTitleStyle}"/>
                                 </StackLayout>
                             </Frame>
 
-                            <Frame Grid.Row="1" Style="{StaticResource lblOptionsTitleMainContainerStyle}">
-                                <StackLayout Style="{StaticResource lblOptionsTitleContainerStyle}">
-                                    <Frame Style="{StaticResource lblOptionsNoContainerStyle}">
-                                        <Label Text="B" Style="{StaticResource lblOptionsNoStyle}"/>
+                            <Frame Grid.Row="1" HasShadow="False" BorderColor="{DynamicResource Gray}" Style="{StaticResource lblOptionsTitleMainContainerStyle}">
+                                <StackLayout Orientation="Horizontal"  Style="{StaticResource lblOptionsTitleContainerStyle}">
+                                    <Frame BorderColor="{DynamicResource Gray}" Style="{StaticResource lblOptionsCircleStyle}">
+                                        <Label Text="B" TextColor="{DynamicResource Gray}" Style="{StaticResource lblOptionsNoStyle}"/>
                                     </Frame>
-                                    <Label Text="Lorem ipsum dolor sit amet" Style="{StaticResource lblOptionsTitleStyle}"/>
+                                    <Label Text="Lorem ipsum dolor sit amet" VerticalOptions="Center" TextColor="{DynamicResource Gray}" Style="{StaticResource lblOptionsTitleStyle}"/>
                                 </StackLayout>
                             </Frame>
 
-                            <Frame Grid.Row="2" Style="{StaticResource lblOptionsTitleMainContainerStyle}">
-                                <StackLayout Style="{StaticResource lblOptionsTitleContainerStyle}">
-                                    <Frame Style="{StaticResource lblOptionsNoContainerStyle}">
-                                        <Label Text="C" Style="{StaticResource lblOptionsNoStyle}"/>
+                            <Frame Grid.Row="2" HasShadow="False" BorderColor="{DynamicResource Gray}" Style="{StaticResource lblOptionsTitleMainContainerStyle}">
+                                <StackLayout Orientation="Horizontal"  Style="{StaticResource lblOptionsTitleContainerStyle}">
+                                    <Frame BorderColor="{DynamicResource Gray}" Style="{StaticResource lblOptionsCircleStyle}">
+                                        <Label Text="C" TextColor="{DynamicResource Gray}" Style="{StaticResource lblOptionsNoStyle}"/>
                                     </Frame>
-                                    <Label Text="Lorem ipsum dolor sit amet" Style="{StaticResource lblOptionsTitleStyle}"/>
+                                    <Label Text="Lorem ipsum dolor sit amet" VerticalOptions="Center" TextColor="{DynamicResource Gray}" Style="{StaticResource lblOptionsTitleStyle}"/>
                                 </StackLayout>
                             </Frame>
                         </Grid>

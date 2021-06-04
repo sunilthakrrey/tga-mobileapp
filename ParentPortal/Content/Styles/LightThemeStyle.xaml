@@ -2,4 +2,28 @@
 <ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ParentPortal.Content.Styles.LightThemeStyle">
+
+
+    <Color x:Key ="Feijoa">#A0D083</Color>
+    <Color x:Key ="Sunglo">#e26765</Color>
+    <Color x:Key ="LightningYellow">#fcc926</Color>
+    <Color x:Key ="PoloBlue">#8498cd</Color>
+    <Color x:Key ="MonteCarlo">#88cab9</Color>
+    <Color x:Key ="Gray">#808080</Color>
+    <Color x:Key ="White">#fff</Color>
+    <Color x:Key ="Black">#000</Color>
+
+
+
+    <Color x:Key ="Mantis">#7EBE58</Color>
+    <Color x:Key ="SilverChalice">#9E9E9E</Color>
+    <Color x:Key ="Skeptic">#d7ebe6</Color>
+    <Color x:Key ="PeriwinkleGray">#d6dcec</Color>
+    <Color x:Key ="DairyCream">#fae9c2</Color>
+    <Color x:Key ="BeautyBush">#f2cdcd</Color>
+
+
+
+
+
 </ResourceDictionary>
