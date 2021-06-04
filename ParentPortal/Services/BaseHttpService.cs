@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using ParentPortal.Enums;
+using ParentPortal.Services.TGA;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -11,6 +12,7 @@ using System.Threading.Tasks;
 using System.Web;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using static ParentPortal.Config.SecureStorage;
 using ConfigSettings = ParentPortal.Config;
 using NetworkAccess = Xamarin.Essentials.NetworkAccess;
 
@@ -272,6 +274,14 @@ namespace ParentPortal.Services
                 }
             }
             return buff.ToString();
+        }
+
+
+        private async Task<AuthorizedToken> GetTokenAsync()
+        {
+            SecureStorageService secureStorageService = new SecureStorageService();
+            AuthorizedToken response = await secureStorageService.GetAsync<AuthorizedToken>(Enums.SecureStorageKey.AuthorizedToken);
+            return response;
         }
 
     }
