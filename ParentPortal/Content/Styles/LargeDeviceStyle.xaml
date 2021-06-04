@@ -108,7 +108,7 @@
 
     <Style x:Key="ImageSocialIconContainerStyle" TargetType="StackLayout">
         <Setter Property="Spacing" Value="18"/>
-        <Setter Property="Margin" Value="0,0,0,10"/>
+        <Setter Property="Margin" Value="0,0,0,20"/>
     </Style>
 
     <Style x:Key="ImageSocialIconStyle" TargetType="ffsvg:SvgCachedImage">
@@ -145,7 +145,7 @@
 
     <Style x:Key="lblResetPasswordNotificationStyle" TargetType="Label">
         <Setter Property="FontSize" Value="{StaticResource lblLarge}"/>
-        <Setter Property="Margin" Value="25,0"/>
+        <Setter Property="Margin" Value="30,0"/>
         <Setter Property="FontFamily" Value="Montserrat-SemiBold"/>
     </Style>
 
@@ -347,8 +347,8 @@
     </Style>
 
     <Style x:Key="ImageMorningFoodStyle" TargetType="ffsvg:SvgCachedImage">
-        <Setter Property="HeightRequest" Value="25"/>
-        <Setter Property="WidthRequest" Value="25"/>
+        <Setter Property="HeightRequest" Value="30"/>
+        <Setter Property="WidthRequest" Value="30"/>
     </Style>
 
     <Style x:Key="lblMealTitleStyle" TargetType="Label" BasedOn="{StaticResource CommonlblMealTitleStyle}">
@@ -371,12 +371,12 @@
     </Style>
 
     <Style x:Key="ImageMorningTeaMainContainerStyle" TargetType="panckeview:PancakeView">
-        <Setter Property="Margin" Value="0,20,0,0"/>
+        <Setter Property="Margin" Value="0,0,0,30"/>
         <Setter Property="CornerRadius" Value="15"/>
     </Style>
 
     <Style x:Key="OptionsMainContainerStyle" TargetType="panckeview:PancakeView">
-        <Setter Property="Margin" Value="0,20"/>
+        <Setter Property="Margin" Value="0,0,0,30"/>
         <Setter Property="CornerRadius" Value="15"/>
     </Style>
 

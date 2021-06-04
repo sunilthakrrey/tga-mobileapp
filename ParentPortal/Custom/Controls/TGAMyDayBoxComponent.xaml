@@ -90,7 +90,7 @@
                                 <BindableLayout.ItemTemplate>
                                     <DataTemplate>
                                         <StackLayout Grid.Column="1" Style="{StaticResource ImageMorningFoodContainerStyle}">
-                                            <ffsvg:SvgCachedImage Grid.Column="1"  Source="tga_Water.svg" Style="{StaticResource ImageMorningFoodStyle}"/>
+                                            <ffsvg:SvgCachedImage Grid.Column="1" Source="tga_Water.svg" Style="{StaticResource ImageMorningFoodStyle}"/>
 
                                         </StackLayout>
                                     </DataTemplate>
@@ -112,7 +112,7 @@
                                 <BindableLayout.ItemTemplate>
                                     <DataTemplate>
                                         <StackLayout Grid.Column="1" Style="{StaticResource ImageMorningFoodContainerStyle}">
-                                            <ffsvg:SvgCachedImage Grid.Column="1"  Source="Bottle_icon.svg" Style="{StaticResource ImageMorningFoodStyle}"/>
+                                            <ffsvg:SvgCachedImage Grid.Column="1" Source="Bottle_icon.svg" Style="{StaticResource ImageMorningFoodStyle}"/>
 
                                         </StackLayout>
                                     </DataTemplate>
@@ -132,12 +132,12 @@
 
                     </Grid>
 
-                    <panckeview:PancakeView Grid.Row="2" BackgroundColor="{DynamicResource MonteCarlo}" >
+                    <panckeview:PancakeView Grid.Row="2" BackgroundColor="{DynamicResource MonteCarlo}" Style="{StaticResource BtnReadMoreContainerStyle}">
                         <panckeview:PancakeView.Shadow>
                             <panckeview:DropShadow BlurRadius="10" Opacity="0.9"    Color="Black" Offset="20,20" />
                         </panckeview:PancakeView.Shadow>
 
-                        <Button  Text="See more" TextColor="{DynamicResource White}" BackgroundColor="{DynamicResource MonteCarlo}"/>
+                        <Button  Text="See more" TextColor="{DynamicResource White}" BackgroundColor="{DynamicResource MonteCarlo}" Style="{StaticResource BtnReadMoreStyle}"/>
                     </panckeview:PancakeView>
                 </Grid>
             </panckeview:PancakeView>

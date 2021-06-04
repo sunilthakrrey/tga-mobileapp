@@ -2,9 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:panckeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              NavigationPage.HasBackButton="False"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             ios:NavigationPage.HideNavigationBarSeparator="true"
+             ios:NavigationPage.HideNavigationBarSeparator="true" BackgroundColor="{DynamicResource White}"
              x:Class="ParentPortal.MainPage">
 
     <ContentPage.Content>
@@ -17,20 +18,24 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <Grid  Style="{StaticResource ImageMenuIconContainerStyle}">
+            <Grid Padding="15" Style="{StaticResource ImageMenuIconContainerStyle}" BackgroundColor="{DynamicResource White}">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Grid>
-                    <!--<Grid.GestureRecognizers>
+                    <Grid.GestureRecognizers>
                         <TapGestureRecognizer Tapped="GetMenuItems_Tapped"/>
-                    </Grid.GestureRecognizers>-->
-                    <ffsvg:SvgCachedImage Source="HamburgerNav.svg" Style="{StaticResource ImageMenuIconStyle}"/>
+                    </Grid.GestureRecognizers>
+                    <ffsvg:SvgCachedImage Source="HamburgerNav.svg" HeightRequest="25" WidthRequest="25" Style="{StaticResource ImageMenuIconStyle}"/>
 
                 </Grid>
-                <Label Grid.Column="1" Style="{StaticResource lblMainTitleStyle}"   Text="Home Page" />
+                <!--<Label Grid.Column="1" Style="{StaticResource lblMainTitleStyle}"   Text="Home Page" />-->
+                <StackLayout Grid.Column="1" Orientation="Horizontal" HorizontalOptions="End" Spacing="15">
+                    <ffsvg:SvgCachedImage Source="search.svg" HeightRequest="25" WidthRequest="25"/>
+                    <ffsvg:SvgCachedImage Source="Notifications.svg" HeightRequest="25" WidthRequest="25"/>
+                </StackLayout>
 
             </Grid>
             
@@ -39,7 +44,11 @@
                                  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
 
 
-            <Frame Padding="0,10"  BackgroundColor="Gray" VerticalOptions="FillAndExpand"    IsClippedToBounds="True" Grid.Row="2" >
+            <panckeview:PancakeView Padding="0,10" CornerRadius="30,30,0,0" BackgroundColor="#fff" VerticalOptions="FillAndExpand"    IsClippedToBounds="True" Grid.Row="2" >
+                <panckeview:PancakeView.Shadow>
+                    <panckeview:DropShadow BlurRadius="10" Opacity="0.9"    Color="Black" Offset="20,20" />
+                </panckeview:PancakeView.Shadow>
+                
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -56,8 +65,8 @@
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                        <ffsvg:SvgCachedImage Style="{StaticResource TabImgStyle}"/>
-                        <Label Style="{StaticResource TabLblStyle}" Grid.Row="1" Text="Health"/>
+                        <ffsvg:SvgCachedImage Source="health.svg" Style="{StaticResource TabImgStyle}"/>
+                        <Label Style="{StaticResource TabLblStyle}" TextColor="{DynamicResource SilverChalice}" Grid.Row="1" Text="Health"/>
                     </Grid>
 
 
@@ -71,8 +80,8 @@
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                        <ffsvg:SvgCachedImage Style="{StaticResource TabImgStyle}"/>
-                        <Label Style="{StaticResource TabLblStyle}" Grid.Row="1" Text="Education"/>
+                        <ffsvg:SvgCachedImage Source="education.svg" Style="{StaticResource TabImgStyle}"/>
+                        <Label Style="{StaticResource TabLblStyle}" TextColor="{DynamicResource SilverChalice}" Grid.Row="1" Text="Education"/>
                     </Grid>
 
 
@@ -84,8 +93,10 @@
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                        <ffsvg:SvgCachedImage Style="{StaticResource TabImgStyle}"/>
-                        <Label Style="{StaticResource TabLblStyle}" Grid.Row="1" Text="Home"/>
+                        <Frame BackgroundColor="{DynamicResource Feijoa}" CornerRadius="100" HorizontalOptions="Center" VerticalOptions="Center">
+                            <ffsvg:SvgCachedImage Source="home.svg" Style="{StaticResource TabImgStyle}"/>
+                        </Frame>
+                        <Label Style="{StaticResource TabLblStyle}" HorizontalOptions="Center" TextColor="{DynamicResource SilverChalice}" Grid.Row="1" Text="Home"/>
                     </Grid>
 
 
@@ -96,8 +107,8 @@
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                        <ffsvg:SvgCachedImage Style="{StaticResource TabImgStyle}"/>
-                        <Label Style="{StaticResource TabLblStyle}" Grid.Row="1" Text="Calendar"/>
+                        <ffsvg:SvgCachedImage Source="calendar.svg" Style="{StaticResource TabImgStyle}"/>
+                        <Label Style="{StaticResource TabLblStyle}" TextColor="{DynamicResource SilverChalice}" Grid.Row="1" Text="Calendar"/>
                     </Grid>
 
                     <Grid Grid.Column="4"  HorizontalOptions="Center" VerticalOptions="Center">
@@ -105,11 +116,11 @@
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                        <ffsvg:SvgCachedImage Style="{StaticResource TabImgStyle}"/>
-                        <Label Style="{StaticResource TabLblStyle}" Grid.Row="1" Text="Messages"/>
+                        <ffsvg:SvgCachedImage Source="messages.svg" Style="{StaticResource TabImgStyle}"/>
+                        <Label Style="{StaticResource TabLblStyle}" FontSize="12" FontFamily="Montserrat-SemiBold" TextColor="{DynamicResource SilverChalice}" Grid.Row="1" Text="Messages"/>
                     </Grid>
                 </Grid>
-            </Frame>
+            </panckeview:PancakeView>
         </Grid>
         <!--end region content and footer-->
     </ContentPage.Content>

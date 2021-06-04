@@ -4,7 +4,7 @@
              x:Class="ParentPortal.Custom.Controls.TGANewsFeedContainerComponent">
     <BindableLayout.ItemTemplate>
         <DataTemplate>
-            <panckeview:PancakeView  Style="{StaticResource CircularCornerPancakeStyle}">
+            <panckeview:PancakeView Margin="0,0,0,30" Style="{StaticResource CircularCornerPancakeStyle}">
                 <panckeview:PancakeView.Shadow>
                     <panckeview:DropShadow BlurRadius="10" Opacity="0.9"    Color="Black" Offset="20,20" />
                 </panckeview:PancakeView.Shadow>

@@ -337,8 +337,8 @@
     </Style>
 
     <Style x:Key="ImageMorningFoodStyle" TargetType="ffsvg:SvgCachedImage">
-        <Setter Property="HeightRequest" Value="25"/>
-        <Setter Property="WidthRequest" Value="25"/>
+        <Setter Property="HeightRequest" Value="30"/>
+        <Setter Property="WidthRequest" Value="30"/>
     </Style>
 
     <Style x:Key="lblMealTitleStyle" TargetType="Label" BasedOn="{StaticResource CommonlblMealTitleStyle}">
@@ -361,12 +361,12 @@
     </Style>
 
     <Style x:Key="ImageMorningTeaMainContainerStyle" TargetType="panckeview:PancakeView">
-        <Setter Property="Margin" Value="0,20,0,0"/>
+        <Setter Property="Margin" Value="0,0,0,30"/>
         <Setter Property="CornerRadius" Value="15"/>
     </Style>
 
     <Style x:Key="OptionsMainContainerStyle" TargetType="panckeview:PancakeView">
-        <Setter Property="Margin" Value="0,20"/>
+        <Setter Property="Margin" Value="0,0,0,30"/>
         <Setter Property="CornerRadius" Value="15"/>
     </Style>
 

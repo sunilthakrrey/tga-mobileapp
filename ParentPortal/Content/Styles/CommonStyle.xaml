@@ -125,7 +125,7 @@
     </Style>
 
     <Style x:Key="ImageMenuIconContainerStyle" TargetType="Grid">
-        <Setter Property="Margin" Value="0,0,0,10"/>
+        <!--<Setter Property="Margin" Value="0,0,0,10"/>
         <Setter Property="Padding" Value="15"/>
         <Setter Property="Background">
             <Setter.Value>
@@ -134,12 +134,12 @@
                     <GradientStop Color="#6200ea" Offset="1.0"/>
                 </LinearGradientBrush>
             </Setter.Value>
-        </Setter>
+        </Setter>-->
     </Style>
 
     <Style x:Key="ImageMenuIconStyle" TargetType="ffsvg:SvgCachedImage">
-        <Setter Property="HeightRequest" Value="20"/>
-        <Setter Property="WidthRequest" Value="20"/>
+        <Setter Property="HeightRequest" Value="25"/>
+        <Setter Property="WidthRequest" Value="25"/>
         <Setter Property="Margin" Value="0,0,10,0"/>
     </Style>
 
@@ -157,7 +157,7 @@
 
     <Style x:Key="TabLblStyle" TargetType="Label">
         <Setter Property="FontSize" Value="10"/>
-        <Setter Property="TextColor" Value="#fff"/>
+        <Setter Property="TextColor" Value="#9E9E9E"/>
     </Style>
 
     <Style x:Key="TabImgStyle" TargetType="ffsvg:SvgCachedImage">
