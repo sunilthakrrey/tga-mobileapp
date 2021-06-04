@@ -56,7 +56,7 @@ namespace ParentPortal.Modules.Auth.Login
                 LoginRequestModel_StackError.IsVisible = true;
                 return;
             }
-             ResponseModel.LoginResponseModel loginResponseModel =   await identityService.LoginAsync(LoginRequestModel);
+           //  ResponseModel.LoginResponseModel loginResponseModel =   await identityService.LoginAsync(LoginRequestModel);
 
             //add credentials to storage
             await AddCredentialsToStorageAsync();
