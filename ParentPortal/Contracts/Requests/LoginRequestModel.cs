@@ -7,7 +7,7 @@ namespace ParentPortal.Contracts.Requests
     {
         [Required(ErrorMessage = "Email address is required")]
         [EmailAddress(ErrorMessage = "Enter Valid email address")]
-        [JsonProperty("email")]
+        [JsonProperty("username")]
         public string Email { get; set; }
 
 

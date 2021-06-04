@@ -27,5 +27,6 @@ namespace ParentPortal.Enums
        
         AuthorizedUserInfo,
         AccountCredential,
+        AuthorizedToken
     }
 }
