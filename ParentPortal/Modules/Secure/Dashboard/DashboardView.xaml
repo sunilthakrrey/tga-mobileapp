@@ -2,13 +2,12 @@
 <shared:BaseContentView xmlns="http://xamarin.com/schemas/2014/forms" 
                         xmlns:shared="clr-namespace:ParentPortal.Views.Shared"
                         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                        xmlns:sys="clr-namespace:System;assembly=mscorlib"
                         xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
                         xmlns:customControls="clr-namespace:ParentPortal.Custom.Controls" 
                         xmlns:panckeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
                         x:Class="ParentPortal.Modules.Secure.Dashboard.DashboardView">
     <ContentView.Content>
-
-
         <ScrollView>
             <Grid Padding="20,0">
                 <Grid.RowDefinitions>
@@ -28,12 +27,12 @@
                     </Grid.ColumnDefinitions>
 
                     <StackLayout Grid.Column="0" Spacing="0">
-                        <Label Text="Tues 12 Oct" TextTransform="Uppercase" TextColor="{DynamicResource Feijoa}" Style="{StaticResource lblForDateStyle}"/>
-                        <Label Text="Hi, Jane" TextColor="{DynamicResource Black}" Style="{StaticResource lblGreetingStyle}"/>
+                        <Label Text="{Binding Source={x:Static sys:DateTime.Now}, StringFormat='{}{0:ddd dd MMM}'}" TextTransform="Uppercase" TextColor="{DynamicResource Feijoa}" Style="{StaticResource lblForDateStyle}"/>
+                        <Label Text="{Binding ParentkidsDetails.parent.name,Mode=TwoWay}" TextColor="{DynamicResource Black}" Style="{StaticResource lblGreetingStyle}"/>
                     </StackLayout>
 
                     <StackLayout Grid.Column="1" Orientation="Horizontal" HorizontalOptions="End">
-                        <Frame  BackgroundColor="{DynamicResource SilverChalice}" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource lblForAllLabelContainerStyle}">
+                        <Frame IsVisible="{Binding isVisibleAll}" BackgroundColor="{DynamicResource SilverChalice}" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource lblForAllLabelContainerStyle}">
                             <Label Text="All" VerticalOptions="Center" TextColor="{DynamicResource White}" Style="{StaticResource lblForAllLabelStyle}"/>
                         </Frame>
                         <!--<Frame BorderColor="{DynamicResource Feijoa}" Style="{StaticResource ImageUserCircleStyle}">
@@ -42,7 +41,7 @@
                         <Frame BorderColor="{DynamicResource Feijoa}" Style="{StaticResource ImageUserCircleStyle}">
                             <ffsvg:SvgCachedImage Source="user_s.svg" Style="{StaticResource ImageUserPicStyle}"/>
                         </Frame>-->
-                        <StackLayout Orientation="Horizontal" BindableLayout.ItemsSource="{Binding KidsDetails}">
+                        <StackLayout Orientation="Horizontal" BindableLayout.ItemsSource="{Binding ParentkidsDetails.parent.kids, Mode=TwoWay}">
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate>
                                     <customControls:IndividualFrameComponent BindingContext="{Binding .}"></customControls:IndividualFrameComponent>
@@ -122,13 +121,13 @@
                             </Grid.ColumnDefinitions>
 
                             <StackLayout Grid.Column="0" Spacing="0" HorizontalOptions="Start" VerticalOptions="Center" Orientation="Vertical">
-                                <Label Text="12" TextColor="{DynamicResource Feijoa}" HorizontalTextAlignment="Center" Style="{StaticResource lblDateOnlyStyle}"/>
-                                <Label Text="Mar" TextColor="{DynamicResource Gray}" TextTransform="Uppercase" HorizontalTextAlignment="Center" Style="{StaticResource lblMonthOnlyStyle}"/>
+                                <Label Text="{Binding AnnouncementResponseModel.data.ConvertedIntoDate,StringFormat='{}{0:dd}'}" TextColor="{DynamicResource Feijoa}" HorizontalTextAlignment="Center" Style="{StaticResource lblDateOnlyStyle}"/>
+                                <Label  Text="{Binding AnnouncementResponseModel.data.ConvertedIntoDate,StringFormat='{}{0:MMM}'}"  TextColor="{DynamicResource Gray}" TextTransform="Uppercase" HorizontalTextAlignment="Center" Style="{StaticResource lblMonthOnlyStyle}"/>
                             </StackLayout>
 
                             <StackLayout Grid.Column="1" Spacing="5" Orientation="Vertical" VerticalOptions="Center">
-                                <Label Text="Sarah's Speech Tips: Sound Production" TextColor="{DynamicResource Black}" HorizontalTextAlignment="Start" Style="{StaticResource lblSpeechTipsStyle}"/>
-                                <Label Text="10:35am" TextColor="{DynamicResource Gray}" TextTransform="None" HorizontalOptions="Start" HorizontalTextAlignment="Center" Style="{StaticResource lblSpeechTimeStyle}"/>
+                                <Label Text="{Binding AnnouncementResponseModel.data.title, Mode=TwoWay}" TextColor="{DynamicResource Black}" HorizontalTextAlignment="Start" Style="{StaticResource lblSpeechTipsStyle}"/>
+                                <Label Text="{Binding AnnouncementResponseModel.data.time, Mode=TwoWay}" TextColor="{DynamicResource Gray}" TextTransform="None" HorizontalOptions="Start" HorizontalTextAlignment="Center" Style="{StaticResource lblSpeechTimeStyle}"/>
                             </StackLayout>
                         </Grid>
                     </panckeview:PancakeView>

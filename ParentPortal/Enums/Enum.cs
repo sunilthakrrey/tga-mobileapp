@@ -27,7 +27,8 @@ namespace ParentPortal.Enums
        
         AuthorizedUserInfo,
         AccountCredential,
-        AuthorizedToken
+        AuthorizedToken,
+        SelectedKids
     }
     public enum ImageSize
     { 

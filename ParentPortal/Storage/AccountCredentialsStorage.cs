@@ -7,7 +7,7 @@ namespace ParentPortal.Storage
 {
     public interface IAccountCredentialStorage
     {
-        Task<bool> SaveCredential(string username, string password, bool isRememberMe);
+        Task<bool> SaveCredential(LoginRequestModel loginRequestModel);
 
         Task<LoginRequestModel> GetCredentials();
     }
@@ -15,23 +15,18 @@ namespace ParentPortal.Storage
         {
 
 
-            public async Task<bool> SaveCredential(string email, string password, bool isRememberMe)
+            public async Task<bool> SaveCredential(LoginRequestModel loginRequestModel)
             {
                 bool isSaveCredential = false;
 
                 LoginRequestModel userCredentialInfo = await base.GetAsync<LoginRequestModel>(SecureStorageKey.AccountCredential);
-                if (userCredentialInfo != null && userCredentialInfo.Email == email && userCredentialInfo.Password == password && userCredentialInfo.RememberMe == isRememberMe)
+                if (userCredentialInfo != null && userCredentialInfo.Email == loginRequestModel.Email && userCredentialInfo.Password == loginRequestModel.Password && userCredentialInfo.RememberMe == loginRequestModel.RememberMe)
                 {
                     isSaveCredential = true;
                 }
                 else
                 {
-                    isSaveCredential = await base.SaveAsync(SecureStorageKey.AccountCredential, new LoginRequestModel
-                    {
-                        Email = email,
-                        Password = password,
-                        RememberMe = isRememberMe,
-                    });
+                    isSaveCredential = await base.SaveAsync(SecureStorageKey.AccountCredential, loginRequestModel);
                 }
 
                 return isSaveCredential;

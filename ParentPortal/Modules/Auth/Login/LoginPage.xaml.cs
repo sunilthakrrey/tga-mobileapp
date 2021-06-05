@@ -10,6 +10,10 @@ using System.Threading.Tasks;
 using ParentPortal.Enums;
 using static ParentPortal.Config.Constant;
 using ParentPortal.Modules.Secure.Dashboard;
+using static ParentPortal.Config.SecureStorage;
+using ParentPortal.Models;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ParentPortal.Modules.Auth.Login
 {
@@ -56,12 +60,23 @@ namespace ParentPortal.Modules.Auth.Login
                 LoginRequestModel_StackError.IsVisible = true;
                 return;
             }
-            // ResponseModel.LoginResponseModel loginResponseModel =   await identityService.LoginAsync(LoginRequestModel);
+             ResponseModel.LoginResponseModel loginResponseModel =   await identityService.LoginAsync(LoginRequestModel);
 
             //add credentials to storage
             await AddCredentialsToStorageAsync();
 
+            //add Authrize token To storage
+            await secureStorageService.SaveAsync(SecureStorageKey.AuthorizedToken, new AuthorizedToken { Token = loginResponseModel.token, RefreshToken = loginResponseModel.refreshToken });
 
+            //  save user info into storage
+            bool isAuthorizedInfoSaved = await secureStorageService.SaveAsync(SecureStorageKey.AuthorizedUserInfo, loginResponseModel.data);
+
+            //save SelectedKid in Storage
+
+            await secureStorageService.SaveAsync(SecureStorageKey.SelectedKids, new List<KidDetail>
+           {
+              loginResponseModel.data.parent.kids.FirstOrDefault()
+           }) ;
             await App.AppNavigation.PushAsync(new MainPage() { ContentView = new DashboardView() });
 
         }
@@ -77,7 +92,7 @@ namespace ParentPortal.Modules.Auth.Login
 
             if (LoginRequestModel.RememberMe)
             {
-                await accountCredentialStorage.SaveCredential(LoginRequestModel.Email, LoginRequestModel.Password, LoginRequestModel.RememberMe);
+                await accountCredentialStorage.SaveCredential(LoginRequestModel);
             }
             else
             {

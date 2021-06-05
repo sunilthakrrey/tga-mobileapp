@@ -1,8 +1,11 @@
-﻿using ParentPortal.Models;
+﻿using ParentPortal.Contracts.Responses;
+using ParentPortal.Models;
+using ParentPortal.Services.TGA;
 using ParentPortal.Views.Shared;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -11,6 +14,12 @@ namespace ParentPortal.Modules.Secure.Dashboard
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DashboardView : BaseContentView
     {
+        #region Data Members
+
+        SecureStorageService SecureStorage = new SecureStorageService();
+        DashBoardService DashBoardService = new DashBoardService();
+
+        #endregion
         public DashboardView()
         {
             InitializeComponent();
@@ -20,18 +29,34 @@ namespace ParentPortal.Modules.Secure.Dashboard
 
         #region Properties
 
-        private List<KidDetail> _kidsDetails;
-        public List<KidDetail> KidsDetails
+        private AnnouncementResponseModel _announcementResponseModel;
+        public AnnouncementResponseModel AnnouncementResponseModel
         {
             get
             {
-                return _kidsDetails;
+                return _announcementResponseModel;
 
             }
             set
             {
-                _kidsDetails = value;
-                OnPropertyChanged(nameof(KidsDetails));
+                _announcementResponseModel = value;
+                OnPropertyChanged(nameof(AnnouncementResponseModel));
+            }
+        }
+
+
+        private Data _parentkidsDetails;
+        public Data ParentkidsDetails
+        {
+            get
+            {
+                return _parentkidsDetails;
+
+            }
+            set
+            {
+                _parentkidsDetails = value;
+                OnPropertyChanged(nameof(ParentkidsDetails));
             }
         }
 
@@ -64,39 +89,31 @@ namespace ParentPortal.Modules.Secure.Dashboard
             }
         }
 
+
+        private bool _isVisibleAll;
+        public bool isVisibleAll
+        {
+            get
+            {
+                return _isVisibleAll;
+            }
+            set
+            {
+                _isVisibleAll = value;
+                OnPropertyChanged(nameof(isVisibleAll));
+            }
+
+        }
+
+
         #endregion
 
         private void ConfigureSource()
         {
+            GetDashBoardData();
+
+
             var date = new System.DateTime(2021, 3, 3, 11, 30, 00);
-
-           
-            
-
-            //Kids Info Component
-
-            KidsDetails = new List<KidDetail>
-            {
-                new KidDetail
-                {
-                    Id = "1",
-                        Name = "Lily",
-                        Avtaar = ImageSource.FromFile("user_f.svg"),
-                        IsShowImage=true,
-                        IsShowName=false,
-                        Size=Enums.ImageSize.Large
-                },
-
-                  new KidDetail
-                {
-                    Id = "1",
-                        Name = "Lily",
-                        Avtaar = ImageSource.FromFile("user_f.svg"),
-                        IsShowImage=true,
-                        IsShowName=false,
-                        Size=Enums.ImageSize.Large
-                }
-            };
 
             //my meal day
             ComponentCollectionData = new List<MyDayBoxComponenetModel> {
@@ -113,7 +130,7 @@ namespace ParentPortal.Modules.Secure.Dashboard
                     {
                         Id = "1",
                         Name = "Lily",
-                        Avtaar = ImageSource.FromFile("user_f.svg"),
+                       // Avtaar = ImageSource.FromFile("user_f.svg"),
                         IsShowImage=true,
                         IsShowName=true,
                         Size=Enums.ImageSize.Small
@@ -132,7 +149,7 @@ namespace ParentPortal.Modules.Secure.Dashboard
                     {
                         Id = "1",
                         Name = "Lily",
-                        Avtaar = ImageSource.FromFile("user_f.svg"),
+                       // Avtaar = ImageSource.FromFile("user_f.svg"),
                         IsShowImage=true,
                         IsShowName=true,
                         Size=Enums.ImageSize.Small
@@ -160,7 +177,7 @@ namespace ParentPortal.Modules.Secure.Dashboard
                     {
                         Id = "1",
                         Name = "Lily",
-                        Avtaar = ImageSource.FromFile("user_f.svg"),
+                       // Avtaar = ImageSource.FromFile("user_f.svg"),
                         IsShowImage=true,
                         IsShowName=true,
                         Size=Enums.ImageSize.Small
@@ -182,14 +199,34 @@ namespace ParentPortal.Modules.Secure.Dashboard
                     {
                         Id = "1",
                         Name = "Lily",
-                        Avtaar = ImageSource.FromFile("user_f.svg"),
+                       // Avtaar = ImageSource.FromFile("user_f.svg"),
                         IsShowImage=true,
                         IsShowName=true,
                         Size=Enums.ImageSize.Small
                     }
                 }
             }
-        };
+            };
+
+            isVisibleAll = ParentkidsDetails.parent.kids.Count > 1;
+        }
+
+
+        private async void GetDashBoardData()
+        {
+            //Load Parent And Kid detail From Storage(saved at time of login)
+            ParentkidsDetails = await SecureStorage.GetAsync<Data>(Enums.SecureStorageKey.AuthorizedUserInfo);
+            //get selected kid , first time we will continue with  Announcements
+            List<KidDetail> selectedkid = await SecureStorage.GetAsync<List<KidDetail>>(Enums.SecureStorageKey.SelectedKids);
+
+            //api call for announcements
+
+            //gets ids in form of string
+            string[] kidsIds = selectedkid.Select(x => x.Id).ToArray();
+            var str = String.Join(",", kidsIds);
+            List<AnnouncementResponseModel> announcements = await DashBoardService.GetAnnounments(str);
+            AnnouncementResponseModel = announcements.OrderByDescending(x => x.data.date).FirstOrDefault();
+
         }
         private async void FilterPopupRequest_Clicked(object sender, EventArgs e)
         {

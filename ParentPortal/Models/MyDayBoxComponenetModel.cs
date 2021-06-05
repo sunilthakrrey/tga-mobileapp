@@ -66,16 +66,22 @@ namespace ParentPortal.Models
 
     public class KidDetail
     {
+        public KidDetail()
+        {
+            IsShowImage = true;
+            Size= ImageSize.Large;
+        }
         public string Id { get; set; }
         public string Name { get; set; }
         [JsonProperty("avtar")]
-        public ImageSource Avtaar { get; set; }
+        public string Avtaar { get; set; }
         [JsonIgnore]
         public bool IsShowName { get; set; }
         [JsonIgnore]
-        public bool IsShowImage { get; set; }
+        public bool IsShowImage { get; set; } 
         [JsonIgnore]
         public ImageSize Size { get; set; }
+        [JsonIgnore]
         public Style FrameStyle
         {
             get
@@ -97,7 +103,7 @@ namespace ParentPortal.Models
             }
         
         }
-
+        [JsonIgnore]
         public Style ImageStyle
         {
             get

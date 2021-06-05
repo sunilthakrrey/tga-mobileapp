@@ -7,6 +7,11 @@
         {
             public static string LOGIN = baseURL + "login";
             public static string FORGOT = "";
+            
+        }
+        public static class DashBoard
+        {
+            public static string Announcements = baseURL + "kid/latest-annoucement";
         }
     }
 }
