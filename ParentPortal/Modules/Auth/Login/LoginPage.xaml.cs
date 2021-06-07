@@ -30,6 +30,7 @@ namespace ParentPortal.Modules.Auth.Login
         #endregion
 
         #region Properties
+
         private RequestModel.LoginRequestModel _loginRequestModel = new RequestModel.LoginRequestModel();
         public RequestModel.LoginRequestModel LoginRequestModel
         {

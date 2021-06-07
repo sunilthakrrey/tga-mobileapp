@@ -12,7 +12,6 @@ namespace ParentPortal.Contracts.Responses
         public string token { get; set; }
         public string refreshToken { get; set; }
         public Data data { get; set; }
-
     }
     public class Data
     {

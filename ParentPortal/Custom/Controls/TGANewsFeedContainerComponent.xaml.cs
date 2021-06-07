@@ -1,4 +1,5 @@
-﻿using ParentPortal.Models;
+﻿using ParentPortal.Contracts.Responses;
+using ParentPortal.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,35 +17,23 @@ namespace ParentPortal.Custom.Controls
 		public TGANewsFeedContainerComponent ()
 		{
 			InitializeComponent ();
-			BindingContext = NewsFeedBoxComponentCollection;
+		//	BindingContext = NewsFeedResponseCollection;
 		}
 
-		private NewsFeedBoxComponentModel _newsFeedBoxComponentModel;
-		public NewsFeedBoxComponentModel NewsFeedBoxComponentModel
-        {
-            get
-            {
-				return _newsFeedBoxComponentModel;
-            }
-            set
-            {
-				_newsFeedBoxComponentModel = value;
-				OnPropertyChanged(nameof(NewsFeedBoxComponentModel));
-            }
-        }
+		
 
 
-		private  List<NewsFeedBoxComponentModel> _newsFeedBoxComponentCollection;
-		public List<NewsFeedBoxComponentModel> NewsFeedBoxComponentCollection
+		private  List<NewsFeedResponseData> _newsFeedResponseCollection;
+		public List<NewsFeedResponseData> NewsFeedResponseCollection
 		{
 			get
 			{
-				return _newsFeedBoxComponentCollection;
+				return _newsFeedResponseCollection;
 			}
 			set
 			{
-				_newsFeedBoxComponentCollection = value;
-				OnPropertyChanged(nameof(NewsFeedBoxComponentCollection));
+				_newsFeedResponseCollection = value;
+				OnPropertyChanged(nameof(_newsFeedResponseCollection));
 			}
 		}
 

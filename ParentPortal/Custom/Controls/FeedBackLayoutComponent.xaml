@@ -20,8 +20,8 @@
             </Grid.RowDefinitions>
 
             <StackLayout IsVisible="{Binding IsfeebackLayoutVisible, Mode=TwoWay}" Grid.Column="0" Grid.Row="0" Orientation="Horizontal" Spacing="20" VerticalOptions="Center">
-                <Label Text="{Binding Likes,StringFormat='{0} Likes'}" TextColor="{DynamicResource Gray}" Style="{StaticResource lblLikeCommentStyle}"/>
-                <Label Text="{Binding Comments,StringFormat='{0} Comments'}" TextColor="{DynamicResource Gray}" Style="{StaticResource lblLikeCommentStyle}"/>
+                <Label Text="{Binding stat.totalLikes,StringFormat='{0} Likes'}" TextColor="{DynamicResource Gray}" Style="{StaticResource lblLikeCommentStyle}"/>
+                <Label Text="{Binding stat.totalComments,StringFormat='{0} Comments'}" TextColor="{DynamicResource Gray}" Style="{StaticResource lblLikeCommentStyle}"/>
             </StackLayout>
             <Label Grid.Column="0" IsVisible="{Binding IsfeebackLayoutVisible,Converter={StaticResource booltoreverseconveter}}" Grid.Row="0" Text="You are going to this event" HorizontalOptions="Start" TextColor="{DynamicResource Sunglo}" Style="{StaticResource lblGoingToEventStyle}"/>
             <!--<StackLayout  Grid.Column="1" Grid.Row="0" Spacing="5" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="End">
@@ -30,7 +30,12 @@
                     <ffsvg:SvgCachedImage Source="{Binding KidDetail.Avtaar}" Style="{StaticResource ImageUserIconStyle}"/>
                 </Frame>
             </StackLayout>-->
-            <customControls:IndividualFrameComponent Grid.Column="1" Grid.Row="0" Spacing="5" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="End"  BindingContext="{Binding KidDetail}"></customControls:IndividualFrameComponent>
+            <!--<customControls:IndividualFrameComponent   Grid.Column="1" Grid.Row="0" Spacing="5" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="End"  >
+                --><!--<x:Arguments>
+                    <x:String>993182</x:String>
+                </x:Arguments>--><!--
+            </customControls:IndividualFrameComponent>-->
+            <customControls:BindableComponent Grid.Column="1" Grid.Row="0" UserId="{Binding createdById}"></customControls:BindableComponent>
 
             <BoxView IsVisible="{Binding IsfeebackLayoutVisible, Mode=TwoWay}" Grid.Row="1" Grid.ColumnSpan="2" Color="{DynamicResource Gray}" HeightRequest="1"/>
 

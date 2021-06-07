@@ -1,4 +1,5 @@
-﻿using ParentPortal.Models;
+﻿using ParentPortal.Contracts.Responses;
+using ParentPortal.Models;
 using ParentPortal.Views.Shared;
 using Rg.Plugins.Popup.Services;
 using System;
@@ -20,9 +21,10 @@ namespace ParentPortal.Custom.Controls
             InitializeComponent();
             BindingContext = FeedBackComponentModel;
         }
+       
 
-        private FeedBackComponentModel _feedBackComponentModel;
-        public FeedBackComponentModel FeedBackComponentModel
+        private NewsFeedResponseData _feedBackComponentModel;
+        public NewsFeedResponseData FeedBackComponentModel
         {
             get
             {

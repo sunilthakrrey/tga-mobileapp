@@ -33,6 +33,14 @@ namespace ParentPortal.Enums
     public enum ImageSize
     { 
         Small,
-        Large
+        Medium
+    }
+
+    public enum NewsFeedType
+    {
+        Event=1,
+        DailyChart=2,
+        Wellness=3,
+        Announcement=4
     }
 }

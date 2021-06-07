@@ -25,11 +25,11 @@
                         </Grid.ColumnDefinitions>
 
                         <StackLayout Grid.Column="0" Spacing="1">
-                            <Label Text="{Binding Title, Mode=TwoWay}" TextColor="{DynamicResource White}" Style="{StaticResource lblMealTitleStyle}"/>
-                            <Label Text="{Binding Description,Mode=TwoWay}" TextColor="{DynamicResource White}" Style="{StaticResource lblToastWithJamStyle}"/>
+                            <Label Text="{Binding title, Mode=TwoWay}" TextColor="{DynamicResource White}" Style="{StaticResource lblMealTitleStyle}"/>
+                            <Label Text="{Binding description,Mode=TwoWay}" TextColor="{DynamicResource White}" Style="{StaticResource lblToastWithJamStyle}"/>
                         </StackLayout>
 
-                        <ffsvg:SvgCachedImage Grid.Column="1" Source="{Binding Type}" HorizontalOptions="End" Style="{StaticResource ImageMorningTeaStyle}"/>
+                        <ffsvg:SvgCachedImage Grid.Column="1" Source="morning_tea_icon.svg" HorizontalOptions="End" Style="{StaticResource ImageMorningTeaStyle}"/>
                     </Grid>
 
                     <Grid Grid.Row="1" Style="{StaticResource MorningTeaMainContainerStyle}">
@@ -121,7 +121,7 @@
 
                             </StackLayout>
 
-                            <customControls:IndividualFrameComponent Grid.Column="2" HorizontalOptions="End" BindingContext="{Binding Kid}"></customControls:IndividualFrameComponent>
+                            <customControls:IndividualFrameComponent Grid.Column="2" HorizontalOptions="End" BindingContext="{Binding KidDetail}"></customControls:IndividualFrameComponent>
                             <!--<StackLayout Grid.Column="2" Orientation="Horizontal" HorizontalOptions="End">
                                 <Label Text="{Binding Kid.Name}"  TextColor="{StaticResource Gray}" VerticalOptions="Center" Style="{StaticResource lblForNameStyle}"/>
                                 <Frame BorderColor="{DynamicResource Gray}" Style="{StaticResource ImageCircleFrameStyle}">

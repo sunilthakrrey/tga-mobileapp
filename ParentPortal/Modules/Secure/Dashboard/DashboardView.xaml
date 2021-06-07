@@ -121,13 +121,13 @@
                             </Grid.ColumnDefinitions>
 
                             <StackLayout Grid.Column="0" Spacing="0" HorizontalOptions="Start" VerticalOptions="Center" Orientation="Vertical">
-                                <Label Text="{Binding AnnouncementResponseModel.data.ConvertedIntoDate,StringFormat='{}{0:dd}'}" TextColor="{DynamicResource Feijoa}" HorizontalTextAlignment="Center" Style="{StaticResource lblDateOnlyStyle}"/>
-                                <Label  Text="{Binding AnnouncementResponseModel.data.ConvertedIntoDate,StringFormat='{}{0:MMM}'}"  TextColor="{DynamicResource Gray}" TextTransform="Uppercase" HorizontalTextAlignment="Center" Style="{StaticResource lblMonthOnlyStyle}"/>
+                                <Label Text="{Binding AnnouncementResponseModel.ConvertedIntoDate,StringFormat='{}{0:dd}'}" TextColor="{DynamicResource Feijoa}" HorizontalTextAlignment="Center" Style="{StaticResource lblDateOnlyStyle}"/>
+                                <Label  Text="{Binding AnnouncementResponseModel.ConvertedIntoDate,StringFormat='{}{0:MMM}'}"  TextColor="{DynamicResource Gray}" TextTransform="Uppercase" HorizontalTextAlignment="Center" Style="{StaticResource lblMonthOnlyStyle}"/>
                             </StackLayout>
 
                             <StackLayout Grid.Column="1" Spacing="5" Orientation="Vertical" VerticalOptions="Center">
-                                <Label Text="{Binding AnnouncementResponseModel.data.title, Mode=TwoWay}" TextColor="{DynamicResource Black}" HorizontalTextAlignment="Start" Style="{StaticResource lblSpeechTipsStyle}"/>
-                                <Label Text="{Binding AnnouncementResponseModel.data.time, Mode=TwoWay}" TextColor="{DynamicResource Gray}" TextTransform="None" HorizontalOptions="Start" HorizontalTextAlignment="Center" Style="{StaticResource lblSpeechTimeStyle}"/>
+                                <Label Text="{Binding AnnouncementResponseModel.title, Mode=TwoWay}" TextColor="{DynamicResource Black}" HorizontalTextAlignment="Start" Style="{StaticResource lblSpeechTipsStyle}"/>
+                                <Label Text="{Binding AnnouncementResponseModel.time, Mode=TwoWay}" TextColor="{DynamicResource Gray}" TextTransform="None" HorizontalOptions="Start" HorizontalTextAlignment="Center" Style="{StaticResource lblSpeechTimeStyle}"/>
                             </StackLayout>
                         </Grid>
                     </panckeview:PancakeView>
@@ -156,11 +156,11 @@
 
                 </Grid>
 
-                <customControls:TGANewsFeedContainerComponent Grid.Row="4"  BindingContext="{Binding NewsFeedBoxCollectionData, Mode=TwoWay}"></customControls:TGANewsFeedContainerComponent>
+                <customControls:TGANewsFeedContainerComponent Grid.Row="4"  BindingContext="{Binding NewsFeedBoxCollectionData, Mode=TwoWay}" ></customControls:TGANewsFeedContainerComponent>
 
                 <!--my day Meals-->
 
-                <customControls:TGAMyDayBoxComponent Grid.Row="5" BindingContext="{Binding ComponentCollectionData, Mode=TwoWay}"></customControls:TGAMyDayBoxComponent>
+                <customControls:TGAMyDayBoxComponent Grid.Row="5" BindingContext="{Binding MealComponentCollectionData, Mode=TwoWay}"></customControls:TGAMyDayBoxComponent>
 
                 <panckeview:PancakeView  Grid.Row="6" VerticalOptions="Center" Padding="0" BackgroundColor="{DynamicResource White}" Style="{StaticResource OptionsMainContainerStyle}">
                     <panckeview:PancakeView.Shadow>

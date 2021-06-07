@@ -23,6 +23,8 @@
 
                 <Label Grid.Row="0" Text="Welcome back" VerticalOptions="EndAndExpand" HorizontalOptions="Center" TextColor="{DynamicResource White}"  Style="{StaticResource lblAuthMainHeadingStyle}"/>
 
+                <!--<customControls:BindableComponent TitleText="{Binding MyText}"></customControls:BindableComponent>-->
+                
                 <StackLayout Grid.Row="1" VerticalOptions="End" Style="{StaticResource EmailEntryMainContainerStyle}">
                     <StackLayout x:Name="LoginRequestModel_StackError" IsVisible="false">
 

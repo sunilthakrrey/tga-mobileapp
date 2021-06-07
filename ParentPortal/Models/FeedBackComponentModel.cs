@@ -1,12 +1,9 @@
-﻿namespace ParentPortal.Models
-{
-    public class FeedBackComponentModel
-    {
+﻿using ParentPortal.Contracts.Responses;
 
-        public int Likes { get; set; }
-        public int Comments { get; set; }
+namespace ParentPortal.Models
+{
+    public class FeedBackComponentModel: NewsFeedStatus
+    {
         public KidDetail KidDetail { get; set; }
-        public bool IsfeebackLayoutVisible { get; set; }
-       
     }
 }

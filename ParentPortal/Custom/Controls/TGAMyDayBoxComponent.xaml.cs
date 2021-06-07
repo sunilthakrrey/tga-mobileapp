@@ -1,4 +1,5 @@
 ﻿using FFImageLoading.Svg.Forms;
+using ParentPortal.Contracts.Responses;
 using ParentPortal.Models;
 using System;
 using System.Collections.Generic;
@@ -18,8 +19,8 @@ namespace ParentPortal.Custom.Controls
 
         #region Properties
        
-        private List<MyDayBoxComponenetModel> _componentCollectionData;
-        public List<MyDayBoxComponenetModel> ComponentCollectionData
+        private List<MealData> _componentCollectionData;
+        public List<MealData> ComponentCollectionData
         {
             get
             {

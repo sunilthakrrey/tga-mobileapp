@@ -1,7 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <StackLayout BindableLayout.ItemsSource="{Binding .}"  xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:panckeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms" xmlns:controls="clr-namespace:ParentPortal.Custom.Controls"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+                xmlns:converter="clr-namespace:ParentPortal.Converters"
+             xmlns:panckeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms" xmlns:controls="clr-namespace:ParentPortal.Custom.Controls"
              x:Class="ParentPortal.Custom.Controls.TGANewsFeedContainerComponent">
+    <StackLayout.Resources>
+        <converter:StatustoImageConverter x:Key="TypeToImageConverter"/>
+    </StackLayout.Resources>
     <BindableLayout.ItemTemplate>
         <DataTemplate>
             <panckeview:PancakeView Margin="0,0,0,30" Style="{StaticResource CircularCornerPancakeStyle}">
@@ -19,7 +24,7 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
-                    <ffsvg:SvgCachedImage Grid.Row="0" Source="{Binding BackGroundImage}"/>
+                    <ffsvg:SvgCachedImage Grid.Row="0" Source="{Binding feed.imageUrl}"/>
 
                     <Grid Grid.Row="1" Padding="20,10,20,2">
                         <Grid.ColumnDefinitions>
@@ -28,11 +33,11 @@
                         </Grid.ColumnDefinitions>
 
                         <StackLayout Grid.Column="0" Spacing="1">
-                            <Label Text="{Binding Title, Mode=TwoWay}" TextColor="{DynamicResource Feijoa}" Style="{StaticResource lblWorkTitleStyle}"/>
-                            <Label Text="{Binding Date, Mode=TwoWay}"  TextColor="{DynamicResource Gray}" Style="{StaticResource lblDateWithTimeStyle}"/>
+                            <Label Text="{Binding feed.title, Mode=TwoWay}" TextColor="{DynamicResource Feijoa}" Style="{StaticResource lblWorkTitleStyle}"/>
+                            <Label Text="{Binding feed.createdOn, Mode=TwoWay}"  TextColor="{DynamicResource Gray}" Style="{StaticResource lblDateWithTimeStyle}"/>
                         </StackLayout>
 
-                        <ffsvg:SvgCachedImage Grid.Column="1" Source="{Binding Image, Mode=TwoWay}" HorizontalOptions="End" Style="{StaticResource ImageForWorkTitleIconStyle}"/>
+                        <ffsvg:SvgCachedImage Grid.Column="1" Source="{Binding feed.type, Mode=TwoWay}" HorizontalOptions="End" Style="{StaticResource ImageForWorkTitleIconStyle}"/>
                     </Grid>
 
                     <Grid Grid.Row="2" Padding="20,0">
@@ -41,10 +46,10 @@
                             <ColumnDefinition Width="20*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Label Grid.Column="0" TextColor="{DynamicResource Black}" LineHeight="1.2" Style="{StaticResource lblNewsFeedDescriptionStyle}" Text="{Binding Description,Mode=TwoWay}"/>
+                        <Label Grid.Column="0" TextColor="{DynamicResource Black}" LineHeight="1.2" Style="{StaticResource lblNewsFeedDescriptionStyle}" Text="{Binding feed.description,Mode=TwoWay}"/>
                     </Grid>
 
-                    <controls:FeedBackLayoutComponent BindingContext="{Binding FeedBackComponentModel, Mode=TwoWay}" Grid.Row="3"></controls:FeedBackLayoutComponent>
+                    <controls:FeedBackLayoutComponent  BindingContext="{Binding ., Mode=TwoWay}" Grid.Row="3"></controls:FeedBackLayoutComponent>
 
                     <panckeview:PancakeView Grid.Row="5" BackgroundColor="{DynamicResource Feijoa}" Style="{StaticResource BtnReadMoreContainerStyle}" >
                         <panckeview:PancakeView.Shadow>

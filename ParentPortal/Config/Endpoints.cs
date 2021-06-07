@@ -12,6 +12,7 @@
         public static class DashBoard
         {
             public static string Announcements = baseURL + "kid/latest-annoucement";
+            public static string NewsFeeds = baseURL + "kid/new-feeds";
         }
     }
 }
