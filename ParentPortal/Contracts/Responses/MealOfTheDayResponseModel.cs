@@ -66,7 +66,7 @@ namespace ParentPortal.Contracts.Responses
 
             return retval;
         }
-        [JsonIgnore]
-        public KidDetail KidDetail { get; set; }
+        //[JsonIgnore]
+        //public KidDetail KidDetail { get; set; }
     }
 }

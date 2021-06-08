@@ -65,7 +65,7 @@ namespace ParentPortal.Custom.Controls
             Data userInfo = await secureStorageService.GetAsync<Data>(Enums.SecureStorageKey.AuthorizedUserInfo);
             KidDetail kidDetail = userInfo.parent.kids.Where(x => x.Id == kidId).FirstOrDefault();
             kidDetail.IsShowName = true;
-            kidDetail.Size = Enums.ImageSize.Small;
+            kidDetail.Size = Enums.PictureSize.Small;
             return kidDetail;
         }
 

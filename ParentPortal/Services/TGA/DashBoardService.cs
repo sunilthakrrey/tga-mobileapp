@@ -75,7 +75,7 @@ namespace ParentPortal.Services.TGA
                     },
                        new NewsFeedResponseData
                     {
-                        createdById = "993182",
+                        createdById = "607667",
                         feed= new NewsFeed
                         {
                            imageUrl = "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",

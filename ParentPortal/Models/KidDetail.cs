@@ -12,7 +12,7 @@ namespace ParentPortal.Models
         public KidDetail()
         {
             IsShowImage = true;
-            Size = ImageSize.Medium;
+            Size = PictureSize.Medium;
         }
 
         public int Id { get; set; }
@@ -29,7 +29,7 @@ namespace ParentPortal.Models
         public bool IsShowImage { get; set; }
         
         [JsonIgnore]
-        public ImageSize Size { get; set; }
+        public PictureSize Size { get; set; }
         
         [JsonIgnore]
         public Style FrameStyle
@@ -40,10 +40,10 @@ namespace ParentPortal.Models
                 switch (Size)
                 {
 
-                    case ImageSize.Small:
+                    case PictureSize.Small:
                         style = (Style)Application.Current.Resources["ImageCircleFrameStyle"];
                         break;
-                    case ImageSize.Medium:
+                    case PictureSize.Medium:
                         style = (Style)Application.Current.Resources["ImageUserCircleStyle"];
                         break;
                     default:
@@ -63,10 +63,10 @@ namespace ParentPortal.Models
                 switch (Size)
                 {
 
-                    case ImageSize.Small:
+                    case PictureSize.Small:
                         style = (Style)Application.Current.Resources["ImageUserIconStyle"];
                         break;
-                    case ImageSize.Medium:
+                    case PictureSize.Medium:
                         style = (Style)Application.Current.Resources["ImageUserPicStyle"];
                         break;
                     default:

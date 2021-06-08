@@ -145,10 +145,10 @@ namespace ParentPortal.Modules.Secure.Dashboard
             //get Meal Data
             MealOfTheDayResponseModel mealResponse = await DashBoardService.GetMealData(kidIds);
             
-            foreach (MealData data in mealResponse.data)
-            {
-               // data.KidDetail = await GetKidDetailsFromStorage(data.createdById);
-            }
+            //foreach (MealData data in mealResponse.data)
+            //{
+            //   data.KidDetail = await GetKidDetailsFromStorage(data.createdById);
+            //}
             MealComponentCollectionData = mealResponse.data;
            
         }

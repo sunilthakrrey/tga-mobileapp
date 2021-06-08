@@ -44,7 +44,8 @@
                         <StackLayout Orientation="Horizontal" BindableLayout.ItemsSource="{Binding ParentkidsDetails.parent.kids, Mode=TwoWay}">
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate>
-                                    <customControls:IndividualFrameComponent BindingContext="{Binding .}"></customControls:IndividualFrameComponent>
+                                    <customControls:UserInfo  IsNameDisplay="false" ImageSize="Medium"  UserId="{Binding Id}" ></customControls:UserInfo>
+                                    <!--<customControls:IndividualFrameComponent BindingContext="{Binding .}"></customControls:IndividualFrameComponent>-->
                                 </DataTemplate>
                             </BindableLayout.ItemTemplate>
                         </StackLayout>
@@ -73,7 +74,7 @@
                     <Frame Grid.Column="1" BackgroundColor="{DynamicResource PeriwinkleGray}" Style="{StaticResource DashboardCircularFrameStyle}">
                         <StackLayout Style="{StaticResource CommonDashboardCircularStackStyle}">
                             <ffsvg:SvgCachedImage Source="sleep_Icon.svg" Style="{StaticResource ImageEventIconStyle}"/>
-                            <Label Text="Sleep" TextColor="{DynamicResource PoloBlue}" Style="{StaticResource lblEventTitleStyle}"/>
+                            <Label Text="Sleep"  TextColor="{DynamicResource PoloBlue}" Style="{StaticResource lblEventTitleStyle}"/>
                         </StackLayout>
                     </Frame>
 

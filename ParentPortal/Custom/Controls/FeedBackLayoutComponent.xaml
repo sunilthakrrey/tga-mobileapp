@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms" xmlns:converters="clr-namespace:ParentPortal.Converters" xmlns:customControls="clr-namespace:ParentPortal.Custom.Controls"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:enums="clr-namespace:ParentPortal.Enums"
+             
+             xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms" xmlns:converters="clr-namespace:ParentPortal.Converters" xmlns:customControls="clr-namespace:ParentPortal.Custom.Controls"
              x:Class="ParentPortal.Custom.Controls.FeedBackLayoutComponent">
     <StackLayout.Resources>
         <converters:BooleanToReverseConverter x:Key="booltoreverseconveter">
@@ -35,8 +37,8 @@
                     <x:String>993182</x:String>
                 </x:Arguments>--><!--
             </customControls:IndividualFrameComponent>-->
-            <customControls:BindableComponent Grid.Column="1" Grid.Row="0" UserId="{Binding createdById}"></customControls:BindableComponent>
 
+            <customControls:UserInfo  Grid.Column="1" Grid.Row="0"  IsNameDisplay="true"  ImageSize="Small"  UserId="{Binding createdById}" Spacing="5" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="End"></customControls:UserInfo>
             <BoxView IsVisible="{Binding IsfeebackLayoutVisible, Mode=TwoWay}" Grid.Row="1" Grid.ColumnSpan="2" Color="{DynamicResource Gray}" HeightRequest="1"/>
 
         </Grid>

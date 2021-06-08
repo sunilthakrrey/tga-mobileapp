@@ -45,6 +45,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Custom\Controls\UserInfo.xaml.cs">
+      <DependentUpon>UserInfo.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Custom\Controls\IndividualFrameComponent.xaml.cs">
       <DependentUpon>IndividualFrameComponent.xaml</DependentUpon>
     </Compile>
@@ -72,7 +75,7 @@
     <EmbeddedResource Update="Content\Styles\SmallDeviceStyle.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Custom\Controls\BindableComponent.xaml">
+    <EmbeddedResource Update="Custom\Controls\UserInfo.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Custom\Controls\CustomPopUpContainer.xaml">

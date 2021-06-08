@@ -30,10 +30,11 @@ namespace ParentPortal.Enums
         AuthorizedToken,
         SelectedKids
     }
-    public enum ImageSize
+    public enum PictureSize
     { 
         Small,
-        Medium
+        Medium,
+        None
     }
 
     public enum NewsFeedType
