@@ -6,24 +6,24 @@ namespace ParentPortal.Converters
 {
     public class StatustoImageConverter:IValueConverter
     {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        public object Convert(object value, System.Type targetType, object parameter, CultureInfo culture)
         {
             ImageSource retSource = null;
             if (value != null)
             {
-                NewsFeedType status = (NewsFeedType)value;
+                Enums.TGA_Type status = (Enums.TGA_Type)value;
                 switch (status)
                 {
-                    case NewsFeedType.Announcement:
+                    case TGA_Type.Announcement:
                         //retSource =ImageSource.FromFile("None.svg");
                         break;
-                    case NewsFeedType.DailyChart:
+                    case TGA_Type.DailyChart:
                        // retSource = ImageSource.FromFile("Draft.svg");
                         break;
-                    case NewsFeedType.Event:
+                    case TGA_Type.Event:
                         retSource = ImageSource.FromFile("events_Icon.svg");
                         break;
-                    case NewsFeedType.Wellness:
+                    case TGA_Type.Wellness:
                         retSource = ImageSource.FromFile("sun_icon.svg");
                         break;
                    
@@ -34,7 +34,7 @@ namespace ParentPortal.Converters
             return retSource;
         }
 
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        public object ConvertBack(object value, System.Type targetType, object parameter, CultureInfo culture)
         {
             throw new NotImplementedException();
         }

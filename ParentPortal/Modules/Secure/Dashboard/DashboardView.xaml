@@ -157,11 +157,11 @@
 
                 </Grid>
 
-                <customControls:TGANewsFeedContainerComponent Grid.Row="4"  BindingContext="{Binding NewsFeedBoxCollectionData, Mode=TwoWay}" ></customControls:TGANewsFeedContainerComponent>
+                <customControls:FeedComponent Grid.Row="4"   BindingContext="{Binding NewsFeedBoxCollectionData, Mode=TwoWay}" ></customControls:FeedComponent>
 
                 <!--my day Meals-->
 
-                <customControls:TGAMyDayBoxComponent Grid.Row="5" BindingContext="{Binding MealComponentCollectionData, Mode=TwoWay}"></customControls:TGAMyDayBoxComponent>
+                <customControls:MealChartComponent Grid.Row="5" BindingContext="{Binding MealComponentCollectionData, Mode=TwoWay}"></customControls:MealChartComponent>
 
                 <panckeview:PancakeView  Grid.Row="6" VerticalOptions="Center" Padding="0" BackgroundColor="{DynamicResource White}" Style="{StaticResource OptionsMainContainerStyle}">
                     <panckeview:PancakeView.Shadow>

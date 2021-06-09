@@ -12,7 +12,7 @@ namespace ParentPortal.Services.TGA
     {
         Task<AnnouncementResponseModel> GetAnnounments(string kidsIds, Enums.Page page = Enums.Page.None);
         Task<NewsFeedResponseModel> GetNewFeeedData(string kidsIds, Enums.Page page = Enums.Page.None);
-        Task<MealOfTheDayResponseModel> GetMealData(string kidsIds, Enums.Page page = Enums.Page.None);
+        Task<MealChartResponseModel> GetMealData(string kidsIds, Enums.Page page = Enums.Page.None);
     }
     public class DashBoardService : BaseHttpService, IDashBoardService
     {
@@ -49,7 +49,7 @@ namespace ParentPortal.Services.TGA
         {
             var date = new System.DateTime(2021, 3, 3, 11, 30, 00);
             NewsFeedResponseModel retVal;
-            string url = string.Format("{0}?kidIds={1}&date={1}&type={2},", ConfigSettings.EndPoint.DashBoard.Announcements, kidsIds, DateTime.UtcNow, NewsFeedType.Wellness);
+            string url = string.Format("{0}?kidIds={1}&date={1}&type={2},", ConfigSettings.EndPoint.DashBoard.Announcements, kidsIds, DateTime.UtcNow, Enums.TGA_Type.Wellness);
             //   retVal = await CreateHttpGETRequestAsync<List<AnnouncementResponseModel>>(url, page: page);
             retVal = new NewsFeedResponseModel
             {
@@ -65,7 +65,7 @@ namespace ParentPortal.Services.TGA
                            createdOn= date.ToString("dd MMMM yyyy, hh:mm"),
                            title = "WaterPlay In The Yard",
                            description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Porta egestas aenean viverra molestie non.",
-                           type = NewsFeedType.Wellness,
+                           type = Enums.TGA_Type.Wellness,
                         },
                         stat= new NewsFeedStatus
                         {
@@ -82,7 +82,7 @@ namespace ParentPortal.Services.TGA
                            createdOn= date.ToString("dd MMMM yyyy, hh:mm"),
                            title = "Yoga With Gina",
                            description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Porta egestas aenean viverra molestie non.",
-                           type = NewsFeedType.Event,
+                           type = Enums.TGA_Type.Event,
                         },
                         stat= new NewsFeedStatus
                         {
@@ -95,28 +95,28 @@ namespace ParentPortal.Services.TGA
             return retVal;
         }
 
-        public async Task<MealOfTheDayResponseModel> GetMealData(string kidsIds, Page page = Page.None)
+        public async Task<MealChartResponseModel> GetMealData(string kidsIds, Page page = Page.None)
         {
             var date = new System.DateTime(2021, 3, 3, 11, 30, 00);
-            MealOfTheDayResponseModel retVal;
-            string url = string.Format("{0}?kidIds={1}&date={1}&type={2},", ConfigSettings.EndPoint.DashBoard.Announcements, kidsIds, DateTime.UtcNow, NewsFeedType.Wellness);
+            MealChartResponseModel retVal;
+            string url = string.Format("{0}?kidIds={1}&date={1}&type={2},", ConfigSettings.EndPoint.DashBoard.Announcements, kidsIds, DateTime.UtcNow, Enums.TGA_Type.Wellness);
             //   retVal = await CreateHttpGETRequestAsync<List<AnnouncementResponseModel>>(url, page: page);
-            retVal = new MealOfTheDayResponseModel
+            retVal = new MealChartResponseModel
             {
                 status = "success",
-                data = new List<MealData>
+                data = new List<MealChartData>
                 {
-                    new MealData
+                    new MealChartData
                     {
                         title = "Morning Tea",
                         description = "Toast with Jam",
-                        NoOfMorningtea = 1.ToString(),
+                        NoOfMorningtea = "No Thank You",
                         NoOfFruits = 2.ToString(),
                         NoOfWater = 3.ToString(),
                         NoOfBootles = 2.ToString(),
                         createdById="993182"
                     },
-                    new MealData
+                    new MealChartData
                     {
                         title = "Morning Tea",
                         description = "Toast with Jam",

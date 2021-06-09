@@ -7,17 +7,17 @@ using System.Text;
 
 namespace ParentPortal.Contracts.Responses
 {
-    public class MealOfTheDayResponseModel
+    public class MealChartResponseModel
     {
         public string status { get; set; }
-        public List<MealData> data { get; set; }
+        public List<MealChartData> data { get; set; }
     }
-    public class MealData
+    public class MealChartData
     {
         public string title { get; set; }
         public string description { get; set; }
-        [JsonIgnore]
-        public NewsFeedType Type { get; set; } = NewsFeedType.DailyChart;
+        //[JsonIgnore]
+        //public Enums.TGA_Type Type { get; set; } = Enums.TGA_Type.DailyChart;
         public string NoOfMorningtea { get; set; }
         public string NoOfFruits { get; set; }
         public string NoOfWater { get; set; }

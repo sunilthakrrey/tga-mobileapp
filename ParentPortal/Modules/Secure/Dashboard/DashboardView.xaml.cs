@@ -62,8 +62,8 @@ namespace ParentPortal.Modules.Secure.Dashboard
             }
         }
 
-        private List<MealData> _mealcomponentCollectionData;
-        public List<MealData> MealComponentCollectionData
+        private List<MealChartData> _mealcomponentCollectionData;
+        public List<MealChartData> MealComponentCollectionData
         {
             get
             {
@@ -143,7 +143,7 @@ namespace ParentPortal.Modules.Secure.Dashboard
             NewsFeedBoxCollectionData = responseModel.data;
 
             //get Meal Data
-            MealOfTheDayResponseModel mealResponse = await DashBoardService.GetMealData(kidIds);
+            MealChartResponseModel mealResponse = await DashBoardService.GetMealData(kidIds);
             
             //foreach (MealData data in mealResponse.data)
             //{

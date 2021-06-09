@@ -2,7 +2,7 @@
 <StackLayout BindableLayout.ItemsSource="{Binding .}" xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:panckeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms" xmlns:customControls="clr-namespace:ParentPortal.Custom.Controls"
-             x:Class="ParentPortal.Custom.Controls.TGAMyDayBoxComponent">
+             x:Class="ParentPortal.Custom.Controls.MealChartComponent">
     <BindableLayout.ItemTemplate>
 
         <DataTemplate>
@@ -48,6 +48,13 @@
 
                             <Label Grid.Column="0" Text="Morning Tea" TextColor="{DynamicResource Black}" Style="{StaticResource lblMealTitleStyle}"/>
                             <StackLayout x:Name="MorningTeaStack" Orientation="Horizontal" Grid.Column="1" BindableLayout.ItemsSource="{Binding MorningTea}">
+                                <BindableLayout.EmptyView>
+                                    <StackLayout>
+                                        <Frame >
+                                            <Label Text="{Binding NoOfMorningtea}"></Label>
+                                        </Frame>
+                                    </StackLayout>
+                                </BindableLayout.EmptyView>
                                 <BindableLayout.ItemTemplate>
                                     <DataTemplate>
                                         <StackLayout Grid.Column="1" Style="{StaticResource ImageMorningFoodContainerStyle}">
@@ -66,6 +73,13 @@
 
                             <Label Grid.Column="0" Text="Fruit" TextColor="{DynamicResource Black}"  Style="{StaticResource lblMealTitleStyle}"/>
                             <StackLayout  x:Name="MorningFruitsStack" Orientation="Horizontal" Grid.Column="1" BindableLayout.ItemsSource="{Binding Fruits}">
+                                <BindableLayout.EmptyView>
+                                    <StackLayout>
+                                        <Frame >
+                                            <Label Text="{Binding NoOfFruits}"></Label>
+                                        </Frame>
+                                    </StackLayout>
+                                </BindableLayout.EmptyView>
                                 <BindableLayout.ItemTemplate>
                                     <DataTemplate>
                                         <StackLayout Grid.Column="1"  Style="{StaticResource ImageMorningFoodContainerStyle}">
@@ -87,6 +101,13 @@
 
                             <Label Grid.Column="0" Text="Water" TextColor="{DynamicResource Black}"  Style="{StaticResource lblMealTitleStyle}"/>
                             <StackLayout  x:Name="MorningWaterStack" Orientation="Horizontal" Grid.Column="1" BindableLayout.ItemsSource="{Binding WaterIntake}">
+                                <BindableLayout.EmptyView>
+                                    <StackLayout>
+                                        <Frame >
+                                            <Label Text="{Binding NoOfWater}"></Label>
+                                        </Frame>
+                                    </StackLayout>
+                                </BindableLayout.EmptyView>
                                 <BindableLayout.ItemTemplate>
                                     <DataTemplate>
                                         <StackLayout Grid.Column="1" Style="{StaticResource ImageMorningFoodContainerStyle}">
@@ -109,6 +130,13 @@
 
                             <Label Grid.Column="0" Text="Bottles" TextColor="{DynamicResource Black}"  Style="{StaticResource lblMealTitleStyle}"/>
                             <StackLayout  x:Name="MorningBottleStack" Orientation="Horizontal" Grid.Column="1" BindableLayout.ItemsSource="{Binding Bottles}">
+                                <BindableLayout.EmptyView>
+                                    <StackLayout>
+                                        <Frame >
+                                            <Label Text="{Binding NoOfBootles}"></Label>
+                                        </Frame>
+                                    </StackLayout>
+                                </BindableLayout.EmptyView>
                                 <BindableLayout.ItemTemplate>
                                     <DataTemplate>
                                         <StackLayout Grid.Column="1" Style="{StaticResource ImageMorningFoodContainerStyle}">

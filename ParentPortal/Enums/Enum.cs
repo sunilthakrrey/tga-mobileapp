@@ -37,11 +37,12 @@ namespace ParentPortal.Enums
         None
     }
 
-    public enum NewsFeedType
+    public enum TGA_Type
     {
-        Event=1,
-        DailyChart=2,
-        Wellness=3,
-        Announcement=4
+        Event,
+        DailyChart,
+        Wellness,
+        Announcement,
+        None
     }
 }

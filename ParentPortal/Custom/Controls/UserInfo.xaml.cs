@@ -17,9 +17,6 @@ namespace ParentPortal.Custom.Controls
     public partial class UserInfo : StackLayout
     {
 
-
-
-
         public UserInfo()
         {
 

@@ -9,9 +9,9 @@ using Xamarin.Forms.Xaml;
 namespace ParentPortal.Custom.Controls
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class TGAMyDayBoxComponent : StackLayout
+	public partial class MealChartComponent : StackLayout
 	{
-		public TGAMyDayBoxComponent ()
+		public MealChartComponent()
 		{
 			InitializeComponent ();
             BindingContext = ComponentCollectionData;
@@ -19,8 +19,8 @@ namespace ParentPortal.Custom.Controls
 
         #region Properties
        
-        private List<MealData> _componentCollectionData;
-        public List<MealData> ComponentCollectionData
+        private List<MealChartData> _componentCollectionData;
+        public List<MealChartData> ComponentCollectionData
         {
             get
             {

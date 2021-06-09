@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<StackLayout x:Name="toolbarstack" xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             x:Class="ParentPortal.Custom.Controls.ToolbarComponent">
+    <BoxView x:Name="Box_Lineseprator" Color="{DynamicResource Gray}" HeightRequest="1"/>
+    <Grid Padding="20,5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackLayout x:Name="stckLike" Grid.Column="0" Spacing="5" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Start">
+            <ffsvg:SvgCachedImage Source="tga_like.svg" Style="{StaticResource ImageLikeReactionStyle}"/>
+            <Label Text="Like" TextColor="{DynamicResource Gray}" Style="{StaticResource lblReactionsNameStyle}"/>
+        </StackLayout>
+
+        <StackLayout x:Name="stckComment" Grid.Column="1" Spacing="5" Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Tapped="CreateComment_Clicked"/>
+            </StackLayout.GestureRecognizers>
+            <ffsvg:SvgCachedImage Source="tga_comments_icon.svg" Style="{StaticResource ImageReactionsStyle}"/>
+            <Label Text="Comment" TextColor="{DynamicResource Gray}" Style="{StaticResource lblReactionsNameStyle}"/>
+        </StackLayout>
+
+        <StackLayout x:Name="stckBookmark" Grid.Column="2" Spacing="5" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="End">
+            <ffsvg:SvgCachedImage Source="bookmark_icon.svg" Style="{StaticResource ImageReactionsStyle}"/>
+            <Label Text="Bookmark" TextColor="{DynamicResource Gray}" Style="{StaticResource lblReactionsNameStyle}"/>
+        </StackLayout>
+
+    </Grid>
+</StackLayout>

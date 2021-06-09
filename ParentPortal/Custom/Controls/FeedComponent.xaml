@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
                 xmlns:converter="clr-namespace:ParentPortal.Converters"
              xmlns:panckeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms" xmlns:controls="clr-namespace:ParentPortal.Custom.Controls"
-             x:Class="ParentPortal.Custom.Controls.TGANewsFeedContainerComponent">
+             x:Class="ParentPortal.Custom.Controls.FeedComponent">
     <StackLayout.Resources>
         <converter:StatustoImageConverter x:Key="TypeToImageConverter"/>
     </StackLayout.Resources>
@@ -32,10 +32,10 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <StackLayout Grid.Column="0" Spacing="1">
+                        <!--<StackLayout Grid.Column="0" Spacing="1">
                             <Label Text="{Binding feed.title, Mode=TwoWay}" TextColor="{DynamicResource Feijoa}" Style="{StaticResource lblWorkTitleStyle}"/>
                             <Label Text="{Binding feed.createdOn, Mode=TwoWay}"  TextColor="{DynamicResource Gray}" Style="{StaticResource lblDateWithTimeStyle}"/>
-                        </StackLayout>
+                        </StackLayout>-->
 
                         <ffsvg:SvgCachedImage Grid.Column="1" Source="{Binding feed.type, Mode=TwoWay}" HorizontalOptions="End" Style="{StaticResource ImageForWorkTitleIconStyle}"/>
                     </Grid>
@@ -49,8 +49,11 @@
                         <Label Grid.Column="0" TextColor="{DynamicResource Black}" LineHeight="1.2" Style="{StaticResource lblNewsFeedDescriptionStyle}" Text="{Binding feed.description,Mode=TwoWay}"/>
                     </Grid>
 
-                    <controls:FeedBackLayoutComponent  BindingContext="{Binding ., Mode=TwoWay}" Grid.Row="3"></controls:FeedBackLayoutComponent>
-
+                    <!--<controls:FeedBackLayoutComponent  BindingContext="{Binding ., Mode=TwoWay}" Grid.Row="3"></controls:FeedBackLayoutComponent>-->
+                    <StackLayout  Grid.Row="3">
+                        <controls:StatComponent Type="{Binding feed.type}"  TotalComments="{Binding stat.totalComments}" TotalLikes="{Binding stat.totalLikes}"  Createdbyid="{Binding createdById}"></controls:StatComponent>
+                        <controls:ToolbarComponent Type="{Binding feed.type}" ></controls:ToolbarComponent>
+                    </StackLayout>
                     <panckeview:PancakeView Grid.Row="5" BackgroundColor="{DynamicResource Feijoa}" Style="{StaticResource BtnReadMoreContainerStyle}" >
                         <panckeview:PancakeView.Shadow>
                             <panckeview:DropShadow BlurRadius="10" Opacity="0.9"    Color="Black" Offset="20,20" />
