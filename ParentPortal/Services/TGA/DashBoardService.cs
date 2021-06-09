@@ -20,28 +20,28 @@ namespace ParentPortal.Services.TGA
         {
             AnnouncementResponseModel retVal;
             string url = string.Format("{0}?kidIds={1}", ConfigSettings.EndPoint.DashBoard.Announcements, kidsIds);
-            //   retVal = await CreateHttpGETRequestAsync<List<AnnouncementResponseModel>>(url, page: page);
-            retVal = new AnnouncementResponseModel
-            {
-                status = "200",
-                data = new List<AnnouncementData>
-                {
-                    new AnnouncementData
-                    {
-                        id="1",
-                        date=DateTime.UtcNow.ToString(),
-                        title="Sarah' Speech Tips:Sound Prouduction",
-                        time="10:35 am"
-                    },
-                    new AnnouncementData
-                    {
-                        date=DateTime.UtcNow.ToString(),
-                        title="Sarah' Speech Tips:Sound Prouduction",
-                        time="10:35 am"
-                    }
-                }
+               retVal = await CreateHttpGETRequestAsync<AnnouncementResponseModel>(url, page: page);
+            //retVal = new AnnouncementResponseModel
+            //{
+            //    status = "200",
+            //    data = new List<AnnouncementData>
+            //    {
+            //        new AnnouncementData
+            //        {
+            //            id="1",
+            //            date=DateTime.UtcNow.ToString(),
+            //            title="Sarah' Speech Tips:Sound Prouduction",
+            //            time="10:35 am"
+            //        },
+            //        new AnnouncementData
+            //        {
+            //            date=DateTime.UtcNow.ToString(),
+            //            title="Sarah' Speech Tips:Sound Prouduction",
+            //            time="10:35 am"
+            //        }
+            //    }
 
-            };
+            //};
             return retVal;
         }
 
@@ -49,8 +49,8 @@ namespace ParentPortal.Services.TGA
         {
             var date = new System.DateTime(2021, 3, 3, 11, 30, 00);
             NewsFeedResponseModel retVal;
-            string url = string.Format("{0}?kidIds={1}&date={1}&type={2},", ConfigSettings.EndPoint.DashBoard.Announcements, kidsIds, DateTime.UtcNow, Enums.TGA_Type.Wellness);
-            //   retVal = await CreateHttpGETRequestAsync<List<AnnouncementResponseModel>>(url, page: page);
+            string url = string.Format("{0}?kidIds={1}&date=today&type=all", ConfigSettings.EndPoint.DashBoard.NewsFeeds, kidsIds, DateTime.UtcNow, Enums.TGA_Type.Wellness);
+            //retVal = await CreateHttpGETRequestAsync<NewsFeedResponseModel>(url, page: page);
             retVal = new NewsFeedResponseModel
             {
                 status = "success",
@@ -99,8 +99,8 @@ namespace ParentPortal.Services.TGA
         {
             var date = new System.DateTime(2021, 3, 3, 11, 30, 00);
             MealChartResponseModel retVal;
-            string url = string.Format("{0}?kidIds={1}&date={1}&type={2},", ConfigSettings.EndPoint.DashBoard.Announcements, kidsIds, DateTime.UtcNow, Enums.TGA_Type.Wellness);
-            //   retVal = await CreateHttpGETRequestAsync<List<AnnouncementResponseModel>>(url, page: page);
+            string url = string.Format("{0}?kidIds={1}&date=today", ConfigSettings.EndPoint.DashBoard.MealChart, kidsIds, DateTime.UtcNow, Enums.TGA_Type.Wellness);
+            //  retVal = await CreateHttpGETRequestAsync<MealChartResponseModel>(url, page: page);
             retVal = new MealChartResponseModel
             {
                 status = "success",

@@ -62,11 +62,11 @@ namespace ParentPortal.Services
             {
                 request.Headers = headers;
             }
-            //AuthorizedToken authorizedToken = await GetTokenAsync();
-            //if (authorizedToken != null)
-            //{
-            //    request.Headers.Add(ConfigSettings.Constant.HeaderKey.Authorization, string.Format("Bearer {0}", authorizedToken.Token));
-            //}
+            AuthorizedToken authorizedToken = await GetTokenAsync();
+            if (authorizedToken != null)
+            {
+                request.Headers.Add(ConfigSettings.Constant.HeaderKey.Authorization, string.Format("Bearer {0}", authorizedToken.Token));
+            }
             try
             {
                 var httpResponse = (HttpWebResponse)await request.GetResponseAsync();

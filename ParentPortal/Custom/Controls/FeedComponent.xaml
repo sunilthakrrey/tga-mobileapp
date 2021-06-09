@@ -37,7 +37,7 @@
                             <Label Text="{Binding feed.createdOn, Mode=TwoWay}"  TextColor="{DynamicResource Gray}" Style="{StaticResource lblDateWithTimeStyle}"/>
                         </StackLayout>-->
 
-                        <ffsvg:SvgCachedImage Grid.Column="1" Source="{Binding feed.type, Mode=TwoWay}" HorizontalOptions="End" Style="{StaticResource ImageForWorkTitleIconStyle}"/>
+                        <ffsvg:SvgCachedImage Grid.Column="1" Source="{Binding feed.type, Converter={StaticResource TypeToImageConverter}}" HorizontalOptions="End" Style="{StaticResource ImageForWorkTitleIconStyle}"/>
                     </Grid>
 
                     <Grid Grid.Row="2" Padding="20,0">
