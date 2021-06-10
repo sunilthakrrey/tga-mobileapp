@@ -14,6 +14,7 @@
             public static string Announcements = baseURL + "kid/latest-annoucement";
             public static string NewsFeeds = baseURL + "kid/new-feeds";
             public static string MealChart = baseURL + "kid/food";
+            public static string Poll = baseURL + "poll/getAll";
         }
     }
 }

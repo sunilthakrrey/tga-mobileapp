@@ -13,6 +13,7 @@ namespace ParentPortal.Services.TGA
         Task<AnnouncementResponseModel> GetAnnounments(string kidsIds, Enums.Page page = Enums.Page.None);
         Task<NewsFeedResponseModel> GetNewFeeedData(string kidsIds, Enums.Page page = Enums.Page.None);
         Task<MealChartResponseModel> GetMealData(string kidsIds, Enums.Page page = Enums.Page.None);
+        Task<PollResponseModel> GetPollresponse(string campus = "bexley", Enums.Page page = Enums.Page.None);
     }
     public class DashBoardService : BaseHttpService, IDashBoardService
     {
@@ -20,7 +21,7 @@ namespace ParentPortal.Services.TGA
         {
             AnnouncementResponseModel retVal;
             string url = string.Format("{0}?kidIds={1}", ConfigSettings.EndPoint.DashBoard.Announcements, kidsIds);
-               retVal = await CreateHttpGETRequestAsync<AnnouncementResponseModel>(url, page: page);
+            retVal = await CreateHttpGETRequestAsync<AnnouncementResponseModel>(url, page: page);
             //retVal = new AnnouncementResponseModel
             //{
             //    status = "200",
@@ -49,8 +50,8 @@ namespace ParentPortal.Services.TGA
         {
             var date = new System.DateTime(2021, 3, 3, 11, 30, 00);
             NewsFeedResponseModel retVal;
-            string url = string.Format("{0}?kidIds={1}&date=today&type=all", ConfigSettings.EndPoint.DashBoard.NewsFeeds, kidsIds, DateTime.UtcNow, Enums.TGA_Type.Wellness);
-            //retVal = await CreateHttpGETRequestAsync<NewsFeedResponseModel>(url, page: page);
+            string url = string.Format("{0}?kidIds={1}&date=today&type=all", ConfigSettings.EndPoint.DashBoard.NewsFeeds, kidsIds, DateTime.UtcNow.ToString("MMMM dd, yyyyy"), Enums.TGA_Type.Wellness);
+            // retVal = await CreateHttpGETRequestAsync<NewsFeedResponseModel>(url, page: page);
             retVal = new NewsFeedResponseModel
             {
                 status = "success",
@@ -99,7 +100,7 @@ namespace ParentPortal.Services.TGA
         {
             var date = new System.DateTime(2021, 3, 3, 11, 30, 00);
             MealChartResponseModel retVal;
-            string url = string.Format("{0}?kidIds={1}&date=today", ConfigSettings.EndPoint.DashBoard.MealChart, kidsIds, DateTime.UtcNow, Enums.TGA_Type.Wellness);
+            string url = string.Format("{0}?kidIds={1}&date={2}", ConfigSettings.EndPoint.DashBoard.MealChart, kidsIds, DateTime.UtcNow.ToString("MMMM dd, yyyy"));
             //  retVal = await CreateHttpGETRequestAsync<MealChartResponseModel>(url, page: page);
             retVal = new MealChartResponseModel
             {
@@ -131,6 +132,76 @@ namespace ParentPortal.Services.TGA
             return retVal;
         }
 
-       
+        public async Task<PollResponseModel> GetPollresponse(string campus = "bexley", Page page = Page.None)
+        {
+            PollResponseModel retVal;
+            string url = string.Format("{0}", ConfigSettings.EndPoint.DashBoard.Poll, campus);
+             retVal = await CreateHttpGETRequestAsync<PollResponseModel>(url, page: page);
+            //retVal = new PollResponseModel
+            //{
+            //    Status = "success",
+            //    PollDataCollection = new List<PollData>
+            //    {
+            //        new PollData
+            //        {
+            //           Question="Do you currently follow us on social media?",
+            //           id=862181,
+            //            Options= new List<PollOption>
+            //            {
+            //                new PollOption
+            //                {
+            //                  Name="Facebook",
+            //                  Id=64,
+            //                },
+            //                new PollOption
+            //                {
+            //                  Name="Instagram",
+            //                  Id=65,
+            //                },
+            //                new PollOption
+            //                {
+            //                  Name="Neither",
+            //                  Id=68,
+            //                },
+            //                new PollOption
+            //                {
+            //                  Name="Both",
+            //                  Id=73,
+            //                }
+            //            }
+            //        },
+            //        new PollData
+            //        {
+            //           Question="Do you currently follow us on social media?",
+            //           id=862182,
+            //            Options= new List<PollOption>
+            //            {
+            //                new PollOption
+            //                {
+            //                  Name="Facebook",
+            //                  Id=64,
+            //                },
+            //                new PollOption
+            //                {
+            //                  Name="Instagram",
+            //                  Id=65,
+            //                },
+            //                new PollOption
+            //                {
+            //                  Name="Neither",
+            //                  Id=68,
+            //                },
+            //                new PollOption
+            //                {
+            //                  Name="Both",
+            //                  Id=73,
+            //                }
+            //            }
+            //        }
+
+            //    }
+            //};
+            return retVal;
+        }
     }
 }

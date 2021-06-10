@@ -90,6 +90,20 @@ namespace ParentPortal.Modules.Secure.Dashboard
             }
         }
 
+        private List<PollData> _pollData = new List<PollData>();
+        public List<PollData> PollData
+        {
+            get
+            {
+                return _pollData;
+            }
+            set
+            {
+                _pollData = value;
+                OnPropertyChanged(nameof(PollData));
+            }
+        }
+
 
         private bool _isVisibleAll;
         public bool isVisibleAll
@@ -135,26 +149,40 @@ namespace ParentPortal.Modules.Secure.Dashboard
 
             //news Feeds 
             NewsFeedResponseModel responseModel = await DashBoardService.GetNewFeeedData(kidIds);
-           
-            //foreach (NewsFeedResponseData newsFeedResponseData in responseModel.data)
-            //{
-            //  newsFeedResponseData.KidDetail =  await GetKidDetailsFromStorage(newsFeedResponseData.createdById);
-            //}
             NewsFeedBoxCollectionData = responseModel.data;
 
             //get Meal Data
             MealChartResponseModel mealResponse = await DashBoardService.GetMealData(kidIds);
-            
-            //foreach (MealData data in mealResponse.data)
-            //{
-            //   data.KidDetail = await GetKidDetailsFromStorage(data.createdById);
-            //}
             MealComponentCollectionData = mealResponse.data;
-           
+
+            //get poll Data
+            PollResponseModel pollResponse = await DashBoardService.GetPollresponse();
+            PollData = pollResponse.PollDataCollection;
+
+            int i = 65;
+            foreach (var data in PollData)
+            {
+                foreach (var option in data.Options)
+                {
+                    option.optionIndex = ((char)i).ToString() + " ";
+                    i = i++;
+                }
+
+                
+            }
+
         }
         private async void FilterPopupRequest_Clicked(object sender, EventArgs e)
         {
             await PopupNavigation.Instance.PushAsync(new FilterPopup());
+        }
+
+        private async void optionSelected_Clicked(object sender, EventArgs e)
+        {
+            Frame stackLayout = (Frame)sender;
+            var item = (TapGestureRecognizer)stackLayout.GestureRecognizers[0];
+           var s = item.CommandParameter;
+            
         }
 
 
