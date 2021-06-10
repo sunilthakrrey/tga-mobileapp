@@ -23,7 +23,7 @@
 
                 <Label Grid.Row="0" Text="Welcome back" VerticalOptions="EndAndExpand" HorizontalOptions="Center" TextColor="{DynamicResource White}"  Style="{StaticResource lblAuthMainHeadingStyle}"/>
 
-                <StackLayout Grid.Row="1" VerticalOptions="End" Style="{StaticResource EmailEntryMainContainerStyle}">
+                <StackLayout Grid.Row="1" VerticalOptions="End" Style="{StaticResource EmailEntryMainContainerStyle}" Margin="0,20,0,0">
                     <StackLayout x:Name="LoginRequestModel_StackError" IsVisible="false">
 
                         <StackLayout  Orientation="Horizontal">
@@ -36,14 +36,14 @@
 
                     </StackLayout>
 
-                    <Frame BackgroundColor="{DynamicResource FeijoaLight}" HasShadow="False" Margin="0" Style="{StaticResource EntryFrameStyle}">
-                        <customControls:CustomEntry  Placeholder="Email or Username" PlaceholderColor="{DynamicResource White}" Style="{StaticResource CustomEntryStyle}" Text="{Binding LoginRequestModel.Email, Mode=TwoWay}">
+                    <Frame BackgroundColor="{DynamicResource FeijoaLight}"  HasShadow="False" Margin="0" Style="{StaticResource EntryFrameStyle}">
+                        <customControls:CustomEntry Margin="0" IsRemoveDefaultPadding="True" Placeholder="Email or Username" PlaceholderColor="{DynamicResource White}" Style="{StaticResource CustomEntryStyle}" Text="{Binding LoginRequestModel.Email, Mode=TwoWay}">
 
                         </customControls:CustomEntry>
                     </Frame>
 
                     <Frame BackgroundColor="{DynamicResource FeijoaLight}" HasShadow="False" Margin="0" Style="{StaticResource EntryFrameStyle}">
-                        <customControls:CustomEntry Placeholder="Password" PlaceholderColor="{DynamicResource White}"  Style="{StaticResource CustomEntryStyle}" Text="{Binding LoginRequestModel.Password, Mode=TwoWay}">
+                        <customControls:CustomEntry Placeholder="Password" IsRemoveDefaultPadding="True" PlaceholderColor="{DynamicResource White}"  Style="{StaticResource CustomEntryStyle}" Text="{Binding LoginRequestModel.Password, Mode=TwoWay}">
 
                         </customControls:CustomEntry>
                     </Frame>
@@ -69,7 +69,7 @@
                 </panckeview:PancakeView>
 
                 <StackLayout Grid.Row="3" Orientation="Horizontal" VerticalOptions="End" HorizontalOptions="Center" Style="{StaticResource ImageSocialIconContainerStyle}">
-                    <ffsvg:SvgCachedImage Source="facebook.svg" WidthRequest="15" Style="{StaticResource ImageSocialIconStyle}" />
+                    <ffsvg:SvgCachedImage Source="facebook.svg"  WidthRequest="15" Style="{StaticResource ImageSocialIconStyle}" />
                     <ffsvg:SvgCachedImage Source="instagram.svg"  Style="{StaticResource ImageSocialIconStyle}" />
                     <ffsvg:SvgCachedImage Source="youtube.svg"  Style="{StaticResource ImageSocialIconStyle}" />
                 </StackLayout>

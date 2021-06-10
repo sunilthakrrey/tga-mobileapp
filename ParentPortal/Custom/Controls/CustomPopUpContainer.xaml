@@ -7,7 +7,7 @@
                 <StackLayout.GestureRecognizers>
                     <PanGestureRecognizer  PanUpdated="PanGestureRecognizer_PanUpdated" />
                 </StackLayout.GestureRecognizers>
-            <panckeview:PancakeView HorizontalOptions="FillAndExpand" Padding="20,0,20,30" BackgroundColor="{DynamicResource Feijoa}" Style="{StaticResource ForgotPasswordPopupSubContainerStyle}">
+            <panckeview:PancakeView HorizontalOptions="FillAndExpand" Padding="20,0,20,30" HeightRequest="310" BackgroundColor="{DynamicResource Feijoa}" Style="{StaticResource ForgotPasswordPopupSubContainerStyle}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="20*"/>
@@ -18,7 +18,7 @@
 
                     <BoxView Grid.Row="0" CornerRadius="5" VerticalOptions="Start" HorizontalOptions="Center" BackgroundColor="{DynamicResource Mantis}" Style="{StaticResource SliderDownIconStyle}"/>
 
-                    <Label Grid.Row="1" LineHeight="1.2" HorizontalTextAlignment="Center" TextColor="{DynamicResource White}" Style="{StaticResource lblResetPasswordNotificationStyle}" Text="{Binding Message}"></Label>
+                    <Label Grid.Row="1" LineHeight="1.2" Padding="28,0" HorizontalTextAlignment="Center" TextColor="{DynamicResource White}" Style="{StaticResource lblResetPasswordNotificationStyle}" Text="{Binding Message}"></Label>
 
                     <panckeview:PancakeView Grid.Row="2" Margin="0,15,0,0" Style="{StaticResource BtnOrangeFrameStyle}">
                         <panckeview:PancakeView.Shadow>
@@ -27,7 +27,7 @@
 
                         <Button Text="Login" Command="{Binding PopUpNavigatioButtonCommand}" TextColor="{DynamicResource White}" BackgroundColor="{DynamicResource BrightSun}" Style="{StaticResource BtnLoginStyle}"/>
                     </panckeview:PancakeView>
-                    <StackLayout Grid.Row="3" Padding="10">
+                    <StackLayout Grid.Row="3" Padding="0">
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Tapped="ClosePopup_Clicked"></TapGestureRecognizer>
                         </StackLayout.GestureRecognizers>

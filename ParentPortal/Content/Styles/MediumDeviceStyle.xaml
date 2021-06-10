@@ -18,8 +18,9 @@
     <x:Double x:Key="lblExceptionMedium">34</x:Double>
     <x:Double x:Key="lblExceptionLarge">40</x:Double>
     <x:Double x:Key="lblExceptionSmall">28</x:Double>
+    <x:Double x:Key="lblExceptionXtraSmall">22</x:Double>
 
-    
+
 
     <!--Common Styles Start-->
 
@@ -29,10 +30,11 @@
     </Style>
 
     <Style x:Key="BtnOrangeStyle" TargetType="Button" BasedOn="{StaticResource CommonBtnOrangeStyle}">
-        <Setter Property="FontSize" Value="{StaticResource lblXtraLarge}"/>
+        <Setter Property="FontSize" Value="{StaticResource lblLarge}"/>
         <Setter Property="FontFamily" Value="Montserrat-Bold"/>
         <Setter Property="CornerRadius" Value="50"/>
         <Setter Property="Padding" Value="35,5"/>
+        <Setter Property="HeightRequest" Value="38"/>
     </Style>
 
     <Style x:Key="BtnOrangeFrameStyle" TargetType="panckeview:PancakeView" BasedOn="{StaticResource CommonBtnOrangeFrameStyle}">
@@ -62,7 +64,7 @@
 
     <Style x:Key="EntryFrameStyle" TargetType="Frame">
         <Setter Property="CornerRadius" Value="50"/>
-        <Setter Property="Padding" Value="15,1"/>
+        <Setter Property="Padding" Value="25,10"/>
     </Style>
 
     <Style x:Key="lblAuthClickHereStyle" TargetType="Label">
@@ -93,8 +95,10 @@
     </Style>
 
     <Style x:Key="BtnLoginStyle" TargetType="Button" BasedOn="{StaticResource BtnOrangeStyle}">
-        <Setter Property="HeightRequest" Value="45"/>
-        <Setter Property="WidthRequest" Value="159"/>
+        <Setter Property="FontSize" Value="{StaticResource lblLarge}"/>
+        <Setter Property="FontFamily" Value="Montserrat-Bold"/>
+        <Setter Property="HeightRequest" Value="38"/>
+        <Setter Property="WidthRequest" Value="140"/>
     </Style>
 
     <Style x:Key="ImageSocialIconContainerStyle" TargetType="StackLayout">
@@ -137,12 +141,13 @@
     <Style x:Key="lblResetPasswordNotificationStyle" TargetType="Label">
         <Setter Property="FontSize" Value="{StaticResource lblLarge}"/>
         <Setter Property="Margin" Value="25,0"/>
+        <Setter Property="Padding" Value="28,0"/>
         <Setter Property="FontFamily" Value="Montserrat-SemiBold"/>
     </Style>
 
     <Style x:Key="ImageCrossIconStyle" TargetType="ffsvg:SvgCachedImage">
-        <Setter Property="HeightRequest" Value="28"/>
-        <Setter Property="WidthRequest" Value="28"/>
+        <Setter Property="HeightRequest" Value="25"/>
+        <Setter Property="WidthRequest" Value="25"/>
         <Setter Property="Margin" Value="20"/>
     </Style>
 
@@ -405,6 +410,124 @@
 
 
     <!--DashboardView Style End-->
+
+
+
+    <!--SideNavPopup Page Style Begin-->
+
+    <Style x:Key="FrameSideNavStyle" TargetType="Frame">
+        <Setter Property="WidthRequest" Value="250"/>
+        <Setter Property="Padding" Value="15,30,25,20"/>
+    </Style>
+
+    <Style x:Key="GridSideNavStyle" TargetType="Grid">
+        <Setter Property="RowSpacing" Value="18"/>
+    </Style>
+
+    <Style x:Key="ImageUserProfileStyle" TargetType="ffsvg:SvgCachedImage">
+        <Setter Property="HeightRequest" Value="70"/>
+        <Setter Property="WidthRequest" Value="70"/>
+    </Style>
+
+    <Style x:Key="lblUserNameStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource lblXtraLarge}"/>
+        <Setter Property="FontFamily" Value="Montserrat-SemiBold"/>
+    </Style>
+
+    <Style x:Key="lblUserEmailStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource lblSmall}"/>
+        <Setter Property="FontFamily" Value="Montserrat-SemiBold"/>
+    </Style>
+
+    <Style x:Key="lblSideNavSubHeadingStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource lblNormal}"/>
+        <Setter Property="FontFamily" Value="Montserrat-SemiBold"/>
+    </Style>
+
+    <Style x:Key="ImageSideNavIconStyle" TargetType="ffsvg:SvgCachedImage">
+        <Setter Property="HeightRequest" Value="25"/>
+        <Setter Property="WidthRequest" Value="25"/>
+    </Style>
+
+    <Style x:Key="ImageDownArrowIconStyle" TargetType="ffsvg:SvgCachedImage">
+        <Setter Property="HeightRequest" Value="10"/>
+        <Setter Property="WidthRequest" Value="10"/>
+    </Style>
+
+
+    <!--SideNavPopup Page Style End-->
+
+
+    <!--ParentRequest All Screen Style Start-->
+
+    <Style x:Key="lblMainHeadingStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource lblExceptionXtraSmall}"/>
+        <Setter Property="FontFamily" Value="Montserrat-Bold"/>
+    </Style>
+
+    <Style x:Key="lblMediumBoldStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource lblMedium}"/>
+        <Setter Property="FontFamily" Value="Montserrat-Bold"/>
+    </Style>
+
+    <Style x:Key="lblDescription" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource lblSmall}"/>
+        <Setter Property="FontFamily" Value="Montserrat-Bold"/>
+    </Style>
+
+    <Style x:Key="PickerOfParentRequestStyle" TargetType="Picker">
+        <Setter Property="FontSize" Value="{StaticResource lblMedium}"/>
+        <Setter Property="FontFamily" Value="Montserrat-SemiBold"/>
+    </Style>
+
+    <Style x:Key="FrameForDayStyle" TargetType="panckeview:PancakeView">
+        <Setter Property="HeightRequest" Value="54"/>
+        <Setter Property="WidthRequest" Value="50"/>
+    </Style>
+
+    <Style x:Key="ImagePickerIconStyle" TargetType="ffsvg:SvgCachedImage">
+        <Setter Property="HeightRequest" Value="18"/>
+        <Setter Property="WidthRequest" Value="18"/>
+    </Style>
+
+    <Style x:Key="lblRequestDescriptionStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource lblMedium}"/>
+        <Setter Property="FontFamily" Value="Montserrat-Regular"/>
+    </Style>
+
+    <Style x:Key="BtnSubmitStyle" TargetType="Button" BasedOn="{StaticResource BtnOrangeStyle}">
+        <Setter Property="FontSize" Value="{StaticResource lblMedium}"/>
+        <Setter Property="FontFamily" Value="Montserrat-Bold"/>
+        <Setter Property="WidthRequest" Value="180"/>
+        <Setter Property="HeightRequest" Value="35"/>
+    </Style>
+
+    <Style x:Key="lblMediumSemiboldStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource lblMedium}"/>
+        <Setter Property="FontFamily" Value="Montserrat-SemiBold"/>
+    </Style>
+
+    <Style x:Key="EntryFrameParentRequestStyle" TargetType="Frame">
+        <Setter Property="CornerRadius" Value="12"/>
+        <Setter Property="Padding" Value="15,10"/>
+    </Style>
+
+    <Style x:Key="ImageStickerStyle" TargetType="ffsvg:SvgCachedImage">
+        <Setter Property="HeightRequest" Value="30"/>
+        <Setter Property="WidthRequest" Value="30"/>
+    </Style>
+
+    <Style x:Key="lblMediumRegularStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource lblMedium}"/>
+        <Setter Property="FontFamily" Value="Montserrat-Regular"/>
+    </Style>
+
+    <Style x:Key="lblLargeSemiBoldStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource lblLarge}"/>
+        <Setter Property="FontFamily" Value="Montserrat-SemiBold"/>
+    </Style>
+
+    <!--ParentRequest All Screen Style End-->
 
 
 

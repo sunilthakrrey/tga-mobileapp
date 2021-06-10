@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:customControls="clr-namespace:ParentPortal.Custom.Controls" 
+              xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+              xmlns:panckeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="ParentPortal.Modules.Secure.ParentRequest.CasualDay.CasualDayView">
+  <ContentView.Content>
+      <ScrollView>
+
+            <StackLayout Padding="25" BackgroundColor="{DynamicResource Mercury}">
+
+
+                <StackLayout>
+                    <Label Style="{StaticResource lblMainHeadingStyle}" TextColor="{DynamicResource Black}" Text="Casual Day Request"/>
+                    <Label Style="{StaticResource lblDescription}" TextColor="{DynamicResource Boulder}" Text="Please submit the below form to request for a change of attendance. You will be notified if this request is accepted."/>
+                </StackLayout>
+
+                <Grid RowSpacing="0" Margin="0,30">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Row="0" Padding="0,0,0,10" Style="{StaticResource lblMediumBoldStyle}" TextColor="{DynamicResource Black}" Text="Children "/>
+
+                    <Grid Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <StackLayout Grid.Row="0" Orientation="Horizontal">
+                            <CheckBox Color="{DynamicResource SilverChalice}"  IsChecked="{Binding LoginRequestModel.RememberMe, Mode=TwoWay}"/>
+                            <Label Text="Ria Dalmiaa (Edmondson Park)" Style="{StaticResource lblMediumSemiboldStyle}" VerticalOptions="Center" TextColor="{DynamicResource Silver}"/>
+                        </StackLayout>
+
+                        <StackLayout Grid.Row="1" Orientation="Horizontal">
+                            <CheckBox Color="{DynamicResource SilverChalice}"  IsChecked="{Binding LoginRequestModel.RememberMe, Mode=TwoWay}"/>
+                            <Label Text="Tallulah Bradford (Wollongong)" Style="{StaticResource lblMediumSemiboldStyle}" VerticalOptions="Center" TextColor="{DynamicResource Silver}"/>
+                        </StackLayout>
+
+                        <StackLayout Grid.Row="2" Orientation="Horizontal">
+                            <CheckBox Color="{DynamicResource SilverChalice}"  IsChecked="{Binding LoginRequestModel.RememberMe, Mode=TwoWay}"/>
+                            <Label Text="Tallulah Bradford (Bexley)" Style="{StaticResource lblMediumSemiboldStyle}" VerticalOptions="Center" TextColor="{DynamicResource Silver}"/>
+                        </StackLayout>
+
+                        <StackLayout Grid.Row="3" Orientation="Horizontal">
+                            <CheckBox Color="{DynamicResource SilverChalice}"  IsChecked="{Binding LoginRequestModel.RememberMe, Mode=TwoWay}"/>
+                            <Label Text="Lucas Iacovazzo (Edmondson Park)" Style="{StaticResource lblMediumSemiboldStyle}" VerticalOptions="Center" TextColor="{DynamicResource Silver}"/>
+                        </StackLayout>
+                    </Grid>
+                </Grid>
+
+
+
+
+                <StackLayout>
+                    <Label  Padding="0,0,0,10" Style="{StaticResource lblMediumBoldStyle}" TextColor="{DynamicResource Black}" Text="Commence on"/>
+
+                    <Frame BackgroundColor="{DynamicResource White}" Padding="15,0" HasShadow="False" Margin="0" Style="{StaticResource EntryFrameParentRequestStyle}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="90*"/>
+                                <ColumnDefinition Width="10*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <DatePicker Grid.Column="0"  />
+                            <ffsvg:SvgCachedImage Grid.Column="1" Source="select_date.svg" Style="{StaticResource ImagePickerIconStyle}" HorizontalOptions="Center" VerticalOptions="Center" />
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+
+                <panckeview:PancakeView  Margin="0,30" VerticalOptions="Center" Style="{StaticResource BtnOrangeFrameStyle}">
+
+                    <Button Text="Submit" FontSize="14" WidthRequest="208" TextColor="{DynamicResource White}" BackgroundColor="{DynamicResource Feijoa}" Style="{StaticResource BtnSubmitStyle}"/>
+                </panckeview:PancakeView>
+
+            </StackLayout>
+         
+      </ScrollView>
+  </ContentView.Content>
+</ContentView>

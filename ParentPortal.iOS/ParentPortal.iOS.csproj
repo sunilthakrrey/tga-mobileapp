@@ -263,4 +263,22 @@
   <ItemGroup>
     <BundleResource Include="Resources\Notifications.svg" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\select_date.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\down_arrow.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\pencil_edit.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\emoji_icon.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\right_icon.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\circular_cross.svg" />
+  </ItemGroup>
 </Project>

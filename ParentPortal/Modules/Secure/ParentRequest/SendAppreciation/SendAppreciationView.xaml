@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<shared:BaseContentView  xmlns="http://xamarin.com/schemas/2014/forms" 
+                          xmlns:shared="clr-namespace:ParentPortal.Views.Shared"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                         xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+              xmlns:panckeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="ParentPortal.Modules.Secure.ParentRequest.SendAppreciation.SendAppreciationView">
+  <ContentView.Content>
+      <ScrollView>
+
+            <StackLayout Padding="25" BackgroundColor="{DynamicResource Mercury}">
+
+                <StackLayout>
+                    <Grid ColumnSpacing="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="90*"/>
+                            <ColumnDefinition Width="10*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Grid.Column="0">
+                            <Label   Style="{StaticResource lblMainHeadingStyle}"  TextColor="{DynamicResource Black}" Text="Send Appreciation"/>
+                            <Label Style="{StaticResource lblDescription}"  TextColor="{DynamicResource Boulder}" Text="This section has been designed for parents to share any positive feedback to our educators."/>
+                        </StackLayout>
+                        <ffsvg:SvgCachedImage Grid.Column="1" Source="pencil_edit.svg" Style="{StaticResource ImageStickerStyle}" HorizontalOptions="End" VerticalOptions="Start" />
+                    </Grid>
+                </StackLayout>
+
+
+                <Grid RowSpacing="20" Margin="0,30">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    
+                    <Grid Grid.Row="0" ColumnSpacing="15">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                            <ffsvg:SvgCachedImage Grid.Column="0" Style="{StaticResource ImageStickerStyle}" VerticalOptions="Start" Source="emoji_icon.svg"/>
+
+                        <StackLayout Grid.Column="1" Spacing="0">
+                            <Label Text="Anita" TextColor="{DynamicResource Black}" Style="{StaticResource lblLargeSemiBoldStyle}"/>
+                            <Label  Style="{StaticResource lblMediumRegularStyle}" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Diam id maecenas quis congue."/>
+                        </StackLayout>
+                    </Grid>
+
+                    <Grid Grid.Row="1" ColumnSpacing="15">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <ffsvg:SvgCachedImage Grid.Column="0" Style="{StaticResource ImageStickerStyle}" VerticalOptions="Start" Source="emoji_icon.svg"/>
+
+                        <StackLayout Grid.Column="1" Spacing="0">
+                            <Label Text="Lauren" TextColor="{DynamicResource Black}" Style="{StaticResource lblLargeSemiBoldStyle}"/>
+                            <Label  Style="{StaticResource lblMediumRegularStyle}" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Diam id maecenas quis congue."/>
+                        </StackLayout>
+                    </Grid>
+
+                    <Grid Grid.Row="2" ColumnSpacing="15">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <ffsvg:SvgCachedImage Grid.Column="0" Style="{StaticResource ImageStickerStyle}" VerticalOptions="Start" Source="emoji_icon.svg"/>
+
+                        <StackLayout Grid.Column="1" Spacing="0">
+                            <Label Text="Tom" TextColor="{DynamicResource Black}" Style="{StaticResource lblLargeSemiBoldStyle}"/>
+                            <Label  Style="{StaticResource lblMediumRegularStyle}" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Diam id maecenas quis congue."/>
+                        </StackLayout>
+                    </Grid>
+
+                    <Grid Grid.Row="3" ColumnSpacing="15">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <ffsvg:SvgCachedImage Grid.Column="0" Style="{StaticResource ImageStickerStyle}" VerticalOptions="Start" Source="emoji_icon.svg"/>
+
+                        <StackLayout Grid.Column="1" Spacing="0">
+                            <Label Text="Richie" TextColor="{DynamicResource Black}" Style="{StaticResource lblLargeSemiBoldStyle}"/>
+                            <Label  Style="{StaticResource lblMediumRegularStyle}" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Diam id maecenas quis congue."/>
+                        </StackLayout>
+                    </Grid>
+
+                </Grid>
+
+            </StackLayout>
+          
+      </ScrollView>
+  </ContentView.Content>
+</shared:BaseContentView>
