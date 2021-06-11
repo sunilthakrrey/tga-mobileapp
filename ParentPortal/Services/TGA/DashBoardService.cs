@@ -13,7 +13,7 @@ namespace ParentPortal.Services.TGA
         Task<AnnouncementResponseModel> GetAnnounments(string kidsIds, Enums.Page page = Enums.Page.None);
         Task<NewsFeedResponseModel> GetNewFeeedData(string kidsIds, Enums.Page page = Enums.Page.None);
         Task<MealChartResponseModel> GetMealData(string kidsIds, Enums.Page page = Enums.Page.None);
-        Task<PollResponseModel> GetPollresponse(string campus = "bexley", Enums.Page page = Enums.Page.None);
+        Task<PollResponseModel> GetPollresponse(int campusId, int parentId, Page page = Page.None);
     }
     public class DashBoardService : BaseHttpService, IDashBoardService
     {
@@ -132,10 +132,10 @@ namespace ParentPortal.Services.TGA
             return retVal;
         }
 
-        public async Task<PollResponseModel> GetPollresponse(string campus = "bexley", Page page = Page.None)
+        public async Task<PollResponseModel> GetPollresponse(int campusId,int parentId, Page page = Page.None)
         {
             PollResponseModel retVal;
-            string url = string.Format("{0}", ConfigSettings.EndPoint.DashBoard.Poll, campus);
+            string url = string.Format("{0}?campusId={1}&parentId={2}", ConfigSettings.EndPoint.DashBoard.Poll, campusId,parentId);
              retVal = await CreateHttpGETRequestAsync<PollResponseModel>(url, page: page);
             //retVal = new PollResponseModel
             //{
@@ -168,7 +168,8 @@ namespace ParentPortal.Services.TGA
             //                  Name="Both",
             //                  Id=73,
             //                }
-            //            }
+            //            },
+            //            Selected="Neither"
             //        },
             //        new PollData
             //        {
@@ -196,7 +197,8 @@ namespace ParentPortal.Services.TGA
             //                  Name="Both",
             //                  Id=73,
             //                }
-            //            }
+            //            },
+            //            Selected="Both"
             //        }
 
             //    }

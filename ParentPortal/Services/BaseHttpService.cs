@@ -73,7 +73,7 @@ namespace ParentPortal.Services
                 using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
                 {
                     var result = streamReader.ReadToEnd();
-                    obj = JsonConvert.DeserializeObject<T>(result);
+                      obj = JsonConvert.DeserializeObject<T>(result);
                 }
             }
             catch (WebException ex)

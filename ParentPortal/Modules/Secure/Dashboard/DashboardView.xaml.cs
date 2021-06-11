@@ -1,5 +1,4 @@
 ﻿using ParentPortal.Contracts.Responses;
-using ParentPortal.Enums;
 using ParentPortal.Models;
 using ParentPortal.Services.TGA;
 using ParentPortal.Views.Shared;
@@ -7,7 +6,6 @@ using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -45,7 +43,6 @@ namespace ParentPortal.Modules.Secure.Dashboard
                 OnPropertyChanged(nameof(AnnouncementResponseModel));
             }
         }
-
 
         private Data _parentkidsDetails;
         public Data ParentkidsDetails
@@ -121,6 +118,8 @@ namespace ParentPortal.Modules.Secure.Dashboard
         }
 
 
+
+
         #endregion
 
         private async void ConfigureSource()
@@ -136,7 +135,6 @@ namespace ParentPortal.Modules.Secure.Dashboard
             GetDashBoardData(str);
             isVisibleAll = ParentkidsDetails.parent.kids.Count > 1;
         }
-
 
         private async void GetDashBoardData(string kidIds)
         {
@@ -156,20 +154,22 @@ namespace ParentPortal.Modules.Secure.Dashboard
             MealComponentCollectionData = mealResponse.data;
 
             //get poll Data
-            PollResponseModel pollResponse = await DashBoardService.GetPollresponse();
+            PollResponseModel pollResponse = await DashBoardService.GetPollresponse(607667, ParentkidsDetails.parent.id);
             PollData = pollResponse.PollDataCollection;
 
-            int i = 65;
-            foreach (var data in PollData)
-            {
-                foreach (var option in data.Options)
-                {
-                    option.optionIndex = ((char)i).ToString() + " ";
-                    i = i++;
-                }
-
-                
-            }
+            //int i = 65;
+            //foreach (var data in PollData)
+            //{
+            //    foreach (var option in data.Options)
+            //    {
+            //        option.optionIndex = ((char)i).ToString() + " ";
+            //        if(data.Selected == option.Name)
+            //        {
+            //            option.IsSelected = true;
+            //        }
+            //        i = i++;
+            //    }
+            //}
 
         }
         private async void FilterPopupRequest_Clicked(object sender, EventArgs e)
@@ -179,10 +179,17 @@ namespace ParentPortal.Modules.Secure.Dashboard
 
         private async void optionSelected_Clicked(object sender, EventArgs e)
         {
-            Frame stackLayout = (Frame)sender;
-            var item = (TapGestureRecognizer)stackLayout.GestureRecognizers[0];
-           var s = item.CommandParameter;
-            
+            Frame optionFrame = (Frame)sender;
+            var item = (TapGestureRecognizer)optionFrame.GestureRecognizers[0];
+            object[] parameters = (object[])item.CommandParameter;
+            PollData pollData = (PollData)parameters[0];
+            if (pollData.IsAnswerSubmitted == false)
+            {
+                int optionValue = (int)parameters[1];
+                PollOption selectedOption = pollData.Options.Where(x => x.Value == optionValue).FirstOrDefault();
+                if (!selectedOption.IsSelected)
+                    selectedOption.IsSelected = true;
+            }
         }
 
 

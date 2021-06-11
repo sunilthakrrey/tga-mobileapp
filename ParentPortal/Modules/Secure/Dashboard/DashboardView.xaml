@@ -10,24 +10,8 @@
                         x:Class="ParentPortal.Modules.Secure.Dashboard.DashboardView">
     <ContentView.Resources>
         <converters:MultiValueConverter x:Key="multivalueconverter"></converters:MultiValueConverter>
-        <Style TargetType="Frame" x:Name="framestyled">
-            <Setter Property="VisualStateManager.VisualStateGroups">
-                <VisualStateGroupList>
-                    <VisualStateGroup>
-                        <VisualState x:Name="Selected">
-                            <VisualState.Setters>
-                                <Setter Property="BackgroundColor" Value="Orange" />
-                            </VisualState.Setters>
-                        </VisualState>
-                        <VisualState x:Name="UnSelected">
-                            <VisualState.Setters>
-                                <Setter Property="BackgroundColor" Value="White" />
-                            </VisualState.Setters>
-                        </VisualState>
-                    </VisualStateGroup>
-                </VisualStateGroupList>
-            </Setter>
-        </Style>
+        <converters:BooleanToReverseConverter x:Key="boolToreverseconverter"></converters:BooleanToReverseConverter>
+       
     </ContentView.Resources>
     <ContentView.Content>
         <ScrollView>
@@ -66,6 +50,7 @@
                         <StackLayout Orientation="Horizontal" BindableLayout.ItemsSource="{Binding ParentkidsDetails.parent.kids, Mode=TwoWay}">
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate>
+
                                     <customControls:UserInfo  IsNameDisplay="false" ImageSize="Medium"  UserId="{Binding Id}" ></customControls:UserInfo>
                                     <!--<customControls:IndividualFrameComponent BindingContext="{Binding .}"></customControls:IndividualFrameComponent>-->
                                 </DataTemplate>
@@ -188,11 +173,11 @@
                 <!--poll card-->
 
 
-                <StackLayout  x:Name="carsouel"  Grid.Row="6" 
+                <StackLayout    Grid.Row="6" 
                       BindableLayout.ItemsSource="{Binding PollData,Mode=TwoWay}">
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
-                            <panckeview:PancakeView BindingContext="{Binding .}"  x:Name="pancake"  VerticalOptions="Center" Padding="0" BackgroundColor="{DynamicResource White}" Style="{StaticResource OptionsMainContainerStyle}">
+                            <panckeview:PancakeView BindingContext="{Binding .}"   x:Name="pancake"  VerticalOptions="Center" Padding="0" BackgroundColor="{DynamicResource White}" Style="{StaticResource OptionsMainContainerStyle}">
                                 <panckeview:PancakeView.Shadow>
                                     <panckeview:DropShadow BlurRadius="10" Opacity="0.9"    Color="Black" Offset="20,20" />
                                 </panckeview:PancakeView.Shadow>
@@ -206,7 +191,7 @@
                                         <Label Text="{Binding Question}" TextColor="{DynamicResource White}" Style="{StaticResource lblMealTitleStyle}"/>
                                     </Grid>
 
-                                    <Grid Grid.Row="1" Style="{StaticResource AllOptionsSubContainerStyle}">
+                                    <Grid  Grid.Row="1" Style="{StaticResource AllOptionsSubContainerStyle}">
                                         <!--<Grid.RowDefinitions>
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
@@ -216,20 +201,20 @@
                                            
                                             <BindableLayout.ItemTemplate>
                                                 <DataTemplate>
-                                                    <Frame  HasShadow="False" BorderColor="{DynamicResource Gray}" Style="{StaticResource lblOptionsTitleMainContainerStyle}">
+                                                    <Frame  x:Name="optionFrame" BackgroundColor="{Binding BackgroundColor,Mode=TwoWay}"  HasShadow="False" BorderColor="{DynamicResource Gray}" Style="{StaticResource lblOptionsTitleMainContainerStyle}">
                                                         <Frame.GestureRecognizers>
-                                                            <TapGestureRecognizer Tapped="optionSelected_Clicked">
+                                                            <TapGestureRecognizer  Tapped="optionSelected_Clicked">
                                                                 <TapGestureRecognizer.CommandParameter>
                                                                     <MultiBinding Converter="{StaticResource multivalueconverter}">
                                                                         <Binding Source="{x:Reference pancake}" Path="BindingContext" />
-                                                                        <Binding Path="Id"/>
+                                                                        <Binding Path="Value"/>
                                                                     </MultiBinding>
                                                                 </TapGestureRecognizer.CommandParameter>
                                                             </TapGestureRecognizer>
                                                         </Frame.GestureRecognizers>
-                                                        <StackLayout Orientation="Horizontal" Style="{StaticResource lblOptionsTitleContainerStyle}">
-                                                            <Frame BorderColor="{DynamicResource Gray}" Style="{StaticResource lblOptionsCircleStyle}">
-                                                                <Label Text="A" TextColor="{DynamicResource Gray}" Style="{StaticResource lblOptionsNoStyle}"/>
+                                                        <StackLayout  Orientation="Horizontal" Style="{StaticResource lblOptionsTitleContainerStyle}">
+                                                            <Frame BackgroundColor="{Binding BackgroundColor,Mode=TwoWay}" BorderColor="{DynamicResource Gray}" Style="{StaticResource lblOptionsCircleStyle}">
+                                                                <Label Text="A"  TextColor="{DynamicResource Gray}" Style="{StaticResource lblOptionsNoStyle}"/>
                                                             </Frame>
                                                             <Label Text="{Binding Name}" VerticalOptions="Center" TextColor="{DynamicResource Gray}" Style="{StaticResource lblOptionsTitleStyle}"/>
                                                         </StackLayout>
