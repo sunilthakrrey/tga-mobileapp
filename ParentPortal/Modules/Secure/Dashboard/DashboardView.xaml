@@ -34,11 +34,14 @@
 
                     <StackLayout Grid.Column="0" Spacing="0">
                         <Label Text="{Binding Source={x:Static sys:DateTime.Now}, StringFormat='{}{0:ddd dd MMM}'}" TextTransform="Uppercase" TextColor="{DynamicResource Feijoa}" Style="{StaticResource lblForDateStyle}"/>
-                        <Label Text="{Binding ParentkidsDetails.parent.name,Mode=TwoWay}" TextColor="{DynamicResource Black}" Style="{StaticResource lblGreetingStyle}"/>
+                        <Label Text="{Binding ParentkidsDetails.name,Mode=TwoWay}" TextColor="{DynamicResource Black}" Style="{StaticResource lblGreetingStyle}"/>
                     </StackLayout>
 
                     <StackLayout Grid.Column="1" Orientation="Horizontal" HorizontalOptions="End">
                         <Frame IsVisible="{Binding isVisibleAll}" BackgroundColor="{DynamicResource SilverChalice}" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource lblForAllLabelContainerStyle}">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="selectAllKids_Tapped"/>
+                            </Frame.GestureRecognizers>
                             <Label Text="All" VerticalOptions="Center" TextColor="{DynamicResource White}" Style="{StaticResource lblForAllLabelStyle}"/>
                         </Frame>
                         <!--<Frame BorderColor="{DynamicResource Feijoa}" Style="{StaticResource ImageUserCircleStyle}">
@@ -47,11 +50,16 @@
                         <Frame BorderColor="{DynamicResource Feijoa}" Style="{StaticResource ImageUserCircleStyle}">
                             <ffsvg:SvgCachedImage Source="user_s.svg" Style="{StaticResource ImageUserPicStyle}"/>
                         </Frame>-->
-                        <StackLayout Orientation="Horizontal" BindableLayout.ItemsSource="{Binding ParentkidsDetails.parent.kids, Mode=TwoWay}">
+                        <StackLayout Orientation="Horizontal"  BindableLayout.ItemsSource="{Binding ParentkidsDetails.kids, Mode=TwoWay}">
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate>
-
-                                    <customControls:UserInfo  IsNameDisplay="false" ImageSize="Medium"  UserId="{Binding Id}" ></customControls:UserInfo>
+                                    <StackLayout>
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="kidselection_changed" CommandParameter="{Binding Id}"/>
+                                        </StackLayout.GestureRecognizers>
+                                        <customControls:UserInfo  IsNameDisplay="false" ImageSize="Medium"  UserId="{Binding Id}" ></customControls:UserInfo>
+                                    </StackLayout>
+                                    
                                     <!--<customControls:IndividualFrameComponent BindingContext="{Binding .}"></customControls:IndividualFrameComponent>-->
                                 </DataTemplate>
                             </BindableLayout.ItemTemplate>
@@ -101,7 +109,7 @@
 
                 </Grid>
 
-                <Grid Grid.Row="2" Margin="0,20,0,30">
+                <Grid x:Name="GridAnnouncement" Grid.Row="2" Margin="0,20,0,30">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>

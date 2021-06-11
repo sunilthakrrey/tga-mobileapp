@@ -176,8 +176,8 @@ namespace ParentPortal.Custom.Controls
         public static async Task<KidDetail> GetKidDetailsFromStorage(int kidId)
         {
             SecureStorageService secureStorageService = new SecureStorageService();
-            Data userInfo = await secureStorageService.GetAsync<Data>(Enums.SecureStorageKey.AuthorizedUserInfo);
-            KidDetail kidDetail = userInfo.parent.kids.Where(x => x.Id == kidId).FirstOrDefault();
+            Parent userInfo = await secureStorageService.GetAsync<Parent>(Enums.SecureStorageKey.AuthorizedUserInfo);
+            KidDetail kidDetail = userInfo.kids.Where(x => x.Id == kidId).FirstOrDefault();
             return kidDetail;
         }
     }

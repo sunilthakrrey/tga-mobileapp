@@ -6,10 +6,10 @@ using System.Collections.Generic;
 
 namespace ParentPortal.Contracts.Responses
 {
-    public class AnnouncementResponseModel
+    public class AnnouncementResponseModel:BaseMultipleRecordResponse<AnnouncementData>
     {
-        public string status { get; set; }
-        public  List<AnnouncementData> data { get; set; }
+        //public string status { get; set; }
+        //public  List<AnnouncementData> data { get; set; }
     }
     public class AnnouncementData
     {

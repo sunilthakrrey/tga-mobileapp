@@ -40,25 +40,24 @@ namespace ParentPortal.Views.Shared
             {
                 new FilterModel
                 {
-                    Name="Room",
+                    Name="Date",
                     Options = new List<string>
                     {
                        "All",
-                       "Adventures Room","Explorers Rooms"
-                       ,"Voygers 2-3",
-                       "Achievers rom",
-                        "Explorers 0-2"
+                       "Last Week","Today"
+                       ,"Last Month",
+                       "Yesterday"
                     }
                 },
                  new FilterModel
                 {
-                    Name="Campus",
+                    Name="Type",
                     Options = new List<string>
                     {
                        "All",
-                       "Bexely","Woolongongs"
-                       ,"Edmondson Park",
-                       "Mount Annan"
+                       "Daily Chart","Event"
+                       ,"Wellness",
+                       "Announcement"
                     }
                 }
             };
@@ -101,6 +100,12 @@ namespace ParentPortal.Views.Shared
                     }
                     break;
             }
+        }
+
+      
+        void onSelection_Changed(System.Object sender, Xamarin.Forms.SelectionChangedEventArgs e)
+        {
+           
         }
 
         #endregion

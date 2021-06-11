@@ -6,6 +6,7 @@ using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -26,7 +27,7 @@ namespace ParentPortal.Modules.Secure.Dashboard
             BindingContext = this;
             ConfigureSource();
         }
-
+     
         #region Properties
 
         private AnnouncementData _announcementResponseModel;
@@ -44,8 +45,8 @@ namespace ParentPortal.Modules.Secure.Dashboard
             }
         }
 
-        private Data _parentkidsDetails;
-        public Data ParentkidsDetails
+        private Parent _parentkidsDetails;
+        public Parent ParentkidsDetails
         {
             get
             {
@@ -127,35 +128,32 @@ namespace ParentPortal.Modules.Secure.Dashboard
             //get selected kid , first time we will continue with  Announcements
             List<KidDetail> selectedkid = await SecureStorage.GetAsync<List<KidDetail>>(Enums.SecureStorageKey.SelectedKids);
 
-            //api call for announcements
-
             //gets ids in form of string
-            int[] kidsIds = selectedkid.Select(x => x.Id).ToArray();
-            var str = String.Join(",", kidsIds);
-            GetDashBoardData(str);
-            isVisibleAll = ParentkidsDetails.parent.kids.Count > 1;
+            string kidIds = GetKidsIsAsString(selectedkid);
+            GetDashBoardData(kidIds);
+            isVisibleAll = ParentkidsDetails.kids.Count > 1;
         }
 
         private async void GetDashBoardData(string kidIds)
         {
             //Load Parent And Kid detail From Storage(saved at time of login)
-            ParentkidsDetails = await SecureStorage.GetAsync<Data>(Enums.SecureStorageKey.AuthorizedUserInfo);
+            ParentkidsDetails = await SecureStorage.GetAsync<Parent>(Enums.SecureStorageKey.AuthorizedUserInfo);
 
-            //announcements
-            AnnouncementResponseModel announcements = await DashBoardService.GetAnnounments(kidIds);
-            AnnouncementResponseModel = announcements.data.OrderByDescending(x => x.date).FirstOrDefault();
+            await GetAnnouncement(kidIds);
 
-            //news Feeds 
-            NewsFeedResponseModel responseModel = await DashBoardService.GetNewFeeedData(kidIds);
-            NewsFeedBoxCollectionData = responseModel.data;
+            await GetNewFeeds(kidIds);
 
-            //get Meal Data
-            MealChartResponseModel mealResponse = await DashBoardService.GetMealData(kidIds);
-            MealComponentCollectionData = mealResponse.data;
+            await GetMealChart(kidIds);
 
+            await GetPollings(ParentkidsDetails.id, 607667);
+
+        }
+
+        private async Task GetPollings(int parentId, int campusId)
+        {
             //get poll Data
-            PollResponseModel pollResponse = await DashBoardService.GetPollresponse(607667, ParentkidsDetails.parent.id);
-            PollData = pollResponse.PollDataCollection;
+            PollResponseModel pollResponse = await DashBoardService.GetPollresponse(campusId, parentId);
+            PollData = pollResponse.data;
 
             //int i = 65;
             //foreach (var data in PollData)
@@ -170,8 +168,31 @@ namespace ParentPortal.Modules.Secure.Dashboard
             //        i = i++;
             //    }
             //}
-
         }
+
+        private async Task GetMealChart(string kidIds)
+        {
+            //get Meal Data
+            MealChartResponseModel mealResponse = await DashBoardService.GetMealData(kidIds);
+            MealComponentCollectionData = mealResponse.data;
+        }
+
+        private async Task GetNewFeeds(string kidIds)
+        {
+            //news Feeds 
+            NewsFeedResponseModel responseModel = await DashBoardService.GetNewFeeedData(kidIds);
+            NewsFeedBoxCollectionData = responseModel.data;
+        }
+
+        private async Task GetAnnouncement(string kidIds)
+        {
+            //announcements
+            AnnouncementResponseModel retVal = await DashBoardService.GetAnnounments(kidIds);
+            GridAnnouncement.IsVisible = retVal.IsRecordExist;
+
+            AnnouncementResponseModel = retVal.data?.OrderByDescending(x => x.date).FirstOrDefault();
+        }
+
         private async void FilterPopupRequest_Clicked(object sender, EventArgs e)
         {
             await PopupNavigation.Instance.PushAsync(new FilterPopup());
@@ -189,7 +210,26 @@ namespace ParentPortal.Modules.Secure.Dashboard
                 PollOption selectedOption = pollData.Options.Where(x => x.Value == optionValue).FirstOrDefault();
                 if (!selectedOption.IsSelected)
                     selectedOption.IsSelected = true;
+              PollResponseModel pollResponseModel=   await DashBoardService.AddPoll(pollId: Convert.ToInt32(pollData.id), parentId: ParentkidsDetails.id, selectedOption.Name);
             }
+        }
+        private string GetKidsIsAsString(List<KidDetail> selectedkid)
+        {
+            int[] kidsIds = selectedkid.Select(x => x.Id).ToArray();
+            return String.Join(",", kidsIds);
+        }
+        private void kidselection_changed(object sender, EventArgs e)
+        {
+            StackLayout stackLayout = (StackLayout)sender;
+            var gestureRecognizer = (TapGestureRecognizer)stackLayout.GestureRecognizers[0];
+            int kidId = (int)gestureRecognizer.CommandParameter;
+            GetDashBoardData(kidId.ToString());
+        }
+
+        private void selectAllKids_Tapped(object sender,EventArgs e)
+        {
+            string kidIds =  GetKidsIsAsString(ParentkidsDetails.kids);
+            GetDashBoardData(kidIds);
         }
 
 

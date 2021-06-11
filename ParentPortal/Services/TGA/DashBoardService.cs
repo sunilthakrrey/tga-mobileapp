@@ -11,7 +11,7 @@ namespace ParentPortal.Services.TGA
     public interface IDashBoardService
     {
         Task<AnnouncementResponseModel> GetAnnounments(string kidsIds, Enums.Page page = Enums.Page.None);
-        Task<NewsFeedResponseModel> GetNewFeeedData(string kidsIds, Enums.Page page = Enums.Page.None);
+        Task<NewsFeedResponseModel> GetNewFeeedData(string kidsIds, string date = "anytime", string type = "all", Page page = Page.None);
         Task<MealChartResponseModel> GetMealData(string kidsIds, Enums.Page page = Enums.Page.None);
         Task<PollResponseModel> GetPollresponse(int campusId, int parentId, Page page = Page.None);
     }
@@ -46,12 +46,13 @@ namespace ParentPortal.Services.TGA
             return retVal;
         }
 
-        public async Task<NewsFeedResponseModel> GetNewFeeedData(string kidsIds, Page page = Page.None)
+        public async Task<NewsFeedResponseModel> GetNewFeeedData(string kidsIds,string date ="anytime", string type = "all", Page page = Page.None)
         {
-            var date = new System.DateTime(2021, 3, 3, 11, 30, 00);
+         
             NewsFeedResponseModel retVal;
-            string url = string.Format("{0}?kidIds={1}&date=today&type=all", ConfigSettings.EndPoint.DashBoard.NewsFeeds, kidsIds, DateTime.UtcNow.ToString("MMMM dd, yyyyy"), Enums.TGA_Type.Wellness);
+           // string url = string.Format("{0}?kidIds={1}&date={2}&type={3}", ConfigSettings.EndPoint.DashBoard.NewsFeeds, kidsIds, date, type);
             // retVal = await CreateHttpGETRequestAsync<NewsFeedResponseModel>(url, page: page);
+            var createondate = new System.DateTime(2021, 3, 3, 11, 30, 00);
             retVal = new NewsFeedResponseModel
             {
                 status = "success",
@@ -63,7 +64,7 @@ namespace ParentPortal.Services.TGA
                         feed= new NewsFeed
                         {
                            imageUrl = "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
-                           createdOn= date.ToString("dd MMMM yyyy, hh:mm"),
+                           createdOn= createondate.ToString("dd MMMM yyyy, hh:mm"),
                            title = "WaterPlay In The Yard",
                            description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Porta egestas aenean viverra molestie non.",
                            type = Enums.TGA_Type.Wellness,
@@ -80,7 +81,7 @@ namespace ParentPortal.Services.TGA
                         feed= new NewsFeed
                         {
                            imageUrl = "https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg",
-                           createdOn= date.ToString("dd MMMM yyyy, hh:mm"),
+                           createdOn= createondate.ToString("dd MMMM yyyy, hh:mm"),
                            title = "Yoga With Gina",
                            description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Porta egestas aenean viverra molestie non.",
                            type = Enums.TGA_Type.Event,
@@ -135,7 +136,7 @@ namespace ParentPortal.Services.TGA
         public async Task<PollResponseModel> GetPollresponse(int campusId,int parentId, Page page = Page.None)
         {
             PollResponseModel retVal;
-            string url = string.Format("{0}?campusId={1}&parentId={2}", ConfigSettings.EndPoint.DashBoard.Poll, campusId,parentId);
+            string url = string.Format("{0}?campusId={1}&parentId={2}", ConfigSettings.EndPoint.DashBoard.GetPoll, campusId,parentId);
              retVal = await CreateHttpGETRequestAsync<PollResponseModel>(url, page: page);
             //retVal = new PollResponseModel
             //{
@@ -203,6 +204,14 @@ namespace ParentPortal.Services.TGA
 
             //    }
             //};
+            return retVal;
+        }
+
+        public async Task<PollResponseModel> AddPoll(int pollId, int parentId, string selectedOption, Page page = Page.None)
+        {
+            PollResponseModel retVal;
+            string url = string.Format("{0}?pollId={1}&parentId={2}&selected={3}", ConfigSettings.EndPoint.DashBoard.AddPoll, pollId, parentId,selectedOption);
+            retVal = await CreatHttpPOSTRequestAsync<PollResponseModel>(url, page: page);
             return retVal;
         }
     }

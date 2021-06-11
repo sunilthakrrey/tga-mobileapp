@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace ParentPortal.Contracts.Responses
 {
-    public class NewsFeedResponseModel
+    public class NewsFeedResponseModel:BaseMultipleRecordResponse<NewsFeedResponseData>
     {
-        public string status { get; set; }
-        public List<NewsFeedResponseData> data { get; set; }
+        //public string status { get; set; }
+        //public List<NewsFeedResponseData> data { get; set; }
     }
     public class NewsFeedResponseData
     {

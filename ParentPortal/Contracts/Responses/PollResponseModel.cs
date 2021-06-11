@@ -8,12 +8,9 @@ using Xamarin.Forms;
 using System.Linq;
 namespace ParentPortal.Contracts.Responses
 {
-    public class PollResponseModel
+    public class PollResponseModel:BaseMultipleRecordResponse<PollData>
     {
-        [JsonProperty("status")]
-        public string Status { get; set; }
-        [JsonProperty("data")]
-        public List<PollData> PollDataCollection { get; set; }
+       
     }
     public class PollData
     {

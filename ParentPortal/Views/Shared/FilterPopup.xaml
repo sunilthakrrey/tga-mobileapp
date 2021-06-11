@@ -19,6 +19,7 @@
     </pages:PopupPage.Animation>
 
     <StackLayout  x:Name="RecordPlayFrame" VerticalOptions="End" BackgroundColor="{DynamicResource Transparent}" >
+        
         <StackLayout.GestureRecognizers>
             <PanGestureRecognizer  PanUpdated="PanGestureRecognizer_PanUpdated" />
         </StackLayout.GestureRecognizers>
@@ -32,22 +33,23 @@
                 </Grid.RowDefinitions>
 
                 <BoxView Grid.Row="0" CornerRadius="5" VerticalOptions="Start" HorizontalOptions="Center" BackgroundColor="{DynamicResource Mantis}" Style="{StaticResource SliderDownIconStyle}"/>
-                <CollectionView HeightRequest="40"  BackgroundColor="#A0D083" Grid.Row="1" ItemsSource="{Binding Filters}">
-                    <CollectionView.ItemsLayout>
+                <StackLayout HeightRequest="40"  BackgroundColor="#A0D083" Grid.Row="1" BindableLayout.ItemsSource="{Binding Filters, Mode=TwoWay}">
+                    <!--<CollectionView.ItemsLayout>
                         <LinearItemsLayout Orientation="Vertical" ItemSpacing="30" />
-                    </CollectionView.ItemsLayout>
-                    <CollectionView.ItemTemplate >
+                    </CollectionView.ItemsLayout>-->
+                    <BindableLayout.ItemTemplate >
                       
                         <DataTemplate>
                             <Frame CornerRadius="10" BackgroundColor="White">
                                 <StackLayout>
                                     <Label Text="{Binding Name, StringFormat='Filter by {0}'}"></Label>
 
-                                    <CollectionView HeightRequest="100" ItemsSource="{Binding Options}" ItemsLayout="VerticalGrid, 2">
+                                    <CollectionView SelectionChanged="onSelection_Changed" SelectionMode="Single" HeightRequest="100" ItemsSource="{Binding Options}" ItemsLayout="VerticalGrid, 2">
                                         
                                         <CollectionView.ItemTemplate>
                                         <DataTemplate>
-                                            <RadioButton Content="{Binding .}"></RadioButton>
+                                                    <RadioButton Content="{Binding ., Mode=TwoWay}"></RadioButton>
+                                            
                                         </DataTemplate>
                                     </CollectionView.ItemTemplate>
                                    
@@ -55,8 +57,8 @@
                                 </StackLayout>
                             </Frame>
                         </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
                 <StackLayout Grid.Row="2" Padding="10">
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer Tapped="ClosePopup_Clicked"></TapGestureRecognizer>

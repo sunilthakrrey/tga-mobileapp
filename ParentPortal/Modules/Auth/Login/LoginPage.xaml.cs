@@ -70,7 +70,7 @@ namespace ParentPortal.Modules.Auth.Login
             await secureStorageService.SaveAsync(SecureStorageKey.AuthorizedToken, new AuthorizedToken { Token = loginResponseModel.token, RefreshToken = loginResponseModel.refreshToken });
 
             //  save user info into storage
-            bool isAuthorizedInfoSaved = await secureStorageService.SaveAsync(SecureStorageKey.AuthorizedUserInfo, loginResponseModel.data);
+            bool isAuthorizedInfoSaved = await secureStorageService.SaveAsync(SecureStorageKey.AuthorizedUserInfo, loginResponseModel.data.parent);
 
             //save SelectedKid in Storage
 

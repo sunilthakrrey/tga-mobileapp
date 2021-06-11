@@ -7,10 +7,10 @@ using System.Text;
 
 namespace ParentPortal.Contracts.Responses
 {
-    public class MealChartResponseModel
+    public class MealChartResponseModel : BaseMultipleRecordResponse<MealChartData>
     {
-        public string status { get; set; }
-        public List<MealChartData> data { get; set; }
+        //public string status { get; set; }
+        //public List<MealChartData> data { get; set; }
     }
     public class MealChartData
     {
