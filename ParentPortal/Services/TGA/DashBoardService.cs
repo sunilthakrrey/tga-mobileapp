@@ -10,14 +10,14 @@ namespace ParentPortal.Services.TGA
 
     public interface IDashBoardService
     {
-        Task<AnnouncementResponseModel> GetAnnounments(string kidsIds, Enums.Page page = Enums.Page.None);
-        Task<NewsFeedResponseModel> GetNewFeeedData(string kidsIds, string date = "anytime", string type = "all", Page page = Page.None);
-        Task<MealChartResponseModel> GetMealData(string kidsIds, Enums.Page page = Enums.Page.None);
-        Task<PollResponseModel> GetPollresponse(int campusId, int parentId, Page page = Page.None);
+        Task<AnnouncementResponseModel> GetAnnounments(string kidsIds, Enums.Views page = Enums.Views.None);
+        Task<NewsFeedResponseModel> GetNewFeeedData(string kidsIds, string date = "anytime", string type = "all", Enums.Views page = Enums.Views.None);
+        Task<MealChartResponseModel> GetMealData(string kidsIds, Enums.Views page = Enums.Views.None);
+        Task<PollResponseModel> GetPollresponse(int campusId, int parentId, Enums.Views page = Enums.Views.None);
     }
     public class DashBoardService : BaseHttpService, IDashBoardService
     {
-        public async Task<AnnouncementResponseModel> GetAnnounments(string kidsIds, Page page = Page.None)
+        public async Task<AnnouncementResponseModel> GetAnnounments(string kidsIds, Enums.Views page = Enums.Views.None)
         {
             AnnouncementResponseModel retVal;
             string url = string.Format("{0}?kidIds={1}", ConfigSettings.EndPoint.DashBoard.Announcements, kidsIds);
@@ -46,7 +46,7 @@ namespace ParentPortal.Services.TGA
             return retVal;
         }
 
-        public async Task<NewsFeedResponseModel> GetNewFeeedData(string kidsIds,string date ="anytime", string type = "all", Page page = Page.None)
+        public async Task<NewsFeedResponseModel> GetNewFeeedData(string kidsIds,string date ="anytime", string type = "all", Enums.Views page = Enums.Views.None)
         {
          
             NewsFeedResponseModel retVal;
@@ -97,7 +97,7 @@ namespace ParentPortal.Services.TGA
             return retVal;
         }
 
-        public async Task<MealChartResponseModel> GetMealData(string kidsIds, Page page = Page.None)
+        public async Task<MealChartResponseModel> GetMealData(string kidsIds, Enums.Views page = Enums.Views.None)
         {
             var date = new System.DateTime(2021, 3, 3, 11, 30, 00);
             MealChartResponseModel retVal;
@@ -133,7 +133,7 @@ namespace ParentPortal.Services.TGA
             return retVal;
         }
 
-        public async Task<PollResponseModel> GetPollresponse(int campusId,int parentId, Page page = Page.None)
+        public async Task<PollResponseModel> GetPollresponse(int campusId,int parentId, Enums.Views page = Enums.Views.None)
         {
             PollResponseModel retVal;
             string url = string.Format("{0}?campusId={1}&parentId={2}", ConfigSettings.EndPoint.DashBoard.GetPoll, campusId,parentId);
@@ -207,7 +207,7 @@ namespace ParentPortal.Services.TGA
             return retVal;
         }
 
-        public async Task<PollResponseModel> AddPoll(int pollId, int parentId, string selectedOption, Page page = Page.None)
+        public async Task<PollResponseModel> AddPoll(int pollId, int parentId, string selectedOption, Enums.Views page = Enums.Views.None)
         {
             PollResponseModel retVal;
             string url = string.Format("{0}?pollId={1}&parentId={2}&selected={3}", ConfigSettings.EndPoint.DashBoard.AddPoll, pollId, parentId,selectedOption);

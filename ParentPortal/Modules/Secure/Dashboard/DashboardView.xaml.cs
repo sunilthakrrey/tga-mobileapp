@@ -21,13 +21,13 @@ namespace ParentPortal.Modules.Secure.Dashboard
         DashBoardService DashBoardService = new DashBoardService();
 
         #endregion
-        public DashboardView()
+        public DashboardView(bool isNeedToFilterSubsciberRegistered = true)
         {
             InitializeComponent();
             BindingContext = this;
-            ConfigureSource();
+            ConfigureSource(isNeedToFilterSubsciberRegistered);
         }
-     
+
         #region Properties
 
         private AnnouncementData _announcementResponseModel;
@@ -123,7 +123,7 @@ namespace ParentPortal.Modules.Secure.Dashboard
 
         #endregion
 
-        private async void ConfigureSource()
+        private async void ConfigureSource(bool isSubscibed)
         {
             //get selected kid , first time we will continue with  Announcements
             List<KidDetail> selectedkid = await SecureStorage.GetAsync<List<KidDetail>>(Enums.SecureStorageKey.SelectedKids);
@@ -132,6 +132,21 @@ namespace ParentPortal.Modules.Secure.Dashboard
             string kidIds = GetKidsIsAsString(selectedkid);
             GetDashBoardData(kidIds);
             isVisibleAll = ParentkidsDetails.kids.Count > 1;
+
+
+            if (isSubscibed)
+            {
+                MessagingCenter.Unsubscribe<DashboardView, string>(this, Enums.MessageCenterAuthenticator.FeedFilter.ToString());
+                MessagingCenter.Subscribe<DashboardView, FilterSelection>(this, Enums.MessageCenterAuthenticator.FeedFilter.ToString(), async (sender, arg) =>
+                {
+                    if (arg != null)
+                    {
+                      await GetNewFeeds(kidIds, arg.FilterDate,arg.FilteType);
+                      await PopupNavigation.Instance.PopAllAsync();
+                    }
+                });
+            }
+
         }
 
         private async void GetDashBoardData(string kidIds)
@@ -173,21 +188,21 @@ namespace ParentPortal.Modules.Secure.Dashboard
         private async Task GetMealChart(string kidIds)
         {
             //get Meal Data
-            MealChartResponseModel mealResponse = await DashBoardService.GetMealData(kidIds);
+            MealChartResponseModel mealResponse = await DashBoardService.GetMealData(kidIds, Enums.Views.DashBoard);
             MealComponentCollectionData = mealResponse.data;
         }
 
-        private async Task GetNewFeeds(string kidIds)
+        private async Task GetNewFeeds(string kidIds, string date = "anytime", string type = "all")
         {
             //news Feeds 
-            NewsFeedResponseModel responseModel = await DashBoardService.GetNewFeeedData(kidIds);
+            NewsFeedResponseModel responseModel = await DashBoardService.GetNewFeeedData(kidIds, date, type, Enums.Views.DashBoard);
             NewsFeedBoxCollectionData = responseModel.data;
         }
 
         private async Task GetAnnouncement(string kidIds)
         {
             //announcements
-            AnnouncementResponseModel retVal = await DashBoardService.GetAnnounments(kidIds);
+            AnnouncementResponseModel retVal = await DashBoardService.GetAnnounments(kidIds, Enums.Views.DashBoard);
             GridAnnouncement.IsVisible = retVal.IsRecordExist;
 
             AnnouncementResponseModel = retVal.data?.OrderByDescending(x => x.date).FirstOrDefault();
@@ -195,7 +210,7 @@ namespace ParentPortal.Modules.Secure.Dashboard
 
         private async void FilterPopupRequest_Clicked(object sender, EventArgs e)
         {
-            await PopupNavigation.Instance.PushAsync(new FilterPopup());
+            await PopupNavigation.Instance.PushAsync(new FeedFilterPopup());
         }
 
         private async void optionSelected_Clicked(object sender, EventArgs e)
@@ -210,7 +225,7 @@ namespace ParentPortal.Modules.Secure.Dashboard
                 PollOption selectedOption = pollData.Options.Where(x => x.Value == optionValue).FirstOrDefault();
                 if (!selectedOption.IsSelected)
                     selectedOption.IsSelected = true;
-              PollResponseModel pollResponseModel=   await DashBoardService.AddPoll(pollId: Convert.ToInt32(pollData.id), parentId: ParentkidsDetails.id, selectedOption.Name);
+                PollResponseModel pollResponseModel = await DashBoardService.AddPoll(pollId: Convert.ToInt32(pollData.id), parentId: ParentkidsDetails.id, selectedOption.Name);
             }
         }
         private string GetKidsIsAsString(List<KidDetail> selectedkid)
@@ -226,9 +241,9 @@ namespace ParentPortal.Modules.Secure.Dashboard
             GetDashBoardData(kidId.ToString());
         }
 
-        private void selectAllKids_Tapped(object sender,EventArgs e)
+        private void selectAllKids_Tapped(object sender, EventArgs e)
         {
-            string kidIds =  GetKidsIsAsString(ParentkidsDetails.kids);
+            string kidIds = GetKidsIsAsString(ParentkidsDetails.kids);
             GetDashBoardData(kidIds);
         }
 

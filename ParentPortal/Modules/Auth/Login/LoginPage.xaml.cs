@@ -78,7 +78,7 @@ namespace ParentPortal.Modules.Auth.Login
            {
               loginResponseModel.data.parent.kids.FirstOrDefault()
            }) ;
-            await App.AppNavigation.PushAsync(new MainPage() { ContentView = new DashboardView() });
+            await App.AppNavigation.PushAsync(new MainPage(isListnerConfigured:false) { ContentView = new DashboardView() });
 
         }
 

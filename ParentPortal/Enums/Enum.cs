@@ -14,14 +14,16 @@ namespace ParentPortal.Enums
         PageTitle,
         RequestStarted,
         RequestCompleted,
-        NavigationBar
+        NavigationBar,
+        FeedFilter
     }
 
-    public enum Page
+    public enum Views
     {
-        None
+        None,
+        DashBoard
     }
-
+   
     public enum SecureStorageKey
     {
        

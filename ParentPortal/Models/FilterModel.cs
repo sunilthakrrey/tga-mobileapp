@@ -15,4 +15,10 @@ namespace ParentPortal.Models
     {
         public string Name { get; set; }
     }
+
+    public class FilterSelection
+    {
+        public string FilteType { get; set; }
+        public string FilterDate { get; set; }
+    }
 }

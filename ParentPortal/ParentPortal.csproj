@@ -54,6 +54,9 @@
     <Compile Update="Views\Shared\CommentSectionPopup.xaml.cs">
       <DependentUpon>CommentSectionPopup.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\Shared\FeedFilterPopup.xaml.cs">
+      <DependentUpon>FeedFilterPopup.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -73,6 +76,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Content\Styles\SmallDeviceStyle.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Custom\Controls\AppLoader.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Custom\Controls\FeedComponent.xaml">
@@ -105,7 +111,7 @@
     <EmbeddedResource Update="Modules\Secure\Dashboard\DashboardView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Shared\FilterPopup.xaml">
+    <EmbeddedResource Update="Views\Shared\FeedFilterPopup.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Shared\SideNavPopup.xaml">
