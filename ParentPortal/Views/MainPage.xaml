@@ -125,7 +125,7 @@
                 </Grid>
             </panckeview:PancakeView>
         </Grid>
-            <controls:AppLoader x:Name="loadingLayout"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" IsVisible="{Binding isBusy, Mode=TwoWay}" />
+            <controls:AppLoader x:Name="loadingLayout"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  />
         </Grid>
         <!--end region content and footer-->
     </ContentPage.Content>

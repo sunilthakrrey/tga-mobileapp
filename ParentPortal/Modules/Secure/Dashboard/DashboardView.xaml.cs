@@ -1,4 +1,5 @@
 ﻿using ParentPortal.Contracts.Responses;
+using ParentPortal.Enums;
 using ParentPortal.Models;
 using ParentPortal.Services.TGA;
 using ParentPortal.Views.Shared;
@@ -125,24 +126,25 @@ namespace ParentPortal.Modules.Secure.Dashboard
 
         private async void ConfigureSource(bool isSubscibed)
         {
-            //get selected kid , first time we will continue with  Announcements
-            List<KidDetail> selectedkid = await SecureStorage.GetAsync<List<KidDetail>>(Enums.SecureStorageKey.SelectedKids);
-
-            //gets ids in form of string
-            string kidIds = GetKidsIsAsString(selectedkid);
-            GetDashBoardData(kidIds);
-            isVisibleAll = ParentkidsDetails.kids.Count > 1;
-
-
             if (isSubscibed)
             {
+                //get selected kid , first time we will continue with  Announcements
+                List<KidDetail> selectedkid = await SecureStorage.GetAsync<List<KidDetail>>(Enums.SecureStorageKey.SelectedKids);
+
+                //gets ids in form of string
+                string kidIds = GetKidsIsAsString(selectedkid);
+                GetDashBoardData(kidIds);
+                isVisibleAll = ParentkidsDetails.kids.Count > 1;
+
+
+
                 MessagingCenter.Unsubscribe<DashboardView, string>(this, Enums.MessageCenterAuthenticator.FeedFilter.ToString());
                 MessagingCenter.Subscribe<DashboardView, FilterSelection>(this, Enums.MessageCenterAuthenticator.FeedFilter.ToString(), async (sender, arg) =>
                 {
                     if (arg != null)
                     {
-                      await GetNewFeeds(kidIds, arg.FilterDate,arg.FilteType);
-                      await PopupNavigation.Instance.PopAllAsync();
+                        await GetNewFeeds(kidIds, arg.FilterDate, arg.FilteType);
+                        await PopupNavigation.Instance.PopAllAsync();
                     }
                 });
             }
@@ -167,7 +169,7 @@ namespace ParentPortal.Modules.Secure.Dashboard
         private async Task GetPollings(int parentId, int campusId)
         {
             //get poll Data
-            PollResponseModel pollResponse = await DashBoardService.GetPollresponse(campusId, parentId);
+            PollResponseModel pollResponse = await DashBoardService.GetPollresponse(campusId, parentId, Enums.Views.DashBoard);
             PollData = pollResponse.data;
 
             //int i = 65;

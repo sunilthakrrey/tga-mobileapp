@@ -75,7 +75,8 @@ namespace ParentPortal
                 if (arg != Enums.Views.None)
                 {
                     processingRequests.Add(arg);
-                    isBusy = true;
+                    //  isBusy = true;
+                    loadingLayout.IsVisible = true;
                 }
             });
 
@@ -91,7 +92,8 @@ namespace ParentPortal
                     {
                         // Task.Delay(2000);
 
-                        isBusy = false;
+                        // isBusy = false;
+                        loadingLayout.IsVisible = false;
                     }
                 }
             });
