@@ -2,6 +2,7 @@
 <pages:PopupPage  xmlns="http://xamarin.com/schemas/2014/forms"
                   xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                   xmlns:Enums="clr-namespace:ParentPortal.Enums"
                     xmlns:xct="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
                    xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
              xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
@@ -19,7 +20,7 @@
             HasBackgroundAnimation="True"/>
     </pages:PopupPage.Animation>
 
-    <Frame BackgroundColor="{DynamicResource White}" Padding="15,30,25,30" WidthRequest="250" HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand">
+    <Frame BackgroundColor="{DynamicResource White}" Style="{StaticResource FrameSideNavStyle}" HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand">
         <ScrollView>
         <Grid>
             <Grid.RowDefinitions>
@@ -28,23 +29,23 @@
                 <RowDefinition Height="35*"/>
             </Grid.RowDefinitions>
 
-            <Grid Grid.Row="0" VerticalOptions="Center" Margin="0,0,0,20">
+            <Grid Grid.Row="0" VerticalOptions="Center" Margin="0,5,0,20">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
                 <Frame Grid.Row="0" Padding="0" CornerRadius="100" HorizontalOptions="Center" VerticalOptions="Center">
-                    <ffsvg:SvgCachedImage HeightRequest="80" WidthRequest="80" Source="https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png"/>
+                    <ffsvg:SvgCachedImage Style="{StaticResource ImageUserProfileStyle}" Source="https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png"/>
                 </Frame>
 
                 <StackLayout Grid.Row="1" Spacing="0" HorizontalOptions="Center">
-                    <Label Text="Jane Parker" FontFamily="Montserrat-SemiBold" TextColor="{DynamicResource Black}" HorizontalTextAlignment="Center" FontSize="18"/>
-                    <Label Text="j.parker@gmail.com" TextColor="{DynamicResource SilverChalice}" FontFamily="Montserrat-SemiBold" FontSize="13" HorizontalTextAlignment="Center"/>
+                    <Label Text="Jane Parker" TextColor="{DynamicResource Black}" Style="{StaticResource lblUserNameStyle}" HorizontalTextAlignment="Center"/>
+                    <Label Text="j.parker@gmail.com" TextColor="{DynamicResource SilverChalice}" Style="{StaticResource lblUserEmailStyle}" HorizontalTextAlignment="Center"/>
                 </StackLayout>
             </Grid>
 
-            <Grid Grid.Row="1" RowSpacing="20">
+            <Grid Grid.Row="1" Style="{StaticResource GridSideNavStyle}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
@@ -54,76 +55,84 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <!--<Grid Grid.Row="0" ColumnSpacing="15">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    
-                    <ffsvg:SvgCachedImage Grid.Column="0" HeightRequest="30" WidthRequest="30" VerticalOptions="Center" Source="parent_request.svg"/>
-                    <Label Grid.Column="1" Text="Parent Request" TextColor="{DynamicResource Black}" FontSize="15" FontFamily="Montserrat-SemiBold" VerticalOptions="Center"/>
-                    <ffsvg:SvgCachedImage Grid.Column="2" Source="right_arrow_icon.svg" HeightRequest="10" WidthRequest="10" HorizontalOptions="End"/>
-                </Grid>-->
-
                 <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="0">
                     <xct:Expander>
                         <xct:Expander.Header>
-                            <Grid>
+                            <Grid ColumnSpacing="15">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <ffsvg:SvgCachedImage Grid.Column="0" HeightRequest="30" WidthRequest="30" VerticalOptions="Center" Source="parent_request.svg"/>
-                                <Label Grid.Column="1" Text="Parent Request" TextColor="{DynamicResource Black}" FontSize="15" FontFamily="Montserrat-SemiBold" VerticalOptions="Center"/>
-                                <ffsvg:SvgCachedImage Grid.Column="2" Source="right_arrow_icon.svg" HeightRequest="10" WidthRequest="10" HorizontalOptions="End"/>
+                                    <ffsvg:SvgCachedImage Grid.Column="0" Style="{StaticResource ImageSideNavIconStyle}" VerticalOptions="Center" Source="parent_request.svg"/>
+                                    <Label Grid.Column="1" Text="Parent Request" TextColor="{DynamicResource Black}" Style="{StaticResource lblSideNavSubHeadingStyle}" VerticalOptions="Center"/>
+                                    <ffsvg:SvgCachedImage Grid.Column="2" Source="right_arrow_icon.svg" Style="{StaticResource ImageDownArrowIconStyle}" HorizontalOptions="End"/>
                             </Grid>
                         </xct:Expander.Header>
 
-                        <StackLayout Padding="35,10" Spacing="15">
-                            <Label Text="Change of Attendance" TextColor="{DynamicResource Feijoa}" FontSize="15" FontFamily="Montserrat-SemiBold"/>
-                            <Label Text="Change of Details" TextColor="{DynamicResource Feijoa}" FontSize="15" FontFamily="Montserrat-SemiBold"/>
-                            <Label Text="Casual Day" TextColor="{DynamicResource Feijoa}" FontSize="15" FontFamily="Montserrat-SemiBold"/>
-                            <Label Text="Upcoming Absences" TextColor="{DynamicResource Feijoa}" FontSize="15" FontFamily="Montserrat-SemiBold"/>
-                            <Label Text="Send Appreciation" TextColor="{DynamicResource Feijoa}" FontSize="15" FontFamily="Montserrat-SemiBold"/>
+                        <StackLayout Padding="40,10,0,10" Spacing="15">
+                                <Label Text="Change of Attendance" TextColor="{DynamicResource Feijoa}" Style="{StaticResource lblSideNavSubHeadingStyle}">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="ChangeView_Tapped" CommandParameter="{x:Static Enums:ViewType.ChangeOfAttendance}"/>
+                                    </Label.GestureRecognizers>
+                                </Label>
+
+                                <Label Text="Change of Details" TextColor="{DynamicResource Feijoa}" Style="{StaticResource lblSideNavSubHeadingStyle}">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="ChangeView_Tapped" CommandParameter="{x:Static Enums:ViewType.ChangeOfDetails}"/>
+                                    </Label.GestureRecognizers>
+                                </Label>
+
+                                <Label Text="Casual Day" TextColor="{DynamicResource Feijoa}" Style="{StaticResource lblSideNavSubHeadingStyle}">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="ChangeView_Tapped" CommandParameter="{x:Static Enums:ViewType.CasualDay}"/>
+                                    </Label.GestureRecognizers>
+                                </Label>
+
+                                <Label Text="Upcoming Absences" TextColor="{DynamicResource Feijoa}" Style="{StaticResource lblSideNavSubHeadingStyle}">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="ChangeView_Tapped" CommandParameter="{x:Static Enums:ViewType.UpcomingAbsences}"/>
+                                    </Label.GestureRecognizers>
+                                </Label>
+
+                                <Label Text="Send Appreciation" TextColor="{DynamicResource Feijoa}" Style="{StaticResource lblSideNavSubHeadingStyle}">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="ChangeView_Tapped" CommandParameter="{x:Static Enums:ViewType.SendAppreciation}"/>
+                                    </Label.GestureRecognizers>
+                                </Label>
+
                         </StackLayout>
                     </xct:Expander>
                 </StackLayout>
 
                 <StackLayout Grid.Row="1" Spacing="15" Orientation="Horizontal">
-                    <ffsvg:SvgCachedImage  HeightRequest="30" WidthRequest="30" VerticalOptions="Center" Source="remote_learning_icon.svg"/>
-                    <Label Text="Remote Learning" TextColor="{DynamicResource Black}" FontSize="15" FontFamily="Montserrat-SemiBold" VerticalOptions="Center"/>
-                    <!--<ffsvg:SvgCachedImage Grid.Column="2" Source="right_arrow_icon.svg" HeightRequest="10" WidthRequest="10" HorizontalOptions="End"/>-->
-                </StackLayout>
+                        <ffsvg:SvgCachedImage  Style="{StaticResource ImageSideNavIconStyle}" VerticalOptions="Center" Source="remote_learning_icon.svg"/>
+                        <Label Text="Remote Learning" TextColor="{DynamicResource Black}" Style="{StaticResource lblSideNavSubHeadingStyle}" VerticalOptions="Center"/>
+                    </StackLayout>
 
                 <StackLayout Grid.Row="2" Spacing="15" Orientation="Horizontal">
-                    <ffsvg:SvgCachedImage  HeightRequest="30" WidthRequest="30" VerticalOptions="Center" Source="staff_icon.svg"/>
-                    <Label Text="Staff" TextColor="{DynamicResource Black}" FontSize="15" FontFamily="Montserrat-SemiBold" VerticalOptions="Center"/>
-                    <!--<ffsvg:SvgCachedImage Grid.Column="2" Source="right_arrow_icon.svg" HeightRequest="10" WidthRequest="10" HorizontalOptions="End"/>-->
-                </StackLayout>
+                        <ffsvg:SvgCachedImage  Style="{StaticResource ImageSideNavIconStyle}" VerticalOptions="Center" Source="staff_icon.svg"/>
+                        <Label Text="Staff" TextColor="{DynamicResource Black}" Style="{StaticResource lblSideNavSubHeadingStyle}" VerticalOptions="Center"/>
+                    </StackLayout>
 
                 <StackLayout Grid.Row="3" Spacing="15" Orientation="Horizontal">
-                    <ffsvg:SvgCachedImage  HeightRequest="30" WidthRequest="30" VerticalOptions="Center" Source="photos_side_icon.svg"/>
-                    <Label  Text="Photos" TextColor="{DynamicResource Black}" FontSize="15" FontFamily="Montserrat-SemiBold" VerticalOptions="Center"/>
-                    <!--<ffsvg:SvgCachedImage Grid.Column="2" Source="right_arrow_icon.svg" HeightRequest="10" WidthRequest="10" HorizontalOptions="End"/>-->
-                </StackLayout>
+                        <ffsvg:SvgCachedImage  Style="{StaticResource ImageSideNavIconStyle}" VerticalOptions="Center" Source="photos_side_icon.svg"/>
+                        <Label  Text="Photos" TextColor="{DynamicResource Black}" Style="{StaticResource lblSideNavSubHeadingStyle}" VerticalOptions="Center"/>
+                    </StackLayout>
 
                 <StackLayout Grid.Row="4" Spacing="15" Orientation="Horizontal">
-                    <ffsvg:SvgCachedImage HeightRequest="30" WidthRequest="30" VerticalOptions="Center" Source="announcements_icon.svg"/>
-                    <Label Text="Announcements" TextColor="{DynamicResource Black}" FontSize="15" FontFamily="Montserrat-SemiBold" VerticalOptions="Center"/>
-                    <!--<ffsvg:SvgCachedImage Grid.Column="2" Source="right_arrow_icon.svg" HeightRequest="10" WidthRequest="10" HorizontalOptions="End"/>-->
-                </StackLayout>
+                        <ffsvg:SvgCachedImage Style="{StaticResource ImageSideNavIconStyle}" VerticalOptions="Center" Source="announcements_icon.svg"/>
+                        <Label Text="Announcements" TextColor="{DynamicResource Black}" Style="{StaticResource lblSideNavSubHeadingStyle}" VerticalOptions="Center"/>
+                    </StackLayout>
 
                 <StackLayout Grid.Row="5" Spacing="15" Orientation="Horizontal">
-                    <ffsvg:SvgCachedImage  HeightRequest="30" WidthRequest="30" VerticalOptions="Center" Source="settings_icon.svg"/>
-                    <Label  Text="Settings" TextColor="{DynamicResource Black}" FontSize="15" FontFamily="Montserrat-SemiBold" VerticalOptions="Center"/>
-                    <!--<ffsvg:SvgCachedImage Grid.Column="2" Source="right_arrow_icon.svg" HeightRequest="10" WidthRequest="10" HorizontalOptions="End"/>-->
-                </StackLayout>
+                        <ffsvg:SvgCachedImage  Style="{StaticResource ImageSideNavIconStyle}" VerticalOptions="Center" Source="settings_icon.svg"/>
+                        <Label  Text="Settings" TextColor="{DynamicResource Black}" Style="{StaticResource lblSideNavSubHeadingStyle}" VerticalOptions="Center"/>
+                    </StackLayout>
 
             </Grid>
 
-            <Grid Grid.Row="2" RowSpacing="20" VerticalOptions="End">
+            <Grid Grid.Row="2" Style="{StaticResource GridSideNavStyle}" VerticalOptions="End">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
@@ -131,16 +140,16 @@
                 </Grid.RowDefinitions>
 
                 <StackLayout Grid.Row="0" Spacing="15" Orientation="Horizontal">
-                    <ffsvg:SvgCachedImage  HeightRequest="30" WidthRequest="30" VerticalOptions="Center" Source="sign_out_icon.svg"/>
-                    <Label Text="Sign Out " TextColor="{DynamicResource Black}" FontSize="15" FontFamily="Montserrat-SemiBold" VerticalOptions="Center"/>
+                        <ffsvg:SvgCachedImage  Style="{StaticResource ImageSideNavIconStyle}" VerticalOptions="Center" Source="sign_out_icon.svg"/>
+                        <Label Text="Sign Out " TextColor="{DynamicResource Black}" Style="{StaticResource lblSideNavSubHeadingStyle}" VerticalOptions="Center"/>
                 </StackLayout>
 
                 <StackLayout Grid.Row="1" Spacing="15" Orientation="Horizontal">
-                    <ffsvg:SvgCachedImage  HeightRequest="30" WidthRequest="30" VerticalOptions="Center" Source="help_and_feedback.svg"/>
-                    <Label  Text="Help and Feedback" TextColor="{DynamicResource Black}" FontSize="15" FontFamily="Montserrat-SemiBold" VerticalOptions="Center"/>
+                        <ffsvg:SvgCachedImage  Style="{StaticResource ImageSideNavIconStyle}" VerticalOptions="Center" Source="help_and_feedback.svg"/>
+                        <Label  Text="Help and Feedback" TextColor="{DynamicResource Black}" Style="{StaticResource lblSideNavSubHeadingStyle}" VerticalOptions="Center"/>
                 </StackLayout>
 
-                <ffsvg:SvgCachedImage Margin="15" Grid.Row="2" Source="cross_black_icon.svg" HeightRequest="25" WidthRequest="25"/>
+                    <ffsvg:SvgCachedImage Margin="15" Grid.Row="2"  Source="cross_black_icon.svg" Style="{StaticResource ImageSideNavIconStyle}"/>
             </Grid>
 
         </Grid>

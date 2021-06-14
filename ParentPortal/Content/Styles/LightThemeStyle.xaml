@@ -12,8 +12,10 @@
     <Color x:Key ="PoloBlue">#8498cd</Color>
     <Color x:Key ="MonteCarlo">#88cab9</Color>
     <Color x:Key ="Gray">#808080</Color>
+    <Color x:Key ="Boulder">#7d7d7d</Color>
     <Color x:Key ="White">#fff</Color>
     <Color x:Key ="Black">#000</Color>
+    <Color x:Key ="Mercury">#E5E5E5</Color>
     <Color x:Key ="Transparent">#0000</Color>
 
 
@@ -24,7 +26,7 @@
     <Color x:Key ="PeriwinkleGray">#d6dcec</Color>
     <Color x:Key ="DairyCream">#fae9c2</Color>
     <Color x:Key ="BeautyBush">#f2cdcd</Color>
-
+    <Color x:Key ="Silver">#BBBBBB</Color>
 
 
 

@@ -5,7 +5,7 @@
              xmlns:panckeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              NavigationPage.HasBackButton="False"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             ios:NavigationPage.HideNavigationBarSeparator="true" BackgroundColor="{DynamicResource White}"
+             ios:NavigationPage.HideNavigationBarSeparator="true" BackgroundColor="#f9f9f9"
              x:Class="ParentPortal.MainPage">
 
     <ContentPage.Content>
@@ -14,7 +14,7 @@
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height=".90*" />
+                <RowDefinition Height=".70*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
@@ -42,9 +42,21 @@
             <ContentView Grid.Row="1"
                                  x:Name="CView"
                                  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" />
+            
+            
 
+            <Grid Margin="0" Grid.Row="2"  BackgroundColor="Transparent">
+                <!--<panckeview:PancakeView BackgroundColor="#fff" Padding="0" Margin="0,0,0,25" HeightRequest="80" WidthRequest="80" CornerRadius="100" HorizontalOptions="Center" VerticalOptions="Start">
+                    <panckeview:PancakeView.Shadow>
+                        <panckeview:DropShadow BlurRadius="10" Opacity="0.9"    Color="Black" Offset="20,20" />
+                    </panckeview:PancakeView.Shadow>
 
-            <panckeview:PancakeView Padding="0,10" CornerRadius="30,30,0,0" BackgroundColor="#fff" VerticalOptions="FillAndExpand"    IsClippedToBounds="True" Grid.Row="2" >
+                    --><!--<Frame BackgroundColor="{DynamicResource Feijoa}" HasShadow="False" Padding="16" CornerRadius="100" HorizontalOptions="Center" VerticalOptions="Start">
+                        <ffsvg:SvgCachedImage Source="home.svg" WidthRequest="25" HeightRequest="25" Style="{StaticResource TabImgStyle}"/>
+                    </Frame>--><!--
+                </panckeview:PancakeView>-->
+
+                <panckeview:PancakeView Padding="0,10" CornerRadius="30,30,0,0" BackgroundColor="#fff" VerticalOptions="End"    IsClippedToBounds="True">
                 <panckeview:PancakeView.Shadow>
                     <panckeview:DropShadow BlurRadius="10" Opacity="0.9"    Color="Black" Offset="20,20" />
                 </panckeview:PancakeView.Shadow>
@@ -65,8 +77,8 @@
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                        <ffsvg:SvgCachedImage Source="health.svg" Style="{StaticResource TabImgStyle}"/>
-                        <Label Style="{StaticResource TabLblStyle}" TextColor="{DynamicResource SilverChalice}" Grid.Row="1" Text="Health"/>
+                            <ffsvg:SvgCachedImage Source="health.svg" WidthRequest="25" HeightRequest="25" Style="{StaticResource TabImgStyle}"/>
+                            <Label Style="{StaticResource TabLblStyle}" FontSize="11" FontFamily="Montserrat-SemiBold" TextColor="{DynamicResource SilverChalice}" Grid.Row="1" Text="Health"/>
                     </Grid>
 
 
@@ -80,23 +92,23 @@
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                        <ffsvg:SvgCachedImage Source="education.svg" Style="{StaticResource TabImgStyle}"/>
-                        <Label Style="{StaticResource TabLblStyle}" TextColor="{DynamicResource SilverChalice}" Grid.Row="1" Text="Education"/>
+                        <ffsvg:SvgCachedImage Source="education.svg" WidthRequest="25" HeightRequest="25" Style="{StaticResource TabImgStyle}"/>
+                            <Label Style="{StaticResource TabLblStyle}" FontSize="11" FontFamily="Montserrat-SemiBold" TextColor="{DynamicResource SilverChalice}" Grid.Row="1" Text="Education"/>
                     </Grid>
 
 
                     <!--#end Region
                 Region Category-->
 
-                    <Grid  Grid.Column="2"   HorizontalOptions="Center" VerticalOptions="Center">
+                    <Grid  Grid.Column="2"  HorizontalOptions="Center" VerticalOptions="Center">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                        <Frame BackgroundColor="{DynamicResource Feijoa}" CornerRadius="100" HorizontalOptions="Center" VerticalOptions="Center">
+                        <!--<Frame BackgroundColor="{DynamicResource Feijoa}" HasShadow="False" CornerRadius="100" HorizontalOptions="Center" VerticalOptions="Center">
                             <ffsvg:SvgCachedImage Source="home.svg" Style="{StaticResource TabImgStyle}"/>
-                        </Frame>
-                        <Label Style="{StaticResource TabLblStyle}" HorizontalOptions="Center" TextColor="{DynamicResource SilverChalice}" Grid.Row="1" Text="Home"/>
+                        </Frame>-->
+                            <Label Style="{StaticResource TabLblStyle}" FontSize="11" FontFamily="Montserrat-SemiBold" HorizontalOptions="Center" TextColor="{DynamicResource SilverChalice}" Grid.Row="1" Text="Home"/>
                     </Grid>
 
 
@@ -107,8 +119,8 @@
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                        <ffsvg:SvgCachedImage Source="calendar.svg" Style="{StaticResource TabImgStyle}"/>
-                        <Label Style="{StaticResource TabLblStyle}" TextColor="{DynamicResource SilverChalice}" Grid.Row="1" Text="Calendar"/>
+                            <ffsvg:SvgCachedImage Source="calendar.svg" WidthRequest="25" HeightRequest="25" Style="{StaticResource TabImgStyle}"/>
+                            <Label Style="{StaticResource TabLblStyle}" FontSize="11" FontFamily="Montserrat-SemiBold" TextColor="{DynamicResource SilverChalice}" Grid.Row="1" Text="Calendar"/>
                     </Grid>
 
                     <Grid Grid.Column="4"  HorizontalOptions="Center" VerticalOptions="Center">
@@ -116,11 +128,34 @@
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                        <ffsvg:SvgCachedImage Source="messages.svg" Style="{StaticResource TabImgStyle}"/>
-                        <Label Style="{StaticResource TabLblStyle}" FontSize="12" FontFamily="Montserrat-SemiBold" TextColor="{DynamicResource SilverChalice}" Grid.Row="1" Text="Messages"/>
+                            <ffsvg:SvgCachedImage Source="messages.svg" WidthRequest="25" HeightRequest="25" Style="{StaticResource TabImgStyle}"/>
+                        <Label Style="{StaticResource TabLblStyle}" FontSize="11" FontFamily="Montserrat-SemiBold" TextColor="{DynamicResource SilverChalice}" Grid.Row="1" Text="Messages"/>
                     </Grid>
                 </Grid>
             </panckeview:PancakeView>
+                <!--<panckeview:PancakeView BackgroundColor="#fff" Padding="8" CornerRadius="100" HorizontalOptions="Center" VerticalOptions="Start">
+                    <panckeview:PancakeView.Shadow>
+                        <panckeview:DropShadow BlurRadius="10" Opacity="0.9"    Color="Black" Offset="20,20" />
+                    </panckeview:PancakeView.Shadow>
+
+                    <Frame BackgroundColor="{DynamicResource Feijoa}" Margin="8" HasShadow="False" Padding="16" CornerRadius="100" HorizontalOptions="Center" VerticalOptions="Start">
+                        <ffsvg:SvgCachedImage Source="home.svg" WidthRequest="25" HeightRequest="25" Style="{StaticResource TabImgStyle}"/>
+                    </Frame>
+                    </panckeview:pancakeview>-->
+
+
+                <panckeview:PancakeView  Padding="8" Margin="0,-28"  BackgroundColor="#fff" CornerRadius="100" HorizontalOptions="Center" VerticalOptions="Start">
+                    <panckeview:PancakeView.Shadow>
+                        <panckeview:DropShadow BlurRadius="10" Opacity="0.9"    Color="Black" Offset="20,20" />
+                    </panckeview:PancakeView.Shadow>
+
+                    
+                <Frame BackgroundColor="{DynamicResource Feijoa}" HasShadow="False" Padding="16" CornerRadius="100" HorizontalOptions="Center" VerticalOptions="Start">
+                        <ffsvg:SvgCachedImage Source="home.svg" WidthRequest="25" HeightRequest="25" Style="{StaticResource TabImgStyle}"/>
+                    </Frame>
+                
+                </panckeview:PancakeView>
+            </Grid>
         </Grid>
         <!--end region content and footer-->
     </ContentPage.Content>

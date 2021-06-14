@@ -29,6 +29,15 @@ namespace ParentPortal.Enums
         AccountCredential,
         AuthorizedToken
     }
+
+    public enum ViewType
+    {
+        ChangeOfAttendance,
+        ChangeOfDetails,
+        CasualDay,
+        UpcomingAbsences,
+        SendAppreciation
+    }
     public enum ImageSize
     { 
         Small,

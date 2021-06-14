@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<shared:BaseContentView xmlns="http://xamarin.com/schemas/2014/forms"
+                        xmlns:shared="clr-namespace:ParentPortal.Views.Shared"
+                         xmlns:customControls="clr-namespace:ParentPortal.Custom.Controls" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                         xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+                        xmlns:panckeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:controls="http://xamarin.com/schemas/2014/forms"
+                        x:Class="ParentPortal.Modules.Secure.ChangeOfAttendance.ChangeOfAttendanceView">
+  <ContentView.Content>
+
+        <ScrollView>
+        <StackLayout Padding="25" BackgroundColor="{DynamicResource Mercury}">
+            <StackLayout>
+                    <Label Style="{StaticResource lblMainHeadingStyle}" TextColor="{DynamicResource Black}" Text="Change of Attendance"/>
+                    <Label Style="{StaticResource lblDescription}" TextColor="{DynamicResource Boulder}"  Text="Please submit the below form to request for a change of attendance. You will be notified if this request is accepted."/>
+            </StackLayout>
+          
+            <StackLayout Spacing="25" Margin="0,30">
+
+                 <Frame BackgroundColor="{DynamicResource White}" Padding="15,0" HasShadow="False" Margin="0" Style="{StaticResource EntryFrameParentRequestStyle}">
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="90*"/>
+                                <ColumnDefinition Width="10*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Picker Grid.Column="0" Title="Child" Style="{StaticResource PickerOfParentRequestStyle}" TitleColor="{DynamicResource Silver}">
+                                <Picker.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>Child</x:String>
+                                        <x:String>pick2</x:String>
+                                        <x:String>pick3</x:String>
+                                    </x:Array>
+
+                                </Picker.ItemsSource>
+                            </Picker>
+                            <ffsvg:SvgCachedImage Grid.Column="1" Source="down_arrow.svg"  Style="{StaticResource ImagePickerIconStyle}" HorizontalOptions="Center" VerticalOptions="Center" />
+                        </Grid>
+                    </Frame>
+
+                <Frame BackgroundColor="{DynamicResource White}" HasShadow="False" Margin="0" Style="{StaticResource EntryFrameParentRequestStyle}">
+                    <customControls:CustomEntry IsRemoveDefaultPadding="True" Placeholder="Name of Parent/Guardian" PlaceholderColor="{DynamicResource Silver}" Style="{StaticResource CustomEntryStyle}">
+
+                    </customControls:CustomEntry>
+                </Frame>
+
+                <Frame BackgroundColor="{DynamicResource White}" HasShadow="False" Margin="0" Style="{StaticResource EntryFrameParentRequestStyle}">
+                    <customControls:CustomEntry IsRemoveDefaultPadding="True" Placeholder="Phone Number" PlaceholderColor="{DynamicResource Silver}" Style="{StaticResource CustomEntryStyle}">
+
+                    </customControls:CustomEntry>
+                </Frame>
+
+            </StackLayout>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Padding="0,0,0,10" Style="{StaticResource lblMediumBoldStyle}" TextColor="{DynamicResource Black}" Text="Days for the child to attend"/>
+
+                <Grid ColumnSpacing="12" Grid.Row="1" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <panckeview:PancakeView Grid.Column="0" Style="{StaticResource FrameForDayStyle}"  VerticalOptions="Center" BackgroundColor="{DynamicResource White}" CornerRadius="10">
+                        <panckeview:PancakeView.Shadow>
+                            <panckeview:DropShadow BlurRadius="10" Opacity="0.9"   x:Name="shadow" Color="{DynamicResource Black}" Offset="20,20" />
+                        </panckeview:PancakeView.Shadow>
+
+                        <Label Text="Mon" HorizontalOptions="Center" VerticalOptions="Center" TextColor="{DynamicResource Feijoa}" Style="{StaticResource lblMediumBoldStyle}"/>
+                    </panckeview:PancakeView>
+
+                    <panckeview:PancakeView Grid.Column="1" Style="{StaticResource FrameForDayStyle}"  VerticalOptions="Center" BackgroundColor="{DynamicResource White}" CornerRadius="10">
+                        <panckeview:PancakeView.Shadow>
+                            <panckeview:DropShadow BlurRadius="10" Opacity="0.9"   x:Name="shadowa" Color="{DynamicResource Black}" Offset="20,20" />
+                        </panckeview:PancakeView.Shadow>
+
+                        <Label Text="Tue" HorizontalOptions="Center" VerticalOptions="Center" TextColor="{DynamicResource Feijoa}" Style="{StaticResource lblMediumBoldStyle}"/>
+                    </panckeview:PancakeView>
+
+                    <panckeview:PancakeView Grid.Column="2" Style="{StaticResource FrameForDayStyle}"  VerticalOptions="Center" BackgroundColor="{DynamicResource White}" CornerRadius="10">
+                        <panckeview:PancakeView.Shadow>
+                            <panckeview:DropShadow BlurRadius="10" Opacity="0.9"   x:Name="shadowb" Color="{DynamicResource Black}" Offset="20,20" />
+                        </panckeview:PancakeView.Shadow>
+
+                        <Label Text="Wed" HorizontalOptions="Center" VerticalOptions="Center" TextColor="{DynamicResource Feijoa}" Style="{StaticResource lblMediumBoldStyle}"/>
+                    </panckeview:PancakeView>
+
+                    <panckeview:PancakeView Grid.Column="3" Style="{StaticResource FrameForDayStyle}"   VerticalOptions="Center" BackgroundColor="{DynamicResource White}" CornerRadius="10">
+                        <panckeview:PancakeView.Shadow>
+                            <panckeview:DropShadow BlurRadius="10" Opacity="0.9"   x:Name="shadowc" Color="{DynamicResource Black}" Offset="20,20" />
+                        </panckeview:PancakeView.Shadow>
+
+                        <Label Text="Thu" HorizontalOptions="Center" VerticalOptions="Center" TextColor="{DynamicResource Feijoa}" Style="{StaticResource lblMediumBoldStyle}"/>
+                    </panckeview:PancakeView>
+
+                    <panckeview:PancakeView Grid.Column="4" Style="{StaticResource FrameForDayStyle}"  VerticalOptions="Center" BackgroundColor="{DynamicResource White}"  CornerRadius="10">
+                        <panckeview:PancakeView.Shadow>
+                            <panckeview:DropShadow BlurRadius="10" Opacity="0.9"   x:Name="shadowd" Color="{DynamicResource Black}" Offset="20,20" />
+                        </panckeview:PancakeView.Shadow>
+
+                        <Label Text="Fri" HorizontalOptions="Center" VerticalOptions="Center" TextColor="{DynamicResource Feijoa}" Style="{StaticResource lblMediumBoldStyle}"/>
+                    </panckeview:PancakeView>
+                </Grid>
+                
+            </Grid>
+
+            <StackLayout Margin="0,30">
+                <Label  Padding="0,0,0,10" Style="{StaticResource lblMediumBoldStyle}" TextColor="{DynamicResource Black}" Text="Commence on"/>
+
+                    <Frame BackgroundColor="{DynamicResource White}" Padding="15,0" HasShadow="False" Margin="0" Style="{StaticResource EntryFrameParentRequestStyle}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="90*"/>
+                                <ColumnDefinition Width="10*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <DatePicker Grid.Column="0" />
+                            <ffsvg:SvgCachedImage Grid.Column="1" Source="select_date.svg"  Style="{StaticResource ImagePickerIconStyle}" HorizontalOptions="Center" VerticalOptions="Center" />
+                        </Grid>
+                    </Frame>
+            </StackLayout>
+
+            <Label Style="{StaticResource lblRequestDescriptionStyle}" TextColor="{DynamicResource Gray}" Text="Please note this request is subject to availability.Any request to reduce days require a minimum of 2 weeks notice."/>
+
+                <panckeview:PancakeView Grid.Row="2" Margin="0,30" VerticalOptions="Center" Style="{StaticResource BtnOrangeFrameStyle}">
+
+                    <Button  Text="Submit" Clicked="SubmitBtn_Clicked" TextColor="{DynamicResource White}" BackgroundColor="{DynamicResource Feijoa}" Style="{StaticResource BtnSubmitStyle}"/>
+                </panckeview:PancakeView>
+            
+            </StackLayout>
+        </ScrollView>
+      
+    </ContentView.Content>
+</shared:BaseContentView>
