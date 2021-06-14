@@ -11,7 +11,8 @@ namespace ParentPortal.Converters
             ImageSource retSource = null;
             if (value != null)
             {
-                Enums.TGA_Type status = (Enums.TGA_Type)value;
+                Enums.TGA_Type status = TGA_Type.None;
+                Enum.TryParse<TGA_Type>(value.ToString(), out status);// (Enums.TGA_Type)value;
                 switch (status)
                 {
                     case TGA_Type.Announcement:

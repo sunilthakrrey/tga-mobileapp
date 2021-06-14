@@ -119,8 +119,11 @@ namespace ParentPortal.Custom.Controls
             {
                 var control = (UserInfo)bindable;
                 KidDetail aa = GetKidDetailsFromStorage((int)newvalue).Result;
-                control.lblName.Text = aa.Name;
-                control.img.Source = aa.Avtaar;
+                if (aa != null)
+                {
+                    control.lblName.Text = aa.Name;
+                    control.img.Source = aa.Avtaar;
+                }
             }
 
         }

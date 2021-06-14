@@ -60,6 +60,11 @@ namespace ParentPortal.Custom.Controls
                         break;
                     case Enums.TGA_Type.Announcement:
                         break;
+                    case Enums.TGA_Type.Grove_Curriculum:
+                        control.stckLike.IsVisible = true;
+                        control.stckComment.IsVisible = true;
+                        control.stckBookmark.IsVisible = true;
+                        break;
                     case Enums.TGA_Type.None:
                         break;
                     default:
@@ -240,8 +245,8 @@ namespace ParentPortal.Custom.Controls
                 var control = (ToolbarComponent)bindable;
                 string Value = (string)newvalue;
                 bool isVisible = Value.ToLower() == "true";
-              //  control.ActiveBookMark.IsVisible = isVisible;
-                control.InactiveBookMark.IsVisible = !isVisible;
+               control.stckBookmarked.IsVisible = isVisible;
+                control.stckBookmark.IsVisible = !isVisible;
             }
 
         }

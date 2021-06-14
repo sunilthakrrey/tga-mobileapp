@@ -11,10 +11,9 @@ namespace ParentPortal.Custom.Controls
         public FeedComponent()
         {
             InitializeComponent();
-           
         }
 
-        #region isShowUserInfo
+      #region isShowUserInfo
 
         public static readonly BindableProperty isShowUserInfoProperty = BindableProperty.Create(nameof(isShowUserInfo), typeof(string), typeof(ToolbarComponent), defaultValue: null, defaultBindingMode: BindingMode.OneTime, propertyChanged: isShowUserInfoPropertyChanged);
 
@@ -35,28 +34,21 @@ namespace ParentPortal.Custom.Controls
             {
                 var control = (FeedComponent)bindable;
                 string Value = (string)newvalue;
-                
+
 
             }
 
         }
         #endregion
 
-        #region isBookMarked
-
-       
-
+      #region isBookMarked
         public bool isBookMarked
         {
             get
             {
                 return true;
             }
-            
         }
-
-       
-        #endregion
-
+      #endregion
     }
 }

@@ -4,7 +4,7 @@
     <SelectedDevice>HUAWEI JKM-AL00a</SelectedDevice>
     <ActiveDebugProfile>HUAWEI JKM-AL00a</ActiveDebugProfile>
     <DefaultDevice>galaxy_nexus_pie_9_0_-_api_28</DefaultDevice>
-    <ProjectView>ShowAllFiles</ProjectView>
+    <ProjectView>ProjectFiles</ProjectView>
     <AndroidDesignerPreferredTheme>MainTheme</AndroidDesignerPreferredTheme>
   </PropertyGroup>
 </Project>

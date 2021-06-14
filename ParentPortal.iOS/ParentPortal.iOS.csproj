@@ -281,4 +281,13 @@
   <ItemGroup>
     <BundleResource Include="Resources\circular_cross.svg" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Liked_icon.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Commented_icon.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Bookmarked_icon.svg" />
+  </ItemGroup>
 </Project>

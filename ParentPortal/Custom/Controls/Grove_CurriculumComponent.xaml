@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             x:Class="ParentPortal.Custom.Controls.Grove_CurriculumComponent">
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" BackgroundColor="#FCC443" Style="{StaticResource ImageMorningTeaContainerStyle}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackLayout Grid.Column="0" Spacing="1">
+                <Label Text="{Binding title, Mode=TwoWay}" TextColor="{DynamicResource White}" Style="{StaticResource lblMealTitleStyle}"/>
+                <Label Text="{Binding description,Mode=TwoWay}" TextColor="{DynamicResource White}" Style="{StaticResource lblToastWithJamStyle}"/>
+            </StackLayout>
+
+            <ffsvg:SvgCachedImage Grid.Column="1" Source="morning_tea_icon.svg" HorizontalOptions="End" Style="{StaticResource ImageMorningTeaStyle}"/>
+        </Grid>
+
+        
+       
+    </Grid>
+</StackLayout>

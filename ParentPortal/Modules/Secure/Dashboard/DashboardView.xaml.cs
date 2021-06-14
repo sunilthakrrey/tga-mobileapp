@@ -133,7 +133,7 @@ namespace ParentPortal.Modules.Secure.Dashboard
 
                 //gets ids in form of string
                 string kidIds = GetKidsIsAsString(selectedkid);
-                GetDashBoardData(kidIds);
+               await GetDashBoardData(kidIds);
                 isVisibleAll = ParentkidsDetails.kids.Count > 1;
 
 
@@ -151,7 +151,7 @@ namespace ParentPortal.Modules.Secure.Dashboard
 
         }
 
-        private async void GetDashBoardData(string kidIds)
+        private async Task<bool> GetDashBoardData(string kidIds)
         {
             //Load Parent And Kid detail From Storage(saved at time of login)
             ParentkidsDetails = await SecureStorage.GetAsync<Parent>(Enums.SecureStorageKey.AuthorizedUserInfo);
@@ -163,6 +163,7 @@ namespace ParentPortal.Modules.Secure.Dashboard
             await GetMealChart(kidIds);
 
             await GetPollings(ParentkidsDetails.id, 607667);
+            return true;
 
         }
 
@@ -194,7 +195,7 @@ namespace ParentPortal.Modules.Secure.Dashboard
             MealComponentCollectionData = mealResponse.data;
         }
 
-        private async Task GetNewFeeds(string kidIds, string date = "anytime", string type = "all")
+        private async Task GetNewFeeds(string kidIds, string date = "today", string type = "all")
         {
             //news Feeds 
             NewsFeedResponseModel responseModel = await DashBoardService.GetNewFeeedData(kidIds, date, type, Enums.Views.DashBoard);

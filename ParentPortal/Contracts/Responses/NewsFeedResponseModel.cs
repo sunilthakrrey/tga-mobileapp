@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using ParentPortal.Enums;
+using ParentPortal.Extensions;
 using ParentPortal.Models;
 using ParentPortal.Services.TGA;
 using System;
@@ -25,8 +26,22 @@ namespace ParentPortal.Contracts.Responses
         public string title { get; set; }
         public string description { get; set; }
         public string imageUrl { get; set; }
-        public string createdOn { get; set; }
-        public Enums.TGA_Type type { get; set; }
+
+        [JsonProperty("createdOn")]
+        public string createdOnAsString { get; set; }
+        [JsonIgnore]
+        public DateTime createdOn { get; set; }
+        public string Type { get; set; }
+        [JsonIgnore]
+        private TGA_Type _typeAsEnum;
+        public Enums.TGA_Type TypeAsEnum
+        {
+            get
+            {
+                _typeAsEnum = Type.ParseToEnum<TGA_Type>();
+                return _typeAsEnum;
+            }
+        }
     }
     public class NewsFeedStatus
     {

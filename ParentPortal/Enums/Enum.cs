@@ -56,6 +56,7 @@ namespace ParentPortal.Enums
         DailyChart,
         Wellness,
         Announcement,
+        Grove_Curriculum,
         None
     }
     public enum Module

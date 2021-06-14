@@ -67,6 +67,9 @@ namespace ParentPortal.Custom.Controls
                         break;
                     case Enums.TGA_Type.Announcement:
                         break;
+                    case Enums.TGA_Type.Grove_Curriculum:
+                        control.ShowControls(true, true);
+                        break;
                     case Enums.TGA_Type.None:
                         break;
                     default:
