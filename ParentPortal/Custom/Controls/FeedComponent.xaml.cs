@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using ParentPortal.Storage;
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace ParentPortal.Custom.Controls
@@ -6,9 +7,11 @@ namespace ParentPortal.Custom.Controls
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class FeedComponent : StackLayout
     {
+        BookMarkStorageService BookMarkStorageService = new BookMarkStorageService();
         public FeedComponent()
         {
             InitializeComponent();
+           
         }
 
         #region isShowUserInfo
@@ -37,6 +40,22 @@ namespace ParentPortal.Custom.Controls
             }
 
         }
+        #endregion
+
+        #region isBookMarked
+
+       
+
+        public bool isBookMarked
+        {
+            get
+            {
+                return true;
+            }
+            
+        }
+
+       
         #endregion
 
     }

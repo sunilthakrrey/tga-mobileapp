@@ -1,4 +1,5 @@
-﻿using ParentPortal.Views.Shared;
+﻿using ParentPortal.Storage;
+using ParentPortal.Views.Shared;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace ParentPortal.Custom.Controls
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ToolbarComponent : StackLayout
     {
+        BookMarkStorageService bookMarkStorageService = new BookMarkStorageService();
         public ToolbarComponent()
         {
             InitializeComponent();
@@ -147,7 +149,7 @@ namespace ParentPortal.Custom.Controls
             {
                 var control = (ToolbarComponent)bindable;
                 string Value = (string)newvalue;
-                bool isVisible = Value == "true";
+                bool isVisible = Value.ToLower() == "true";
                 control.stckLike.IsVisible = (bool)isVisible;
             }
 
@@ -215,9 +217,67 @@ namespace ParentPortal.Custom.Controls
         }
         #endregion
 
+        #region isBookMarked
+
+        public static readonly BindableProperty isBookMarkedProperty = BindableProperty.Create(nameof(isBookMarked), typeof(string), typeof(ToolbarComponent), defaultValue: null, defaultBindingMode: BindingMode.OneTime, propertyChanged: isBookMarkedPropertyChanged);
+
+        public string isBookMarked
+        {
+            get
+            {
+                return (string)GetValue(isBookMarkedProperty);
+            }
+            set
+            {
+                base.SetValue(isBookMarkedProperty, value);
+            }
+        }
+
+        public static void isBookMarkedPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
+        {
+            if (newvalue != default(object))
+            {
+                var control = (ToolbarComponent)bindable;
+                string Value = (string)newvalue;
+                bool isVisible = Value.ToLower() == "true";
+                control.ActiveBookMark.IsVisible = isVisible;
+                control.InactiveBookMark.IsVisible = !isVisible;
+            }
+
+        }
+        #endregion
+
+
         private async void CreateComment_Clicked(object sender, EventArgs e)
         {
             await PopupNavigation.Instance.PushAsync(new CommentSectionPopup());
+        }
+
+
+        private async void CreateBookMark_Tapped(object sender, EventArgs e)
+        {
+            var isalredayBookMarked = isBookMarked.ToLower() == "true";
+            if (isalredayBookMarked)
+            {
+                await bookMarkStorageService.RemoveRecord(new Models.ToolStorageModel
+                {
+                    id = ReferId,
+                    Type = Enums.TGA_Type.Announcement,
+                    Module = Enums.Module.BookMark
+                });
+                isBookMarked = false.ToString();
+            }
+            else
+            {
+                await bookMarkStorageService.AddRecord(new Models.ToolStorageModel
+                {
+                    id = ReferId,
+                    Type = Enums.TGA_Type.Announcement,
+                    Module = Enums.Module.BookMark
+                });
+                isBookMarked = true.ToString();
+            }
+
         }
     }
 }

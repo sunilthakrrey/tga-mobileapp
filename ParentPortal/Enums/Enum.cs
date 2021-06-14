@@ -30,7 +30,8 @@ namespace ParentPortal.Enums
         AuthorizedUserInfo,
         AccountCredential,
         AuthorizedToken,
-        SelectedKids
+        SelectedKids,
+        ToolBarStorage
     }
     public enum PictureSize
     { 
@@ -46,5 +47,10 @@ namespace ParentPortal.Enums
         Wellness,
         Announcement,
         None
+    }
+    public enum Module
+    {
+        BookMark,
+        Like
     }
 }

@@ -24,7 +24,11 @@
         </StackLayout>
 
         <StackLayout x:Name="stckBookmark" Grid.Column="2" Spacing="5" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="End">
-            <ffsvg:SvgCachedImage Source="bookmark_icon.svg" Style="{StaticResource ImageReactionsStyle}"/>
+            <!--<StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Tapped="CreateBookMark_Tapped"/>
+            </StackLayout.GestureRecognizers>
+            <ffsvg:SvgCachedImage x:Name="ActiveBookMark"  IsVisible="false" Source="tga_comments_icon.svg" Style="{StaticResource ImageReactionsStyle}"/>-->
+            <ffsvg:SvgCachedImage x:Name="InactiveBookMark" Source="bookmark_icon.svg" Style="{StaticResource ImageReactionsStyle}"/>
             <Label Text="Bookmark" TextColor="{DynamicResource Gray}" Style="{StaticResource lblReactionsNameStyle}"/>
         </StackLayout>
 
