@@ -7,6 +7,15 @@
         {
             public static string LOGIN = baseURL + "login";
             public static string FORGOT = "";
+            
+        }
+        public static class DashBoard
+        {
+            public static string Announcements = baseURL + "kid/latest-annoucement";
+            public static string NewsFeeds = baseURL + "kid/new-feeds";
+            public static string MealChart = baseURL + "kid/food";
+            public static string GetPoll = baseURL + "poll/getAll";
+            public static string AddPoll = baseURL + "poll/add";
         }
     }
 }

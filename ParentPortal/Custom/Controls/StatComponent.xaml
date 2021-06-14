@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:customControls="clr-namespace:ParentPortal.Custom.Controls"
+             x:Class="ParentPortal.Custom.Controls.StatComponent">
+    <Grid  Padding="20,0" RowSpacing="4">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackLayout  Grid.Column="0" Grid.Row="0" Orientation="Horizontal" Spacing="20" VerticalOptions="Center">
+            <Label x:Name="lblLikes" TextColor="{DynamicResource Gray}" Style="{StaticResource lblLikeCommentStyle}"/>
+            <Label x:Name="lblComments" TextColor="{DynamicResource Gray}" Style="{StaticResource lblLikeCommentStyle}"/>
+        </StackLayout>
+        <Label Grid.Column="0" x:Name="lblMessage" Grid.Row="0" IsVisible="false"  HorizontalOptions="Start" TextColor="{DynamicResource Sunglo}" Style="{StaticResource lblGoingToEventStyle}"/>
+        <customControls:UserInfo x:Name="userInfoComponent"  Grid.Column="1" Grid.Row="0"  IsNameDisplay="true"  ImageSize="Small"  Spacing="5" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="End"></customControls:UserInfo>
+      
+
+    </Grid>
+</StackLayout>

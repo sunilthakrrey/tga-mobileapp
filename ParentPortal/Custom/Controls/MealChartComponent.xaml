@@ -2,7 +2,7 @@
 <StackLayout BindableLayout.ItemsSource="{Binding .}" xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:panckeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms" xmlns:customControls="clr-namespace:ParentPortal.Custom.Controls"
-             x:Class="ParentPortal.Custom.Controls.TGAMyDayBoxComponent">
+             x:Class="ParentPortal.Custom.Controls.MealChartComponent">
     <BindableLayout.ItemTemplate>
 
         <DataTemplate>
@@ -25,11 +25,11 @@
                         </Grid.ColumnDefinitions>
 
                         <StackLayout Grid.Column="0" Spacing="1">
-                            <Label Text="{Binding Title, Mode=TwoWay}" TextColor="{DynamicResource White}" Style="{StaticResource lblMealTitleStyle}"/>
-                            <Label Text="{Binding Description,Mode=TwoWay}" TextColor="{DynamicResource White}" Style="{StaticResource lblToastWithJamStyle}"/>
+                            <Label Text="{Binding title, Mode=TwoWay}" TextColor="{DynamicResource White}" Style="{StaticResource lblMealTitleStyle}"/>
+                            <Label Text="{Binding description,Mode=TwoWay}" TextColor="{DynamicResource White}" Style="{StaticResource lblToastWithJamStyle}"/>
                         </StackLayout>
 
-                        <ffsvg:SvgCachedImage Grid.Column="1" Source="{Binding Type}" HorizontalOptions="End" Style="{StaticResource ImageMorningTeaStyle}"/>
+                        <ffsvg:SvgCachedImage Grid.Column="1" Source="morning_tea_icon.svg" HorizontalOptions="End" Style="{StaticResource ImageMorningTeaStyle}"/>
                     </Grid>
 
                     <Grid Grid.Row="1" Style="{StaticResource MorningTeaMainContainerStyle}">
@@ -48,6 +48,13 @@
 
                             <Label Grid.Column="0" Text="Morning Tea" TextColor="{DynamicResource Black}" Style="{StaticResource lblMealTitleStyle}"/>
                             <StackLayout x:Name="MorningTeaStack" Orientation="Horizontal" Grid.Column="1" BindableLayout.ItemsSource="{Binding MorningTea}">
+                                <BindableLayout.EmptyView>
+                                    <StackLayout>
+                                        <Frame >
+                                            <Label Text="{Binding NoOfMorningtea}"></Label>
+                                        </Frame>
+                                    </StackLayout>
+                                </BindableLayout.EmptyView>
                                 <BindableLayout.ItemTemplate>
                                     <DataTemplate>
                                         <StackLayout Grid.Column="1" Style="{StaticResource ImageMorningFoodContainerStyle}">
@@ -66,6 +73,13 @@
 
                             <Label Grid.Column="0" Text="Fruit" TextColor="{DynamicResource Black}"  Style="{StaticResource lblMealTitleStyle}"/>
                             <StackLayout  x:Name="MorningFruitsStack" Orientation="Horizontal" Grid.Column="1" BindableLayout.ItemsSource="{Binding Fruits}">
+                                <BindableLayout.EmptyView>
+                                    <StackLayout>
+                                        <Frame >
+                                            <Label Text="{Binding NoOfFruits}"></Label>
+                                        </Frame>
+                                    </StackLayout>
+                                </BindableLayout.EmptyView>
                                 <BindableLayout.ItemTemplate>
                                     <DataTemplate>
                                         <StackLayout Grid.Column="1"  Style="{StaticResource ImageMorningFoodContainerStyle}">
@@ -87,6 +101,13 @@
 
                             <Label Grid.Column="0" Text="Water" TextColor="{DynamicResource Black}"  Style="{StaticResource lblMealTitleStyle}"/>
                             <StackLayout  x:Name="MorningWaterStack" Orientation="Horizontal" Grid.Column="1" BindableLayout.ItemsSource="{Binding WaterIntake}">
+                                <BindableLayout.EmptyView>
+                                    <StackLayout>
+                                        <Frame >
+                                            <Label Text="{Binding NoOfWater}"></Label>
+                                        </Frame>
+                                    </StackLayout>
+                                </BindableLayout.EmptyView>
                                 <BindableLayout.ItemTemplate>
                                     <DataTemplate>
                                         <StackLayout Grid.Column="1" Style="{StaticResource ImageMorningFoodContainerStyle}">
@@ -109,6 +130,13 @@
 
                             <Label Grid.Column="0" Text="Bottles" TextColor="{DynamicResource Black}"  Style="{StaticResource lblMealTitleStyle}"/>
                             <StackLayout  x:Name="MorningBottleStack" Orientation="Horizontal" Grid.Column="1" BindableLayout.ItemsSource="{Binding Bottles}">
+                                <BindableLayout.EmptyView>
+                                    <StackLayout>
+                                        <Frame >
+                                            <Label Text="{Binding NoOfBootles}"></Label>
+                                        </Frame>
+                                    </StackLayout>
+                                </BindableLayout.EmptyView>
                                 <BindableLayout.ItemTemplate>
                                     <DataTemplate>
                                         <StackLayout Grid.Column="1" Style="{StaticResource ImageMorningFoodContainerStyle}">
@@ -120,8 +148,8 @@
                                 </BindableLayout.ItemTemplate>
 
                             </StackLayout>
-
-                            <customControls:IndividualFrameComponent Grid.Column="2" HorizontalOptions="End" BindingContext="{Binding Kid}"></customControls:IndividualFrameComponent>
+                            <customControls:UserInfo  IsNameDisplay="true" ImageSize="Small"  UserId="{Binding createdById}" Grid.Column="2" HorizontalOptions="End" ></customControls:UserInfo>
+                            <!--<customControls:IndividualFrameComponent Grid.Column="2" HorizontalOptions="End" BindingContext="{Binding KidDetail}"></customControls:IndividualFrameComponent>-->
                             <!--<StackLayout Grid.Column="2" Orientation="Horizontal" HorizontalOptions="End">
                                 <Label Text="{Binding Kid.Name}"  TextColor="{StaticResource Gray}" VerticalOptions="Center" Style="{StaticResource lblForNameStyle}"/>
                                 <Frame BorderColor="{DynamicResource Gray}" Style="{StaticResource ImageCircleFrameStyle}">

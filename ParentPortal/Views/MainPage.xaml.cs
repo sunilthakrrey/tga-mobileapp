@@ -1,7 +1,9 @@
-﻿using ParentPortal.Views.Shared;
+﻿using ParentPortal.Enums;
+using ParentPortal.Views.Shared;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -15,6 +17,7 @@ namespace ParentPortal
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : ContentPage
     {
+        ObservableCollection<Enums.Views> processingRequests = new ObservableCollection<Enums.Views>();
         private View _contentView;
         public View ContentView
         {
@@ -30,12 +33,29 @@ namespace ParentPortal
                 }
             }
         }
+        public bool _isBusy = false;
+        public bool isBusy
+        {
+            get
+            {
+                return _isBusy;
+            }
+            set
+            {
+                _isBusy = value;
+                OnPropertyChanged(nameof(isBusy));
+            }
+        }
 
-        public MainPage()
+        public MainPage(bool isListnerConfigured = true)
         {
             InitializeComponent();
             BindingContext = this;
             NavigationPage.SetHasNavigationBar(this, false);
+            if (!isListnerConfigured)
+            {
+                AttachListner();
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -47,7 +67,37 @@ namespace ParentPortal
 
             changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+        public void AttachListner()
+        {
+            MessagingCenter.Unsubscribe<MainPage, string>(this, MessageCenterAuthenticator.RequestStarted.ToString());
+            MessagingCenter.Subscribe<MainPage, Enums.Views>(this, MessageCenterAuthenticator.RequestStarted.ToString(), (sender, arg) =>
+            {
+                if (arg != Enums.Views.None)
+                {
+                    processingRequests.Add(arg);
+                    //  isBusy = true;
+                    loadingLayout.IsVisible = true;
+                }
+            });
 
+
+            MessagingCenter.Unsubscribe<MainPage, string>(this, MessageCenterAuthenticator.RequestCompleted.ToString());
+            MessagingCenter.Subscribe<MainPage, Enums.Views>(this, MessageCenterAuthenticator.RequestCompleted.ToString(), (sender, arg) =>
+            {
+                if (arg != Enums.Views.None)
+                {
+                    processingRequests.Remove(arg);
+
+                    if (processingRequests.Count == 0)
+                    {
+                        // Task.Delay(2000);
+
+                        // isBusy = false;
+                        loadingLayout.IsVisible = false;
+                    }
+                }
+            });
+        }
 
         private async void GetMenuItems_Tapped(object sender, EventArgs e)
         {

@@ -14,20 +14,24 @@ namespace ParentPortal.Enums
         PageTitle,
         RequestStarted,
         RequestCompleted,
-        NavigationBar
+        NavigationBar,
+        FeedFilter
     }
 
-    public enum Page
+    public enum Views
     {
-        None
+        None,
+        DashBoard
     }
-
+   
     public enum SecureStorageKey
     {
        
         AuthorizedUserInfo,
         AccountCredential,
-        AuthorizedToken
+        AuthorizedToken,
+        SelectedKids,
+        ToolBarStorage
     }
 
     public enum ViewType
@@ -38,9 +42,25 @@ namespace ParentPortal.Enums
         UpcomingAbsences,
         SendAppreciation
     }
-    public enum ImageSize
+    //public enum ImageSize
+    public enum PictureSize
     { 
         Small,
-        Large
+        Medium,
+        None
+    }
+
+    public enum TGA_Type
+    {
+        Event,
+        DailyChart,
+        Wellness,
+        Announcement,
+        None
+    }
+    public enum Module
+    {
+        BookMark,
+        Like
     }
 }

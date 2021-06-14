@@ -10,19 +10,19 @@ namespace ParentPortal.Services.TGA
 {
     public interface IIdentityService
     {
-        Task<ResponseModels.LoginResponseModel> LoginAsync(RequestModels.LoginRequestModel model, Enums.Page page = Enums.Page.None);
-        Task<ResponseModels.ForgotPasswordResponse> ForgotPassword(RequestModels.FOrgotPasswordRequestModel model, Enums.Page page = Enums.Page.None);
+        Task<ResponseModels.LoginResponseModel> LoginAsync(RequestModels.LoginRequestModel model, Enums.Views page = Enums.Views.None);
+        Task<ResponseModels.ForgotPasswordResponse> ForgotPassword(RequestModels.FOrgotPasswordRequestModel model, Enums.Views page = Enums.Views.None);
     }
     public class IdentityService : BaseHttpService, IIdentityService
     {
-        public async Task<ForgotPasswordResponse> ForgotPassword(RequestModels.FOrgotPasswordRequestModel model, Page page = Page.None)
+        public async Task<ForgotPasswordResponse> ForgotPassword(RequestModels.FOrgotPasswordRequestModel model,   Enums.Views page = Enums.Views.None)
         {
             var json = JsonConvert.SerializeObject(model);
             ResponseModels.ForgotPasswordResponse response = await CreatHttpPOSTRequestAsync<ResponseModels.ForgotPasswordResponse>(ConfigSettings.EndPoint.Identity.FORGOT, body: json, page: page);
             return response;
         }
 
-        public async Task<ResponseModels.LoginResponseModel> LoginAsync(RequestModels.LoginRequestModel model, Enums.Page page = Enums.Page.None)
+        public async Task<ResponseModels.LoginResponseModel> LoginAsync(RequestModels.LoginRequestModel model, Enums.Views page = Enums.Views.None)
         {
             var json = JsonConvert.SerializeObject(model);
             ResponseModels.LoginResponseModel response = await CreatHttpPOSTRequestAsync<ResponseModels.LoginResponseModel>(ConfigSettings.EndPoint.Identity.LOGIN, body: json, page: page);

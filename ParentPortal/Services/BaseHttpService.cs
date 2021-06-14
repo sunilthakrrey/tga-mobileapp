@@ -45,11 +45,11 @@ namespace ParentPortal.Services
         }
 
 
-        protected async Task<T> CreateHttpGETRequestAsync<T>(string url, WebHeaderCollection headers = null, Enums.Page page = Enums.Page.None)
+        protected async Task<T> CreateHttpGETRequestAsync<T>(string url, WebHeaderCollection headers = null, Enums.Views page = Enums.Views.None)
         {
             IsCheckInternetConnectivity();
 
-            MessagingCenter.Send<MainPage, Enums.Page>(new MainPage(), MessageCenterAuthenticator.RequestStarted.ToString(), page);
+            MessagingCenter.Send<MainPage, Enums.Views>(new MainPage(isListnerConfigured:false), MessageCenterAuthenticator.RequestStarted.ToString(), page);
 
 
             Type temp = typeof(T);
@@ -62,18 +62,18 @@ namespace ParentPortal.Services
             {
                 request.Headers = headers;
             }
-            //AuthorizedToken authorizedToken = await GetTokenAsync();
-            //if (authorizedToken != null)
-            //{
-            //    request.Headers.Add(ConfigSettings.Constant.HeaderKey.Authorization, string.Format("Bearer {0}", authorizedToken.Token));
-            //}
+            AuthorizedToken authorizedToken = await GetTokenAsync();
+            if (authorizedToken != null)
+            {
+                request.Headers.Add(ConfigSettings.Constant.HeaderKey.Authorization, string.Format("Bearer {0}", authorizedToken.Token));
+            }
             try
             {
                 var httpResponse = (HttpWebResponse)await request.GetResponseAsync();
                 using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
                 {
                     var result = streamReader.ReadToEnd();
-                    obj = JsonConvert.DeserializeObject<T>(result);
+                      obj = JsonConvert.DeserializeObject<T>(result);
                 }
             }
             catch (WebException ex)
@@ -82,17 +82,17 @@ namespace ParentPortal.Services
             }
             finally
             {
-                MessagingCenter.Send<MainPage, Enums.Page>(new MainPage(), MessageCenterAuthenticator.RequestCompleted.ToString(), page);
+                MessagingCenter.Send<MainPage, Enums.Views>(new MainPage(), MessageCenterAuthenticator.RequestCompleted.ToString(), page);
             }
 
             return obj;
         }
 
-        protected async Task<T> CreatHttpPOSTRequestAsync<T>(string url, Dictionary<string, string> headers = null, string body = null, Enums.Page page = Enums.Page.None)
+        protected async Task<T> CreatHttpPOSTRequestAsync<T>(string url, Dictionary<string, string> headers = null, string body = null, Enums.Views page = Enums.Views.None)
         {
             IsCheckInternetConnectivity();
 
-            MessagingCenter.Send<MainPage, Enums.Page>(new MainPage(), MessageCenterAuthenticator.RequestStarted.ToString(), page);
+            MessagingCenter.Send<MainPage, Enums.Views>(new MainPage(isListnerConfigured:false), MessageCenterAuthenticator.RequestStarted.ToString(), page);
 
             Type temp = typeof(T);
             T obj = Activator.CreateInstance<T>();
@@ -138,17 +138,17 @@ namespace ParentPortal.Services
             }
             finally
             {
-                MessagingCenter.Send<MainPage, Enums.Page>(new MainPage(), MessageCenterAuthenticator.RequestCompleted.ToString(), page);
+                MessagingCenter.Send<MainPage, Enums.Views>(new MainPage(), MessageCenterAuthenticator.RequestCompleted.ToString(), page);
             }
 
             return obj;
         }
 
-        protected async Task<T> CreatHttpPOSTFormDataRequestAsync<T>(string url, MultipartFormDataContent form = null, Enums.Page page = Enums.Page.None)
+        protected async Task<T> CreatHttpPOSTFormDataRequestAsync<T>(string url, MultipartFormDataContent form = null, Enums.Views page = Enums.Views.None)
         {
             IsCheckInternetConnectivity();
 
-            MessagingCenter.Send<MainPage, Enums.Page>(new MainPage(), MessageCenterAuthenticator.RequestStarted.ToString(), page);
+            MessagingCenter.Send<MainPage, Enums.Views>(new MainPage(isListnerConfigured: false), MessageCenterAuthenticator.RequestStarted.ToString(), page);
 
             Type temp = typeof(T);
             T obj = Activator.CreateInstance<T>();
@@ -184,7 +184,7 @@ namespace ParentPortal.Services
             }
             finally
             {
-                MessagingCenter.Send<MainPage, Enums.Page>(new MainPage(), MessageCenterAuthenticator.RequestCompleted.ToString(), page);
+                MessagingCenter.Send<MainPage, Enums.Views>(new MainPage(), MessageCenterAuthenticator.RequestCompleted.ToString(), page);
             }
 
             return obj;

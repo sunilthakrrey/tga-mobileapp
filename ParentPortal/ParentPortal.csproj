@@ -45,11 +45,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Custom\Controls\IndividualFrameComponent.xaml.cs">
-      <DependentUpon>IndividualFrameComponent.xaml</DependentUpon>
+    <Compile Update="Custom\Controls\MealChartComponent.xaml.cs">
+      <DependentUpon>MealChartComponent.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Custom\Controls\UserInfo.xaml.cs">
+      <DependentUpon>UserInfo.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\Shared\CommentSectionPopup.xaml.cs">
       <DependentUpon>CommentSectionPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Shared\FeedFilterPopup.xaml.cs">
+      <DependentUpon>FeedFilterPopup.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -72,19 +78,25 @@
     <EmbeddedResource Update="Content\Styles\SmallDeviceStyle.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Custom\Controls\AppLoader.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Custom\Controls\FeedComponent.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Custom\Controls\StatComponent.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Custom\Controls\ToolbarComponent.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Custom\Controls\UserInfo.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Custom\Controls\CustomPopUpContainer.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Custom\Controls\FeedBackLayoutComponent.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Custom\Controls\IndividualFrameComponent.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Custom\Controls\TGAMyDayBoxComponent.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Custom\Controls\TGANewsFeedContainerComponent.xaml">
+    <EmbeddedResource Update="Custom\Controls\MealChartComponent.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Modules\Auth\ForgotPassword\ForgotPasswordPage.xaml">
@@ -105,6 +117,7 @@
     <EmbeddedResource Update="Modules\Secure\Dashboard\DashboardView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\Shared\FeedFilterPopup.xaml"></EmbeddedResource>
     <EmbeddedResource Update="Modules\Secure\ParentRequest\ChangeOfAttendance\SubmitPopupPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

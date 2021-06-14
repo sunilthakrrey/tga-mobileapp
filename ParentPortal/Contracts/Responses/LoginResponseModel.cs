@@ -11,8 +11,7 @@ namespace ParentPortal.Contracts.Responses
         public string code { get; set; }
         public string token { get; set; }
         public string refreshToken { get; set; }
-        public int data { get; set; }
-
+        public Data data { get; set; }
     }
     public class Data
     {

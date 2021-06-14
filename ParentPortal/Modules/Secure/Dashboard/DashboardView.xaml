@@ -2,13 +2,18 @@
 <shared:BaseContentView xmlns="http://xamarin.com/schemas/2014/forms" 
                         xmlns:shared="clr-namespace:ParentPortal.Views.Shared"
                         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                        
                         xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
                         xmlns:customControls="clr-namespace:ParentPortal.Custom.Controls" 
-                        xmlns:panckeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+                        xmlns:panckeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:converters="clr-namespace:ParentPortal.Converters"
                         x:Class="ParentPortal.Modules.Secure.Dashboard.DashboardView">
+    <ContentView.Resources>
+        <converters:MultiValueConverter x:Key="multivalueconverter"></converters:MultiValueConverter>
+        <converters:BooleanToReverseConverter x:Key="boolToreverseconverter"></converters:BooleanToReverseConverter>
+       
+    </ContentView.Resources>
     <ContentView.Content>
-
-
         <ScrollView>
             <Grid Padding="20,0">
                 <Grid.RowDefinitions>
@@ -28,12 +33,15 @@
                     </Grid.ColumnDefinitions>
 
                     <StackLayout Grid.Column="0" Spacing="0">
-                        <Label Text="Tues 12 Oct" TextTransform="Uppercase" TextColor="{DynamicResource Feijoa}" Style="{StaticResource lblForDateStyle}"/>
-                        <Label Text="Hi, Jane" TextColor="{DynamicResource Black}" Style="{StaticResource lblGreetingStyle}"/>
+                        <Label Text="{Binding Source={x:Static sys:DateTime.Now}, StringFormat='{}{0:ddd dd MMM}'}" TextTransform="Uppercase" TextColor="{DynamicResource Feijoa}" Style="{StaticResource lblForDateStyle}"/>
+                        <Label Text="{Binding ParentkidsDetails.name,Mode=TwoWay}" TextColor="{DynamicResource Black}" Style="{StaticResource lblGreetingStyle}"/>
                     </StackLayout>
 
                     <StackLayout Grid.Column="1" Orientation="Horizontal" HorizontalOptions="End">
-                        <Frame  BackgroundColor="{DynamicResource SilverChalice}" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource lblForAllLabelContainerStyle}">
+                        <Frame IsVisible="{Binding isVisibleAll}" BackgroundColor="{DynamicResource SilverChalice}" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource lblForAllLabelContainerStyle}">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="selectAllKids_Tapped"/>
+                            </Frame.GestureRecognizers>
                             <Label Text="All" VerticalOptions="Center" TextColor="{DynamicResource White}" Style="{StaticResource lblForAllLabelStyle}"/>
                         </Frame>
                         <!--<Frame BorderColor="{DynamicResource Feijoa}" Style="{StaticResource ImageUserCircleStyle}">
@@ -42,14 +50,21 @@
                         <Frame BorderColor="{DynamicResource Feijoa}" Style="{StaticResource ImageUserCircleStyle}">
                             <ffsvg:SvgCachedImage Source="user_s.svg" Style="{StaticResource ImageUserPicStyle}"/>
                         </Frame>-->
-                        <StackLayout Orientation="Horizontal" BindableLayout.ItemsSource="{Binding KidsDetails}">
+                        <StackLayout Orientation="Horizontal"  BindableLayout.ItemsSource="{Binding ParentkidsDetails.kids, Mode=TwoWay}">
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate>
-                                    <customControls:IndividualFrameComponent BindingContext="{Binding .}"></customControls:IndividualFrameComponent>
+                                    <StackLayout>
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="kidselection_changed" CommandParameter="{Binding Id}"/>
+                                        </StackLayout.GestureRecognizers>
+                                        <customControls:UserInfo  IsNameDisplay="false" ImageSize="Medium"  UserId="{Binding Id}" ></customControls:UserInfo>
+                                    </StackLayout>
+                                    
+                                    <!--<customControls:IndividualFrameComponent BindingContext="{Binding .}"></customControls:IndividualFrameComponent>-->
                                 </DataTemplate>
                             </BindableLayout.ItemTemplate>
                         </StackLayout>
-                        
+
                     </StackLayout>
 
                 </Grid>
@@ -74,7 +89,7 @@
                     <Frame Grid.Column="1" BackgroundColor="{DynamicResource PeriwinkleGray}" Style="{StaticResource DashboardCircularFrameStyle}">
                         <StackLayout Style="{StaticResource CommonDashboardCircularStackStyle}">
                             <ffsvg:SvgCachedImage Source="sleep_Icon.svg" Style="{StaticResource ImageEventIconStyle}"/>
-                            <Label Text="Sleep" TextColor="{DynamicResource PoloBlue}" Style="{StaticResource lblEventTitleStyle}"/>
+                            <Label Text="Sleep"  TextColor="{DynamicResource PoloBlue}" Style="{StaticResource lblEventTitleStyle}"/>
                         </StackLayout>
                     </Frame>
 
@@ -94,7 +109,7 @@
 
                 </Grid>
 
-                <Grid Grid.Row="2" Margin="0,20,0,30">
+                <Grid x:Name="GridAnnouncement" Grid.Row="2" Margin="0,20,0,30">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
@@ -122,13 +137,13 @@
                             </Grid.ColumnDefinitions>
 
                             <StackLayout Grid.Column="0" Spacing="0" HorizontalOptions="Start" VerticalOptions="Center" Orientation="Vertical">
-                                <Label Text="12" TextColor="{DynamicResource Feijoa}" HorizontalTextAlignment="Center" Style="{StaticResource lblDateOnlyStyle}"/>
-                                <Label Text="Mar" TextColor="{DynamicResource Gray}" TextTransform="Uppercase" HorizontalTextAlignment="Center" Style="{StaticResource lblMonthOnlyStyle}"/>
+                                <Label Text="{Binding AnnouncementResponseModel.ConvertedIntoDate,StringFormat='{}{0:dd}'}" TextColor="{DynamicResource Feijoa}" HorizontalTextAlignment="Center" Style="{StaticResource lblDateOnlyStyle}"/>
+                                <Label  Text="{Binding AnnouncementResponseModel.ConvertedIntoDate,StringFormat='{}{0:MMM}'}"  TextColor="{DynamicResource Gray}" TextTransform="Uppercase" HorizontalTextAlignment="Center" Style="{StaticResource lblMonthOnlyStyle}"/>
                             </StackLayout>
 
                             <StackLayout Grid.Column="1" Spacing="5" Orientation="Vertical" VerticalOptions="Center">
-                                <Label Text="Sarah's Speech Tips: Sound Production" TextColor="{DynamicResource Black}" HorizontalTextAlignment="Start" Style="{StaticResource lblSpeechTipsStyle}"/>
-                                <Label Text="10:35am" TextColor="{DynamicResource Gray}" TextTransform="None" HorizontalOptions="Start" HorizontalTextAlignment="Center" Style="{StaticResource lblSpeechTimeStyle}"/>
+                                <Label Text="{Binding AnnouncementResponseModel.title, Mode=TwoWay}" TextColor="{DynamicResource Black}" HorizontalTextAlignment="Start" Style="{StaticResource lblSpeechTipsStyle}"/>
+                                <Label Text="{Binding AnnouncementResponseModel.time, Mode=TwoWay}" TextColor="{DynamicResource Gray}" TextTransform="None" HorizontalOptions="Start" HorizontalTextAlignment="Center" Style="{StaticResource lblSpeechTimeStyle}"/>
                             </StackLayout>
                         </Grid>
                     </panckeview:PancakeView>
@@ -152,18 +167,106 @@
                             </StackLayout.GestureRecognizers>
                             <ffsvg:SvgCachedImage  Source="Filter_icon.svg" HorizontalOptions="End" Style="{StaticResource ImageFilterIconStyle}"/>
                         </StackLayout>
-                      
+
                     </Grid>
 
                 </Grid>
 
-                <customControls:TGANewsFeedContainerComponent Grid.Row="4"  BindingContext="{Binding NewsFeedBoxCollectionData, Mode=TwoWay}"></customControls:TGANewsFeedContainerComponent>
+                <customControls:FeedComponent Grid.Row="4"   BindingContext="{Binding NewsFeedBoxCollectionData, Mode=TwoWay}" ></customControls:FeedComponent>
 
                 <!--my day Meals-->
 
-                <customControls:TGAMyDayBoxComponent Grid.Row="5" BindingContext="{Binding ComponentCollectionData, Mode=TwoWay}"></customControls:TGAMyDayBoxComponent>
+                <customControls:MealChartComponent Grid.Row="5" BindingContext="{Binding MealComponentCollectionData, Mode=TwoWay}"></customControls:MealChartComponent>
 
-                <panckeview:PancakeView  Grid.Row="6" VerticalOptions="Center" Padding="0" BackgroundColor="{DynamicResource White}" Style="{StaticResource OptionsMainContainerStyle}">
+                <!--poll card-->
+
+
+                <StackLayout    Grid.Row="6" 
+                      BindableLayout.ItemsSource="{Binding PollData,Mode=TwoWay}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <panckeview:PancakeView BindingContext="{Binding .}"   x:Name="pancake"  VerticalOptions="Center" Padding="0" BackgroundColor="{DynamicResource White}" Style="{StaticResource OptionsMainContainerStyle}">
+                                <panckeview:PancakeView.Shadow>
+                                    <panckeview:DropShadow BlurRadius="10" Opacity="0.9"    Color="Black" Offset="20,20" />
+                                </panckeview:PancakeView.Shadow>
+
+                                <Grid Padding="0,0,0,20">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid Grid.Row="0" BackgroundColor="{DynamicResource Feijoa}" Style="{StaticResource OptionsSubContainerStyle}">
+                                        <Label Text="{Binding Question}" TextColor="{DynamicResource White}" Style="{StaticResource lblMealTitleStyle}"/>
+                                    </Grid>
+
+                                    <Grid  Grid.Row="1" Style="{StaticResource AllOptionsSubContainerStyle}">
+                                        <!--<Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>-->
+                                        <StackLayout x:Name="stackpoll"  BindableLayout.ItemsSource="{Binding Options,Mode=TwoWay}">
+                                           
+                                            <BindableLayout.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Frame  x:Name="optionFrame" BackgroundColor="{Binding BackgroundColor,Mode=TwoWay}"  HasShadow="False" BorderColor="{DynamicResource Gray}" Style="{StaticResource lblOptionsTitleMainContainerStyle}">
+                                                        <Frame.GestureRecognizers>
+                                                            <TapGestureRecognizer  Tapped="optionSelected_Clicked">
+                                                                <TapGestureRecognizer.CommandParameter>
+                                                                    <MultiBinding Converter="{StaticResource multivalueconverter}">
+                                                                        <Binding Source="{x:Reference pancake}" Path="BindingContext" />
+                                                                        <Binding Path="Value"/>
+                                                                    </MultiBinding>
+                                                                </TapGestureRecognizer.CommandParameter>
+                                                            </TapGestureRecognizer>
+                                                        </Frame.GestureRecognizers>
+                                                        <StackLayout  Orientation="Horizontal" Style="{StaticResource lblOptionsTitleContainerStyle}">
+                                                            <Frame BackgroundColor="{Binding BackgroundColor,Mode=TwoWay}" BorderColor="{DynamicResource Gray}" Style="{StaticResource lblOptionsCircleStyle}">
+                                                                <Label Text="A"  TextColor="{DynamicResource Gray}" Style="{StaticResource lblOptionsNoStyle}"/>
+                                                            </Frame>
+                                                            <Label Text="{Binding Name}" VerticalOptions="Center" TextColor="{DynamicResource Gray}" Style="{StaticResource lblOptionsTitleStyle}"/>
+                                                        </StackLayout>
+                                                    </Frame>
+                                                </DataTemplate>
+                                            </BindableLayout.ItemTemplate>
+                                        </StackLayout>
+
+
+                                        <!--<Frame Grid.Row="1" HasShadow="False" BorderColor="{DynamicResource Gray}" Style="{StaticResource lblOptionsTitleMainContainerStyle}">
+                                <StackLayout Orientation="Horizontal"  Style="{StaticResource lblOptionsTitleContainerStyle}">
+                                    <Frame BorderColor="{DynamicResource Gray}" Style="{StaticResource lblOptionsCircleStyle}">
+                                        <Label Text="B" TextColor="{DynamicResource Gray}" Style="{StaticResource lblOptionsNoStyle}"/>
+                                    </Frame>
+                                    <Label Text="Lorem ipsum dolor sit amet" VerticalOptions="Center" TextColor="{DynamicResource Gray}" Style="{StaticResource lblOptionsTitleStyle}"/>
+                                </StackLayout>
+                            </Frame>
+
+                            <Frame Grid.Row="2" HasShadow="False" BorderColor="{DynamicResource Gray}" Style="{StaticResource lblOptionsTitleMainContainerStyle}">
+                                <StackLayout Orientation="Horizontal"  Style="{StaticResource lblOptionsTitleContainerStyle}">
+                                    <Frame BorderColor="{DynamicResource Gray}" Style="{StaticResource lblOptionsCircleStyle}">
+                                        <Label Text="C" TextColor="{DynamicResource Gray}" Style="{StaticResource lblOptionsNoStyle}"/>
+                                    </Frame>
+                                    <Label Text="Lorem ipsum dolor sit amet" VerticalOptions="Center" TextColor="{DynamicResource Gray}" Style="{StaticResource lblOptionsTitleStyle}"/>
+                                </StackLayout>
+                            </Frame>-->
+                                    </Grid>
+
+                                </Grid>
+                            </panckeview:PancakeView>
+
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+
+                <IndicatorView  x:Name="indicatorView"
+                                Margin="0,0,0,0"
+                                HeightRequest="20"
+                                WidthRequest="100"
+                                IndicatorColor="Red"
+                                SelectedIndicatorColor="DarkGray"
+                                HorizontalOptions="Center" />
+
+                <!--<panckeview:PancakeView  Grid.Row="6" VerticalOptions="Center" Padding="0" BackgroundColor="{DynamicResource White}" Style="{StaticResource OptionsMainContainerStyle}">
                     <panckeview:PancakeView.Shadow>
                         <panckeview:DropShadow BlurRadius="10" Opacity="0.9"    Color="Black" Offset="20,20" />
                     </panckeview:PancakeView.Shadow>
@@ -214,7 +317,7 @@
                         </Grid>
 
                     </Grid>
-                </panckeview:PancakeView>
+                </panckeview:PancakeView>-->
 
             </Grid>
 

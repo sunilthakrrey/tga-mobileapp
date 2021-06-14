@@ -20656,67 +20656,70 @@ namespace ParentPortal.Droid
 			public const int sleep_Icon = 2131165364;
 			
 			// aapt resource value: 0x7F0700B5
-			public const int splash_background = 2131165365;
+			public const int Spinner = 2131165365;
 			
 			// aapt resource value: 0x7F0700B6
-			public const int splash_launch = 2131165366;
+			public const int splash_background = 2131165366;
 			
 			// aapt resource value: 0x7F0700B7
-			public const int splash_logo = 2131165367;
+			public const int splash_launch = 2131165367;
 			
 			// aapt resource value: 0x7F0700B8
-			public const int splash_logotext = 2131165368;
+			public const int splash_logo = 2131165368;
 			
 			// aapt resource value: 0x7F0700B9
-			public const int splash_screen = 2131165369;
+			public const int splash_logotext = 2131165369;
 			
 			// aapt resource value: 0x7F0700BA
-			public const int splash_text = 2131165370;
+			public const int splash_screen = 2131165370;
 			
 			// aapt resource value: 0x7F0700BB
-			public const int staff_icon = 2131165371;
+			public const int splash_text = 2131165371;
 			
 			// aapt resource value: 0x7F0700BC
-			public const int sun_icon = 2131165372;
+			public const int staff_icon = 2131165372;
 			
 			// aapt resource value: 0x7F0700BD
-			public const int test_custom_background = 2131165373;
+			public const int sun_icon = 2131165373;
 			
 			// aapt resource value: 0x7F0700BE
-			public const int text_splash = 2131165374;
+			public const int test_custom_background = 2131165374;
 			
 			// aapt resource value: 0x7F0700BF
-			public const int text_splashlogo = 2131165375;
+			public const int text_splash = 2131165375;
 			
 			// aapt resource value: 0x7F0700C0
-			public const int tga_banner = 2131165376;
+			public const int text_splashlogo = 2131165376;
 			
 			// aapt resource value: 0x7F0700C1
-			public const int tga_comments_icon = 2131165377;
+			public const int tga_banner = 2131165377;
 			
 			// aapt resource value: 0x7F0700C2
-			public const int tga_Fruits = 2131165378;
+			public const int tga_comments_icon = 2131165378;
 			
 			// aapt resource value: 0x7F0700C3
-			public const int tga_like = 2131165379;
+			public const int tga_Fruits = 2131165379;
 			
 			// aapt resource value: 0x7F0700C4
-			public const int tga_Water = 2131165380;
+			public const int tga_like = 2131165380;
 			
 			// aapt resource value: 0x7F0700C5
-			public const int tooltip_frame_dark = 2131165381;
+			public const int tga_Water = 2131165381;
 			
 			// aapt resource value: 0x7F0700C6
-			public const int tooltip_frame_light = 2131165382;
+			public const int tooltip_frame_dark = 2131165382;
 			
 			// aapt resource value: 0x7F0700C7
-			public const int user_f = 2131165383;
+			public const int tooltip_frame_light = 2131165383;
 			
 			// aapt resource value: 0x7F0700C8
-			public const int user_s = 2131165384;
+			public const int user_f = 2131165384;
 			
 			// aapt resource value: 0x7F0700C9
-			public const int youtube = 2131165385;
+			public const int user_s = 2131165385;
+			
+			// aapt resource value: 0x7F0700CA
+			public const int youtube = 2131165386;
 			
 			static Drawable()
 			{
