@@ -1,5 +1,6 @@
 ﻿using ParentPortal.Contracts.Responses;
 using ParentPortal.Enums;
+using ParentPortal.Extensions;
 using ParentPortal.Models;
 using ParentPortal.Services.TGA;
 using ParentPortal.Views.Shared;
@@ -27,6 +28,12 @@ namespace ParentPortal.Modules.Secure.Dashboard
             InitializeComponent();
             BindingContext = this;
             ConfigureSource(isNeedToFilterSubsciberRegistered);
+
+            //string TypeasString = "grove_curriculum";
+            //Enums.TGA_Type TGAType = Enums.TGA_Type.None;
+            //Enum.TryParse(TypeasString, out TGAType);
+            //object adasd = "grove_curriculum";
+            //var aa = TypeasString.ParseToEnum<Enums.TGA_Type>();
         }
 
         #region Properties
@@ -75,8 +82,8 @@ namespace ParentPortal.Modules.Secure.Dashboard
             }
         }
 
-        private List<NewsFeedResponseData> _newsFeedBoxCollectionData = new List<NewsFeedResponseData>();
-        public List<NewsFeedResponseData> NewsFeedBoxCollectionData
+        private List<FeedResponseData> _newsFeedBoxCollectionData = new List<FeedResponseData>();
+        public List<FeedResponseData> NewsFeedBoxCollectionData
         {
             get
             {
@@ -198,7 +205,7 @@ namespace ParentPortal.Modules.Secure.Dashboard
         private async Task GetNewFeeds(string kidIds, string date = "today", string type = "all")
         {
             //news Feeds 
-            NewsFeedResponseModel responseModel = await DashBoardService.GetNewFeeedData(kidIds, date, type, Enums.Views.DashBoard);
+            FeedResponseModel responseModel = await DashBoardService.GetNewFeeedData(kidIds, date, type, Enums.Views.DashBoard);
             NewsFeedBoxCollectionData = responseModel.data;
         }
 
@@ -236,18 +243,18 @@ namespace ParentPortal.Modules.Secure.Dashboard
             int[] kidsIds = selectedkid.Select(x => x.Id).ToArray();
             return String.Join(",", kidsIds);
         }
-        private void kidselection_changed(object sender, EventArgs e)
+        private async void kidselection_changed(object sender, EventArgs e)
         {
             StackLayout stackLayout = (StackLayout)sender;
             var gestureRecognizer = (TapGestureRecognizer)stackLayout.GestureRecognizers[0];
             int kidId = (int)gestureRecognizer.CommandParameter;
-            GetDashBoardData(kidId.ToString());
+          await  GetDashBoardData(kidId.ToString());
         }
 
-        private void selectAllKids_Tapped(object sender, EventArgs e)
+        private async void selectAllKids_Tapped(object sender, EventArgs e)
         {
             string kidIds = GetKidsIsAsString(ParentkidsDetails.kids);
-            GetDashBoardData(kidIds);
+             await  GetDashBoardData(kidIds);
         }
 
 

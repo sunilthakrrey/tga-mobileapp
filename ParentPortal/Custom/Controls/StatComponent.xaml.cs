@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ParentPortal.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -52,8 +53,10 @@ namespace ParentPortal.Custom.Controls
             {
                 var control = (StatComponent)bindable;
                 string TypeasString = (string)newvalue;
-                Enums.TGA_Type TGAType = Enums.TGA_Type.None;
-                Enum.TryParse(TypeasString, out TGAType);
+                //Enums.TGA_Type TGAType = Enums.TGA_Type.None;
+                //Enum.TryParse(TypeasString, out TGAType);
+
+                Enums.TGA_Type TGAType =  TypeasString.ParseToEnum<Enums.TGA_Type>();
                 switch (TGAType)
                 {
                     case Enums.TGA_Type.Event:

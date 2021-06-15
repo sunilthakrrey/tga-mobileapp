@@ -12,42 +12,64 @@ namespace ParentPortal.Storage
 {
     public interface IBookMarkStorageService
     {
-        Task AddRecord(ToolStorageModel toolStorageModel);
-        Task<bool> RemoveRecord(ToolStorageModel toolStorageModel);
-        Task<bool> IsRecordExists(ToolStorageModel toolStorageModel);
+        Task<bool> Add(Bookmark_Like_Model model);
+        Task<bool> Remove(Bookmark_Like_Model filter);
+        Task<bool> IsExists(Bookmark_Like_Model filter);
     }
     public class BookMarkStorageService : SecureStorageService, IBookMarkStorageService
     {
-        public async Task AddRecord(ToolStorageModel newtoolStorageModel)
+        public async Task<bool> Add(Bookmark_Like_Model filter)
         {
-            if (!await IsRecordExists(newtoolStorageModel))
+            bool retVal = false;
+
+            List<Bookmark_Like_Model> existingRecords = await this.ReadFromStorage();
+
+            Bookmark_Like_Model foundRecord = Filter(existingRecords, filter);
+
+            if (foundRecord != null)
             {
-                List<ToolStorageModel> toolStorage = new List<ToolStorageModel>();
-                toolStorage = await base.GetAsync<List<ToolStorageModel>>(SecureStorageKey.ToolBarStorage) ;
-                toolStorage.Add(newtoolStorageModel);
-                await base.SaveAsync(SecureStorageKey.ToolBarStorage, toolStorage);
+                existingRecords.Add(filter);
+                retVal = await base.SaveAsync(SecureStorageKey.ToolBarStorage, existingRecords);
             }
+
+            return retVal;
         }
 
-        public async Task<bool> IsRecordExists(ToolStorageModel toolStorageModel)
+        public async Task<bool> IsExists(Bookmark_Like_Model filter)
         {
-            bool isSaveCredential = false;
-            List<ToolStorageModel> toolBarStorage = await base.GetAsync<List<ToolStorageModel>>(SecureStorageKey.AccountCredential);
-            isSaveCredential = toolBarStorage != null && toolBarStorage.Any(x => x.id == toolStorageModel.id && x.Module == toolStorageModel.Module && x.Type == toolStorageModel.Type);
-            return isSaveCredential;
+            List<Bookmark_Like_Model> existingRecords = await this.ReadFromStorage();
+            Bookmark_Like_Model found = Filter(existingRecords, filter);
+            return found != null;
         }
 
-        public async Task<bool> RemoveRecord(ToolStorageModel toolStorageModel)
+        public async Task<bool> Remove(Bookmark_Like_Model filter)
         {
-            if (await IsRecordExists(toolStorageModel))
+            bool retVal = false;
+
+            List<Bookmark_Like_Model> existingRecords = await this.ReadFromStorage();
+
+            Bookmark_Like_Model foundRecord = Filter(existingRecords, filter);
+
+            if (foundRecord != null)
             {
-                List<ToolStorageModel> toolStorage = await base.GetAsync<List<ToolStorageModel>>(SecureStorageKey.ToolBarStorage);
-                ToolStorageModel existedRecord=   toolStorage.Where(x => x.id == toolStorageModel.id && x.Module == toolStorageModel.Module && x.Type == toolStorageModel.Type).FirstOrDefault();
-                toolStorage.Remove(existedRecord);
+                retVal = existingRecords.Remove(foundRecord);
                 await base.RemoveAsync(SecureStorageKey.ToolBarStorage);
-                await base.SaveAsync(SecureStorageKey.ToolBarStorage, toolStorage);
+                await base.SaveAsync(SecureStorageKey.ToolBarStorage, existingRecords);
             }
-            return true;
+
+            return retVal;
+        }
+
+        private async Task<List<Bookmark_Like_Model>> ReadFromStorage()
+        {
+            List<Bookmark_Like_Model> retVal = await base.GetAsync<List<Bookmark_Like_Model>>(SecureStorageKey.ToolBarStorage);
+            return retVal == null ? new List<Bookmark_Like_Model>() : retVal;
+        }
+
+        private Bookmark_Like_Model Filter(List<Bookmark_Like_Model> existingRecords, Bookmark_Like_Model model)
+        {
+            Bookmark_Like_Model entity = existingRecords.FirstOrDefault(x => x.FeedId == model.FeedId && x.Module == model.Module && x.Type == model.Type);
+            return entity;
         }
     }
 }

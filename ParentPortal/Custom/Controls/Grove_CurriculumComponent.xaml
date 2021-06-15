@@ -15,13 +15,20 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <StackLayout Grid.Column="0" Spacing="1">
-                <Label Text="{Binding title, Mode=TwoWay}" TextColor="{DynamicResource White}" Style="{StaticResource lblMealTitleStyle}"/>
-                <Label Text="{Binding description,Mode=TwoWay}" TextColor="{DynamicResource White}" Style="{StaticResource lblToastWithJamStyle}"/>
-            </StackLayout>
 
+            <StackLayout Grid.Column="0" Spacing="1">
+                <!--<Label Text="{Binding title, Mode=TwoWay}" TextColor="{DynamicResource Feijoa}" Style="{StaticResource lblWorkTitleStyle}"/>-->
+                <WebView x:Name="titleWebView" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"></WebView>
+                <Label Text="{Binding createdOn, Mode=TwoWay, StringFormat='{}{0:dd MMM yyy,hh:mm tt}'}"  TextColor="{DynamicResource Gray}" Style="{StaticResource lblDateWithTimeStyle}"/>
+            </StackLayout>
             <ffsvg:SvgCachedImage Grid.Column="1" Source="morning_tea_icon.svg" HorizontalOptions="End" Style="{StaticResource ImageMorningTeaStyle}"/>
         </Grid>
+        
+        <StackLayout Grid.Row="1">
+            <WebView x:Name="TeachingTeamWebView" ></WebView>
+            <Label Text="Activity"/>
+            <WebView x:Name="ActivityWebView" ></WebView>
+        </StackLayout>
 
         
        

@@ -1,8 +1,10 @@
 ﻿using ParentPortal.Content.Styles;
 using ParentPortal.Contracts.Requests;
+using ParentPortal.Contracts.Responses;
 using ParentPortal.Enums;
 using ParentPortal.Modules.Auth.Login;
 using ParentPortal.Modules.Secure.Dashboard;
+using ParentPortal.Services.TGA;
 using System;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -39,16 +41,18 @@ namespace ParentPortal
 
         protected override void OnStart()
         {
-            LoginRequestModel loginRequestModel =  accountCredentialStorage.GetAsync<LoginRequestModel>(SecureStorageKey.AccountCredential).Result;
-            
+            LoginRequestModel loginRequestModel = accountCredentialStorage.GetAsync<LoginRequestModel>(SecureStorageKey.AccountCredential).Result;
+
             //Login through following credentials
-
-            
-            if(loginRequestModel !=null)
-            {
-                App.AppNavigation.PushAsync(new MainPage() { ContentView = new DashboardView() });
-            }
-
+            if (loginRequestModel != null)
+                Login(loginRequestModel);
+        }
+        private async void Login(LoginRequestModel loginRequestModel)
+        {
+            IdentityService identityService = new IdentityService();
+            LoginResponseModel responseModel = await identityService.LoginAsync(loginRequestModel);
+            if (responseModel.code == "200")
+                await App.AppNavigation.PushAsync(new MainPage() { ContentView = new DashboardView() });
         }
 
         protected override void OnSleep()
@@ -92,7 +96,7 @@ namespace ParentPortal
             }
         }
 
-        
+
 
         public static bool IsASmallDevice()
         {

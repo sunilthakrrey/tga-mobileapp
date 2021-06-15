@@ -1,10 +1,4 @@
 ﻿using ParentPortal.Contracts.Responses;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -20,7 +14,7 @@ namespace ParentPortal.Custom.Controls
 
         #region Feed
 
-        public static readonly BindableProperty FeedProperty = BindableProperty.Create(nameof(Feed), typeof(NewsFeed), typeof(Grove_CurriculumComponent), defaultValue: null, defaultBindingMode: BindingMode.OneTime, propertyChanged: FeedPropertyChanged);
+        public static readonly BindableProperty FeedProperty = BindableProperty.Create(nameof(Feed), typeof(Feed), typeof(Grove_CurriculumComponent), defaultValue: null, defaultBindingMode: BindingMode.OneTime, propertyChanged: FeedPropertyChanged);
 
         public string Feed
         {
@@ -38,13 +32,21 @@ namespace ParentPortal.Custom.Controls
             if (newvalue != default(object))
             {
                 var control = (Grove_CurriculumComponent)bindable;
-                NewsFeed newsFeed = (NewsFeed)newvalue;
+                Feed newsFeed = (Feed)newvalue;
                 control.BindingContext = newsFeed;
+                control.titleWebView.Source = new HtmlWebViewSource
+                {
+                    Html = newsFeed.title
+                };
+                control.TeachingTeamWebView.Source = new HtmlWebViewSource
+                {
+                     Html = newsFeed.TeachingTeam
+                };
+                control.ActivityWebView.Source = new HtmlWebViewSource
+                {
+                    Html = newsFeed.Activity
+                };
                 control.IsVisible = newsFeed.TypeAsEnum == Enums.TGA_Type.Grove_Curriculum;
-
-
-
-
             }
 
         }

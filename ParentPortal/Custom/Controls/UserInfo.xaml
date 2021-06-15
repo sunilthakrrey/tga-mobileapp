@@ -17,4 +17,9 @@
     </Frame>
 
 
+    <Frame BorderColor="{DynamicResource Gray}"  x:Name="nameFrame" >
+        <Label x:Name="lblNameFrame" VerticalOptions="Center" HorizontalOptions="Center"/>
+    </Frame>
+
+
 </StackLayout>

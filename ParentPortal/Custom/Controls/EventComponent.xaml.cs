@@ -70,7 +70,7 @@ namespace ParentPortal.Custom.Controls
 
         #region Feed
 
-        public static readonly BindableProperty FeedProperty = BindableProperty.Create(nameof(Feed), typeof(NewsFeed), typeof(EventComponent), defaultValue: null, defaultBindingMode: BindingMode.OneTime, propertyChanged: FeedPropertyChanged);
+        public static readonly BindableProperty FeedProperty = BindableProperty.Create(nameof(Feed), typeof(Feed), typeof(EventComponent), defaultValue: null, defaultBindingMode: BindingMode.OneTime, propertyChanged: FeedPropertyChanged);
 
         public string Feed
         {
@@ -88,8 +88,16 @@ namespace ParentPortal.Custom.Controls
             if (newvalue != default(object))
             {
                 var control = (EventComponent)bindable;
-                NewsFeed newsFeed = (NewsFeed)newvalue;
+                Feed newsFeed = (Feed)newvalue;
                 control.BindingContext = newsFeed;
+                control.titleWebView.Source = new HtmlWebViewSource
+                {
+                    Html = string.Format("<label style='font-size:17px;'>{0}</label>", newsFeed.title) 
+                };
+                control.DescriptionWebView.Source = new HtmlWebViewSource
+                {
+                    Html = newsFeed.description
+                };
                 control.IsVisible = newsFeed.TypeAsEnum == Enums.TGA_Type.Event;
             }
 

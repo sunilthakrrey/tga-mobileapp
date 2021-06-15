@@ -68,7 +68,7 @@ namespace ParentPortal.Custom.Controls
 
         #region Feed
 
-        public static readonly BindableProperty FeedProperty = BindableProperty.Create(nameof(Feed), typeof(NewsFeed), typeof(WellnessComponent), defaultValue: null, defaultBindingMode: BindingMode.OneTime, propertyChanged: FeedPropertyChanged);
+        public static readonly BindableProperty FeedProperty = BindableProperty.Create(nameof(Feed), typeof(Feed), typeof(WellnessComponent), defaultValue: null, defaultBindingMode: BindingMode.OneTime, propertyChanged: FeedPropertyChanged);
 
         public string Feed
         {
@@ -86,13 +86,17 @@ namespace ParentPortal.Custom.Controls
             if (newvalue != default(object))
             {
                 var control = (WellnessComponent)bindable;
-                NewsFeed newsFeed = (NewsFeed)newvalue;
+                Feed newsFeed = (Feed)newvalue;
                 control.BindingContext = newsFeed;
+                control.titleWebView.Source = new HtmlWebViewSource
+                {
+                    Html = newsFeed.title
+                };
+                control.DescriptionWebView.Source = new HtmlWebViewSource
+                {
+                    Html = newsFeed.description
+                };
                 control.IsVisible = newsFeed.TypeAsEnum == Enums.TGA_Type.Wellness;
-
-
-
-
             }
 
         }

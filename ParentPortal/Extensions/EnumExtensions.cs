@@ -25,6 +25,11 @@ namespace ParentPortal.Extensions
             return (T)Enum.Parse(typeof(T), val.ToString(), true);
         }
 
+        public static T ParseToEnum<T>(this string  val)
+        {
+            return (T)Enum.Parse(typeof(T), val, true);
+        }
+
         public static string GetDescriptionFromEnum(this Enum value)
         {
             FieldInfo fieldInfo = value.GetType().GetField(value.ToString());

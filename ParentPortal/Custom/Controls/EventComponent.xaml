@@ -19,8 +19,9 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <StackLayout Grid.Column="0" Spacing="1">
-                <Label Text="{Binding title, Mode=TwoWay}" TextColor="{DynamicResource Feijoa}" Style="{StaticResource lblWorkTitleStyle}"/>
+            <StackLayout  Grid.Column="0" Spacing="1" >
+                <!--<label text="{binding title, mode=twoway}" textcolor="{dynamicresource feijoa}" style="{staticresource lblworktitlestyle}"/>-->
+                <WebView  Margin="0" x:Name="titleWebView"  VerticalOptions="FillAndExpand" HorizontalOptions="StartAndExpand"></WebView>
                 <Label Text="{Binding createdOn, Mode=TwoWay, StringFormat='{}{0:dd MMM yyy,hh:mm tt}'}"  TextColor="{DynamicResource Gray}" Style="{StaticResource lblDateWithTimeStyle}"/>
             </StackLayout>
 
@@ -32,7 +33,8 @@
                 <ColumnDefinition Width="80*"/>
                 <ColumnDefinition Width="20*"/>
             </Grid.ColumnDefinitions>
-            <Label Grid.Column="0" TextColor="{DynamicResource Black}" LineHeight="1.2" Style="{StaticResource lblNewsFeedDescriptionStyle}" Text="{Binding description,Mode=TwoWay}"/>
+            <!--<Label Grid.Column="0" TextColor="{DynamicResource Black}" LineHeight="1.2" Style="{StaticResource lblNewsFeedDescriptionStyle}" Text="{Binding description,Mode=TwoWay}"/>-->
+            <WebView x:Name="DescriptionWebView" ></WebView>
         </Grid>
     </Grid>
 </StackLayout>

@@ -1,4 +1,7 @@
-﻿using ParentPortal.Storage;
+﻿using ParentPortal.Contracts.Responses;
+using ParentPortal.Extensions;
+using ParentPortal.Services.TGA;
+using ParentPortal.Storage;
 using ParentPortal.Views.Shared;
 using Rg.Plugins.Popup.Services;
 using System;
@@ -16,6 +19,8 @@ namespace ParentPortal.Custom.Controls
     public partial class ToolbarComponent : StackLayout
     {
         BookMarkStorageService bookMarkStorageService = new BookMarkStorageService();
+        DashBoardService dashBoardService = new DashBoardService();
+       
         public ToolbarComponent()
         {
             InitializeComponent();
@@ -41,8 +46,9 @@ namespace ParentPortal.Custom.Controls
             {
                 var control = (ToolbarComponent)bindable;
                 string TypeasString = (string)newvalue;
-                Enums.TGA_Type TGAType = Enums.TGA_Type.None;
-                Enum.TryParse(TypeasString, out TGAType);
+                //Enums.TGA_Type TGAType = Enums.TGA_Type.None;
+                //Enum.TryParse(TypeasString, out TGAType);
+                Enums.TGA_Type TGAType = TypeasString.ParseToEnum<Enums.TGA_Type>();
                 switch (TGAType)
                 {
                     case Enums.TGA_Type.Event:
@@ -75,29 +81,28 @@ namespace ParentPortal.Custom.Controls
 
         }
         #endregion
-        #region referId
+        #region postId
 
-        public static readonly BindableProperty ReferIdProperty = BindableProperty.Create(nameof(ReferId), typeof(int), typeof(ToolbarComponent), defaultValue: null, defaultBindingMode: BindingMode.OneTime, propertyChanged: ReferIdPropertyChanged);
+        public static readonly BindableProperty PostIdProperty = BindableProperty.Create(nameof(PostId), typeof(int), typeof(ToolbarComponent), defaultValue: null, defaultBindingMode: BindingMode.OneTime, propertyChanged: PostIdPropertyChanged);
 
-        public int ReferId
+        public int PostId
         {
             get
             {
-                return (int)GetValue(ReferIdProperty);
+                return (int)GetValue(PostIdProperty);
             }
             set
             {
-                base.SetValue(ReferIdProperty, value);
+                base.SetValue(PostIdProperty, value);
             }
         }
-        public static void ReferIdPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
+        public static void PostIdPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
         {
             if (newvalue != default(object))
             {
                 var control = (ToolbarComponent)bindable;
-                //KidDetail aa = GetKidDetailsFromStorage((int)newvalue).Result;
-                //control.lblName.Text = aa.Name;
-                //control.img.Source = aa.Avtaar;
+
+
             }
 
         }
@@ -112,11 +117,11 @@ namespace ParentPortal.Custom.Controls
         {
             get
             {
-                return (int)GetValue(ReferIdProperty);
+                return (int)GetValue(CreatedByProperty);
             }
             set
             {
-                base.SetValue(ReferIdProperty, value);
+                base.SetValue(CreatedByProperty, value);
             }
         }
         public static void CreatedByPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
@@ -141,11 +146,11 @@ namespace ParentPortal.Custom.Controls
         {
             get
             {
-                return (string)GetValue(ReferIdProperty);
+                return (string)GetValue(isShowLikeButtonProperty);
             }
             set
             {
-                base.SetValue(ReferIdProperty, value);
+                base.SetValue(isShowLikeButtonProperty, value);
             }
         }
         public static void isShowLikeButtonPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
@@ -170,11 +175,11 @@ namespace ParentPortal.Custom.Controls
         {
             get
             {
-                return (string)GetValue(ReferIdProperty);
+                return (string)GetValue(isShowCommentButtonProperty);
             }
             set
             {
-                base.SetValue(ReferIdProperty, value);
+                base.SetValue(isShowCommentButtonProperty, value);
             }
         }
 
@@ -201,11 +206,11 @@ namespace ParentPortal.Custom.Controls
         {
             get
             {
-                return (string)GetValue(ReferIdProperty);
+                return (string)GetValue(isShowBookmarkButtonProperty);
             }
             set
             {
-                base.SetValue(ReferIdProperty, value);
+                base.SetValue(isShowBookmarkButtonProperty, value);
             }
         }
 
@@ -242,47 +247,126 @@ namespace ParentPortal.Custom.Controls
         {
             if (newvalue != default(object))
             {
+
                 var control = (ToolbarComponent)bindable;
-                string Value = (string)newvalue;
-                bool isVisible = Value.ToLower() == "true";
-               control.stckBookmarked.IsVisible = isVisible;
-                control.stckBookmark.IsVisible = !isVisible;
+
+                string updatedValue = (string)newvalue;
+                bool isVisible = updatedValue.ToLower() == "true";
+                if (isVisible)
+                {
+                    control.lblBookMark.Text = "BookMarked";
+                    control.imgBookMark.Source = ImageSource.FromFile("Bookmarked_icon.svg");
+                }
+                else
+                {
+                    control.lblBookMark.Text = "BookMark";
+                    control.imgBookMark.Source = ImageSource.FromFile("bookmark_icon.svg");
+                }
+            }
+        }
+
+        private async void CreateBookMark_Tapped(object sender, EventArgs e)
+        {
+            bool isalreadyBookMarked = isBookMarked.ToLower() == "true";
+            Enums.TGA_Type _type = Type.ParseToEnum<Enums.TGA_Type>();
+            if (isalreadyBookMarked)
+            {
+                var retVal = await bookMarkStorageService.Remove(new Models.Bookmark_Like_Model
+                {
+                    FeedId = PostId,
+                    Type = _type,
+                    Module = Enums.Module.BookMark
+                });
+                isBookMarked = "false";
+            }
+            else
+            {
+                await bookMarkStorageService.Add(new Models.Bookmark_Like_Model
+                {
+                    FeedId = PostId,
+                    Type = _type,
+                    Module = Enums.Module.BookMark
+                });
+                isBookMarked = "true";
             }
 
         }
         #endregion
 
+        #region isLiked
 
-        private async void CreateComment_Clicked(object sender, EventArgs e)
+        public static readonly BindableProperty isLikedProperty = BindableProperty.Create(nameof(isLiked), typeof(string), typeof(ToolbarComponent), defaultValue: null, defaultBindingMode: BindingMode.OneTime, propertyChanged: isLikedPropertyChanged);
+
+        public string isLiked
         {
-            await PopupNavigation.Instance.PushAsync(new CommentSectionPopup());
+            get
+            {
+                return (string)GetValue(isLikedProperty);
+            }
+            set
+            {
+                base.SetValue(isLikedProperty, value);
+            }
         }
 
-
-        private async void CreateBookMark_Tapped(object sender, EventArgs e)
+        public static void isLikedPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
         {
-            var isalredayBookMarked = isBookMarked.ToLower() == "true";
-            if (isalredayBookMarked)
+            if (newvalue != default(object))
             {
-                await bookMarkStorageService.RemoveRecord(new Models.ToolStorageModel
+
+                var control = (ToolbarComponent)bindable;
+
+                string updatedValue = (string)newvalue;
+                bool isVisible = updatedValue.ToLower() == "true";
+                if (isVisible)
                 {
-                    id = ReferId,
-                    Type = Enums.TGA_Type.Announcement,
-                    Module = Enums.Module.BookMark
+                    control.lblLike.Text = "Liked";
+                    control.imgLike.Source = ImageSource.FromFile("Liked_icon.svg");
+                }
+                else
+                {
+                    control.lblLike.Text = "Like";
+                    control.imgLike.Source = ImageSource.FromFile("tga_like.svg");
+                }
+            }
+        }
+
+        private async void CreateLike_Tapped(object sender, EventArgs e)
+        {
+            bool isalreadyLiked = isLiked.ToLower() == "true";
+            Enums.TGA_Type _type = Type.ParseToEnum<Enums.TGA_Type>();
+            if (isalreadyLiked)
+            {
+                var retVal = await bookMarkStorageService.Remove(new Models.Bookmark_Like_Model
+                {
+                    FeedId = PostId,
+                    Type = _type,
+                    Module = Enums.Module.Like
                 });
-                isBookMarked = false.ToString();
+
+                PostLikeResponseModel responseModel = await dashBoardService.AddLike(post_id: PostId, post_type: Type, -1);
+                if (responseModel.Code == 200)
+                    isLiked = "false";
+
             }
             else
             {
-                await bookMarkStorageService.AddRecord(new Models.ToolStorageModel
+                await bookMarkStorageService.Add(new Models.Bookmark_Like_Model
                 {
-                    id = ReferId,
-                    Type = Enums.TGA_Type.Announcement,
-                    Module = Enums.Module.BookMark
+                    FeedId = PostId,
+                    Type = _type,
+                    Module = Enums.Module.Like
                 });
-                isBookMarked = true.ToString();
+                PostLikeResponseModel responseModel = await dashBoardService.AddLike(post_id: PostId, post_type: Type, 1);
+                if (responseModel.Code == 200)
+                    isLiked = "true";
             }
+        }
+        #endregion
 
+        private async void CreateComment_Clicked(object sender, EventArgs e)
+        {
+            await PopupNavigation.Instance.PushAsync(new CommentSectionPopup(PostId));
         }
     }
 }

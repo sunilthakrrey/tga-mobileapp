@@ -44,23 +44,25 @@ namespace ParentPortal.Enums
     }
     //public enum ImageSize
     public enum PictureSize
-    { 
+    {
+        None,
         Small,
-        Medium,
-        None
+        Medium
     }
 
     public enum TGA_Type
     {
+        None,
         Event,
         DailyChart,
         Wellness,
         Announcement,
         Grove_Curriculum,
-        None
+        My_Day
     }
     public enum Module
     {
+        None,
         BookMark,
         Like
     }

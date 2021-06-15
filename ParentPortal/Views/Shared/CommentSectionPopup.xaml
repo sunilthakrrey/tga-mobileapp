@@ -34,7 +34,7 @@
 
                 <BoxView Grid.Row="0" CornerRadius="5" VerticalOptions="Start" HorizontalOptions="Center" BackgroundColor="{DynamicResource Mantis}" Style="{StaticResource SliderDownIconStyle}"/>
                 <Frame Grid.Row="1" Padding="0" IsClippedToBounds="True" BackgroundColor="#B1DD96" CornerRadius="10">
-                    <Editor Placeholder="Type Comment"  BackgroundColor="#B1DD96" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource White}" Style="{StaticResource lblResetPasswordNotificationStyle}" Text="{Binding Comment}"></Editor> 
+                    <Editor Placeholder="Type Comment"  BackgroundColor="#B1DD96" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource White}" Text="{Binding Comment}"></Editor> 
                 </Frame>
                
 

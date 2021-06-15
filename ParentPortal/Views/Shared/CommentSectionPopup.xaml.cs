@@ -1,4 +1,6 @@
-﻿using Rg.Plugins.Popup.Pages;
+﻿using ParentPortal.Contracts.Responses;
+using ParentPortal.Services.TGA;
+using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
@@ -14,12 +16,17 @@ namespace ParentPortal.Views.Shared
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CommentSectionPopup : PopupPage
     {
-        public CommentSectionPopup()
+        SecureStorageService secureStorageService = new SecureStorageService();
+        DashBoardService DashBoardService = new DashBoardService();
+        public CommentSectionPopup(int FeedId)
         {
             InitializeComponent();
+            Feed_Id = FeedId;
             BindingContext = this;
         }
         #region Properties
+        public int Feed_Id { get; set; }
+
         private string _comment;
         public string Comment
         {
@@ -40,12 +47,15 @@ namespace ParentPortal.Views.Shared
 
         private async void PostComment_Clicked(object sender, EventArgs e)
         {
-
+            Parent parent = await secureStorageService.GetAsync<Parent>(Enums.SecureStorageKey.AuthorizedUserInfo);
+          PostCommentResponseModel responseModel =  await DashBoardService.AddComment(parent.id, Feed_Id, Comment);
+            if(responseModel.Code == 200)
+              await  PopupNavigation.Instance.PopAllAsync();
         }
 
-        private  void ClosePopup_Clicked(object sender, EventArgs e)
+        private async  void ClosePopup_Clicked(object sender, EventArgs e)
         {
-            PopupNavigation.Instance.PopAllAsync();
+           await PopupNavigation.Instance.PopAllAsync();
         }
 
         private async void PanGestureRecognizer_PanUpdated(object sender, PanUpdatedEventArgs e)
