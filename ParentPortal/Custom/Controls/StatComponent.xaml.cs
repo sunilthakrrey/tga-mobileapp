@@ -85,7 +85,7 @@ namespace ParentPortal.Custom.Controls
         #endregion
         #region TotalLikes
 
-        public static readonly BindableProperty TotalLikesProperty = BindableProperty.Create(nameof(TotalLikes), typeof(int), typeof(StatComponent), defaultValue: null, defaultBindingMode: BindingMode.OneTime, propertyChanged: TotalLikesPropertyChanged);
+        public static readonly BindableProperty TotalLikesProperty = BindableProperty.Create(nameof(TotalLikes), typeof(int), typeof(StatComponent), defaultValue: null, defaultBindingMode: BindingMode.TwoWay, propertyChanged: TotalLikesPropertyChanged);
 
         public int TotalLikes
         {
@@ -113,7 +113,7 @@ namespace ParentPortal.Custom.Controls
 
         #region TotalComments
 
-        public static readonly BindableProperty TotalCommentsProperty = BindableProperty.Create(nameof(TotalComments), typeof(int), typeof(StatComponent), defaultValue: null, defaultBindingMode: BindingMode.OneTime, propertyChanged: TotalCommentsPropertyChanged);
+        public static readonly BindableProperty TotalCommentsProperty = BindableProperty.Create(nameof(TotalComments), typeof(int), typeof(StatComponent), defaultValue: null, defaultBindingMode: BindingMode.TwoWay, propertyChanged: TotalCommentsPropertyChanged);
 
         public int TotalComments
         {

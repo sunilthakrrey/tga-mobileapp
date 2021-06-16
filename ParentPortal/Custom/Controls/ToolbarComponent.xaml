@@ -10,7 +10,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <!--Region Like-->
-        <StackLayout x:Name="stckLike" Grid.Column="0" Spacing="5" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Start">
+        <StackLayout  x:Name="stckLike" Grid.Column="0" Spacing="5" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Start">
             <StackLayout.GestureRecognizers>
                 <TapGestureRecognizer Tapped="CreateLike_Tapped"/>
             </StackLayout.GestureRecognizers>
@@ -26,12 +26,6 @@
             <ffsvg:SvgCachedImage Source="tga_comments_icon.svg" Style="{StaticResource ImageReactionsStyle}"/>
             <Label Text="Comment" TextColor="{DynamicResource Gray}" Style="{StaticResource lblReactionsNameStyle}"/>
         </StackLayout>
-        <!--Region Commented-->
-        <StackLayout x:Name="stckCommented" IsVisible="false" Grid.Column="1" Spacing="5" Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
-            <ffsvg:SvgCachedImage Source="Commented_icon.svg" Style="{StaticResource ImageReactionsStyle}"/>
-            <Label Text="Commented" TextColor="{DynamicResource Gray}" Style="{StaticResource lblReactionsNameStyle}"/>
-        </StackLayout>
-        <!--Region BookMark-->
         <StackLayout x:Name="stckBookmark" Grid.Column="2" Spacing="5" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="End">
             <StackLayout.GestureRecognizers>
                 <TapGestureRecognizer Tapped="CreateBookMark_Tapped"/>

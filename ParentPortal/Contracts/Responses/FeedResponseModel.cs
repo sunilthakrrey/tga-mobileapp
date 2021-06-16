@@ -2,12 +2,10 @@
 using ParentPortal.Enums;
 using ParentPortal.Extensions;
 using ParentPortal.Models;
-using ParentPortal.Services.TGA;
 using ParentPortal.Storage;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace ParentPortal.Contracts.Responses
 {
@@ -89,12 +87,40 @@ namespace ParentPortal.Contracts.Responses
         }
 
     }
-    public class FeedStat
+    public class FeedStat : INotifyPropertyChanged
     {
-        public int totalLikes { get; set; }
-        public int totalComments { get; set; }
+        private int _totallikes;
+        public int totalLikes 
+        {
+            get
+            {
+                return _totallikes;
+            }
+            set
+            {
+                _totallikes = value;
+                OnPropertyChanged(nameof(totalLikes));
+            }
+        }
+        private int _totalComments;
+        public int totalComments 
+        {
+            get
+            {
+                return _totalComments;
+            }
+            set
+            {
+                _totalComments = value;
+                OnPropertyChanged(nameof(totalComments));
+            }
+        }
 
-
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 
 

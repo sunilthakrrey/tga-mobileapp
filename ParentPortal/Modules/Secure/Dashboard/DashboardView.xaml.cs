@@ -145,7 +145,7 @@ namespace ParentPortal.Modules.Secure.Dashboard
 
 
 
-                MessagingCenter.Unsubscribe<DashboardView, string>(this, Enums.MessageCenterAuthenticator.FeedFilter.ToString());
+                MessagingCenter.Unsubscribe<DashboardView, FilterSelection>(this, Enums.MessageCenterAuthenticator.FeedFilter.ToString());
                 MessagingCenter.Subscribe<DashboardView, FilterSelection>(this, Enums.MessageCenterAuthenticator.FeedFilter.ToString(), async (sender, arg) =>
                 {
                     if (arg != null)

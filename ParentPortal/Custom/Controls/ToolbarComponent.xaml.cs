@@ -1,5 +1,6 @@
 ﻿using ParentPortal.Contracts.Responses;
 using ParentPortal.Extensions;
+using ParentPortal.Models;
 using ParentPortal.Services.TGA;
 using ParentPortal.Storage;
 using ParentPortal.Views.Shared;
@@ -333,51 +334,51 @@ namespace ParentPortal.Custom.Controls
 
         private async void CreateLike_Tapped(object sender, EventArgs e)
         {
+            // Stat.totalLikes = 4;
+            PostLikeResponseModel responseModel = new PostLikeResponseModel();
             bool isalreadyLiked = isLiked.ToLower() == "true";
             Enums.TGA_Type _type = Type.ParseToEnum<Enums.TGA_Type>();
+            Bookmark_Like_Model model = new Bookmark_Like_Model
+            {
+                FeedId = PostId,
+                Type = _type,
+                Module = Enums.Module.Like
+            };
+
+            int likeValue = 1;
             if (isalreadyLiked)
             {
-                var retVal = await bookMarkStorageService.Remove(new Models.Bookmark_Like_Model
-                {
-                    FeedId = PostId,
-                    Type = _type,
-                    Module = Enums.Module.Like
-                });
-
-                PostLikeResponseModel responseModel = await dashBoardService.AddLike(post_id: PostId, post_type: Type, -1,Enums.Views.DashBoard);
+                var retVal = await bookMarkStorageService.Remove(model);
+                likeValue = -1;
+                 responseModel = await dashBoardService.AddLike(post_id: PostId, post_type: Type, likeValue, Enums.Views.DashBoard);
                 if (responseModel.Code == 200)
                     isLiked = "false";
-              //  Stat.totalLikes = responseModel.Like
-
             }
             else
             {
-                await bookMarkStorageService.Add(new Models.Bookmark_Like_Model
-                {
-                    FeedId = PostId,
-                    Type = _type,
-                    Module = Enums.Module.Like
-                });
-                PostLikeResponseModel responseModel = await dashBoardService.AddLike(post_id: PostId, post_type: Type, 1, Enums.Views.DashBoard);
+                var retVal = await bookMarkStorageService.Add(model);
+                responseModel = await dashBoardService.AddLike(post_id: PostId, post_type: Type, likeValue, Enums.Views.DashBoard);
                 if (responseModel.Code == 200)
                     isLiked = "true";
             }
+               
+            Stat.totalLikes = Convert.ToInt32(responseModel.Like);
         }
         #endregion
 
         #region Type
 
-        public static readonly BindableProperty StatProperty = BindableProperty.Create(nameof(Type), typeof(FeedStat), typeof(ToolbarComponent), defaultValue: null, defaultBindingMode: BindingMode.TwoWay, propertyChanged: StatPropertyChanged);
+        public static readonly BindableProperty StatProperty = BindableProperty.Create(nameof(Stat), typeof(FeedStat), typeof(ToolbarComponent), defaultValue: null, defaultBindingMode: BindingMode.TwoWay, propertyChanged: StatPropertyChanged);
 
         public FeedStat Stat
         {
             get
             {
-                return (FeedStat)GetValue(TypeProperty);
+                return (FeedStat)GetValue(StatProperty);
             }
             set
             {
-                base.SetValue(TypeProperty, value);
+                base.SetValue(StatProperty, value);
             }
         }
         public static void StatPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
@@ -385,7 +386,7 @@ namespace ParentPortal.Custom.Controls
             if (newvalue != default(object))
             {
                 var control = (ToolbarComponent)bindable;
-
+                
             }
 
         }
@@ -394,6 +395,15 @@ namespace ParentPortal.Custom.Controls
         private async void CreateComment_Clicked(object sender, EventArgs e)
         {
             await PopupNavigation.Instance.PushAsync(new CommentSectionPopup(PostId));
+            MessagingCenter.Unsubscribe<ToolbarComponent, int>(this, Enums.MessageCenterAuthenticator.CommentResponseCode.ToString());
+            MessagingCenter.Subscribe<ToolbarComponent, int>(this, Enums.MessageCenterAuthenticator.CommentResponseCode.ToString(), async (s, arg) =>
+            {
+                if (arg == 200)
+                {
+                    Stat.totalComments = Stat.totalComments + 1;
+
+                }
+            });
         }
     }
 }

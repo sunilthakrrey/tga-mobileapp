@@ -26,7 +26,7 @@ namespace ParentPortal.Storage
 
             Bookmark_Like_Model foundRecord = Filter(existingRecords, filter);
 
-            if (foundRecord != null)
+            if (foundRecord == null)
             {
                 existingRecords.Add(filter);
                 retVal = await base.SaveAsync(SecureStorageKey.ToolBarStorage, existingRecords);

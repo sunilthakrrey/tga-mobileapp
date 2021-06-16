@@ -69,7 +69,7 @@ namespace ParentPortal
         }
         public void AttachListner()
         {
-            MessagingCenter.Unsubscribe<MainPage, string>(this, MessageCenterAuthenticator.RequestStarted.ToString());
+            MessagingCenter.Unsubscribe<MainPage, Enums.Views>(this, MessageCenterAuthenticator.RequestStarted.ToString());
             MessagingCenter.Subscribe<MainPage, Enums.Views>(this, MessageCenterAuthenticator.RequestStarted.ToString(), (sender, arg) =>
             {
                 if (arg != Enums.Views.None)
@@ -81,7 +81,7 @@ namespace ParentPortal
             });
 
 
-            MessagingCenter.Unsubscribe<MainPage, string>(this, MessageCenterAuthenticator.RequestCompleted.ToString());
+            MessagingCenter.Unsubscribe<MainPage, Enums.Views>(this, MessageCenterAuthenticator.RequestCompleted.ToString());
             MessagingCenter.Subscribe<MainPage, Enums.Views>(this, MessageCenterAuthenticator.RequestCompleted.ToString(), (sender, arg) =>
             {
                 if (arg != Enums.Views.None)

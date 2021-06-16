@@ -15,7 +15,8 @@ namespace ParentPortal.Enums
         RequestStarted,
         RequestCompleted,
         NavigationBar,
-        FeedFilter
+        FeedFilter,
+        CommentResponseCode
     }
 
     public enum Views

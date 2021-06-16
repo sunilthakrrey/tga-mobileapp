@@ -1,4 +1,6 @@
 ﻿using ParentPortal.Contracts.Responses;
+using ParentPortal.Custom.Controls;
+using ParentPortal.Enums;
 using ParentPortal.Services.TGA;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
@@ -27,6 +29,8 @@ namespace ParentPortal.Views.Shared
         #region Properties
         public int Feed_Id { get; set; }
 
+        
+
         private string _comment;
         public string Comment
         {
@@ -48,14 +52,16 @@ namespace ParentPortal.Views.Shared
         private async void PostComment_Clicked(object sender, EventArgs e)
         {
             Parent parent = await secureStorageService.GetAsync<Parent>(Enums.SecureStorageKey.AuthorizedUserInfo);
-          PostCommentResponseModel responseModel =  await DashBoardService.AddComment(parent.id, Feed_Id, Comment);
-            if(responseModel.Code == 200)
-              await  PopupNavigation.Instance.PopAllAsync();
+            PostCommentResponseModel responseModel = await DashBoardService.AddComment(parent.id, Feed_Id, Comment);
+            //  PostCommentResponseModel responseModel = await DashBoardService.AddComment(1005890, 971363, "test");
+            if (responseModel.Code == 200)
+                await PopupNavigation.Instance.PopAllAsync();
+            MessagingCenter.Send<ToolbarComponent, int>(new ToolbarComponent(), MessageCenterAuthenticator.CommentResponseCode.ToString(), responseModel.Code);
         }
 
-        private async  void ClosePopup_Clicked(object sender, EventArgs e)
+        private async void ClosePopup_Clicked(object sender, EventArgs e)
         {
-           await PopupNavigation.Instance.PopAllAsync();
+            await PopupNavigation.Instance.PopAllAsync();
         }
 
         private async void PanGestureRecognizer_PanUpdated(object sender, PanUpdatedEventArgs e)

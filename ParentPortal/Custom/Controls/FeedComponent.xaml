@@ -26,8 +26,8 @@
                     <controls:WellnessComponent  Grid.Row="0" Feed="{Binding feed}"></controls:WellnessComponent>
                     <controls:Grove_CurriculumComponent  Grid.Row="0" Feed="{Binding feed}"></controls:Grove_CurriculumComponent>
                     <StackLayout  Grid.Row="1">
-                        <controls:StatComponent Type="{Binding feed.Type}"  TotalComments="{Binding stat.totalComments}" TotalLikes="{Binding stat.totalLikes}"  Createdbyid="{Binding kidIds}"></controls:StatComponent>
-                        <controls:ToolbarComponent PostId="{Binding feed.Id}" Stat="{Binding stat}"  isLiked="{Binding feed.IsLiked}"  isBookMarked="{Binding feed.IsBookMarked}" Type="{Binding feed.Type}" ></controls:ToolbarComponent>
+                        <controls:StatComponent  Type="{Binding feed.Type}"  TotalComments="{Binding stat.totalComments}" TotalLikes="{Binding stat.totalLikes}"  Createdbyid="{Binding kidIds}"></controls:StatComponent>
+                        <controls:ToolbarComponent PostId="{Binding feed.Id}" Stat="{Binding stat, Mode=TwoWay}"  isLiked="{Binding feed.IsLiked, Mode=TwoWay}"  isBookMarked="{Binding feed.IsBookMarked}" Type="{Binding feed.Type}" ></controls:ToolbarComponent>
                     </StackLayout>
                     <panckeview:PancakeView Grid.Row="2" BackgroundColor="{DynamicResource Feijoa}" Style="{StaticResource BtnReadMoreContainerStyle}" >
                         <panckeview:PancakeView.Shadow>
