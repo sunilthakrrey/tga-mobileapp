@@ -17,7 +17,7 @@
 		<bitmap
 			android:src="@drawable/group_splash"
 			android:tileMode="disabled"	
-			android:gravity="center_vertical"/>
+			android:gravity="fill"/>
 	</item>
 
 	<!--<item>
