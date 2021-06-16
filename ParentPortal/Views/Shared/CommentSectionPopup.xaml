@@ -23,29 +23,33 @@
         <StackLayout.GestureRecognizers>
             <PanGestureRecognizer  PanUpdated="PanGestureRecognizer_PanUpdated" />
         </StackLayout.GestureRecognizers>
-        <panckeview:PancakeView HorizontalOptions="FillAndExpand" Padding="20,0,20,30" BackgroundColor="{DynamicResource Feijoa}" Style="{StaticResource ForgotPasswordPopupSubContainerStyle}">
+        <panckeview:PancakeView HorizontalOptions="FillAndExpand"  BackgroundColor="{DynamicResource Feijoa}" Style="{StaticResource CommentPopupStyle}">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="20*"/>
-                    <RowDefinition Height="30*"/>
-                    <RowDefinition Height="30*"/>
+                    <RowDefinition Height="15*"/>
+                    <RowDefinition Height="15*"/>
+                    <RowDefinition Height="25*"/>
+                    <RowDefinition Height="25*"/>
                     <RowDefinition Height="20*"/>
                 </Grid.RowDefinitions>
 
-                <BoxView Grid.Row="0" CornerRadius="5" VerticalOptions="Start" HorizontalOptions="Center" BackgroundColor="{DynamicResource Mantis}" Style="{StaticResource SliderDownIconStyle}"/>
-                <Frame Grid.Row="1" Padding="0" IsClippedToBounds="True" BackgroundColor="#B1DD96" CornerRadius="10">
-                    <Editor Placeholder="Type Comment"  BackgroundColor="#B1DD96" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource White}" Text="{Binding Comment}"></Editor> 
+                <BoxView Grid.Row="0" CornerRadius="5" VerticalOptions="End" HorizontalOptions="Center" BackgroundColor="{DynamicResource Mantis}" Style="{StaticResource SliderDownIconStyle}"/>
+                <Label Grid.Row="1" Text="Write Comment" VerticalOptions="Start" HorizontalOptions="Center" Style="{StaticResource lblExceptionXtraSmallBoldStyle}" TextColor="{DynamicResource White}"/>
+
+                <Frame Grid.Row="2" Style="{StaticResource FrameCommentWriteStyle}"  IsClippedToBounds="True"  HasShadow="False" BackgroundColor="{DynamicResource FeijoaLight}">
+                    <Editor Placeholder="Type Comment"  Style="{StaticResource CommentWriteStyle}" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource White}" PlaceholderColor="{DynamicResource White}"  Text="{Binding Comment}"></Editor> 
                 </Frame>
                
 
-                <panckeview:PancakeView Grid.Row="2" Margin="0,15,0,0" Style="{StaticResource BtnOrangeFrameStyle}">
+                <panckeview:PancakeView Grid.Row="3"  VerticalOptions="Center" Style="{StaticResource BtnOrangeFrameStyle}">
                     <panckeview:PancakeView.Shadow>
-                        <panckeview:DropShadow BlurRadius="10" Opacity="0.9"   x:Name="shadow" Color="Black" Offset="20,20" />
+                        <panckeview:DropShadow BlurRadius="10" Opacity="0"   x:Name="shadow" Color="{DynamicResource Black}" Offset="0,2" />
                     </panckeview:PancakeView.Shadow>
 
-                    <Button Text="Post Comment"  Clicked="PostComment_Clicked" TextColor="{DynamicResource White}" BackgroundColor="{DynamicResource BrightSun}" Style="{StaticResource BtnLoginStyle}"/>
+                    <Button Text="Post Comment"  Clicked="PostComment_Clicked" TextColor="{DynamicResource White}" BackgroundColor="{DynamicResource BrightSun}" Style="{StaticResource BtnOrangeStyle}"/>
                 </panckeview:PancakeView>
-                <StackLayout Grid.Row="3" Padding="10">
+                
+                <StackLayout Grid.Row="4"  VerticalOptions="Center">
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer Tapped="ClosePopup_Clicked"></TapGestureRecognizer>
                     </StackLayout.GestureRecognizers>

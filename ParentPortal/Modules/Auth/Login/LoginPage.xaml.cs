@@ -14,6 +14,8 @@ using static ParentPortal.Config.SecureStorage;
 using ParentPortal.Models;
 using System.Collections.Generic;
 using System.Linq;
+using Rg.Plugins.Popup.Services;
+using ParentPortal.Views.Shared;
 
 namespace ParentPortal.Modules.Auth.Login
 {
@@ -78,7 +80,8 @@ namespace ParentPortal.Modules.Auth.Login
            {
               loginResponseModel.data.parent.kids.FirstOrDefault()
            }) ;
-            await App.AppNavigation.PushAsync(new MainPage(isListnerConfigured:false) { ContentView = new DashboardView() });
+            await App.AppNavigation.PushAsync(new MainPage(isListnerConfigured: false) { ContentView = new DashboardView() });
+            //await PopupNavigation.Instance.PushAsync(new CommentSectionPopup());
 
         }
 

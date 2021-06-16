@@ -83,8 +83,8 @@ namespace ParentPortal.Views.Shared
                 typefilter = GetFilterType();
                 FilterSelection filterSelection = new FilterSelection
                 {
-                    FilterDate = typefilter,
-                    FilteType = button.Content.ToString()
+                    FilterDate = button.Content.ToString(),
+                    FilteType = typefilter
                 };
                 MessagingCenter.Send<DashboardView, FilterSelection>(new DashboardView(isNeedToFilterSubsciberRegistered: false), MessageCenterAuthenticator.FeedFilter.ToString(), filterSelection);
 
