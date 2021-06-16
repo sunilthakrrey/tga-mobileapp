@@ -158,7 +158,7 @@
     <!--DashboardView Style Begin-->
 
     <Style x:Key="lblForDateStyle" TargetType="Label">
-        <Setter Property="FontSize" Value="{StaticResource lblMedium}"/>
+        <Setter Property="FontSize" Value="{StaticResource lblSmall}"/>
         <Setter Property="FontFamily" Value="Montserrat-Bold"/>
     </Style>
 
@@ -174,7 +174,7 @@
 
     <Style x:Key="lblForAllLabelContainerStyle" TargetType="Frame">
         <Setter Property="CornerRadius" Value="25"/>
-        <Setter Property="Padding" Value="10,0"/>
+        <Setter Property="Padding" Value="10,1"/>
     </Style>
 
     <Style x:Key="ImageUserCircleStyle" TargetType="Frame" BasedOn="{StaticResource CommonImageUserCircleStyle}">
