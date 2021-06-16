@@ -347,6 +347,7 @@ namespace ParentPortal.Custom.Controls
                 PostLikeResponseModel responseModel = await dashBoardService.AddLike(post_id: PostId, post_type: Type, -1);
                 if (responseModel.Code == 200)
                     isLiked = "false";
+              //  Stat.totalLikes = responseModel.Like
 
             }
             else
@@ -361,6 +362,32 @@ namespace ParentPortal.Custom.Controls
                 if (responseModel.Code == 200)
                     isLiked = "true";
             }
+        }
+        #endregion
+
+        #region Type
+
+        public static readonly BindableProperty StatProperty = BindableProperty.Create(nameof(Type), typeof(FeedStat), typeof(ToolbarComponent), defaultValue: null, defaultBindingMode: BindingMode.TwoWay, propertyChanged: StatPropertyChanged);
+
+        public FeedStat Stat
+        {
+            get
+            {
+                return (FeedStat)GetValue(TypeProperty);
+            }
+            set
+            {
+                base.SetValue(TypeProperty, value);
+            }
+        }
+        public static void StatPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
+        {
+            if (newvalue != default(object))
+            {
+                var control = (ToolbarComponent)bindable;
+
+            }
+
         }
         #endregion
 
