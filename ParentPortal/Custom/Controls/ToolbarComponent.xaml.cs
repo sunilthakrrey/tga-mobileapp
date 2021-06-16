@@ -344,7 +344,7 @@ namespace ParentPortal.Custom.Controls
                     Module = Enums.Module.Like
                 });
 
-                PostLikeResponseModel responseModel = await dashBoardService.AddLike(post_id: PostId, post_type: Type, -1);
+                PostLikeResponseModel responseModel = await dashBoardService.AddLike(post_id: PostId, post_type: Type, -1,Enums.Views.DashBoard);
                 if (responseModel.Code == 200)
                     isLiked = "false";
               //  Stat.totalLikes = responseModel.Like
@@ -358,7 +358,7 @@ namespace ParentPortal.Custom.Controls
                     Type = _type,
                     Module = Enums.Module.Like
                 });
-                PostLikeResponseModel responseModel = await dashBoardService.AddLike(post_id: PostId, post_type: Type, 1);
+                PostLikeResponseModel responseModel = await dashBoardService.AddLike(post_id: PostId, post_type: Type, 1, Enums.Views.DashBoard);
                 if (responseModel.Code == 200)
                     isLiked = "true";
             }

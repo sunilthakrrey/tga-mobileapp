@@ -150,8 +150,9 @@ namespace ParentPortal.Modules.Secure.Dashboard
                 {
                     if (arg != null)
                     {
-                        await GetNewFeeds(kidIds, arg.FilterDate, arg.FilteType);
                         await PopupNavigation.Instance.PopAllAsync();
+                        await GetNewFeeds(kidIds, arg.FilterDate, arg.FilteType);
+                       
                     }
                 });
             }
