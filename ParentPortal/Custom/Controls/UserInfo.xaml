@@ -12,14 +12,16 @@
     </Frame>-->
 
     <Label x:Name="lblName"  TextColor="{StaticResource Gray}" VerticalOptions="Center" Style="{StaticResource lblForNameStyle}"/>
-    <Frame BorderColor="{DynamicResource Gray}"  x:Name="imgFrame" >
+    <Frame BorderColor="{DynamicResource Feijoa}" Padding="4"  x:Name="imgFrame" HorizontalOptions="Center" VerticalOptions="Center" CornerRadius="100">
         <ffsvg:SvgCachedImage x:Name="img" />
     </Frame>
 
-
-    <Frame BorderColor="{DynamicResource Gray}"  x:Name="nameFrame" >
-        <Label x:Name="lblNameFrame" VerticalOptions="Center" HorizontalOptions="Center"/>
+    <Frame x:Name="nameFrame" BorderColor="{DynamicResource Feijoa}" Padding="4" HorizontalOptions="Center" VerticalOptions="Center" CornerRadius="100">
+        <Frame  Padding="0"  BackgroundColor="{DynamicResource Malibu}" CornerRadius="100">
+            <Label x:Name="lblNameFrame" VerticalOptions="Center" HorizontalOptions="Center" TextColor="{DynamicResource HippieBlue}" FontSize="14" FontFamily="Montserrat-Regular"/>
+        </Frame>
     </Frame>
+
 
 
 </StackLayout>
