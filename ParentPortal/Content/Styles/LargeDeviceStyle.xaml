@@ -168,12 +168,12 @@
     <!--DashboardView Style Begin-->
 
     <Style x:Key="lblForDateStyle" TargetType="Label">
-        <Setter Property="FontSize" Value="{StaticResource lblNormal}"/>
+        <Setter Property="FontSize" Value="{StaticResource lblMedium}"/>
         <Setter Property="FontFamily" Value="Montserrat-Bold"/>
     </Style>
 
     <Style x:Key="lblGreetingStyle" TargetType="Label">
-        <Setter Property="FontSize" Value="{StaticResource lblExceptionSmall}"/>
+        <Setter Property="FontSize" Value="{StaticResource lblXXtraLarge}"/>
         <Setter Property="FontFamily" Value="Montserrat-SemiBold"/>
     </Style>
 
@@ -416,6 +416,62 @@
     <Style x:Key="lblOptionsTitleMainContainerStyle" TargetType="Frame">
         <Setter Property="CornerRadius" Value="20"/>
         <Setter Property="Padding" Value="6"/>
+    </Style>
+
+    <Style x:Key="lblLargeBoldStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource lblLarge}"/>
+        <Setter Property="FontFamily" Value="Montserrat-Bold"/>
+    </Style>
+
+    <Style x:Key="RadioButtonChangeStyle" TargetType="RadioButton">
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup x:Name="CheckedStates">
+                    <VisualState x:Name="Checked">
+                        <VisualState.Setters>
+                            <Setter Property="TextColor" Value="{DynamicResource Gray}" />
+                            <Setter Property="Opacity" Value="1" />
+                            <Setter Property="FontFamily" Value="Montserrat-Bold"/>
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="Unchecked">
+                        <VisualState.Setters>
+                            <Setter Property="TextColor" Value="{DynamicResource SilverChalice}" />
+                            <Setter Property="Opacity" Value="0.5" />
+                            <Setter Property="FontFamily" Value="Montserrat-SemiBold"/>
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+        <Setter Property="FontSize" Value="{StaticResource lblMedium}"/>
+    </Style>
+
+    <Style x:Key="NewsFeedFilterPopupStyle" TargetType="panckeview:PancakeView">
+        <Setter Property="CornerRadius" Value="30,30,0,0"/>
+        <Setter Property="Padding" Value="20,0,20,30"/>
+        <Setter Property="HeightRequest" Value="600"/>
+    </Style>
+
+    <Style x:Key="CommentPopupStyle" TargetType="panckeview:PancakeView">
+        <Setter Property="CornerRadius" Value="30,30,0,0"/>
+        <Setter Property="Padding" Value="30,0"/>
+        <Setter Property="HeightRequest" Value="450"/>
+    </Style>
+
+    <Style x:Key="CommentWriteStyle" TargetType="Editor">
+        <Setter Property="FontSize" Value="{StaticResource lblMedium}"/>
+        <Setter Property="FontFamily" Value="Montserrat-Bold"/>
+    </Style>
+
+    <Style x:Key="FrameCommentWriteStyle" TargetType="Frame">
+        <Setter Property="Padding" Value="20,10"/>
+        <Setter Property="CornerRadius" Value="20"/>
+    </Style>
+
+    <Style x:Key="lblExceptionXtraSmallBoldStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="{StaticResource lblExceptionXtraSmall}"/>
+        <Setter Property="FontFamily" Value="Montserrat-Bold"/>
     </Style>
 
 

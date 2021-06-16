@@ -70,7 +70,7 @@ namespace ParentPortal.Views.Shared
                     FilterDate = dateFilter,
                     FilteType = button.Content.ToString()
                 };
-                MessagingCenter.Send<DashboardView, FilterSelection>(new DashboardView(isNeedToFilterSubsciberRegistered: false), MessageCenterAuthenticator.FeedFilter.ToString(), filterSelection);
+                //MessagingCenter.Send<DashboardView, FilterSelection>(new DashboardView(isNeedToFilterSubsciberRegistered: false), MessageCenterAuthenticator.FeedFilter.ToString(), filterSelection);
             }
         }
 
@@ -86,7 +86,7 @@ namespace ParentPortal.Views.Shared
                     FilterDate = typefilter,
                     FilteType = button.Content.ToString()
                 };
-                MessagingCenter.Send<DashboardView, FilterSelection>(new DashboardView(isNeedToFilterSubsciberRegistered: false), MessageCenterAuthenticator.FeedFilter.ToString(), filterSelection);
+                //MessagingCenter.Send<DashboardView, FilterSelection>(new DashboardView(isNeedToFilterSubsciberRegistered: false), MessageCenterAuthenticator.FeedFilter.ToString(), filterSelection);
 
             }
         }

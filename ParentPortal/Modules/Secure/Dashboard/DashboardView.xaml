@@ -126,7 +126,7 @@
                         </Frame>
                     </Grid>
 
-                    <panckeview:PancakeView Grid.Row="1" HorizontalOptions="Start" VerticalOptions="Center" BackgroundColor="{DynamicResource White}" Style="{StaticResource lblMonthOnlyMainContainerStyle}">
+                    <panckeview:PancakeView Grid.Row="1"  VerticalOptions="Center" BackgroundColor="{DynamicResource White}" Style="{StaticResource lblMonthOnlyMainContainerStyle}">
                         <panckeview:PancakeView.Shadow>
                             <panckeview:DropShadow BlurRadius="12" Opacity="0.7"   x:Name="shadow" Color="Black" Offset="10,10" />
                         </panckeview:PancakeView.Shadow>

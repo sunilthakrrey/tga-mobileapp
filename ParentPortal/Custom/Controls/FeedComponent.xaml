@@ -33,10 +33,10 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <!--<StackLayout Grid.Column="0" Spacing="1">
+                        <StackLayout Grid.Column="0" Spacing="1">
                             <Label Text="{Binding feed.title, Mode=TwoWay}" TextColor="{DynamicResource Feijoa}" Style="{StaticResource lblWorkTitleStyle}"/>
                             <Label Text="{Binding feed.createdOn, Mode=TwoWay}"  TextColor="{DynamicResource Gray}" Style="{StaticResource lblDateWithTimeStyle}"/>
-                        </StackLayout>-->
+                        </StackLayout>
 
                         <ffsvg:SvgCachedImage Grid.Column="1" Source="{Binding feed.type, Converter={StaticResource TypeToImageConverter}}" HorizontalOptions="End" Style="{StaticResource ImageForWorkTitleIconStyle}"/>
                     </Grid>

@@ -17,13 +17,40 @@
             EasingOut="SinIn"
             HasBackgroundAnimation="True"/>
     </pages:PopupPage.Animation>
+    
+    <!--<pages:PopupPage.Resources>
+        <Style TargetType="RadioButton">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CheckedStates">
+                        <VisualState x:Name="Checked">
+                            <VisualState.Setters>
+                                <Setter Property="TextColor"
+                                        Value="Black" />
+                                <Setter Property="Opacity"
+                                        Value="1" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Unchecked">
+                            <VisualState.Setters>
+                                <Setter Property="TextColor"
+                                        Value="Red" />
+                                <Setter Property="Opacity"
+                                        Value="0.5" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </pages:PopupPage.Resources>-->
 
     <StackLayout  x:Name="RecordPlayFrame" VerticalOptions="End" BackgroundColor="{DynamicResource Transparent}" >
         
         <StackLayout.GestureRecognizers>
             <PanGestureRecognizer  PanUpdated="PanGestureRecognizer_PanUpdated" />
         </StackLayout.GestureRecognizers>
-        <panckeview:PancakeView HorizontalOptions="FillAndExpand" Padding="20,0,20,30" BackgroundColor="{DynamicResource Feijoa}" HeightRequest="600" Style="{StaticResource ForgotPasswordPopupSubContainerStyle}">
+        <panckeview:PancakeView HorizontalOptions="FillAndExpand"  BackgroundColor="{DynamicResource Feijoa}" Style="{StaticResource NewsFeedFilterPopupStyle}">
             <Grid>
                 
                 <Grid.RowDefinitions>
@@ -35,83 +62,99 @@
                 </Grid.RowDefinitions>
 
                 <BoxView Grid.Row="0" CornerRadius="5" VerticalOptions="Start" HorizontalOptions="Center" BackgroundColor="{DynamicResource Mantis}" Style="{StaticResource SliderDownIconStyle}"/>
-                <Grid Grid.Row="1">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <Label Text="Date"/>
-                    <Grid Grid.Row="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width=".50*"/>
-                            <ColumnDefinition Width=".50*"/>
-                        </Grid.ColumnDefinitions>
-                        <StackLayout >
-                            <RadioButton x:Name="RadDateAll" Content="All" IsChecked="True" GroupName="Date"
-                         CheckedChanged="FeedFilterDateCheckedChanged">
+
+
+                <panckeview:PancakeView Grid.Row="1" BackgroundColor="{DynamicResource White}" VerticalOptions="Start" CornerRadius="15" Padding="25,20">
+                    <panckeview:PancakeView.Shadow>
+                        <panckeview:DropShadow BlurRadius="12" Opacity="0.7"   x:Name="shadow" Color="{DynamicResource Black}" Offset="10,10" />
+                    </panckeview:PancakeView.Shadow>
+
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label Text="Date" TextColor="{DynamicResource Gray}" Style="{DynamicResource lblLargeBoldStyle}"/>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width=".50*"/>
+                                <ColumnDefinition Width=".50*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackLayout >
+                                <RadioButton Style="{StaticResource RadioButtonChangeStyle}" x:Name="RadDateAll" Content="All" IsChecked="True" GroupName="Date" 
+                             CheckedChanged="FeedFilterDateCheckedChanged">
                                 
-                            </RadioButton>
-                            <RadioButton x:Name="RadDateToday" Content="Today" GroupName="Date"
-                         CheckedChanged="FeedFilterDateCheckedChanged">
+                                </RadioButton>
+                                <RadioButton Style="{StaticResource RadioButtonChangeStyle}" x:Name="RadDateToday" Content="Today" GroupName="Date"
+                             CheckedChanged="FeedFilterDateCheckedChanged">
                                 
-                            </RadioButton>
-                            <RadioButton x:Name="RadDateYesterday" Content="Yesterday" GroupName="Date"
-                         CheckedChanged="FeedFilterDateCheckedChanged">
+                                </RadioButton>
+                                <RadioButton Style="{StaticResource RadioButtonChangeStyle}"  x:Name="RadDateYesterday" Content="Yesterday" GroupName="Date"
+                             CheckedChanged="FeedFilterDateCheckedChanged">
                               
-                            </RadioButton>
-                        </StackLayout>
-                        <StackLayout Grid.Column="1">
-                            <RadioButton x:Name="RadDateLastWeek" Content="Last Week" GroupName="Date"
-                         CheckedChanged="FeedFilterDateCheckedChanged">
+                                </RadioButton>
+                            </StackLayout>
+                            <StackLayout Grid.Column="1">
+                                <RadioButton Style="{StaticResource RadioButtonChangeStyle}" x:Name="RadDateLastWeek" Content="Last Week" GroupName="Date"
+                             CheckedChanged="FeedFilterDateCheckedChanged">
                                 
-                            </RadioButton>
-                            <RadioButton x:Name="RadDateLastMonth" Content="Last Month" GroupName="Date"
-                         CheckedChanged="FeedFilterDateCheckedChanged">
+                                </RadioButton>
+                                <RadioButton Style="{StaticResource RadioButtonChangeStyle}" x:Name="RadDateLastMonth" Content="Last Month" GroupName="Date"
+                             CheckedChanged="FeedFilterDateCheckedChanged">
                                
-                            </RadioButton>
-                        </StackLayout>
-                    </Grid>
+                                </RadioButton>
+                            </StackLayout>
+                        </Grid>
                    
-                </Grid>
-
-
-                <Grid Grid.Row="2">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <Label Text="Type"/>
-                    <Grid Grid.Row="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width=".50*"/>
-                            <ColumnDefinition Width=".50*"/>
-                        </Grid.ColumnDefinitions>
-                        <StackLayout >
-                            <RadioButton x:Name="RadTypeAll" Content="All" IsChecked="True" GroupName="Type"
-                         CheckedChanged="FeedFilterTypeCheckedChanged">
-
-                            </RadioButton>
-                            <RadioButton x:Name="RadTypeEvent" Content="Event" GroupName="Type"
-                         CheckedChanged="FeedFilterTypeCheckedChanged">
-
-                            </RadioButton>
-                            <RadioButton x:Name="RadTypeAnnouncement" Content="Announcement" GroupName="Type"
-                         CheckedChanged="FeedFilterTypeCheckedChanged">
-
-                            </RadioButton>
-                        </StackLayout>
-                        <StackLayout Grid.Column="1">
-                            <RadioButton x:Name="RadTypeDailyChart" Content="Daily Chart" GroupName="Type"
-                         CheckedChanged="FeedFilterTypeCheckedChanged">
-
-                            </RadioButton>
-                            <RadioButton x:Name="RadTypeWellness" Content="Wellness" GroupName="Type"
-                         CheckedChanged="FeedFilterTypeCheckedChanged">
-
-                            </RadioButton>
-                        </StackLayout>
                     </Grid>
-                </Grid>
+
+                </panckeview:PancakeView>
+
+
+                <panckeview:PancakeView Grid.Row="2" BackgroundColor="{DynamicResource White}" VerticalOptions="Center" CornerRadius="15" Padding="25,20">
+                    <panckeview:PancakeView.Shadow>
+                        <panckeview:DropShadow BlurRadius="12" Opacity="0.7"   x:Name="shadows" Color="{DynamicResource Black}" Offset="10,10" />
+                    </panckeview:PancakeView.Shadow>
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label Text="Type" TextColor="{DynamicResource Gray}" Style="{DynamicResource lblLargeBoldStyle}"/>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width=".50*"/>
+                                <ColumnDefinition Width=".50*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackLayout >
+                                <RadioButton Style="{StaticResource RadioButtonChangeStyle}" x:Name="RadTypeAll" Content="All" IsChecked="True" GroupName="Type"
+                             CheckedChanged="FeedFilterTypeCheckedChanged">
+
+                                </RadioButton>
+                                <RadioButton Style="{StaticResource RadioButtonChangeStyle}" x:Name="RadTypeEvent" Content="Event" GroupName="Type"
+                             CheckedChanged="FeedFilterTypeCheckedChanged">
+
+                                </RadioButton>
+                                <RadioButton Style="{StaticResource RadioButtonChangeStyle}" x:Name="RadTypeAnnouncement" Content="Announcement" GroupName="Type"
+                             CheckedChanged="FeedFilterTypeCheckedChanged">
+
+                                </RadioButton>
+                            </StackLayout>
+                            <StackLayout Grid.Column="1">
+                                <RadioButton Style="{StaticResource RadioButtonChangeStyle}" x:Name="RadTypeDailyChart" Content="Daily Chart" GroupName="Type"
+                             CheckedChanged="FeedFilterTypeCheckedChanged">
+
+                                </RadioButton>
+                                <RadioButton Style="{StaticResource RadioButtonChangeStyle}" x:Name="RadTypeWellness" Content="Wellness" GroupName="Type"
+                             CheckedChanged="FeedFilterTypeCheckedChanged">
+
+                                </RadioButton>
+                            </StackLayout>
+                        </Grid>
+                    </Grid>
+                </panckeview:PancakeView>
+                
                 <StackLayout Grid.Row="3" Padding="10">
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer Tapped="ClosePopup_Clicked"></TapGestureRecognizer>
