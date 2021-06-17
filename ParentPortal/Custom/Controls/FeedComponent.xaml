@@ -21,7 +21,8 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-
+                    
+                    <controls:AnnouncementComponent Grid.Row="0" Feed="{Binding feed}"></controls:AnnouncementComponent>
                     <controls:EventComponent Grid.Row="0" Feed="{Binding feed}"></controls:EventComponent>
                     <controls:WellnessComponent  Grid.Row="0" Feed="{Binding feed}"></controls:WellnessComponent>
                     <controls:Grove_CurriculumComponent  Grid.Row="0" Feed="{Binding feed}"></controls:Grove_CurriculumComponent>
