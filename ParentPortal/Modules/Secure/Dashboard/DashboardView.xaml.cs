@@ -207,7 +207,7 @@ namespace ParentPortal.Modules.Secure.Dashboard
         private async Task GetMealChart(string kidIds, string date = "today")
         {
             //get Meal Data
-            MealChartResponseModel mealResponse = await DashBoardService.GetMeals(kidIds, date, Enums.Views.DashBoard);
+            MealChartResponseModel mealResponse = new MealChartResponseModel(); //await DashBoardService.GetMeals(kidIds, date, Enums.Views.DashBoard);
             MealComponentCollectionData = mealResponse.data;
         }
 

@@ -56,7 +56,10 @@ namespace ParentPortal.Custom.Controls
                         //control.stckLike.IsVisible = false;
                         //control.stckComment.IsVisible = false;
                         //control.stckBookmark.IsVisible = false;
-                        control.toolbarstack.IsVisible = false;
+                        //control.toolbarstack.IsVisible = false;
+                        control.stckLike.IsVisible = true;
+                        control.stckComment.IsVisible = true;
+                        control.stckBookmark.IsVisible = true;
                         break;
                     case Enums.TGA_Type.DailyChart:
                         break;

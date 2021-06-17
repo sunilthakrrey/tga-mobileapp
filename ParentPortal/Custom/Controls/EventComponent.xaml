@@ -32,12 +32,12 @@
         </Grid>
 
         <Grid Grid.Row="2" Padding="20,0">
-            <Grid.ColumnDefinitions>
+            <!--<Grid.ColumnDefinitions>
                 <ColumnDefinition Width="80*"/>
                 <ColumnDefinition Width="20*"/>
-            </Grid.ColumnDefinitions>
+            </Grid.ColumnDefinitions>-->
             <!--<Label Grid.Column="0" TextColor="{DynamicResource Black}" LineHeight="1.2" Style="{StaticResource lblNewsFeedDescriptionStyle}" Text="{Binding description,Mode=TwoWay}"/>-->
-            <WebView x:Name="DescriptionWebView" ></WebView>
+            <WebView x:Name="DescriptionWebView"  VerticalOptions="FillAndExpand" HorizontalOptions="StartAndExpand" ></WebView>
         </Grid>
     </Grid>
 </StackLayout>

@@ -60,8 +60,8 @@ namespace ParentPortal.Custom.Controls
                 switch (TGAType)
                 {
                     case Enums.TGA_Type.Event:
-
-                        control.ShowControls(isShowLikes: false, isShowComments: false, message: "You are going to this event");
+                        //You are going to this event
+                        control.ShowControls(isShowLikes: true, isShowComments: true, message: "");
                         break;
                     case Enums.TGA_Type.DailyChart:
                         break;

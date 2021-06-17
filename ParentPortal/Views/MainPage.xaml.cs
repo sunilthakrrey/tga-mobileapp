@@ -76,11 +76,8 @@ namespace ParentPortal
                 if (arg != Enums.Views.None)
                 {
                     processingRequests.Add(arg);
-                    //  isBusy = true;
-                    Device.BeginInvokeOnMainThread(() =>
-                    {
+                    //isBusy = true;
                         loadingLayout.IsVisible = true;
-                    });
                     
                 }
             });
@@ -98,10 +95,7 @@ namespace ParentPortal
                         // Task.Delay(2000);
 
                         // isBusy = false;
-                        Device.BeginInvokeOnMainThread(() =>
-                        {
                             loadingLayout.IsVisible = false;
-                        });
                         
                     }
                 }
