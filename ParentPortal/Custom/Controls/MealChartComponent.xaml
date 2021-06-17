@@ -25,7 +25,7 @@
                         </Grid.ColumnDefinitions>
 
                         <StackLayout Grid.Column="0" Spacing="1">
-                            <Label Text="{Binding title, Mode=TwoWay}" TextColor="{DynamicResource White}" Style="{StaticResource lblMealTitleStyle}"/>
+                            <Label Text="{Binding title, Mode=TwoWay}" HorizontalOptions="Start" TextColor="{DynamicResource White}" Style="{StaticResource lblMealTitleStyle}"/>
                             <Label Text="{Binding description,Mode=TwoWay}" TextColor="{DynamicResource White}" Style="{StaticResource lblToastWithJamStyle}"/>
                         </StackLayout>
 
