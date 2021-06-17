@@ -84,9 +84,9 @@ namespace ParentPortal.Modules.Auth.Login
                 //save SelectedKid in Storage
 
                 await secureStorageService.SaveAsync(SecureStorageKey.SelectedKids, new List<KidDetail>
-           {
-              loginResponseModel.data.parent.kids.FirstOrDefault()
-           });
+                {
+                   loginResponseModel.data.parent.kids.FirstOrDefault()
+                });
                 await App.AppNavigation.PushAsync(new MainPage(isListnerConfigured: false) { ContentView = new DashboardView() });
                 //await PopupNavigation.Instance.PushAsync(new CommentSectionPopup());
 

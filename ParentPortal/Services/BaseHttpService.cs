@@ -49,7 +49,7 @@ namespace ParentPortal.Services
         {
             IsCheckInternetConnectivity();
 
-            MessagingCenter.Send<MainPage, Enums.Views>(new MainPage(isListnerConfigured:false), MessageCenterAuthenticator.RequestStarted.ToString(), page);
+            MessagingCenter.Send<MainPage, Enums.Views>(new MainPage(), MessageCenterAuthenticator.RequestStarted.ToString(), page);
 
 
             Type temp = typeof(T);
@@ -92,7 +92,7 @@ namespace ParentPortal.Services
         {
             IsCheckInternetConnectivity();
 
-            MessagingCenter.Send<MainPage, Enums.Views>(new MainPage(isListnerConfigured:false), MessageCenterAuthenticator.RequestStarted.ToString(), page);
+            MessagingCenter.Send<MainPage, Enums.Views>(new MainPage(), MessageCenterAuthenticator.RequestStarted.ToString(), page);
 
             Type temp = typeof(T);
             T obj = Activator.CreateInstance<T>();
@@ -148,7 +148,7 @@ namespace ParentPortal.Services
         {
             IsCheckInternetConnectivity();
 
-            MessagingCenter.Send<MainPage, Enums.Views>(new MainPage(isListnerConfigured: false), MessageCenterAuthenticator.RequestStarted.ToString(), page);
+            MessagingCenter.Send<MainPage, Enums.Views>(new MainPage(), MessageCenterAuthenticator.RequestStarted.ToString(), page);
 
             Type temp = typeof(T);
             T obj = Activator.CreateInstance<T>();

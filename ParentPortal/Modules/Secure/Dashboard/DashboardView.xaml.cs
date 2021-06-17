@@ -28,12 +28,6 @@ namespace ParentPortal.Modules.Secure.Dashboard
             InitializeComponent();
             BindingContext = this;
             ConfigureSource(isNeedToFilterSubsciberRegistered);
-
-            //string TypeasString = "grove_curriculum";
-            //Enums.TGA_Type TGAType = Enums.TGA_Type.None;
-            //Enum.TryParse(TypeasString, out TGAType);
-            //object adasd = "grove_curriculum";
-            //var aa = TypeasString.ParseToEnum<Enums.TGA_Type>();
         }
 
         #region Properties
@@ -127,6 +121,7 @@ namespace ParentPortal.Modules.Secure.Dashboard
         }
 
 
+        public List<int> _selectedKidId = default(List<int>);
 
 
         #endregion
@@ -135,24 +130,37 @@ namespace ParentPortal.Modules.Secure.Dashboard
         {
             if (isSubscibed)
             {
+
                 //get selected kid , first time we will continue with  Announcements
                 List<KidDetail> selectedkid = await SecureStorage.GetAsync<List<KidDetail>>(Enums.SecureStorageKey.SelectedKids);
-
+                _selectedKidId = selectedkid.Select(x => x.Id).ToList();
                 //gets ids in form of string
-                string kidIds = GetKidsIsAsString(selectedkid);
-               await GetDashBoardData(kidIds);
+                string kidIds = GetKidsIsAsString(_selectedKidId);
+                await GetDashBoardData(kidIds);
                 isVisibleAll = ParentkidsDetails.kids.Count > 1;
-
-
 
                 MessagingCenter.Unsubscribe<DashboardView, FilterSelection>(this, Enums.MessageCenterAuthenticator.FeedFilter.ToString());
                 MessagingCenter.Subscribe<DashboardView, FilterSelection>(this, Enums.MessageCenterAuthenticator.FeedFilter.ToString(), async (sender, arg) =>
                 {
                     if (arg != null)
                     {
-                        await PopupNavigation.Instance.PopAllAsync();
-                        await GetNewFeeds(kidIds, arg.FilterDate, arg.FilteType);
-                       
+                       // await PopupNavigation.Instance.PopAllAsync();
+
+                        NewsFeedBoxCollectionData = new List<FeedResponseData>();
+                        MealComponentCollectionData = new List<MealChartData>();
+
+
+                        if (arg.FilteType == "Daily Chart")
+                            await GetMealChart(kidIds, arg.FilterDate);
+                        else if (arg.FilteType != "All")
+                            await GetNewFeeds(kidIds, arg.FilterDate, arg.FilteType);
+                        else
+                        {
+                            await GetMealChart(kidIds, arg.FilterDate);
+                            await GetNewFeeds(kidIds, arg.FilterDate);
+                        }
+
+
                     }
                 });
             }
@@ -178,7 +186,7 @@ namespace ParentPortal.Modules.Secure.Dashboard
         private async Task GetPollings(int parentId, int campusId)
         {
             //get poll Data
-            PollResponseModel pollResponse = await DashBoardService.GetPollresponse(campusId, parentId, Enums.Views.DashBoard);
+            PollResponseModel pollResponse = await DashBoardService.GetPolls(campusId, parentId, Enums.Views.DashBoard);
             PollData = pollResponse.data;
 
             //int i = 65;
@@ -196,17 +204,17 @@ namespace ParentPortal.Modules.Secure.Dashboard
             //}
         }
 
-        private async Task GetMealChart(string kidIds)
+        private async Task GetMealChart(string kidIds, string date = "today")
         {
             //get Meal Data
-            MealChartResponseModel mealResponse = await DashBoardService.GetMealData(kidIds, Enums.Views.DashBoard);
+            MealChartResponseModel mealResponse = await DashBoardService.GetMeals(kidIds, date, Enums.Views.DashBoard);
             MealComponentCollectionData = mealResponse.data;
         }
 
         private async Task GetNewFeeds(string kidIds, string date = "today", string type = "all")
         {
             //news Feeds 
-            FeedResponseModel responseModel = await DashBoardService.GetNewFeeedData(kidIds, date, type, Enums.Views.DashBoard);
+            FeedResponseModel responseModel = await DashBoardService.GetFeeds(kidIds, date, type, Enums.Views.DashBoard);
             NewsFeedBoxCollectionData = responseModel.data;
         }
 
@@ -239,25 +247,29 @@ namespace ParentPortal.Modules.Secure.Dashboard
                 PollResponseModel pollResponseModel = await DashBoardService.AddPoll(pollId: Convert.ToInt32(pollData.id), parentId: ParentkidsDetails.id, selectedOption.Name);
             }
         }
-        private string GetKidsIsAsString(List<KidDetail> selectedkid)
+        private string GetKidsIsAsString(List<int> selectedkid)
         {
-            int[] kidsIds = selectedkid.Select(x => x.Id).ToArray();
-            return String.Join(",", kidsIds);
+            return String.Join(",", selectedkid);
         }
         private async void kidselection_changed(object sender, EventArgs e)
         {
             StackLayout stackLayout = (StackLayout)sender;
             var gestureRecognizer = (TapGestureRecognizer)stackLayout.GestureRecognizers[0];
             int kidId = (int)gestureRecognizer.CommandParameter;
-          await  GetDashBoardData(kidId.ToString());
+            //add in storage
+            _selectedKidId = new List<int> { kidId };
+            //
+            await GetDashBoardData(kidId.ToString());
         }
 
         private async void selectAllKids_Tapped(object sender, EventArgs e)
         {
-            string kidIds = GetKidsIsAsString(ParentkidsDetails.kids);
-             await  GetDashBoardData(kidIds);
+            //  
+            //
+            _selectedKidId = ParentkidsDetails.kids.Select(x => x.Id).ToList();
+            string kidIds = GetKidsIsAsString(ParentkidsDetails.kids.Select(x => x.Id).ToList());
+            //
+            await GetDashBoardData(kidIds);
         }
-
-
     }
 }

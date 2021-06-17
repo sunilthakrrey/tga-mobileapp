@@ -148,7 +148,7 @@
                                 </BindableLayout.ItemTemplate>
 
                             </StackLayout>
-                            <customControls:UserInfo  IsNameDisplay="true" ImageSize="Small"  UserId="{Binding createdById}" Grid.Column="2" HorizontalOptions="End" ></customControls:UserInfo>
+                            <customControls:UserInfo  IsNameDisplay="true" ImageSize="Small"  UserId="{Binding ChildId}" Grid.Column="2" HorizontalOptions="End" ></customControls:UserInfo>
                             <!--<customControls:IndividualFrameComponent Grid.Column="2" HorizontalOptions="End" BindingContext="{Binding KidDetail}"></customControls:IndividualFrameComponent>-->
                             <!--<StackLayout Grid.Column="2" Orientation="Horizontal" HorizontalOptions="End">
                                 <Label Text="{Binding Kid.Name}"  TextColor="{StaticResource Gray}" VerticalOptions="Center" Style="{StaticResource lblForNameStyle}"/>

@@ -55,11 +55,14 @@ namespace ParentPortal.Enums
     {
         None,
         Event,
-        DailyChart,
+       DailyChart,
         Wellness,
         Announcement,
         Grove_Curriculum,
-        My_Day
+        My_Day,
+        //Daily_Chart,
+        //Dailychart_Feed
+
     }
     public enum Module
     {
