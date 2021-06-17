@@ -350,7 +350,7 @@
 
     <Style x:Key="lblMealTitleStyle" TargetType="Label" BasedOn="{StaticResource CommonlblMealTitleStyle}">
         <Setter Property="FontSize" Value="{StaticResource lblLarge}"/>
-        <Setter Property="FontFamily" Value="Montserrat-SemiBold"/>
+        <Setter Property="FontFamily" Value="Montserrat-Bold"/>
     </Style>
 
     <Style x:Key="lblToastWithJamStyle" TargetType="Label">
