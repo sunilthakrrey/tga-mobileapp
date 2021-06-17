@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <StackLayout xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:converters="clr-namespace:ParentPortal.Converters" xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:converters="clr-namespace:ParentPortal.Converters" 
+             xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
              x:Class="ParentPortal.Custom.Controls.EventComponent">
     <StackLayout.Resources>
         <converters:StatustoImageConverter x:Key="TypeToImageConverter"/>
@@ -20,8 +22,9 @@
             </Grid.ColumnDefinitions>
 
             <StackLayout  Grid.Column="0" Spacing="1" >
-                <!--<label text="{binding title, mode=twoway}" textcolor="{dynamicresource feijoa}" style="{staticresource lblworktitlestyle}"/>-->
-                <WebView  Margin="0" x:Name="titleWebView"  VerticalOptions="FillAndExpand" HorizontalOptions="StartAndExpand"></WebView>
+                <!--<Label x:Name="title" Text="{Binding title, Mode=TwoWay}" TextColor="{DynamicResource feijoa}" Style="{StaticResource lblworktitlestyle}"/>-->
+                <Label x:Name="title" Text="{Binding title, Mode=TwoWay}" TextColor="{DynamicResource feijoa}"/>
+                <!--<WebView  Margin="0" x:Name="titleWebView"  VerticalOptions="FillAndExpand" HorizontalOptions="StartAndExpand"></WebView>-->
                 <Label Text="{Binding createdOn, Mode=TwoWay, StringFormat='{}{0:dd MMM yyy,hh:mm tt}'}"  TextColor="{DynamicResource Gray}" Style="{StaticResource lblDateWithTimeStyle}"/>
             </StackLayout>
 

@@ -50,6 +50,8 @@ namespace ParentPortal.Modules.Auth.Login
         {
             InitializeComponent();
             BindingContext = this;
+            LoginRequestModel.Email = "daniel.bogema@gmail.com";
+            LoginRequestModel.Password = "Password@123";
             NavigationPage.SetHasNavigationBar(this, false);
         }
         #endregion
@@ -87,7 +89,7 @@ namespace ParentPortal.Modules.Auth.Login
                 {
                    loginResponseModel.data.parent.kids.FirstOrDefault()
                 });
-                await App.AppNavigation.PushAsync(new MainPage(isListnerConfigured: false) { ContentView = new DashboardView() });
+                await App.AppNavigation.PushAsync(new MainPage(isNeedToListnerConfigured: false) { ContentView = new DashboardView() });
                 //await PopupNavigation.Instance.PushAsync(new CommentSectionPopup());
 
             }

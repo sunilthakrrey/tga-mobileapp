@@ -47,12 +47,13 @@ namespace ParentPortal
             }
         }
 
-        public MainPage(bool isListnerConfigured = true)
+        public MainPage(bool isNeedToListnerConfigured = false)
         {
             InitializeComponent();
             BindingContext = this;
+            loadingLayout.IsVisible = false;
             NavigationPage.SetHasNavigationBar(this, false);
-            if (!isListnerConfigured)
+            if (isNeedToListnerConfigured)
             {
                 AttachListner();
             }
@@ -69,19 +70,23 @@ namespace ParentPortal
         }
         public void AttachListner()
         {
-            MessagingCenter.Unsubscribe<MainPage, Enums.Views>(this, MessageCenterAuthenticator.RequestStarted.ToString());
+            //MessagingCenter.Unsubscribe<MainPage, Enums.Views>(this, MessageCenterAuthenticator.RequestStarted.ToString());
             MessagingCenter.Subscribe<MainPage, Enums.Views>(this, MessageCenterAuthenticator.RequestStarted.ToString(), (sender, arg) =>
             {
                 if (arg != Enums.Views.None)
                 {
                     processingRequests.Add(arg);
                     //  isBusy = true;
-                    loadingLayout.IsVisible = true;
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        loadingLayout.IsVisible = true;
+                    });
+                    
                 }
             });
 
 
-            MessagingCenter.Unsubscribe<MainPage, Enums.Views>(this, MessageCenterAuthenticator.RequestCompleted.ToString());
+            //MessagingCenter.Unsubscribe<MainPage, Enums.Views>(this, MessageCenterAuthenticator.RequestCompleted.ToString());
             MessagingCenter.Subscribe<MainPage, Enums.Views>(this, MessageCenterAuthenticator.RequestCompleted.ToString(), (sender, arg) =>
             {
                 if (arg != Enums.Views.None)
@@ -93,7 +98,11 @@ namespace ParentPortal
                         // Task.Delay(2000);
 
                         // isBusy = false;
-                        loadingLayout.IsVisible = false;
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            loadingLayout.IsVisible = false;
+                        });
+                        
                     }
                 }
             });
