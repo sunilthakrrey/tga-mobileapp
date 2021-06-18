@@ -43,9 +43,13 @@
     <AndroidSigningStorePass>Gcomm2012$#@</AndroidSigningStorePass>
     <AndroidSigningKeyAlias>tga_dev.alias</AndroidSigningKeyAlias>
     <AndroidSigningKeyPass>Gcomm2012$#@</AndroidSigningKeyPass>
-    <AndroidUseAapt2>false</AndroidUseAapt2>
+    <AndroidUseAapt2>true</AndroidUseAapt2>
+    <AndroidEnableMultiDex>false</AndroidEnableMultiDex>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+  <PropertyGroup>
+  <AndroidPackageFormat>apk</AndroidPackageFormat>
+</PropertyGroup>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>portable</DebugType>
     <Optimize>true</Optimize>
