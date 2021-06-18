@@ -33,6 +33,16 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AndroidLinkMode>None</AndroidLinkMode>
+    <AotAssemblies>false</AotAssemblies>
+    <EnableLLVM>false</EnableLLVM>
+    <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
+    <BundleAssemblies>false</BundleAssemblies>
+    <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
+    <AndroidKeyStore>true</AndroidKeyStore>
+    <AndroidSigningKeyStore>D:\Repos\thomas-gregg-bz-agency\tga-mobileapp\ParentPortal.Android\tga_dev.keystore</AndroidSigningKeyStore>
+    <AndroidSigningStorePass>Gcomm2012$#@</AndroidSigningStorePass>
+    <AndroidSigningKeyAlias>tga_dev.alias</AndroidSigningKeyAlias>
+    <AndroidSigningKeyPass>Gcomm2012$#@</AndroidSigningKeyPass>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
