@@ -41,7 +41,14 @@ namespace ParentPortal.Enums
         ChangeOfDetails,
         CasualDay,
         UpcomingAbsences,
-        SendAppreciation
+        SendAppreciation,
+
+        RemoteLearning,
+        Staff,
+        Photos,
+        Announcements,
+        Settings,
+        HelpAndFeedback
     }
     //public enum ImageSize
     public enum PictureSize
