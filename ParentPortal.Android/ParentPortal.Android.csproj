@@ -47,9 +47,6 @@
     <AndroidEnableMultiDex>false</AndroidEnableMultiDex>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-  <PropertyGroup>
-  <AndroidPackageFormat>apk</AndroidPackageFormat>
-</PropertyGroup>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>portable</DebugType>
     <Optimize>true</Optimize>
@@ -63,6 +60,9 @@
     <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
     <BundleAssemblies>false</BundleAssemblies>
   </PropertyGroup>
+   <PropertyGroup>
+  <AndroidPackageFormat>apk</AndroidPackageFormat>
+</PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
     <Reference Include="System" />
