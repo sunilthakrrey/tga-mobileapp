@@ -29,11 +29,7 @@ namespace ParentPortal.Modules.Secure.Dashboard
             BindingContext = this;
             ConfigureSource(isNeedToFilterSubsciberRegistered);
         }
-        //FilterSelection filterSelection = new FilterSelection
-        //{
-        //    FilterDate = button.Content.ToString(),
-        //    FilteType = typefilter
-        //};
+
         public FilterSelection filterSelection { get; set; }
         #region Properties
 
@@ -245,7 +241,12 @@ namespace ParentPortal.Modules.Secure.Dashboard
 
         private async void FilterPopupRequest_Clicked(object sender, EventArgs e)
         {
-            await PopupNavigation.Instance.PushAsync(new FeedFilterPopup());
+            FilterSelection selectedOptions = new FilterSelection();
+            if (filterSelection != null)
+                selectedOptions = filterSelection;
+            else
+                selectedOptions = new FilterSelection{FilterDate = "All", FilteType = "All"};
+                await PopupNavigation.Instance.PushAsync(new FeedFilterPopup(selectedOptions));
         }
 
         private async void optionSelected_Clicked(object sender, EventArgs e)

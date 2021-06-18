@@ -15,11 +15,44 @@ namespace ParentPortal.Views.Shared
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class FeedFilterPopup : PopupPage
     {
-        public FeedFilterPopup()
+        public FeedFilterPopup(FilterSelection  filterSelection)
         {
-            InitializeComponent();
-        }
 
+            InitializeComponent();
+            NotFireChangeEvent = true;
+            ConfigureFilter(filterSelection);
+            NotFireChangeEvent = false;
+        }
+        public bool NotFireChangeEvent { get; set; }
+        public void ConfigureFilter(FilterSelection filterSelection)
+        {
+            //date
+
+            if (filterSelection.FilterDate =="All")
+                RadDateAll.IsChecked =true;
+            else if (filterSelection.FilterDate == "Last Month")
+                RadDateLastMonth.IsChecked = true;
+            else if (filterSelection.FilterDate == "Last Week")
+                RadDateLastWeek.IsChecked = true;
+            else if (filterSelection.FilterDate == "Today")
+                RadDateToday.IsChecked = true;
+            else if (filterSelection.FilterDate == "Yesterday")
+                RadDateYesterday.IsChecked = true;
+
+            //type
+
+            if (filterSelection.FilteType == "All")
+                RadTypeAll.IsChecked = true;
+            else if (filterSelection.FilteType == "Event")
+                RadTypeEvent.IsChecked = true;
+            else if (filterSelection.FilteType == "Announcement")
+                RadTypeAnnouncement.IsChecked = true;
+            else if (filterSelection.FilteType == "Daily Chart")
+                RadTypeDailyChart.IsChecked = true;
+            else if (filterSelection.FilteType == "Wellness")
+                RadTypeWellness.IsChecked = true;
+           
+        }
         private void ClosePopup_Clicked(object sender, EventArgs e)
         {
             PopupNavigation.Instance.PopAllAsync();
@@ -62,7 +95,7 @@ namespace ParentPortal.Views.Shared
         {
             RadioButton button = sender as RadioButton;
             string dateFilter = string.Empty;
-            if (button.IsChecked)
+            if (button.IsChecked && NotFireChangeEvent == false)
             {
                 dateFilter = GetDate();
                 FilterSelection filterSelection = new FilterSelection
@@ -78,7 +111,7 @@ namespace ParentPortal.Views.Shared
         {
             RadioButton button = sender as RadioButton;
             string typefilter = string.Empty;
-            if (button.IsChecked)
+            if (button.IsChecked && NotFireChangeEvent == false)
             {
                 typefilter = GetFilterType();
                 FilterSelection filterSelection = new FilterSelection
@@ -96,12 +129,12 @@ namespace ParentPortal.Views.Shared
         public string GetDate()
         {
             string retVal = string.Empty;
-            if (RadDateAll.IsChecked)
+            if (RadDateAll.IsChecked )
                 retVal = "All";
             else if (RadDateLastMonth.IsChecked)
                 retVal = "Last Month";
             else if (RadDateLastWeek.IsChecked)
-                retVal = "LastWeek";
+                retVal = "Last Week";
             else if (RadDateToday.IsChecked)
                 retVal = "Today";
             else if (RadDateYesterday.IsChecked)
@@ -118,7 +151,7 @@ namespace ParentPortal.Views.Shared
             else if (RadTypeAnnouncement.IsChecked)
                 retVal = "Announcement";
             else if (RadTypeDailyChart.IsChecked)
-                retVal = "DailyChart";
+                retVal = "Daily Chart";
             else if (RadTypeWellness.IsChecked)
                 retVal = "Wellness";
             return retVal;
