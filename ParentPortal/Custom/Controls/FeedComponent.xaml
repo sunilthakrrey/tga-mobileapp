@@ -5,9 +5,7 @@
                 xmlns:converter="clr-namespace:ParentPortal.Converters"
              xmlns:panckeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms" xmlns:controls="clr-namespace:ParentPortal.Custom.Controls"
              x:Class="ParentPortal.Custom.Controls.FeedComponent">
-    <StackLayout.Resources>
-        <converter:StatusTovisibilityConverter x:Key="visibilityconverter"/>
-    </StackLayout.Resources>
+   
     <BindableLayout.ItemTemplate>
         <DataTemplate>
             <panckeview:PancakeView Margin="0,0,0,30" Style="{StaticResource CircularCornerPancakeStyle}">

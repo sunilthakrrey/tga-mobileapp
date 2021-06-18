@@ -149,15 +149,21 @@ namespace ParentPortal.Modules.Secure.Dashboard
                 _selectedKidId = selectedkid.Select(x => x.Id).ToList();
                 //gets ids in form of string
                 string kidIds = GetKidsIsAsString(_selectedKidId);
+
+                //parentkid detail
+
+                ParentkidsDetails = await SecureStorage.GetAsync<Parent>(Enums.SecureStorageKey.AuthorizedUserInfo);
+                ParentkidsDetails.kids.FirstOrDefault().IsHighlighted = true.ToString();
+                //var aaa = ParentkidsDetails.SelectedKid.Id;
+
+
                 await GetDashBoardData(kidIds);
                 isVisibleAll = ParentkidsDetails.kids.Count > 1;
-                IsHighlightAllKidsOption = isVisibleAll;
                 MessagingCenter.Unsubscribe<DashboardView, FilterSelection>(this, Enums.MessageCenterAuthenticator.FeedFilter.ToString());
                 MessagingCenter.Subscribe<DashboardView, FilterSelection>(this, Enums.MessageCenterAuthenticator.FeedFilter.ToString(), async (sender, arg) =>
                 {
                     if (arg != null)
                     {
-                       // await PopupNavigation.Instance.PopAllAsync();
 
                         NewsFeedBoxCollectionData = new List<FeedResponseData>();
                         MealComponentCollectionData = new List<MealChartData>();
@@ -182,9 +188,6 @@ namespace ParentPortal.Modules.Secure.Dashboard
 
         private async Task<bool> GetDashBoardData(string kidIds)
         {
-            //Load Parent And Kid detail From Storage(saved at time of login)
-            ParentkidsDetails = await SecureStorage.GetAsync<Parent>(Enums.SecureStorageKey.AuthorizedUserInfo);
-
             await GetAnnouncement(kidIds);
 
             await GetNewFeeds(kidIds);
@@ -217,10 +220,10 @@ namespace ParentPortal.Modules.Secure.Dashboard
             //}
         }
 
-        private async Task GetMealChart(string kidIds, string date = "today")
+        private async Task GetMealChart(string kidIds, string date = "yesterday")
         {
             //get Meal Data
-            MealChartResponseModel mealResponse = new MealChartResponseModel(); //await DashBoardService.GetMeals(kidIds, date, Enums.Views.DashBoard);
+            MealChartResponseModel mealResponse = await DashBoardService.GetMeals(kidIds, date, Enums.Views.DashBoard);
             MealComponentCollectionData = mealResponse.data;
         }
 
@@ -264,26 +267,31 @@ namespace ParentPortal.Modules.Secure.Dashboard
         {
             return String.Join(",", selectedkid);
         }
+
         private async void kidselection_changed(object sender, EventArgs e)
         {
+            nameFrame.BorderColor = Color.Transparent;
             IsHighlightAllKidsOption = false;
             StackLayout stackLayout = (StackLayout)sender;
             var gestureRecognizer = (TapGestureRecognizer)stackLayout.GestureRecognizers[0];
             int kidId = (int)gestureRecognizer.CommandParameter;
             //add in storage
+
+            foreach (KidDetail kid in ParentkidsDetails.kids)
+            {
+                kid.IsHighlighted = (kid.Id == kidId).ToString();
+            }
             _selectedKidId = new List<int> { kidId };
-            //
             await GetDashBoardData(kidId.ToString());
         }
 
         private async void selectAllKids_Tapped(object sender, EventArgs e)
         {
-            //  
-            //
+            ParentkidsDetails.kids.ForEach(x => x.IsHighlighted = "false");
             IsHighlightAllKidsOption = true;
             _selectedKidId = ParentkidsDetails.kids.Select(x => x.Id).ToList();
             string kidIds = GetKidsIsAsString(ParentkidsDetails.kids.Select(x => x.Id).ToList());
-            //
+            nameFrame.BorderColor =(Color)Application.Current.Resources["Feijoa"];
             await GetDashBoardData(kidIds);
         }
     }

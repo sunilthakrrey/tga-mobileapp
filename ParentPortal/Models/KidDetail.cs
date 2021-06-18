@@ -2,12 +2,14 @@
 using ParentPortal.Enums;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Text;
 using Xamarin.Forms;
 
 namespace ParentPortal.Models
 {
-   public class KidDetail
+   public class KidDetail: INotifyPropertyChanged
     {
         public int Id { get; set; }
 
@@ -15,60 +17,29 @@ namespace ParentPortal.Models
 
         [JsonProperty("avtar")]
         public string Avtaar { get; set; }
+
+        [JsonIgnore]
+        private string _isHighlighted;
+
         
-        //[JsonIgnore]
-        //public bool IsShowName { get; set; }
-        
-        //[JsonIgnore]
-        //public bool IsShowImage { get; set; }
-        
-        //[JsonIgnore]
-        //public PictureSize Size { get; set; }
-        
-        //[JsonIgnore]
-        //public Style FrameStyle
-        //{
-        //    get
-        //    {
-        //        Style style = null;
-        //        switch (Size)
-        //        {
 
-        //            case PictureSize.Small:
-        //                style = (Style)Application.Current.Resources["ImageCircleFrameStyle"];
-        //                break;
-        //            case PictureSize.Medium:
-        //                style = (Style)Application.Current.Resources["ImageUserCircleStyle"];
-        //                break;
-        //            default:
-        //                break;
-        //        }
-        //        return style;
-        //    }
-
-        //}
-
-        //[JsonIgnore]
-        //public Style ImageStyle
-        //{
-        //    get
-        //    {
-        //        Style style = null;
-        //        switch (Size)
-        //        {
-
-        //            case PictureSize.Small:
-        //                style = (Style)Application.Current.Resources["ImageUserIconStyle"];
-        //                break;
-        //            case PictureSize.Medium:
-        //                style = (Style)Application.Current.Resources["ImageUserPicStyle"];
-        //                break;
-        //            default:
-        //                break;
-        //        }
-        //        return style;
-        //    }
-
-        //}
+        public string IsHighlighted
+        {
+            get
+            {
+                return _isHighlighted;
+            }
+            set
+            {
+                _isHighlighted = value;
+                OnPropertyChanged(nameof(IsHighlighted));
+                
+            }
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

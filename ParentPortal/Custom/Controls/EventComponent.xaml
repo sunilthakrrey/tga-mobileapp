@@ -13,7 +13,11 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <ffsvg:SvgCachedImage Grid.Row="0" Source="{Binding imageUrl}"/>
+        <!--<ffsvg:SvgCachedImage Grid.Row="0" Source="{Binding imageUrl}"/>-->
+
+        <ffsvg:SvgCachedImage    BackgroundColor="Red" Source="https://tga-family.bz.agency/wp-content/uploads/2021/06/46-990x738.jpg"/>
+      
+        
 
         <Grid Grid.Row="1" Padding="20,10,20,2">
             <Grid.ColumnDefinitions>

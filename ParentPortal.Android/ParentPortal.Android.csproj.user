@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <SelectedDevice>Xiaomi Redmi Note 8</SelectedDevice>
-    <ActiveDebugProfile>Xiaomi Redmi Note 8</ActiveDebugProfile>
-    <DefaultDevice>pixel_2_xl_pie_9_0_-_api_28</DefaultDevice>
+    <SelectedDevice>HUAWEI JKM-AL00a</SelectedDevice>
+    <ActiveDebugProfile>HUAWEI JKM-AL00a</ActiveDebugProfile>
+    <DefaultDevice>galaxy_nexus_pie_9_0_-_api_28</DefaultDevice>
     <ProjectView>ProjectFiles</ProjectView>
     <AndroidDesignerPreferredTheme>MainTheme</AndroidDesignerPreferredTheme>
   </PropertyGroup>

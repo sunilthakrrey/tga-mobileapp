@@ -11,6 +11,7 @@
     <ContentView.Resources>
         <converters:MultiValueConverter x:Key="multivalueconverter"></converters:MultiValueConverter>
         <converters:BooleanToReverseConverter x:Key="boolToreverseconverter"></converters:BooleanToReverseConverter>
+        <converters:StatusTovisibilityConverter x:Key="testConverter"></converters:StatusTovisibilityConverter>
        
     </ContentView.Resources>
     <ContentView.Content>
@@ -59,20 +60,25 @@
                         <Frame BorderColor="{DynamicResource Feijoa}" Style="{StaticResource ImageUserCircleStyle}">
                             <ffsvg:SvgCachedImage Source="user_s.svg" Style="{StaticResource ImageUserPicStyle}"/>
                         </Frame>-->
-                        <StackLayout Orientation="Horizontal"  BindableLayout.ItemsSource="{Binding ParentkidsDetails.kids, Mode=TwoWay}">
-                            <BindableLayout.ItemTemplate>
-                                <DataTemplate>
-                                    <StackLayout>
-                                        <StackLayout.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="kidselection_changed" CommandParameter="{Binding Id}"/>
-                                        </StackLayout.GestureRecognizers>
-                                        <customControls:UserInfo  IsNameDisplay="false" ImageSize="Medium"  UserId="{Binding Id}" ></customControls:UserInfo>
-                                    </StackLayout>
-                                    
-                                    <!--<customControls:IndividualFrameComponent BindingContext="{Binding .}"></customControls:IndividualFrameComponent>-->
-                                </DataTemplate>
-                            </BindableLayout.ItemTemplate>
-                        </StackLayout>
+                        <Frame x:Name="nameFrame"  BorderColor="Transparent" Padding="2" HorizontalOptions="Center" VerticalOptions="Center" CornerRadius="100">
+                            <StackLayout Orientation="Horizontal"  BindableLayout.ItemsSource="{Binding ParentkidsDetails.kids, Mode=TwoWay}">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout>
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="kidselection_changed" CommandParameter="{Binding Id}"/>
+                                            </StackLayout.GestureRecognizers>
+                                            <!--<Frame   x:Name="imgFrame" BorderColor="{Binding IsSelected, Converter={StaticResource testConverter}}"  Padding="4" HorizontalOptions="Center" VerticalOptions="Center" CornerRadius="100">
+                                                <customControls:UserInfo   IsNameDisplay="false" ImageSize="Medium"  UserId="{Binding Id}" ></customControls:UserInfo>
+                                            </Frame>-->
+
+                                            <customControls:UserInfo IsSelected="{Binding IsHighlighted}"  IsNameDisplay="false" ImageSize="Medium"  UserId="{Binding Id}" ></customControls:UserInfo>
+                                            
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </StackLayout>
+                        </Frame>
 
                     </StackLayout>
 
