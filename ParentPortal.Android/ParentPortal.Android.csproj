@@ -43,6 +43,7 @@
     <AndroidSigningStorePass>Gcomm2012$#@</AndroidSigningStorePass>
     <AndroidSigningKeyAlias>tga_dev.alias</AndroidSigningKeyAlias>
     <AndroidSigningKeyPass>Gcomm2012$#@</AndroidSigningKeyPass>
+    <AndroidUseAapt2>false</AndroidUseAapt2>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
