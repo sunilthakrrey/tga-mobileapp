@@ -30,6 +30,10 @@
     <Color x:Key ="BeautyBush">#f2cdcd</Color>
     <Color x:Key ="Silver">#BBBBBB</Color>
 
+    <!--#region Highlight Kids Option -->
+    <Color x:Key ="KidsOptionHighlighColor">#7EBE58</Color>
+    <!--#endregion Highlight Kids Option-->
+
 
 
 
