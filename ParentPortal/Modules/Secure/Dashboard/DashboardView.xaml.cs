@@ -120,6 +120,19 @@ namespace ParentPortal.Modules.Secure.Dashboard
 
         }
 
+        private bool _isHighlightAllKidsOption;
+        public bool IsHighlightAllKidsOption
+        {
+            get
+            {
+                return _isHighlightAllKidsOption;
+            }
+            set
+            {
+                _isHighlightAllKidsOption = value;
+                OnPropertyChanged(nameof(IsHighlightAllKidsOption));
+            }
+        }
 
         public List<int> _selectedKidId = default(List<int>);
 
@@ -138,7 +151,7 @@ namespace ParentPortal.Modules.Secure.Dashboard
                 string kidIds = GetKidsIsAsString(_selectedKidId);
                 await GetDashBoardData(kidIds);
                 isVisibleAll = ParentkidsDetails.kids.Count > 1;
-
+                IsHighlightAllKidsOption = isVisibleAll;
                 MessagingCenter.Unsubscribe<DashboardView, FilterSelection>(this, Enums.MessageCenterAuthenticator.FeedFilter.ToString());
                 MessagingCenter.Subscribe<DashboardView, FilterSelection>(this, Enums.MessageCenterAuthenticator.FeedFilter.ToString(), async (sender, arg) =>
                 {
@@ -253,6 +266,7 @@ namespace ParentPortal.Modules.Secure.Dashboard
         }
         private async void kidselection_changed(object sender, EventArgs e)
         {
+            IsHighlightAllKidsOption = false;
             StackLayout stackLayout = (StackLayout)sender;
             var gestureRecognizer = (TapGestureRecognizer)stackLayout.GestureRecognizers[0];
             int kidId = (int)gestureRecognizer.CommandParameter;
@@ -266,6 +280,7 @@ namespace ParentPortal.Modules.Secure.Dashboard
         {
             //  
             //
+            IsHighlightAllKidsOption = true;
             _selectedKidId = ParentkidsDetails.kids.Select(x => x.Id).ToList();
             string kidIds = GetKidsIsAsString(ParentkidsDetails.kids.Select(x => x.Id).ToList());
             //

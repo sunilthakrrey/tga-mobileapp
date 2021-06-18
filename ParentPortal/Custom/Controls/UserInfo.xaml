@@ -12,7 +12,7 @@
     </Frame>-->
 
     <Label x:Name="lblName"  TextColor="{StaticResource Gray}" VerticalOptions="Center" Style="{StaticResource lblForNameStyle}"/>
-    <Frame BorderColor="{DynamicResource Feijoa}" Padding="4"  x:Name="imgFrame" HorizontalOptions="Center" VerticalOptions="Center" CornerRadius="100">
+    <Frame   x:Name="imgFrame" BorderColor="{DynamicResource Feijoa}" Padding="4" HorizontalOptions="Center" VerticalOptions="Center" CornerRadius="100">
         <ffsvg:SvgCachedImage x:Name="img" />
     </Frame>
 

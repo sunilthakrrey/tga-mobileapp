@@ -25,6 +25,37 @@ namespace ParentPortal.Custom.Controls
 
         }
 
+        #region Highlight
+        private bool _isHighlightAvatar;
+        public bool IsHighlightAvatar
+        {
+            get
+            {
+                return _isHighlightAvatar;
+            }
+            set
+            {
+                _isHighlightAvatar = value;
+                OnPropertyChanged(nameof(IsHighlightAvatar));
+            }
+        }
+
+        public static readonly BindableProperty IsHighlightNameFrameProperty = BindableProperty.Create(nameof(IsHighlightNameFrame), typeof(bool), typeof(UserInfo), defaultValue: null, defaultBindingMode: BindingMode.OneTime, propertyChanged: HighlightNameFramePropertyChanged);
+        public bool IsHighlightNameFrame
+        {
+            get
+            {
+                return (bool)GetValue(IsHighlightNameFrameProperty);
+            }
+            set
+            {
+                base.SetValue(IsHighlightNameFrameProperty, value);
+            }
+        }
+
+        #endregion Highlight
+
+
         #region UserId
 
         public static readonly BindableProperty UserIdProperty = BindableProperty.Create(nameof(UserId), typeof(int), typeof(UserInfo), defaultValue: null, defaultBindingMode: BindingMode.OneTime, propertyChanged: UserIdPropertyChanged);
@@ -79,6 +110,7 @@ namespace ParentPortal.Custom.Controls
 
 
         #region onpropertychanged
+
         public static void UserIdPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
         {
             if (newvalue != default(object))
@@ -88,7 +120,7 @@ namespace ParentPortal.Custom.Controls
                 if (aa != null)
                 {
                     control.lblName.Text = aa.Name;
-                    if(!string.IsNullOrEmpty(aa.Avtaar))
+                    if (!string.IsNullOrEmpty(aa.Avtaar))
                     {
                         control.img.Source = aa.Avtaar;
                         control.nameFrame.IsVisible = false;
@@ -96,12 +128,21 @@ namespace ParentPortal.Custom.Controls
                     else
                     {
                         control.imgFrame.IsVisible = false;
-                        control.lblNameFrame.Text = aa.Name.Substring(0,1);
+                        control.lblNameFrame.Text = aa.Name.Substring(0, 1);
                     }
-                   
+
                 }
             }
 
+        }
+
+        public static void HighlightNameFramePropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
+        {
+            if (newvalue != default(object))
+            {
+                var control = (UserInfo)bindable;
+                //control.nameFrame.BackgroundColor = Application.Current.Resources[];
+            }
         }
         public static void NameDisplyPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
         {

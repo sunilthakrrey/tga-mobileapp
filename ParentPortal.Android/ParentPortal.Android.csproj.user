@@ -4,7 +4,7 @@
     <SelectedDevice>nexus_4_pie_9_0_-_api_28</SelectedDevice>
     <ActiveDebugProfile>nexus_4_pie_9_0_-_api_28</ActiveDebugProfile>
     <DefaultDevice>nexus_4_pie_9_0_-_api_28</DefaultDevice>
-    <ProjectView>ShowAllFiles</ProjectView>
+    <ProjectView>ProjectFiles</ProjectView>
     <AndroidDesignerPreferredTheme>MainTheme</AndroidDesignerPreferredTheme>
   </PropertyGroup>
 </Project>

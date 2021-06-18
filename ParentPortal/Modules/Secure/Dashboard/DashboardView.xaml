@@ -39,12 +39,20 @@
                     </StackLayout>
 
                     <StackLayout Grid.Column="1" Orientation="Horizontal" HorizontalOptions="End">
-                        <Frame IsVisible="{Binding isVisibleAll}" BackgroundColor="{DynamicResource SilverChalice}" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource lblForAllLabelContainerStyle}">
+                        <StackLayout VerticalOptions="Center"  IsVisible="{Binding isVisibleAll}">
+                            <Frame IsVisible="{Binding IsHighlightAllKidsOption}" BackgroundColor="{DynamicResource KidsOptionHighlighColor}" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource lblForAllLabelContainerStyle}">
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="selectAllKids_Tapped"/>
                             </Frame.GestureRecognizers>
                             <Label Text="All" VerticalOptions="Center" TextColor="{DynamicResource White}" Style="{StaticResource lblForAllLabelStyle}"/>
                         </Frame>
+                            <Frame IsVisible="{Binding IsHighlightAllKidsOption, Converter={StaticResource boolToreverseconverter}}" BackgroundColor="{DynamicResource SilverChalice}" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource lblForAllLabelContainerStyle}">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="selectAllKids_Tapped"/>
+                            </Frame.GestureRecognizers>
+                            <Label Text="All" VerticalOptions="Center" TextColor="{DynamicResource White}" Style="{StaticResource lblForAllLabelStyle}"/>
+                        </Frame>
+                        </StackLayout>
                         <!--<Frame BorderColor="{DynamicResource Feijoa}" Style="{StaticResource ImageUserCircleStyle}">
                             <ffsvg:SvgCachedImage Source="user_f.svg" Style="{StaticResource ImageUserPicStyle}"/>
                         </Frame>
