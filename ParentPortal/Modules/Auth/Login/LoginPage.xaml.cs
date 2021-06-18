@@ -80,6 +80,12 @@ namespace ParentPortal.Modules.Auth.Login
                 //add Authrize token To storage
                 await secureStorageService.SaveAsync(SecureStorageKey.AuthorizedToken, new AuthorizedToken { Token = loginResponseModel.token, RefreshToken = loginResponseModel.refreshToken });
 
+                if (loginResponseModel.data.parent.kids.Any())
+                {
+                    loginResponseModel.data.parent.kids[0].IsHighlighted = true.ToString();
+                }
+
+
                 //  save user info into storage
                 bool isAuthorizedInfoSaved = await secureStorageService.SaveAsync(SecureStorageKey.AuthorizedUserInfo, loginResponseModel.data.parent);
 
@@ -89,6 +95,7 @@ namespace ParentPortal.Modules.Auth.Login
                 {
                    loginResponseModel.data.parent.kids.FirstOrDefault()
                 });
+
                 await App.AppNavigation.PushAsync(new MainPage(isNeedToListnerConfigured: false) { ContentView = new DashboardView() });
                 //await PopupNavigation.Instance.PushAsync(new CommentSectionPopup());
 

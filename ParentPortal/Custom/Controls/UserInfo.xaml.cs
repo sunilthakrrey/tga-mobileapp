@@ -22,34 +22,38 @@ namespace ParentPortal.Custom.Controls
         {
 
             InitializeComponent();
+            // imgFrame.BorderColor = Color.Red;
+
 
         }
-
+        public Color _BorderColor = Color.White;
         #region Highlight
-        private bool _isHighlightAvatar;
-        public bool IsHighlightAvatar
+
+
+        public static readonly BindableProperty IsSelectedProperty = BindableProperty.Create(nameof(IsSelected), typeof(string), typeof(UserInfo), defaultValue: null, defaultBindingMode: BindingMode.TwoWay, propertyChanged: IsSelectedPropertyChanged);
+        public string IsSelected
         {
             get
             {
-                return _isHighlightAvatar;
+                return (string)GetValue(IsSelectedProperty);
             }
             set
             {
-                _isHighlightAvatar = value;
-                OnPropertyChanged(nameof(IsHighlightAvatar));
+                base.SetValue(IsSelectedProperty, value);
             }
         }
 
-        public static readonly BindableProperty IsHighlightNameFrameProperty = BindableProperty.Create(nameof(IsHighlightNameFrame), typeof(bool), typeof(UserInfo), defaultValue: null, defaultBindingMode: BindingMode.OneTime, propertyChanged: HighlightNameFramePropertyChanged);
-        public bool IsHighlightNameFrame
+        public static void IsSelectedPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
         {
-            get
+            if (newvalue != default(object))
             {
-                return (bool)GetValue(IsHighlightNameFrameProperty);
-            }
-            set
-            {
-                base.SetValue(IsHighlightNameFrameProperty, value);
+                var control = (UserInfo)bindable;
+                //control.imgFrame.BorderColor = Color.Red;
+                string value = (string)newvalue;
+                if (value.ToLower() == "true")
+                    control.imgFrame.BorderColor = (Color)Application.Current.Resources["Feijoa"];
+                else
+                    control.imgFrame.BorderColor = Color.Transparent;
             }
         }
 
@@ -120,6 +124,8 @@ namespace ParentPortal.Custom.Controls
                 if (aa != null)
                 {
                     control.lblName.Text = aa.Name;
+                    // control.imgFrame.IsVisible = false;
+
                     if (!string.IsNullOrEmpty(aa.Avtaar))
                     {
                         control.img.Source = aa.Avtaar;
@@ -127,7 +133,7 @@ namespace ParentPortal.Custom.Controls
                     }
                     else
                     {
-                        control.imgFrame.IsVisible = false;
+                        control.img.IsVisible = false;
                         control.lblNameFrame.Text = aa.Name.Substring(0, 1);
                     }
 
@@ -136,14 +142,7 @@ namespace ParentPortal.Custom.Controls
 
         }
 
-        public static void HighlightNameFramePropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
-        {
-            if (newvalue != default(object))
-            {
-                var control = (UserInfo)bindable;
-                //control.nameFrame.BackgroundColor = Application.Current.Resources[];
-            }
-        }
+
         public static void NameDisplyPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
         {
             if (newvalue != default(object))
@@ -159,6 +158,8 @@ namespace ParentPortal.Custom.Controls
                 string boolValue = (string)newvalue;
                 bool isNameVisible = boolValue == "true";
                 control.lblName.IsVisible = isNameVisible;
+
+
             }
         }
 
@@ -168,7 +169,7 @@ namespace ParentPortal.Custom.Controls
             if (newvalue != default(object))
             {
                 var control = (UserInfo)bindable;
-                //KidDetail aa = GetKidDetailsFromStorage((int)newvalue).Result;
+                // KidDetail aa = GetKidDetailsFromStorage((int)newvalue).Result;
                 string SizeasString = (string)newvalue;
                 //PictureSize imgSize = PictureSize.None;
                 //Enum.TryParse(SizeasString, out imgSize);

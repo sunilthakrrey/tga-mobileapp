@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-
+using System.Linq;
 namespace ParentPortal.Contracts.Responses
 {
     public class LoginResponseModel
@@ -22,6 +22,7 @@ namespace ParentPortal.Contracts.Responses
         public int id { get; set; }
         public string name { get; set; }
         public List<KidDetail> kids { get; set; }
+       // public KidDetail SelectedKid { get { return kids.FirstOrDefault(X => X.IsSelected); } }
     }
-    
+
 }
