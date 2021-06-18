@@ -27,9 +27,9 @@
 
             <StackLayout  Grid.Column="0" Spacing="1" >
                 <!--<Label x:Name="title" Text="{Binding title, Mode=TwoWay}" TextColor="{DynamicResource feijoa}" Style="{StaticResource lblworktitlestyle}"/>-->
-                <Label x:Name="title" Text="{Binding title, Mode=TwoWay}" TextColor="{DynamicResource feijoa}"/>
+                <Label x:Name="title" Text="{Binding title, Mode=TwoWay}" TextColor="{DynamicResource Feijoa}" Style="{StaticResource lblWorkTitleStyle}"/>
                 <!--<WebView  Margin="0" x:Name="titleWebView"  VerticalOptions="FillAndExpand" HorizontalOptions="StartAndExpand"></WebView>-->
-                <Label Text="{Binding createdOn, Mode=TwoWay, StringFormat='{}{0:dd MMM yyy,hh:mm tt}'}"  TextColor="{DynamicResource Gray}" Style="{StaticResource lblDateWithTimeStyle}"/>
+                <Label Text="{Binding createdOn, Mode=TwoWay, StringFormat='{}{0:dd MMM yyy,hh:mm tt}'}" TextColor="{DynamicResource Gray}" Style="{StaticResource lblDateWithTimeStyle}"/>
             </StackLayout>
 
             <ffsvg:SvgCachedImage Grid.Column="1" Source="{Binding Type, Converter={StaticResource TypeToImageConverter}}" HorizontalOptions="End" Style="{StaticResource ImageForWorkTitleIconStyle}"/>

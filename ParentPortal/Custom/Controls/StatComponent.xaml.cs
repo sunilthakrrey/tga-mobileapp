@@ -69,6 +69,7 @@ namespace ParentPortal.Custom.Controls
                         control.ShowControls(true, true);
                         break;
                     case Enums.TGA_Type.Announcement:
+                        control.ShowControls(isShowLikes: false, isShowComments: false);
                         break;
                     case Enums.TGA_Type.Grove_Curriculum:
                         control.ShowControls(true, true);

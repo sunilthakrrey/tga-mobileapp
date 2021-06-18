@@ -69,6 +69,7 @@ namespace ParentPortal.Custom.Controls
                         control.stckBookmark.IsVisible = true;
                         break;
                     case Enums.TGA_Type.Announcement:
+                        control.toolbarstack.IsVisible = false;
                         break;
                     case Enums.TGA_Type.Grove_Curriculum:
                         control.stckLike.IsVisible = true;

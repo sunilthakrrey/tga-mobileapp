@@ -107,27 +107,52 @@
 
                 <StackLayout Grid.Row="1" Spacing="15" Orientation="Horizontal">
                         <ffsvg:SvgCachedImage  Style="{StaticResource ImageSideNavIconStyle}" VerticalOptions="Center" Source="remote_learning_icon.svg"/>
-                        <Label Text="Remote Learning" TextColor="{DynamicResource Black}" Style="{StaticResource lblSideNavSubHeadingStyle}" VerticalOptions="Center"/>
+                        <!--<Label Text="Remote Learning" TextColor="{DynamicResource Black}" Style="{StaticResource lblSideNavSubHeadingStyle}" VerticalOptions="Center"/>-->
+                        <Label Text="Remote Learning" TextColor="{DynamicResource Black}" Style="{StaticResource lblSideNavSubHeadingStyle}" VerticalOptions="Center">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ChangeView_Tapped" CommandParameter="{x:Static Enums:ViewType.RemoteLearning}"/>
+                            </Label.GestureRecognizers>
+                        </Label>
                     </StackLayout>
 
                 <StackLayout Grid.Row="2" Spacing="15" Orientation="Horizontal">
                         <ffsvg:SvgCachedImage  Style="{StaticResource ImageSideNavIconStyle}" VerticalOptions="Center" Source="staff_icon.svg"/>
-                        <Label Text="Staff" TextColor="{DynamicResource Black}" Style="{StaticResource lblSideNavSubHeadingStyle}" VerticalOptions="Center"/>
+                        <!--<Label Text="Staff" TextColor="{DynamicResource Black}" Style="{StaticResource lblSideNavSubHeadingStyle}" VerticalOptions="Center"/>-->
+                        <Label Text="Staff" TextColor="{DynamicResource Black}" Style="{StaticResource lblSideNavSubHeadingStyle}" VerticalOptions="Center">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ChangeView_Tapped" CommandParameter="{x:Static Enums:ViewType.Staff}"/>
+                            </Label.GestureRecognizers>
+                        </Label>
                     </StackLayout>
 
                 <StackLayout Grid.Row="3" Spacing="15" Orientation="Horizontal">
                         <ffsvg:SvgCachedImage  Style="{StaticResource ImageSideNavIconStyle}" VerticalOptions="Center" Source="photos_side_icon.svg"/>
-                        <Label  Text="Photos" TextColor="{DynamicResource Black}" Style="{StaticResource lblSideNavSubHeadingStyle}" VerticalOptions="Center"/>
+                        <!--<Label  Text="Photos" TextColor="{DynamicResource Black}" Style="{StaticResource lblSideNavSubHeadingStyle}" VerticalOptions="Center"/>-->
+                        <Label Text="Photos" TextColor="{DynamicResource Black}" Style="{StaticResource lblSideNavSubHeadingStyle}" VerticalOptions="Center">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ChangeView_Tapped" CommandParameter="{x:Static Enums:ViewType.Photos}"/>
+                            </Label.GestureRecognizers>
+                        </Label>
                     </StackLayout>
 
                 <StackLayout Grid.Row="4" Spacing="15" Orientation="Horizontal">
                         <ffsvg:SvgCachedImage Style="{StaticResource ImageSideNavIconStyle}" VerticalOptions="Center" Source="announcements_icon.svg"/>
-                        <Label Text="Announcements" TextColor="{DynamicResource Black}" Style="{StaticResource lblSideNavSubHeadingStyle}" VerticalOptions="Center"/>
+                        <!--<Label Text="Announcements" TextColor="{DynamicResource Black}" Style="{StaticResource lblSideNavSubHeadingStyle}" VerticalOptions="Center"/>-->
+                        <Label Text="Announcements" TextColor="{DynamicResource Black}" Style="{StaticResource lblSideNavSubHeadingStyle}" VerticalOptions="Center">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ChangeView_Tapped" CommandParameter="{x:Static Enums:ViewType.Announcements}"/>
+                            </Label.GestureRecognizers>
+                        </Label>
                     </StackLayout>
 
                 <StackLayout Grid.Row="5" Spacing="15" Orientation="Horizontal">
                         <ffsvg:SvgCachedImage  Style="{StaticResource ImageSideNavIconStyle}" VerticalOptions="Center" Source="settings_icon.svg"/>
-                        <Label  Text="Settings" TextColor="{DynamicResource Black}" Style="{StaticResource lblSideNavSubHeadingStyle}" VerticalOptions="Center"/>
+                        <!--<Label  Text="Settings" TextColor="{DynamicResource Black}" Style="{StaticResource lblSideNavSubHeadingStyle}" VerticalOptions="Center"/>-->
+                        <Label Text="Settings" TextColor="{DynamicResource Black}" Style="{StaticResource lblSideNavSubHeadingStyle}" VerticalOptions="Center">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ChangeView_Tapped" CommandParameter="{x:Static Enums:ViewType.Settings}"/>
+                            </Label.GestureRecognizers>
+                        </Label>
                     </StackLayout>
 
             </Grid>
@@ -149,8 +174,13 @@
 
                 <StackLayout Grid.Row="1" Spacing="15" Orientation="Horizontal">
                         <ffsvg:SvgCachedImage  Style="{StaticResource ImageSideNavIconStyle}" VerticalOptions="Center" Source="help_and_feedback.svg"/>
-                        <Label  Text="Help and Feedback" TextColor="{DynamicResource Black}" Style="{StaticResource lblSideNavSubHeadingStyle}" VerticalOptions="Center"/>
-                </StackLayout>
+                        <!--<Label  Text="Help and Feedback" TextColor="{DynamicResource Black}" Style="{StaticResource lblSideNavSubHeadingStyle}" VerticalOptions="Center"/>-->
+                        <Label Text="Help and Feedback" TextColor="{DynamicResource Black}" Style="{StaticResource lblSideNavSubHeadingStyle}" VerticalOptions="Center">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ChangeView_Tapped" CommandParameter="{x:Static Enums:ViewType.HelpAndFeedback}"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
 
                     <ffsvg:SvgCachedImage Margin="15" Grid.Row="2"  Source="cross_black_icon.svg" Style="{StaticResource ImageSideNavIconStyle}"/>
             </Grid>
