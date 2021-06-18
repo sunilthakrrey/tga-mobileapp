@@ -37,14 +37,14 @@
 
                     </StackLayout>
 
-                    <Frame BackgroundColor="{DynamicResource FeijoaLight}"  HasShadow="False" Margin="0" Style="{StaticResource EntryFrameStyle}">
-                        <customControls:CustomEntry Margin="0" IsRemoveDefaultPadding="True" Placeholder="Email or Username" PlaceholderColor="{DynamicResource White}" Style="{StaticResource CustomEntryStyle}" Text="{Binding LoginRequestModel.Email, Mode=TwoWay}">
+                    <Frame BackgroundColor="#B1DD96" CornerRadius="25" HasShadow="False" Margin="0" Style="{StaticResource EntryFrameStyle}">
+                        <customControls:CustomEntry Margin="0" BorderWidth="0" BorderColor="#B1DD96" BackgroundColor="#B1DD96"  CornerRadius="15" IsRemoveDefaultPadding="True" Placeholder="Email or Username" PlaceholderColor="{DynamicResource White}" Style="{StaticResource CustomEntryStyle}" Text="{Binding LoginRequestModel.Email, Mode=TwoWay}">
 
                         </customControls:CustomEntry>
                     </Frame>
 
-                    <Frame BackgroundColor="{DynamicResource FeijoaLight}" HasShadow="False" Margin="0" Style="{StaticResource EntryFrameStyle}">
-                        <customControls:CustomEntry Placeholder="Password" IsRemoveDefaultPadding="True" IsPassword="True" PlaceholderColor="{DynamicResource White}"  Style="{StaticResource CustomEntryStyle}" Text="{Binding LoginRequestModel.Password, Mode=TwoWay}">
+                    <Frame BackgroundColor="{DynamicResource FeijoaLight}" CornerRadius="25" HasShadow="False" Margin="0" Style="{StaticResource EntryFrameStyle}">
+                        <customControls:CustomEntry Placeholder="Password" BorderWidth="0" BorderColor="#B1DD96" BackgroundColor="#B1DD96" CornerRadius="15" IsRemoveDefaultPadding="True" IsPassword="True" PlaceholderColor="{DynamicResource White}"  Style="{StaticResource CustomEntryStyle}" Text="{Binding LoginRequestModel.Password, Mode=TwoWay}">
 
                         </customControls:CustomEntry>
                     </Frame>
@@ -61,12 +61,12 @@
                     </StackLayout>
                 </StackLayout>
 
-                <panckeview:PancakeView Grid.Row="2" Margin="0,15,0,0" VerticalOptions="Start" Style="{StaticResource BtnOrangeFrameStyle}">
+                <panckeview:PancakeView Grid.Row="2" Margin="0,15,0,0" VerticalOptions="Start"  CornerRadius="20" BackgroundGradientStartPoint="0,0" BackgroundGradientEndPoint="0,1" Style="{StaticResource BtnOrangeFrameStyle}">
                     <panckeview:PancakeView.Shadow>
-                        <panckeview:DropShadow BlurRadius="10" Opacity="0.9"   x:Name="shadow" Color="Black" Offset="20,20" />
+                        <panckeview:DropShadow BlurRadius="10" Opacity="0.9"   x:Name="shadow" Color="Black" Offset="5,5" />
                     </panckeview:PancakeView.Shadow>
 
-                    <Button Text="Login" Clicked="LoginBtn_Clicked" TextColor="{DynamicResource White}" BackgroundColor="{DynamicResource BrightSun}" Style="{StaticResource BtnLoginStyle}"/>
+                    <Button Text="Login" Clicked="LoginBtn_Clicked" TextColor="{DynamicResource White}" CornerRadius="20" BackgroundColor="{DynamicResource BrightSun}" Style="{StaticResource BtnLoginStyle}"/>
                 </panckeview:PancakeView>
 
               
