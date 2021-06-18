@@ -29,7 +29,12 @@ namespace ParentPortal.Modules.Secure.Dashboard
             BindingContext = this;
             ConfigureSource(isNeedToFilterSubsciberRegistered);
         }
-
+        //FilterSelection filterSelection = new FilterSelection
+        //{
+        //    FilterDate = button.Content.ToString(),
+        //    FilteType = typefilter
+        //};
+        public FilterSelection filterSelection { get; set; }
         #region Properties
 
         private AnnouncementData _announcementResponseModel;
@@ -179,7 +184,7 @@ namespace ParentPortal.Modules.Secure.Dashboard
                             await GetNewFeeds(kidIds, arg.FilterDate);
                         }
 
-
+                        filterSelection = arg;
                     }
                 });
             }
@@ -204,20 +209,15 @@ namespace ParentPortal.Modules.Secure.Dashboard
             //get poll Data
             PollResponseModel pollResponse = await DashBoardService.GetPolls(campusId, parentId, Enums.Views.DashBoard);
             PollData = pollResponse.data;
-
-            //int i = 65;
-            //foreach (var data in PollData)
-            //{
-            //    foreach (var option in data.Options)
-            //    {
-            //        option.optionIndex = ((char)i).ToString() + " ";
-            //        if(data.Selected == option.Name)
-            //        {
-            //            option.IsSelected = true;
-            //        }
-            //        i = i++;
-            //    }
-            //}
+            foreach (var data in PollData)
+            {
+                int i = 65;
+                foreach (var option in data.Options)
+                {
+                    option.OptionIndex = ((char)i).ToString() + " ";
+                    i = i + 1;
+                };
+            }
         }
 
         private async Task GetMealChart(string kidIds, string date = "yesterday")

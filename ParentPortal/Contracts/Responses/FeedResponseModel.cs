@@ -15,7 +15,7 @@ namespace ParentPortal.Contracts.Responses
 
     public class FeedResponseData
     {
-        public int kidIds { get; set; }
+        public int? kidIds { get; set; }
         public Feed feed { get; set; }
         public FeedStat stat { get; set; }
         public string createdById { get; set; }

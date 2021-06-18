@@ -8,9 +8,9 @@ using Xamarin.Forms;
 using System.Linq;
 namespace ParentPortal.Contracts.Responses
 {
-    public class PollResponseModel:BaseMultipleRecordResponse<PollData>
+    public class PollResponseModel : BaseMultipleRecordResponse<PollData>
     {
-       
+
     }
     public class PollData
     {
@@ -63,6 +63,23 @@ namespace ParentPortal.Contracts.Responses
 
             }
         }
+        [JsonIgnore]
+        public string _optionIndex;
+        [JsonIgnore]
+        public string OptionIndex
+        {
+            get
+            {
+                return _optionIndex;
+            }
+            set
+            {
+                _optionIndex = value;
+                OnPropertyChanged(nameof(OptionIndex));
+            }
+        }
+
+
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {

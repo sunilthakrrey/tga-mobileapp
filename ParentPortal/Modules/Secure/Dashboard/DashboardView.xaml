@@ -237,7 +237,7 @@
                                                         </Frame.GestureRecognizers>
                                                         <StackLayout  Orientation="Horizontal" Style="{StaticResource lblOptionsTitleContainerStyle}">
                                                             <Frame BackgroundColor="{Binding BackgroundColor,Mode=TwoWay}" BorderColor="{DynamicResource Gray}"  Style="{StaticResource lblOptionsCircleStyle}">
-                                                                <Label Text="A"  TextColor="{DynamicResource Gray}" Style="{StaticResource lblOptionsNoStyle}"/>
+                                                                <Label Text="{Binding OptionIndex}"  TextColor="{DynamicResource Gray}" Style="{StaticResource lblOptionsNoStyle}"/>
                                                             </Frame>
                                                             <Label Text="{Binding Name}" VerticalOptions="Center" TextColor="{DynamicResource Gray}" Style="{StaticResource lblOptionsTitleStyle}"/>
                                                         </StackLayout>

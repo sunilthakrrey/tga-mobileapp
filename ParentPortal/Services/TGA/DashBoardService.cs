@@ -37,10 +37,26 @@ namespace ParentPortal.Services.TGA
 
         public async Task<MealChartResponseModel> GetMeals(string kidsIds, string date, Enums.Views page = Enums.Views.None)
         {
-           string  dateasString = DateTime.UtcNow.ToString("MMMM dd, yyyy");
+            DateTime date_ = default(DateTime);
+            if (date == "today")
+                date_ = DateTime.Today;
+            else if (date == "yesterday")
+                date_ = DateTime.Today.AddDays(-1);
+            else if (date == "LastWeek")
+            {
+                date_ = DateTime.Today.AddDays(-7);
+            }
+            else if (date == "LastMonth")
+            {
+                DateTime dFirstDayOfThisMonth = DateTime.Today.AddDays(-(DateTime.Today.Day - 1));
+                DateTime dLastDayOfLastMonth = dFirstDayOfThisMonth.AddDays(-1);
+                date_ = dFirstDayOfThisMonth.AddMonths(-1);
+            }
+
+            string dateasString = date_.ToString("MMMM dd, yyyy");
             MealChartResponseModel retVal;
-            string url = string.Format("{0}?kidIds={1}&date={2}", ConfigSettings.EndPoint.DashBoard.MealChart, kidsIds, "June 17, 2021");
-             retVal = await CreateHttpGETRequestAsync<MealChartResponseModel>(url, page: page);
+            string url = string.Format("{0}?kidIds={1}&date={2}", ConfigSettings.EndPoint.DashBoard.MealChart, kidsIds, date_);
+            retVal = await CreateHttpGETRequestAsync<MealChartResponseModel>(url, page: page);
             //retVal = new MealChartResponseModel
             //{
             //    status = "success",
