@@ -390,7 +390,7 @@
     </Style>
 
     <Style x:Key="lblOptionsTitleStyle" TargetType="Label">
-        <Setter Property="FontSize" Value="{StaticResource lblSmall}"/>
+        <Setter Property="FontSize" Value="{StaticResource lblMedium}"/>
         <Setter Property="FontFamily" Value="Montserrat-SemiBold"/>
     </Style>
 
@@ -404,7 +404,7 @@
     </Style>
 
     <Style x:Key="lblOptionsTitleMainContainerStyle" TargetType="Frame">
-        <Setter Property="CornerRadius" Value="20"/>
+        <Setter Property="CornerRadius" Value="35"/>
         <Setter Property="Padding" Value="6"/>
     </Style>
 

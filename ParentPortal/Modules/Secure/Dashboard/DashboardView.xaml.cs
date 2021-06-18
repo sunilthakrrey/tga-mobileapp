@@ -211,7 +211,7 @@ namespace ParentPortal.Modules.Secure.Dashboard
             MealComponentCollectionData = mealResponse.data;
         }
 
-        private async Task GetNewFeeds(string kidIds, string date = "today", string type = "all")
+        private async Task GetNewFeeds(string kidIds, string date = "yesterday", string type = "all")
         {
             //news Feeds 
             FeedResponseModel responseModel = await DashBoardService.GetFeeds(kidIds, date, type, Enums.Views.DashBoard);
