@@ -60,9 +60,9 @@
     <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
     <BundleAssemblies>false</BundleAssemblies>
   </PropertyGroup>
-   <PropertyGroup>
-  <AndroidPackageFormat>apk</AndroidPackageFormat>
-</PropertyGroup>
+  <PropertyGroup>
+    <AndroidPackageFormat>apk</AndroidPackageFormat>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
     <Reference Include="System" />
