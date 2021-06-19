@@ -163,7 +163,7 @@
     </Style>
 
     <Style x:Key="lblGreetingStyle" TargetType="Label">
-        <Setter Property="FontSize" Value="{StaticResource lblXXtraLarge}"/>
+        <Setter Property="FontSize" Value="{StaticResource lblXtraLarge}"/>
         <Setter Property="FontFamily" Value="Montserrat-SemiBold"/>
     </Style>
 
@@ -173,8 +173,14 @@
     </Style>
 
     <Style x:Key="lblForAllLabelContainerStyle" TargetType="Frame">
-        <Setter Property="CornerRadius" Value="25"/>
-        <Setter Property="Padding" Value="10,1"/>
+        <!--<Setter Property="CornerRadius" Value="25"/>
+        <Setter Property="Padding" Value="10,1"/>-->
+        <Setter Property="CornerRadius">
+            <Setter.Value>
+                <OnPlatform Android="25" iOS="8" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Padding" Value="11,1"/>
     </Style>
 
     <Style x:Key="ImageUserCircleStyle" TargetType="Frame" BasedOn="{StaticResource CommonImageUserCircleStyle}">
@@ -199,8 +205,23 @@
     </Style>
 
     <Style x:Key="DashboardCircularFrameStyle" TargetType="Frame" BasedOn="{StaticResource CommonDashboardCircularFrameStyle}">
-        <Setter Property="HeightRequest" Value="40"/>
-        <Setter Property="WidthRequest" Value="40"/>
+        <!--<Setter Property="HeightRequest" Value="40"/>
+        <Setter Property="WidthRequest" Value="40"/>-->
+         <Setter Property="HeightRequest">
+            <Setter.Value>
+                <OnPlatform Android="40" iOS="80" />
+            </Setter.Value>
+        </Setter>
+         <Setter Property="WidthRequest">
+            <Setter.Value>
+                <OnPlatform Android="40" iOS="80" />
+            </Setter.Value>
+        </Setter>
+         <Setter Property="CornerRadius">
+            <Setter.Value>
+                <OnPlatform Android="100" iOS="40" />
+            </Setter.Value>
+        </Setter>
     </Style>
 
     <Style x:Key="lblAnnouncementStyle" TargetType="Label">
@@ -393,6 +414,11 @@
     <Style x:Key="lblOptionsCircleStyle" TargetType="Frame" BasedOn="{StaticResource CommonlblOptionsCircleStyle}">
         <Setter Property="HeightRequest" Value="30"/>
         <Setter Property="WidthRequest" Value="30"/>
+         <Setter Property="CornerRadius">
+            <Setter.Value>
+                <OnPlatform Android="100" iOS="15" />
+            </Setter.Value>
+        </Setter>
     </Style>
 
     <Style x:Key="lblOptionsTitleStyle" TargetType="Label">

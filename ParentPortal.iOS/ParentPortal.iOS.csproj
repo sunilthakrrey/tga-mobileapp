@@ -145,6 +145,7 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\HamburgerNav.svg" />
+    <BundleResource Include="Resources\events_Icon.svg" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Filter_icon.svg" />
@@ -166,9 +167,6 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\tga_banner.svg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\events_Icon.svg" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\facebook.svg" />
