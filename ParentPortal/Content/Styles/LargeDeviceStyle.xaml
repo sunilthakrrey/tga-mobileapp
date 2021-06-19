@@ -162,10 +162,18 @@
 
 
     <!--ForgotPasswordPage Style End-->
-
+     
 
 
     <!--DashboardView Style Begin-->
+
+     <Style x:Key="UserFrameStyle" TargetType="Frame">       
+        <Setter Property="CornerRadius">
+            <Setter.Value>
+                <OnPlatform Android="100" iOS="28" />
+            </Setter.Value>
+        </Setter>     
+    </Style>
 
     <Style x:Key="lblForDateStyle" TargetType="Label">
         <Setter Property="FontSize" Value="{StaticResource lblSmall}"/>

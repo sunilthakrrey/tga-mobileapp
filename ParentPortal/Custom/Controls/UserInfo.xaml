@@ -36,10 +36,10 @@
         </StackLayout>
        
     </Frame>-->
-      <Frame   x:Name="imgFrame" BorderColor="Transparent"  Padding="4" Margin="0" HorizontalOptions="Center"  VerticalOptions="Center" HasShadow="False" CornerRadius="28">
+      <Frame   x:Name="imgFrame" BorderColor="Transparent"  Padding="4" Margin="0" HorizontalOptions="Center"  VerticalOptions="Center" HasShadow="False" Style="{StaticResource UserFrameStyle}">
         <StackLayout>
             <ffsvg:SvgCachedImage x:Name="img" />
-            <Frame x:Name="nameFrame"  BackgroundColor="{DynamicResource Malibu}"   CornerRadius="100">
+            <Frame x:Name="nameFrame"  BackgroundColor="{DynamicResource Malibu}"   CornerRadius="100"> 
                 <Label x:Name="lblNameFrame" VerticalOptions="Center" HorizontalOptions="Center" TextColor="{DynamicResource HippieBlue}" FontSize="14" FontFamily="Montserrat-Regular"/>
             </Frame>
         </StackLayout>
