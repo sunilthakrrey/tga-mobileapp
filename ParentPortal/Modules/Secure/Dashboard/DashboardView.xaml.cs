@@ -216,14 +216,14 @@ namespace ParentPortal.Modules.Secure.Dashboard
             }
         }
 
-        private async Task GetMealChart(string kidIds, string date = "yesterday")
+        private async Task GetMealChart(string kidIds, string date = "today")
         {
             //get Meal Data
             MealChartResponseModel mealResponse = await DashBoardService.GetMeals(kidIds, date, Enums.Views.DashBoard);
             MealComponentCollectionData = mealResponse.data;
         }
 
-        private async Task GetNewFeeds(string kidIds, string date = "yesterday", string type = "all")
+        private async Task GetNewFeeds(string kidIds, string date = "today", string type = "all")
         {
             //news Feeds 
             FeedResponseModel responseModel = await DashBoardService.GetFeeds(kidIds, date, type, Enums.Views.DashBoard);

@@ -28,6 +28,7 @@ namespace ParentPortal.Contracts.Responses
         public int Id { get; set; }
         public string title { get; set; }
         public string description { get; set; }
+        public string ShortDescription { get; set; }
         public string imageUrl { get; set; }
 
         [JsonProperty("createdOn")]
@@ -85,6 +86,16 @@ namespace ParentPortal.Contracts.Responses
                 return retVal.ToString();
             }
         }
+
+       
+        public string Strengths { get; set; }
+        public string Interests { get; set; }
+        public string DevelopmentAreas { get; set; }
+        public string ShortTermGoals { get; set; }
+        public string StartDate { get; set; }
+        public string StartAt { get; set; }
+        public string EndAt { get; set; }
+        public string EndDate { get; set; }
 
     }
     public class FeedStat : INotifyPropertyChanged

@@ -64,7 +64,7 @@ namespace ParentPortal.Custom.Controls
                     case Enums.TGA_Type.DailyChart:
                         break;
                     case Enums.TGA_Type.Wellness:
-                        control.stckLike.IsVisible = true;
+                        control.stckLike.IsVisible = false;
                         control.stckComment.IsVisible = true;
                         control.stckBookmark.IsVisible = true;
                         break;

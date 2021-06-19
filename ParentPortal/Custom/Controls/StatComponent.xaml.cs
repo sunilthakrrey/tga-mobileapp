@@ -66,7 +66,7 @@ namespace ParentPortal.Custom.Controls
                     case Enums.TGA_Type.DailyChart:
                         break;
                     case Enums.TGA_Type.Wellness:
-                        control.ShowControls(true, true);
+                        control.ShowControls(false, true, message: "");
                         break;
                     case Enums.TGA_Type.Announcement:
                         control.ShowControls(isShowLikes: false, isShowComments: false);

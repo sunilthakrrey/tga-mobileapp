@@ -1,42 +1,84 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<StackLayout x:Name="WellnessStack" xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms" xmlns:panckeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:converters="clr-namespace:ParentPortal.Converters"
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:panckeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
              x:Class="ParentPortal.Custom.Controls.WellnessComponent">
 
-    <StackLayout.Resources>
-        <converters:StatustoImageConverter x:Key="TypeToImageConverter"/>
-    </StackLayout.Resources>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <ffsvg:SvgCachedImage Grid.Row="0" Source="{Binding imageUrl}"/>
 
-        <Grid Grid.Row="1" Padding="20,10,20,2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
 
-            <StackLayout Grid.Column="0" Spacing="1">
-                <!--<Label Text="{Binding title, Mode=TwoWay}" TextColor="{DynamicResource Feijoa}" Style="{StaticResource lblWorkTitleStyle}"/>-->
-                <WebView x:Name="titleWebView" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"></WebView>
-                <Label Text="{Binding createdOn, Mode=TwoWay, StringFormat='{}{0:dd MMM yyy,hh:mm tt}'}"  TextColor="{DynamicResource Gray}" Style="{StaticResource lblDateWithTimeStyle}"/>
+        <Grid Grid.Row="0" BackgroundColor="#81CFE8" Style="{StaticResource ImageMorningTeaContainerStyle}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackLayout Grid.Column="0" Spacing="1">
+                    <Label Text="{Binding title, Mode=TwoWay}" HorizontalOptions="Start" TextColor="{DynamicResource White}" Style="{StaticResource lblMealTitleStyle}"/>
+                <Label Text="{Binding createdOn,Mode=TwoWay, StringFormat='{}{0:dd MMM yyy,hh:mm tt}'}" TextColor="{DynamicResource White}" Style="{StaticResource lblToastWithJamStyle}"/>
+                </StackLayout>
+
+                <ffsvg:SvgCachedImage Grid.Column="1" Source="Wellness_icon.svg" HorizontalOptions="End" Style="{StaticResource ImageMorningTeaStyle}"/>
+            </Grid>
+            <StackLayout Grid.Row="1">
+                <Grid x:Name="StrengthGrid">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height=".30*"></RowDefinition>
+                        <RowDefinition Height=".70*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".20*"/>
+                        <ColumnDefinition Width=".80*"/>
+                    </Grid.ColumnDefinitions>
+                <ffsvg:SvgCachedImage Grid.Column="0" Grid.RowSpan="2" Source="Strength_icon.svg" HorizontalOptions="End" Style="{StaticResource ImageMorningTeaStyle}"/>
+                <Label Text="Strength" TextColor="#81CFE8" FontAttributes="Bold" FontSize="15"  Grid.Column="1" Grid.Row="0"/>
+                <Label x:Name="lblStrength"  Text="{Binding Strengths}" Grid.Column="1" Grid.Row="1"/>
+                </Grid>
+                <Grid x:Name="InterestGrid">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height=".30*"></RowDefinition>
+                        <RowDefinition Height=".70*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".20*"/>
+                        <ColumnDefinition Width=".80*"/>
+                    </Grid.ColumnDefinitions>
+                <ffsvg:SvgCachedImage Grid.Column="0" Grid.RowSpan="2" Source="Interests_icon.svg" HorizontalOptions="End" Style="{StaticResource ImageMorningTeaStyle}"/>
+                <Label Text="Interest" TextColor="#81CFE8" FontAttributes="Bold" FontSize="15"  Grid.Column="1" Grid.Row="0"/>
+                <Label x:Name="lblInterest"  Text="{Binding Interests}" Grid.Column="1" Grid.Row="1"/>
+                    
+                </Grid>
+                <Grid x:Name="DevelopmentGrid">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height=".30*"></RowDefinition>
+                        <RowDefinition Height=".70*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".20*"/>
+                        <ColumnDefinition Width=".80*"/>
+                    </Grid.ColumnDefinitions>
+                <ffsvg:SvgCachedImage Grid.Column="0" Grid.RowSpan="2" Source="DevelopmentAreas_icon.svg" HorizontalOptions="End" Style="{StaticResource ImageMorningTeaStyle}"/>
+                <Label Text="Development Area" TextColor="#81CFE8" FontAttributes="Bold" FontSize="15"  Grid.Column="1" Grid.Row="0"/>
+                <Label x:Name="lblDevelopmentArea"  Text="{Binding DevelopmentAreas}" Grid.Column="1" Grid.Row="1"/>
+                </Grid>
+                <Grid x:Name="ShortTermGoals">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height=".30*"></RowDefinition>
+                        <RowDefinition Height=".70*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".20*"/>
+                        <ColumnDefinition Width=".80*"/>
+                    </Grid.ColumnDefinitions>
+                <ffsvg:SvgCachedImage Grid.Column="0" Grid.RowSpan="2" Source="DevelopmentAreas_icon.svg" HorizontalOptions="End" Style="{StaticResource ImageMorningTeaStyle}"/>
+                <Label Text="ShortTermGoals" TextColor="#81CFE8" FontAttributes="Bold" FontSize="15" Grid.Column="1" Grid.Row="0"/>
+                <Label x:Name="lblShortTermGoals"  Text="{Binding ShortTermGoals}" Grid.Column="1" Grid.Row="1"/>
+                </Grid>
             </StackLayout>
-
-            <ffsvg:SvgCachedImage Grid.Column="1" Source="{Binding Type, Converter={StaticResource TypeToImageConverter}}" HorizontalOptions="End" Style="{StaticResource ImageForWorkTitleIconStyle}"/>
+          
         </Grid>
-
-        <Grid Grid.Row="2" Padding="20,0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="80*"/>
-                <ColumnDefinition Width="20*"/>
-            </Grid.ColumnDefinitions>
-            <!--<Label Grid.Column="0" TextColor="{DynamicResource Black}" LineHeight="1.2" Style="{StaticResource lblNewsFeedDescriptionStyle}" Text="{Binding description,Mode=TwoWay}"/>-->
-            <WebView x:Name="DescriptionWebView" ></WebView>
-        </Grid>
-    </Grid>
-
+   
 </StackLayout>

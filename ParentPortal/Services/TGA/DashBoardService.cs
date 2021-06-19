@@ -28,9 +28,10 @@ namespace ParentPortal.Services.TGA
 
         public async Task<FeedResponseModel> GetFeeds(string kidsIds, string date = "today", string type = "all", Enums.Views page = Enums.Views.None)
         {
+           // "https://tga-family.bz.agency/wp-json/api/kid/new-feeds?kidIds=1013015&date=yersterday&type=all";
             //"1010286", "thismonth"
             FeedResponseModel retVal;
-            string url = string.Format("{0}?kidIds={1}&date={2}&type={3}", ConfigSettings.EndPoint.DashBoard.NewsFeeds, kidsIds, date, type);
+            string url =  string.Format("{0}?kidIds={1}&date={2}&type={3}", ConfigSettings.EndPoint.DashBoard.NewsFeeds, kidsIds, date, type);
             retVal = await CreateHttpGETRequestAsync<FeedResponseModel>(url, page: page);
             return retVal;
         }

@@ -290,4 +290,16 @@
   <ItemGroup>
     <BundleResource Include="Resources\Bookmarked_icon.svg" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Wellness_icon.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Strength_icon.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Interests_icon.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\DevelopmentAreas_icon.svg" />
+  </ItemGroup>
 </Project>
