@@ -63,7 +63,7 @@
                         <Frame BorderColor="{DynamicResource Feijoa}" Style="{StaticResource ImageUserCircleStyle}">
                             <ffsvg:SvgCachedImage Source="user_s.svg" Style="{StaticResource ImageUserPicStyle}"/>
                         </Frame>-->
-                        <Frame x:Name="nameFrame"  BorderColor="Transparent" Padding="2" HorizontalOptions="Center" HasShadow="False" VerticalOptions="Center" CornerRadius="100">
+                        <Frame x:Name="nameFrame"  BorderColor="Transparent" Padding="2" HorizontalOptions="Center" HasShadow="False" VerticalOptions="Center" Style="{StaticResource UserInfoFrameStyle}">
                             <StackLayout Orientation="Horizontal"  BindableLayout.ItemsSource="{Binding ParentkidsDetails.kids, Mode=TwoWay}">
                                 <BindableLayout.ItemTemplate>
                                     <DataTemplate>

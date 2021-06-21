@@ -210,6 +210,14 @@
         <Setter Property="Padding" Value="11,1"/>
     </Style>
 
+    <Style x:Key="UserInfoFrameStyle" TargetType="Frame">
+        <Setter Property="CornerRadius">
+            <Setter.Value>
+                <OnPlatform Android="100" iOS="30" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <Style x:Key="ImageUserCircleStyle" TargetType="Frame" BasedOn="{StaticResource CommonImageUserCircleStyle}">
         <Setter Property="HeightRequest" Value="50"/>
         <Setter Property="WidthRequest" Value="50"/>
@@ -498,8 +506,18 @@
 
     <Style x:Key="NewsFeedFilterPopupStyle" TargetType="panckeview:PancakeView">
         <Setter Property="CornerRadius" Value="30,30,0,0"/>
-        <Setter Property="Padding" Value="20,0,20,30"/>
-        <Setter Property="HeightRequest" Value="600"/>
+        <!--<Setter Property="Padding" Value="20,0,20,30"/>-->
+        <Setter Property="Padding">
+            <Setter.Value>
+                <OnPlatform Android="20,0,20,30" iOS="20,0,20,5" />
+            </Setter.Value>
+        </Setter>
+        <!--<Setter Property="HeightRequest" Value="600"/>-->
+         <Setter Property="HeightRequest">
+            <Setter.Value>
+                <OnPlatform Android="600" iOS="500" />
+            </Setter.Value>
+        </Setter>
     </Style>
 
     <Style x:Key="CommentPopupStyle" TargetType="panckeview:PancakeView">

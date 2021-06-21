@@ -10,6 +10,8 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
 namespace ParentPortal
@@ -52,7 +54,7 @@ namespace ParentPortal
             InitializeComponent();
             BindingContext = this;
             loadingLayout.IsVisible = false;
-            NavigationPage.SetHasNavigationBar(this, false);
+            Xamarin.Forms.NavigationPage.SetHasNavigationBar(this, false);
             if (isNeedToListnerConfigured)
             {
                 AttachListner();
@@ -100,6 +102,15 @@ namespace ParentPortal
                     }
                 }
             });
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            //var safeInsets = On<iOS>().SafeAreaInsets();
+            //safeInsets.Top = 0;
+            //Padding = safeInsets;
+            On<iOS>().SetUseSafeArea(true);
         }
 
         private async void GetMenuItems_Tapped(object sender, EventArgs e)

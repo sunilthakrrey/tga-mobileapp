@@ -201,6 +201,15 @@
         <Setter Property="Padding" Value="11,1"/>
     </Style>
 
+    <Style x:Key="UserInfoFrameStyle" TargetType="Frame">
+        <Setter Property="CornerRadius">
+            <Setter.Value>
+                <OnPlatform Android="100" iOS="30" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
     <Style x:Key="ImageUserCircleStyle" TargetType="Frame" BasedOn="{StaticResource CommonImageUserCircleStyle}">
         <Setter Property="HeightRequest" Value="50"/>
         <Setter Property="WidthRequest" Value="50"/>
@@ -213,8 +222,8 @@
     </Style>
 
     <Style x:Key="ImageEventIconStyle" TargetType="ffsvg:SvgCachedImage">
-        <Setter Property="HeightRequest" Value="30"/>
-        <Setter Property="WidthRequest" Value="30"/>
+        <Setter Property="HeightRequest" Value="25"/>
+        <Setter Property="WidthRequest" Value="25"/>
     </Style>
 
     <Style x:Key="lblEventTitleStyle" TargetType="Label">
@@ -227,17 +236,17 @@
         <Setter Property="WidthRequest" Value="40"/>-->
          <Setter Property="HeightRequest">
             <Setter.Value>
-                <OnPlatform Android="40" iOS="80" />
+                <OnPlatform Android="40" iOS="67" />
             </Setter.Value>
         </Setter>
          <Setter Property="WidthRequest">
             <Setter.Value>
-                <OnPlatform Android="40" iOS="80" />
+                <OnPlatform Android="40" iOS="67" />
             </Setter.Value>
         </Setter>
          <Setter Property="CornerRadius">
             <Setter.Value>
-                <OnPlatform Android="100" iOS="40" />
+                <OnPlatform Android="100" iOS="32" />
             </Setter.Value>
         </Setter>
     </Style>
@@ -489,8 +498,18 @@
 
     <Style x:Key="NewsFeedFilterPopupStyle" TargetType="panckeview:PancakeView">
         <Setter Property="CornerRadius" Value="30,30,0,0"/>
-        <Setter Property="Padding" Value="20,0,20,30"/>
-        <Setter Property="HeightRequest" Value="550"/>
+        <!--<Setter Property="Padding" Value="20,0,20,30"/>-->
+         <Setter Property="Padding">
+            <Setter.Value>
+                <OnPlatform Android="20,0,20,30" iOS="20,0,20,5" />
+            </Setter.Value>
+        </Setter>
+        <!--<Setter Property="HeightRequest" Value="550"/>-->
+        <Setter Property="HeightRequest">
+            <Setter.Value>
+                <OnPlatform Android="550" iOS="500" />
+            </Setter.Value>
+        </Setter>
     </Style>
 
     <Style x:Key="CommentPopupStyle" TargetType="panckeview:PancakeView">

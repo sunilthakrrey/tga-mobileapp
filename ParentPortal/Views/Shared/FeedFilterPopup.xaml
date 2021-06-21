@@ -50,7 +50,9 @@
         <StackLayout.GestureRecognizers>
             <PanGestureRecognizer  PanUpdated="PanGestureRecognizer_PanUpdated" />
         </StackLayout.GestureRecognizers>
+       
         <panckeview:PancakeView HorizontalOptions="FillAndExpand"  BackgroundColor="{DynamicResource Feijoa}" Style="{StaticResource NewsFeedFilterPopupStyle}">
+           
             <Grid>
                 
                 <Grid.RowDefinitions>
@@ -167,6 +169,8 @@
                 </StackLayout>
 
             </Grid>
+               
         </panckeview:PancakeView>
+
     </StackLayout>
 </pages:PopupPage>
