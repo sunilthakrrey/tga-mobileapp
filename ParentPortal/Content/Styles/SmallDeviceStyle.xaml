@@ -34,13 +34,23 @@
     <Style x:Key="BtnOrangeStyle" TargetType="Button" BasedOn="{StaticResource CommonBtnOrangeStyle}">
         <Setter Property="FontSize" Value="{StaticResource lblLarge}"/>
         <Setter Property="FontFamily" Value="Montserrat-Bold"/>
-        <Setter Property="CornerRadius" Value="50"/>
+        <!--<Setter Property="CornerRadius" Value="50"/>-->
+         <Setter Property="CornerRadius">
+            <Setter.Value>
+                <OnPlatform Android="50" iOS="22" />
+            </Setter.Value>
+        </Setter>
         <Setter Property="Padding" Value="35,5"/>
         <Setter Property="HeightRequest" Value="35"/>
     </Style>
 
     <Style x:Key="BtnOrangeFrameStyle" TargetType="panckeview:PancakeView" BasedOn="{StaticResource CommonBtnOrangeFrameStyle}">
-        <Setter Property="CornerRadius" Value="50"/>
+        <!--<Setter Property="CornerRadius" Value="50"/>-->
+        <Setter Property="CornerRadius">
+            <Setter.Value>
+                <OnPlatform Android="50" iOS="22" />
+            </Setter.Value>
+        </Setter>
     </Style>
 
     <!--Common Styles Start-->
@@ -219,17 +229,17 @@
         <Setter Property="WidthRequest" Value="40"/>-->
         <Setter Property="HeightRequest">
             <Setter.Value>
-                <OnPlatform Android="40" iOS="80" />
+                <OnPlatform  Android="40" iOS="80" />
             </Setter.Value>
         </Setter>
          <Setter Property="WidthRequest">
             <Setter.Value>
-                <OnPlatform Android="40" iOS="80" />
+                <OnPlatform  Android="40" iOS="80" />
             </Setter.Value>
         </Setter>
          <Setter Property="CornerRadius">
             <Setter.Value>
-                <OnPlatform Android="100" iOS="40" />
+                <OnPlatform  Android="100" iOS="40" />
             </Setter.Value>
         </Setter>
     </Style>

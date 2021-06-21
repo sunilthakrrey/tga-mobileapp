@@ -252,7 +252,7 @@
 
                                                            
 
-                                                            <Frame  BackgroundColor="{Binding BackgroundColor,Mode=TwoWay}"  BorderColor="{DynamicResource Gray}"  Style="{StaticResource lblOptionsCircleStyle}">
+                                                            <Frame  BackgroundColor="{Binding BackgroundColor,Mode=TwoWay}"  BorderColor="{DynamicResource Gray}" HorizontalOptions="Center" VerticalOptions="Center"  Style="{StaticResource lblOptionsCircleStyle}">
                                                                 <Label Text="{Binding OptionIndex}"   TextColor="{DynamicResource Gray}" Style="{StaticResource lblOptionsNoStyle}"/>
 
                                                             </Frame>

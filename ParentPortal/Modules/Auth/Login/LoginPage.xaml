@@ -63,7 +63,7 @@
 
                 <panckeview:PancakeView Grid.Row="2" Margin="0,15,0,0" VerticalOptions="Start"  CornerRadius="20" BackgroundGradientStartPoint="0,0" BackgroundGradientEndPoint="0,1" Style="{StaticResource BtnOrangeFrameStyle}">
                     <panckeview:PancakeView.Shadow>
-                        <panckeview:DropShadow BlurRadius="10" Opacity="0.9"   x:Name="shadow" Color="Black" Offset="5,5" />
+                        <panckeview:DropShadow BlurRadius="5"  Opacity="0.2"   x:Name="shadow" Color="Black" Offset="0,10" />
                     </panckeview:PancakeView.Shadow>
 
                     <Button Text="Login" Clicked="LoginBtn_Clicked" TextColor="{DynamicResource White}" CornerRadius="20" BackgroundColor="{DynamicResource BrightSun}" Style="{StaticResource BtnLoginStyle}"/>

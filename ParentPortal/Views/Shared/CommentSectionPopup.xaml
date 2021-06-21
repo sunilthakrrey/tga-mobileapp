@@ -37,13 +37,13 @@
                 <Label Grid.Row="1" Text="Write Comment" VerticalOptions="Start" HorizontalOptions="Center" Style="{StaticResource lblExceptionXtraSmallBoldStyle}" TextColor="{DynamicResource White}"/>
 
                 <Frame Grid.Row="2" Style="{StaticResource FrameCommentWriteStyle}"  IsClippedToBounds="True"  HasShadow="False" BackgroundColor="{DynamicResource FeijoaLight}">
-                    <Editor Placeholder="Type Comment"  Style="{StaticResource CommentWriteStyle}" HorizontalOptions="FillAndExpand" TextColor="{DynamicResource White}" PlaceholderColor="{DynamicResource White}"  Text="{Binding Comment}"></Editor> 
+                    <Editor Placeholder="Type Comment"  Style="{StaticResource CommentWriteStyle}" HorizontalOptions="FillAndExpand" BackgroundColor="{DynamicResource FeijoaLight}" TextColor="{DynamicResource White}" PlaceholderColor="{DynamicResource White}"  Text="{Binding Comment}"></Editor> 
                 </Frame>
                
 
                 <panckeview:PancakeView Grid.Row="3"  VerticalOptions="Center" Style="{StaticResource BtnOrangeFrameStyle}">
                     <panckeview:PancakeView.Shadow>
-                        <panckeview:DropShadow BlurRadius="10" Opacity="0"   x:Name="shadow" Color="{DynamicResource Black}" Offset="0,2" />
+                        <panckeview:DropShadow BlurRadius="5"  Opacity="0.2"   x:Name="shadow" Color="{DynamicResource Black}" Offset="0,10" />
                     </panckeview:PancakeView.Shadow>
 
                     <Button Text="Post Comment"  Clicked="PostComment_Clicked" TextColor="{DynamicResource White}" BackgroundColor="{DynamicResource BrightSun}" Style="{StaticResource BtnOrangeStyle}"/>
