@@ -30,7 +30,21 @@ namespace ParentPortal
             InitializeComponent();
             LoadStyles();
             LoadTheme();
-            MainPage = AppNavigation = new NavigationPage(new LoginPage());
+
+
+            MainPage = AppNavigation = new NavigationPage(new MainPage(isNeedToListnerConfigured: true));
+
+            //Login through following credentials
+            LoginRequestModel loginRequestModel = accountCredentialStorage.GetAsync<LoginRequestModel>(SecureStorageKey.AccountCredential).Result;
+            if (loginRequestModel != null)
+            {
+                RedirectToDashboard(loginRequestModel);
+            }
+            else
+            {
+                MainPage = AppNavigation = new NavigationPage(new LoginPage());
+            }
+
         }
 
         public static void HandleError(Exception ex)
@@ -41,13 +55,9 @@ namespace ParentPortal
 
         protected override void OnStart()
         {
-            LoginRequestModel loginRequestModel = accountCredentialStorage.GetAsync<LoginRequestModel>(SecureStorageKey.AccountCredential).Result;
 
-            //Login through following credentials
-            if (loginRequestModel != null)
-                Login(loginRequestModel);
         }
-        private async void Login(LoginRequestModel loginRequestModel)
+        private async void RedirectToDashboard(LoginRequestModel loginRequestModel)
         {
             IdentityService identityService = new IdentityService();
             LoginResponseModel responseModel = await identityService.LoginAsync(loginRequestModel);

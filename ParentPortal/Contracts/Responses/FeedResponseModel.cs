@@ -2,12 +2,10 @@
 using ParentPortal.Enums;
 using ParentPortal.Extensions;
 using ParentPortal.Models;
-using ParentPortal.Services.TGA;
 using ParentPortal.Storage;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace ParentPortal.Contracts.Responses
 {
@@ -17,7 +15,7 @@ namespace ParentPortal.Contracts.Responses
 
     public class FeedResponseData
     {
-        public int kidIds { get; set; }
+        public int? kidIds { get; set; }
         public Feed feed { get; set; }
         public FeedStat stat { get; set; }
         public string createdById { get; set; }
@@ -30,6 +28,7 @@ namespace ParentPortal.Contracts.Responses
         public int Id { get; set; }
         public string title { get; set; }
         public string description { get; set; }
+        public string ShortDescription { get; set; }
         public string imageUrl { get; set; }
 
         [JsonProperty("createdOn")]
@@ -88,13 +87,51 @@ namespace ParentPortal.Contracts.Responses
             }
         }
 
+       
+        public string Strengths { get; set; }
+        public string Interests { get; set; }
+        public string DevelopmentAreas { get; set; }
+        public string ShortTermGoals { get; set; }
+        public string StartDate { get; set; }
+        public string StartAt { get; set; }
+        public string EndAt { get; set; }
+        public string EndDate { get; set; }
+
     }
-    public class FeedStat
+    public class FeedStat : INotifyPropertyChanged
     {
-        public int totalLikes { get; set; }
-        public int totalComments { get; set; }
+        private int _totallikes;
+        public int totalLikes 
+        {
+            get
+            {
+                return _totallikes;
+            }
+            set
+            {
+                _totallikes = value;
+                OnPropertyChanged(nameof(totalLikes));
+            }
+        }
+        private int _totalComments;
+        public int totalComments 
+        {
+            get
+            {
+                return _totalComments;
+            }
+            set
+            {
+                _totalComments = value;
+                OnPropertyChanged(nameof(totalComments));
+            }
+        }
 
-
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 
 

@@ -156,10 +156,14 @@
                 </panckeview:PancakeView>
                 
                 <StackLayout Grid.Row="3" Padding="10">
-                    <StackLayout.GestureRecognizers>
+                    <!--<StackLayout.GestureRecognizers>
                         <TapGestureRecognizer Tapped="ClosePopup_Clicked"></TapGestureRecognizer>
-                    </StackLayout.GestureRecognizers>
-                    <ffsvg:SvgCachedImage VerticalOptions="End" HorizontalOptions="Center" Style="{StaticResource ImageCrossIconStyle}" Source="cross_icon.svg"/>
+                    </StackLayout.GestureRecognizers>-->
+                    <ffsvg:SvgCachedImage VerticalOptions="End" HorizontalOptions="Center" Style="{StaticResource ImageCrossIconStyle}" Source="cross_icon.svg">
+                        <ffsvg:SvgCachedImage.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ClosePopup_Clicked"></TapGestureRecognizer>
+                        </ffsvg:SvgCachedImage.GestureRecognizers>
+                    </ffsvg:SvgCachedImage>
                 </StackLayout>
 
             </Grid>

@@ -49,7 +49,7 @@ namespace ParentPortal.Services
         {
             IsCheckInternetConnectivity();
 
-            MessagingCenter.Send<MainPage, Enums.Views>(new MainPage(isListnerConfigured:false), MessageCenterAuthenticator.RequestStarted.ToString(), page);
+            MessagingCenter.Send<MainPage, Enums.Views>(new MainPage(), MessageCenterAuthenticator.RequestStarted.ToString(), page);
 
 
             Type temp = typeof(T);
@@ -73,7 +73,7 @@ namespace ParentPortal.Services
                 using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
                 {
                     var result = streamReader.ReadToEnd();
-                      obj = JsonConvert.DeserializeObject<T>(result);
+                    obj = JsonConvert.DeserializeObject<T>(result);
                 }
             }
             catch (WebException ex)
@@ -92,7 +92,7 @@ namespace ParentPortal.Services
         {
             IsCheckInternetConnectivity();
 
-            MessagingCenter.Send<MainPage, Enums.Views>(new MainPage(isListnerConfigured:false), MessageCenterAuthenticator.RequestStarted.ToString(), page);
+            MessagingCenter.Send<MainPage, Enums.Views>(new MainPage(), MessageCenterAuthenticator.RequestStarted.ToString(), page);
 
             Type temp = typeof(T);
             T obj = Activator.CreateInstance<T>();
@@ -148,7 +148,7 @@ namespace ParentPortal.Services
         {
             IsCheckInternetConnectivity();
 
-            MessagingCenter.Send<MainPage, Enums.Views>(new MainPage(isListnerConfigured: false), MessageCenterAuthenticator.RequestStarted.ToString(), page);
+            MessagingCenter.Send<MainPage, Enums.Views>(new MainPage(), MessageCenterAuthenticator.RequestStarted.ToString(), page);
 
             Type temp = typeof(T);
             T obj = Activator.CreateInstance<T>();
@@ -163,7 +163,7 @@ namespace ParentPortal.Services
                 //{
                 //    request.Headers.Add(ConfigSettings.Constant.HeaderKey.Authorization, string.Format("Bearer {0}", authorizedToken.Token));
                 //}
-              
+
                 HttpClient client = new HttpClient();
                 client.DefaultRequestHeaders.Add(ConfigSettings.Constant.HeaderKey.Authorization, string.Format("Bearer {0}"));
                 HttpResponseMessage httpResponse = client.PostAsync(url, form).Result;
@@ -189,7 +189,7 @@ namespace ParentPortal.Services
 
             return obj;
         }
-      
+
 
         private HttpWebRequest CreateRequest(string uri)
         {
@@ -198,7 +198,7 @@ namespace ParentPortal.Services
             return request;
         }
 
-        
+
 
         private static bool IsCheckInternetConnectivity()
         {
@@ -209,9 +209,9 @@ namespace ParentPortal.Services
             return isInternetConnection;
         }
 
-        private static void  HandleBadResponse(WebException ex)
+        private static void HandleBadResponse(WebException ex)
         {
-           
+
 
             string result = string.Empty;
 
@@ -231,7 +231,7 @@ namespace ParentPortal.Services
                         {
 
                             result = reader.ReadToEnd();
-                           Contracts.Responses.ErrorResult errorMessage = JsonConvert.DeserializeObject<Contracts.Responses.ErrorResult>(result);
+                            Contracts.Responses.ErrorResult errorMessage = JsonConvert.DeserializeObject<Contracts.Responses.ErrorResult>(result);
                             result = errorMessage.Message;
                         }
                     }
@@ -240,7 +240,7 @@ namespace ParentPortal.Services
 
                 }
 
-               
+
 
             }
         }

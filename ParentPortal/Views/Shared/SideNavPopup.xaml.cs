@@ -15,6 +15,12 @@ using Rg.Plugins.Popup.Services;
 using System;
 using System.Threading.Tasks;
 using Xamarin.Forms.Xaml;
+using ParentPortal.Modules.Secure.Remote_Learning;
+using ParentPortal.Modules.Secure.Staff;
+using ParentPortal.Modules.Secure.Photos;
+using ParentPortal.Modules.Secure.Announcement;
+using ParentPortal.Modules.Secure.Settings;
+using ParentPortal.Modules.Secure.Help_and_Feedback;
 
 namespace ParentPortal.Views.Shared
 {
@@ -65,6 +71,31 @@ namespace ParentPortal.Views.Shared
 
                 case ViewType.SendAppreciation:
                     await App.AppNavigation.PushAsync(new MainPage() { ContentView = new SendAppreciationView() });
+                    break;
+
+
+                case ViewType.RemoteLearning:
+                    await App.AppNavigation.PushAsync(new MainPage() { ContentView = new RemoteLearningView() });
+                    break;
+
+                case ViewType.Staff:
+                    await App.AppNavigation.PushAsync(new MainPage() { ContentView = new StaffView() });
+                    break;
+
+                case ViewType.Photos:
+                    await App.AppNavigation.PushAsync(new MainPage() { ContentView = new PhotosView() });
+                    break;
+
+                case ViewType.Announcements:
+                    await App.AppNavigation.PushAsync(new MainPage() { ContentView = new AnnouncementView() });
+                    break;
+
+                case ViewType.Settings:
+                    await App.AppNavigation.PushAsync(new MainPage() { ContentView = new SettingsView() });
+                    break;
+
+                case ViewType.HelpAndFeedback:
+                    await App.AppNavigation.PushAsync(new MainPage() { ContentView = new HelpAndFeedbackView() });
                     break;
 
 

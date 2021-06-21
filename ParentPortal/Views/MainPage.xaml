@@ -61,7 +61,7 @@
 
                 <panckeview:PancakeView Padding="0,10" CornerRadius="30,30,0,0" BackgroundColor="#fff" VerticalOptions="End"    IsClippedToBounds="True">
                 <panckeview:PancakeView.Shadow>
-                    <panckeview:DropShadow BlurRadius="10" Opacity="0.9"    Color="Black" Offset="20,20" />
+                    <panckeview:DropShadow BlurRadius="5"  Opacity="0.2"    Color="Black" Offset="10,0" />
                 </panckeview:PancakeView.Shadow>
                 
                 <Grid>
@@ -147,13 +147,13 @@
                     </panckeview:pancakeview>-->
 
 
-                <panckeview:PancakeView  Padding="8" Margin="0,-28"  BackgroundColor="#fff" CornerRadius="100" HorizontalOptions="Center" VerticalOptions="Start">
+                <panckeview:PancakeView  Padding="8" Margin="0,-28"  BackgroundColor="#fff" CornerRadius="35" HorizontalOptions="Center" VerticalOptions="Start">
                     <panckeview:PancakeView.Shadow>
-                        <panckeview:DropShadow BlurRadius="10" Opacity="0.9"    Color="Black" Offset="20,20" />
+                        <panckeview:DropShadow BlurRadius="7" Opacity="0.3"    Color="Black" Offset="0,0" />
                     </panckeview:PancakeView.Shadow>
 
                     
-                <Frame BackgroundColor="{DynamicResource Feijoa}" HasShadow="False" Padding="16" CornerRadius="100" HorizontalOptions="Center" VerticalOptions="Start">
+                <Frame BackgroundColor="{DynamicResource Feijoa}" HasShadow="False" Padding="16" CornerRadius="28" HorizontalOptions="Center" VerticalOptions="Start">
                         <ffsvg:SvgCachedImage Source="home.svg" WidthRequest="25" HeightRequest="25" Style="{StaticResource TabImgStyle}"/>
                     </Frame>
                 

@@ -10,11 +10,11 @@ namespace ParentPortal.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            Color retval = default(Color);
 
-            if (parameter.ToString().ToLower() == value.ToString().ToLower())
-                return true;
-            else
-                return false;
+            if ((bool)value == true)
+                retval = Color.Green;
+            return retval;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

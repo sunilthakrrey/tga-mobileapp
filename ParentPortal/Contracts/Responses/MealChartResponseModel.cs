@@ -9,15 +9,13 @@ namespace ParentPortal.Contracts.Responses
 {
     public class MealChartResponseModel : BaseMultipleRecordResponse<MealChartData>
     {
-        //public string status { get; set; }
-        //public List<MealChartData> data { get; set; }
+       
     }
     public class MealChartData
     {
+        public int ChildId { get; set; }
         public string title { get; set; }
         public string description { get; set; }
-        //[JsonIgnore]
-        //public Enums.TGA_Type Type { get; set; } = Enums.TGA_Type.DailyChart;
         public string NoOfMorningtea { get; set; }
         public string NoOfFruits { get; set; }
         public string NoOfWater { get; set; }

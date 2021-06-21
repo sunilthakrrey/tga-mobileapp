@@ -22,47 +22,47 @@ namespace ParentPortal.Custom.Controls
         {
 
             InitializeComponent();
+            // imgFrame.BorderColor = Color.Red;
+
 
         }
-        //public static readonly BindableProperty KidDetailProperty = BindableProperty.Create(nameof(kidDetail), typeof(KidDetail), typeof(IndividualFrameComponent), default(KidDetail), BindingMode.TwoWay, propertyChanged: ControlpropertyChanges);
+        public Color _BorderColor = Color.White;
+        #region Highlight
 
-        //public static readonly BindableProperty TitleTextProperty = BindableProperty.Create(nameof(TitleText), typeof(KidDetail), typeof(BindableComponent), defaultValue: default(KidDetail), defaultBindingMode: BindingMode.TwoWay, propertyChanged: ControlpropertyChanges);
-        //public static void ControlpropertyChanges(BindableObject bindable, object oldvalue, object newvalue)
-        //{
-        //    var control = (BindableComponent)bindable;
-        //    KidDetail kid =(KidDetail) newvalue;
-        //    control.BindingContext= kid;
-        //}
 
-        //public KidDetail TitleText
-        //{
-        //    get
-        //    {
-        //        return (KidDetail)GetValue(TitleTextProperty);
-        //    }
-        //    set
-        //    {
-        //        base.SetValue(TitleTextProperty, value);
-        //    }
-        //}
+        public static readonly BindableProperty IsSelectedProperty = BindableProperty.Create(nameof(IsSelected), typeof(string), typeof(UserInfo), defaultValue: null, defaultBindingMode: BindingMode.TwoWay, propertyChanged: IsSelectedPropertyChanged);
+        public string IsSelected
+        {
+            get
+            {
+                return (string)GetValue(IsSelectedProperty);
+            }
+            set
+            {
+                base.SetValue(IsSelectedProperty, value);
+            }
+        }
 
-        // Component Name: UserInfo
-        // Property: imageSize (enum), IsNameDisplay
+        public static void IsSelectedPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
+        {
+            if (newvalue != default(object))
+            {
+                var control = (UserInfo)bindable;
+                //control.imgFrame.BorderColor = Color.Red;
+                string value = (string)newvalue;
+                if (value.ToLower() == "true")
+                    control.imgFrame.BorderColor = (Color)Application.Current.Resources["Feijoa"];
+                else
+                    control.imgFrame.BorderColor = Color.Transparent;
+            }
+        }
+
+        #endregion Highlight
+
 
         #region UserId
 
         public static readonly BindableProperty UserIdProperty = BindableProperty.Create(nameof(UserId), typeof(int), typeof(UserInfo), defaultValue: null, defaultBindingMode: BindingMode.OneTime, propertyChanged: UserIdPropertyChanged);
-        //public static void UserIdPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
-        //{
-
-        //    if (newvalue != default(object))
-        //    {
-        //        var control = (BindableComponent)bindable;
-        //        KidDetail aa = GetKidDetailsFromStorage((int)newvalue).Result;
-        //        control.lblName.Text = aa.Name;
-        //    }
-
-        //}
         public int UserId
         {
             get
@@ -114,6 +114,7 @@ namespace ParentPortal.Custom.Controls
 
 
         #region onpropertychanged
+
         public static void UserIdPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
         {
             if (newvalue != default(object))
@@ -123,21 +124,25 @@ namespace ParentPortal.Custom.Controls
                 if (aa != null)
                 {
                     control.lblName.Text = aa.Name;
-                    if(!string.IsNullOrEmpty(aa.Avtaar))
+                    // control.imgFrame.IsVisible = false;
+
+                    if (!string.IsNullOrEmpty(aa.Avtaar))
                     {
                         control.img.Source = aa.Avtaar;
                         control.nameFrame.IsVisible = false;
                     }
                     else
                     {
-                        control.imgFrame.IsVisible = false;
-                        control.lblNameFrame.Text = aa.Name.Substring(0,1);
+                        control.img.IsVisible = false;
+                        control.lblNameFrame.Text = aa.Name.Substring(0, 1);
                     }
-                   
+
                 }
             }
 
         }
+
+
         public static void NameDisplyPropertyChanged(BindableObject bindable, object oldvalue, object newvalue)
         {
             if (newvalue != default(object))
@@ -153,6 +158,8 @@ namespace ParentPortal.Custom.Controls
                 string boolValue = (string)newvalue;
                 bool isNameVisible = boolValue == "true";
                 control.lblName.IsVisible = isNameVisible;
+
+
             }
         }
 
@@ -162,7 +169,7 @@ namespace ParentPortal.Custom.Controls
             if (newvalue != default(object))
             {
                 var control = (UserInfo)bindable;
-                //KidDetail aa = GetKidDetailsFromStorage((int)newvalue).Result;
+                // KidDetail aa = GetKidDetailsFromStorage((int)newvalue).Result;
                 string SizeasString = (string)newvalue;
                 //PictureSize imgSize = PictureSize.None;
                 //Enum.TryParse(SizeasString, out imgSize);

@@ -18,7 +18,7 @@ namespace ParentPortal.Converters
                 switch (status)
                 {
                     case TGA_Type.Announcement:
-                        //retSource =ImageSource.FromFile("None.svg");
+                        retSource = ImageSource.FromFile("events_Icon.svg");
                         break;
                     case TGA_Type.DailyChart:
                        // retSource = ImageSource.FromFile("Draft.svg");

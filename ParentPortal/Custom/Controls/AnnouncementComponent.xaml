@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:ParentPortal.Converters" 
+             xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             x:Class="ParentPortal.Custom.Controls.AnnouncementComponent">
+    <StackLayout.Resources>
+        <converters:StatustoImageConverter x:Key="TypeToImageConverter"/>
+    </StackLayout.Resources>
+
+    <Grid Padding="10,10,20,2">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <StackLayout Grid.Column="0">
+            <ffsvg:SvgCachedImage HeightRequest="50" WidthRequest="50" Source="https://png.pngtree.com/png-vector/20190903/ourmid/pngtree-calendar-icon-in-trendy-style-isolated-background-png-image_1718934.jpg"/>
+        </StackLayout>
+   
+    <Grid Grid.Column="1">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <!--<ffsvg:SvgCachedImage Grid.Row="0" Source="{Binding imageUrl}"/>-->
+
+        <Grid Grid.Row="0" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackLayout  Grid.Column="0" Spacing="1">
+                <!--<Label x:Name="title" Text="{Binding title, Mode=TwoWay}" TextColor="{DynamicResource feijoa}" Style="{StaticResource lblworktitlestyle}"/>-->
+                <Label x:Name="title" Text="{Binding title, Mode=TwoWay}" TextColor="{DynamicResource Black}" Style="{StaticResource lblWorkTitleStyle}"/>
+                <!--<WebView  Margin="0" x:Name="titleWebView"  VerticalOptions="FillAndExpand" HorizontalOptions="StartAndExpand"></WebView>-->
+                <Label Text="{Binding createdOn, Mode=TwoWay, StringFormat='{}{0:dd MMM yyy,hh:mm tt}'}"  TextColor="{DynamicResource SilverChalice}" Style="{StaticResource lblDateWithTimeStyle}"/>
+            </StackLayout>
+        </Grid>
+
+        <Grid Grid.Row="1" Padding="20,0">
+            <!--<Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80*"/>
+                <ColumnDefinition Width="20*"/>
+            </Grid.ColumnDefinitions>-->
+            <!--<Label Grid.Column="0" TextColor="{DynamicResource Black}" LineHeight="1.2" Style="{StaticResource lblNewsFeedDescriptionStyle}" Text="{Binding description,Mode=TwoWay}"/>-->
+            <WebView x:Name="DescriptionWebView"  VerticalOptions="FillAndExpand" HorizontalOptions="StartAndExpand" ></WebView>
+        </Grid>
+    </Grid>
+    </Grid>
+</StackLayout>

@@ -15,7 +15,8 @@ namespace ParentPortal.Enums
         RequestStarted,
         RequestCompleted,
         NavigationBar,
-        FeedFilter
+        FeedFilter,
+        CommentResponseCode
     }
 
     public enum Views
@@ -40,7 +41,14 @@ namespace ParentPortal.Enums
         ChangeOfDetails,
         CasualDay,
         UpcomingAbsences,
-        SendAppreciation
+        SendAppreciation,
+
+        RemoteLearning,
+        Staff,
+        Photos,
+        Announcements,
+        Settings,
+        HelpAndFeedback
     }
     //public enum ImageSize
     public enum PictureSize
@@ -54,11 +62,14 @@ namespace ParentPortal.Enums
     {
         None,
         Event,
-        DailyChart,
+       DailyChart,
         Wellness,
         Announcement,
         Grove_Curriculum,
-        My_Day
+        My_Day,
+        //Daily_Chart,
+        //Dailychart_Feed
+
     }
     public enum Module
     {

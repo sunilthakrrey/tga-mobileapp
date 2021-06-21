@@ -3,14 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
              x:Class="ParentPortal.Custom.Controls.ToolbarComponent">
     <BoxView x:Name="Box_Lineseprator" Color="{DynamicResource Gray}" HeightRequest="1"/>
-    <Grid Padding="20,5">
-        <Grid.ColumnDefinitions>
+    <FlexLayout Padding="20,5" JustifyContent="SpaceBetween">
+        <!--<Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+        </Grid.ColumnDefinitions>-->
         <!--Region Like-->
-        <StackLayout x:Name="stckLike" Grid.Column="0" Spacing="5" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Start">
+        <StackLayout  x:Name="stckLike" Spacing="5" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Start">
             <StackLayout.GestureRecognizers>
                 <TapGestureRecognizer Tapped="CreateLike_Tapped"/>
             </StackLayout.GestureRecognizers>
@@ -19,25 +19,19 @@
         </StackLayout>
         
         <!--Region Comment-->
-        <StackLayout x:Name="stckComment" Grid.Column="1" Spacing="5" Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+        <StackLayout x:Name="stckComment"  Spacing="5" Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
             <StackLayout.GestureRecognizers>
                 <TapGestureRecognizer Tapped="CreateComment_Clicked"/>
             </StackLayout.GestureRecognizers>
             <ffsvg:SvgCachedImage Source="tga_comments_icon.svg" Style="{StaticResource ImageReactionsStyle}"/>
             <Label Text="Comment" TextColor="{DynamicResource Gray}" Style="{StaticResource lblReactionsNameStyle}"/>
         </StackLayout>
-        <!--Region Commented-->
-        <StackLayout x:Name="stckCommented" IsVisible="false" Grid.Column="1" Spacing="5" Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
-            <ffsvg:SvgCachedImage Source="Commented_icon.svg" Style="{StaticResource ImageReactionsStyle}"/>
-            <Label Text="Commented" TextColor="{DynamicResource Gray}" Style="{StaticResource lblReactionsNameStyle}"/>
-        </StackLayout>
-        <!--Region BookMark-->
-        <StackLayout x:Name="stckBookmark" Grid.Column="2" Spacing="5" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="End">
+        <StackLayout x:Name="stckBookmark"  Spacing="5" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="End">
             <StackLayout.GestureRecognizers>
                 <TapGestureRecognizer Tapped="CreateBookMark_Tapped"/>
             </StackLayout.GestureRecognizers>
             <ffsvg:SvgCachedImage x:Name="imgBookMark"  Style="{StaticResource ImageReactionsStyle}"/>
             <Label x:Name="lblBookMark" TextColor="{DynamicResource Gray}" Style="{StaticResource lblReactionsNameStyle}"/>
         </StackLayout>
-    </Grid>
+    </FlexLayout>
 </StackLayout>

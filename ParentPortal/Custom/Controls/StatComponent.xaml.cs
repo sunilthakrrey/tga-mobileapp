@@ -60,15 +60,16 @@ namespace ParentPortal.Custom.Controls
                 switch (TGAType)
                 {
                     case Enums.TGA_Type.Event:
-
-                        control.ShowControls(isShowLikes: false, isShowComments: false, message: "You are going to this event");
+                        //You are going to this event
+                        control.ShowControls(isShowLikes: true, isShowComments: true, message: "");
                         break;
                     case Enums.TGA_Type.DailyChart:
                         break;
                     case Enums.TGA_Type.Wellness:
-                        control.ShowControls(true, true);
+                        control.ShowControls(false, true, message: "");
                         break;
                     case Enums.TGA_Type.Announcement:
+                        control.ShowControls(isShowLikes: false, isShowComments: false);
                         break;
                     case Enums.TGA_Type.Grove_Curriculum:
                         control.ShowControls(true, true);
@@ -85,7 +86,7 @@ namespace ParentPortal.Custom.Controls
         #endregion
         #region TotalLikes
 
-        public static readonly BindableProperty TotalLikesProperty = BindableProperty.Create(nameof(TotalLikes), typeof(int), typeof(StatComponent), defaultValue: null, defaultBindingMode: BindingMode.OneTime, propertyChanged: TotalLikesPropertyChanged);
+        public static readonly BindableProperty TotalLikesProperty = BindableProperty.Create(nameof(TotalLikes), typeof(int), typeof(StatComponent), defaultValue: null, defaultBindingMode: BindingMode.TwoWay, propertyChanged: TotalLikesPropertyChanged);
 
         public int TotalLikes
         {
@@ -113,7 +114,7 @@ namespace ParentPortal.Custom.Controls
 
         #region TotalComments
 
-        public static readonly BindableProperty TotalCommentsProperty = BindableProperty.Create(nameof(TotalComments), typeof(int), typeof(StatComponent), defaultValue: null, defaultBindingMode: BindingMode.OneTime, propertyChanged: TotalCommentsPropertyChanged);
+        public static readonly BindableProperty TotalCommentsProperty = BindableProperty.Create(nameof(TotalComments), typeof(int), typeof(StatComponent), defaultValue: null, defaultBindingMode: BindingMode.TwoWay, propertyChanged: TotalCommentsPropertyChanged);
 
         public int TotalComments
         {

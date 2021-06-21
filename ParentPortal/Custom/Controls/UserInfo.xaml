@@ -12,14 +12,56 @@
     </Frame>-->
 
     <Label x:Name="lblName"  TextColor="{StaticResource Gray}" VerticalOptions="Center" Style="{StaticResource lblForNameStyle}"/>
-    <Frame BorderColor="{DynamicResource Gray}"  x:Name="imgFrame" >
+   
+
+    <!--<Frame   x:Name="imgFrame" BorderColor="Transparent" Padding="4" HorizontalOptions="Center" VerticalOptions="Center" CornerRadius="100">
         <ffsvg:SvgCachedImage x:Name="img" />
     </Frame>
+    <Frame   x:Name="nameFrame" BorderColor="Transparent" Padding="4" HorizontalOptions="Center" VerticalOptions="Center" CornerRadius="100">
+        <Frame  BackgroundColor="{DynamicResource Malibu}"   CornerRadius="100">
+            <Label x:Name="lblNameFrame" VerticalOptions="Center" HorizontalOptions="Center" TextColor="{DynamicResource HippieBlue}" FontSize="14" FontFamily="Montserrat-Regular"/>
+        </Frame>
+    </Frame>-->
 
 
-    <Frame BorderColor="{DynamicResource Gray}"  x:Name="nameFrame" >
-        <Label x:Name="lblNameFrame" VerticalOptions="Center" HorizontalOptions="Center"/>
+
+
+
+    <!--<Frame   x:Name="imgFrame" BorderColor="Transparent"  Padding="4" HorizontalOptions="Center" VerticalOptions="Center" CornerRadius="100">
+        <StackLayout>
+            <ffsvg:SvgCachedImage x:Name="img" />
+            <Frame x:Name="nameFrame"  BackgroundColor="{DynamicResource Malibu}"   CornerRadius="100">
+                <Label x:Name="lblNameFrame" VerticalOptions="Center" HorizontalOptions="Center" TextColor="{DynamicResource HippieBlue}" FontSize="14" FontFamily="Montserrat-Regular"/>
+            </Frame>
+        </StackLayout>
+       
+    </Frame>-->
+      <Frame   x:Name="imgFrame" BorderColor="Transparent"  Padding="4" Margin="0" HorizontalOptions="Center"  VerticalOptions="Center" HasShadow="False" Style="{StaticResource UserFrameStyle}">
+        <StackLayout>
+            <ffsvg:SvgCachedImage x:Name="img" />
+            <Frame x:Name="nameFrame"  BackgroundColor="{DynamicResource Malibu}"   CornerRadius="100"> 
+                <Label x:Name="lblNameFrame" VerticalOptions="Center" HorizontalOptions="Center" TextColor="{DynamicResource HippieBlue}" FontSize="14" FontFamily="Montserrat-Regular"/>
+            </Frame>
+        </StackLayout>
+       
     </Frame>
+
+
+
+
+
+
+
+    <!--<Frame   x:Name="imgFrame"  Padding="4" HorizontalOptions="Center" VerticalOptions="Center" CornerRadius="100">
+        <StackLayout>
+           
+            <Frame  BackgroundColor="{DynamicResource Malibu}"   CornerRadius="100">
+                <Label VerticalOptions="Center" Text="t" HorizontalOptions="Center" TextColor="{DynamicResource HippieBlue}" FontSize="14" FontFamily="Montserrat-Regular"/>
+            </Frame>
+        </StackLayout>
+
+    </Frame>-->
+
 
 
 </StackLayout>

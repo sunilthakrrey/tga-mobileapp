@@ -4,9 +4,9 @@
              x:Class="ParentPortal.Custom.Controls.AppLoader">
     <ContentView.Content>
         <Grid BackgroundColor="White" Opacity="0.8">
-            <ffsvg:SvgCachedImage  Source="Spinner.gif"
+            <!--<ffsvg:SvgCachedImage  Source="Spinner.gif"
                             HorizontalOptions="Center" 
-                            VerticalOptions="Center"/>
+                            VerticalOptions="Center"/>-->
 
         </Grid>
     </ContentView.Content>

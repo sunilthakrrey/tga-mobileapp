@@ -5,14 +5,12 @@
                 xmlns:converter="clr-namespace:ParentPortal.Converters"
              xmlns:panckeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms" xmlns:controls="clr-namespace:ParentPortal.Custom.Controls"
              x:Class="ParentPortal.Custom.Controls.FeedComponent">
-    <StackLayout.Resources>
-        <converter:StatusTovisibilityConverter x:Key="visibilityconverter"/>
-    </StackLayout.Resources>
+   
     <BindableLayout.ItemTemplate>
         <DataTemplate>
             <panckeview:PancakeView Margin="0,0,0,30" Style="{StaticResource CircularCornerPancakeStyle}">
                 <panckeview:PancakeView.Shadow>
-                    <panckeview:DropShadow BlurRadius="10" Opacity="0.9"    Color="Black" Offset="20,20" />
+                    <panckeview:DropShadow BlurRadius="5"  Opacity="0.2"   Color="Black" Offset="0,10" />
                 </panckeview:PancakeView.Shadow>
 
                 <Grid>
@@ -22,16 +20,18 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
-                    <controls:EventComponent Grid.Row="0" Feed="{Binding feed}"></controls:EventComponent>
-                    <controls:WellnessComponent  Grid.Row="0" Feed="{Binding feed}"></controls:WellnessComponent>
-                    <controls:Grove_CurriculumComponent  Grid.Row="0" Feed="{Binding feed}"></controls:Grove_CurriculumComponent>
+                    <controls:AnnouncementComponent Grid.Row="0" Feed="{Binding feed}"/>
+                    <controls:EventComponent Grid.Row="0" Feed="{Binding feed}"/>
+                    <!--<controls:WellnessComponent1  Grid.Row="0" Feed="{Binding feed}"></controls:WellnessComponent1>-->
+                    <controls:Grove_CurriculumComponent  Grid.Row="0" Feed="{Binding feed}"/>
+                    <controls:WellnessComponent Grid.Row="0" Feed="{Binding feed}"/>
                     <StackLayout  Grid.Row="1">
-                        <controls:StatComponent Type="{Binding feed.Type}"  TotalComments="{Binding stat.totalComments}" TotalLikes="{Binding stat.totalLikes}"  Createdbyid="{Binding kidIds}"></controls:StatComponent>
-                        <controls:ToolbarComponent PostId="{Binding feed.Id}" Stat="{Binding stat}"  isLiked="{Binding feed.IsLiked}"  isBookMarked="{Binding feed.IsBookMarked}" Type="{Binding feed.Type}" ></controls:ToolbarComponent>
+                        <controls:StatComponent  Type="{Binding feed.Type}"   TotalComments="{Binding stat.totalComments}" TotalLikes="{Binding stat.totalLikes}"  Createdbyid="{Binding kidIds}"></controls:StatComponent>
+                        <controls:ToolbarComponent PostId="{Binding feed.Id}" Stat="{Binding stat, Mode=TwoWay}"  isLiked="{Binding feed.IsLiked, Mode=TwoWay}"  isBookMarked="{Binding feed.IsBookMarked}" Type="{Binding feed.Type}" ></controls:ToolbarComponent>
                     </StackLayout>
                     <panckeview:PancakeView Grid.Row="2" BackgroundColor="{DynamicResource Feijoa}" Style="{StaticResource BtnReadMoreContainerStyle}" >
                         <panckeview:PancakeView.Shadow>
-                            <panckeview:DropShadow BlurRadius="10" Opacity="0.9"    Color="Black" Offset="20,20" />
+                            <panckeview:DropShadow BlurRadius="5"  Opacity="0.2"    Color="Black" Offset="0,10" />
                         </panckeview:PancakeView.Shadow>
 
                         <Button  Text="Read more" TextColor="{DynamicResource White}" BackgroundColor="{DynamicResource Feijoa}" Style="{StaticResource BtnReadMoreStyle}"/>

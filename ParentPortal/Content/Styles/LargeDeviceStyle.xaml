@@ -162,18 +162,26 @@
 
 
     <!--ForgotPasswordPage Style End-->
-
+     
 
 
     <!--DashboardView Style Begin-->
 
+     <Style x:Key="UserFrameStyle" TargetType="Frame">       
+        <Setter Property="CornerRadius">
+            <Setter.Value>
+                <OnPlatform Android="100" iOS="28" />
+            </Setter.Value>
+        </Setter>     
+    </Style>
+
     <Style x:Key="lblForDateStyle" TargetType="Label">
-        <Setter Property="FontSize" Value="{StaticResource lblMedium}"/>
+        <Setter Property="FontSize" Value="{StaticResource lblSmall}"/>
         <Setter Property="FontFamily" Value="Montserrat-Bold"/>
     </Style>
 
     <Style x:Key="lblGreetingStyle" TargetType="Label">
-        <Setter Property="FontSize" Value="{StaticResource lblXXtraLarge}"/>
+        <Setter Property="FontSize" Value="{StaticResource lblXtraLarge}"/>
         <Setter Property="FontFamily" Value="Montserrat-SemiBold"/>
     </Style>
 
@@ -183,8 +191,13 @@
     </Style>
 
     <Style x:Key="lblForAllLabelContainerStyle" TargetType="Frame">
-        <Setter Property="CornerRadius" Value="25"/>
-        <Setter Property="Padding" Value="10,0"/>
+        <!--<Setter Property="CornerRadius" Value="25"/>-->
+        <Setter Property="CornerRadius">
+            <Setter.Value>
+                <OnPlatform Android="25" iOS="8" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Padding" Value="11,1"/>
     </Style>
 
     <Style x:Key="ImageUserCircleStyle" TargetType="Frame" BasedOn="{StaticResource CommonImageUserCircleStyle}">
@@ -209,8 +222,23 @@
     </Style>
 
     <Style x:Key="DashboardCircularFrameStyle" TargetType="Frame" BasedOn="{StaticResource CommonDashboardCircularFrameStyle}">
-        <Setter Property="HeightRequest" Value="40"/>
-        <Setter Property="WidthRequest" Value="40"/>
+        <!--<Setter Property="HeightRequest" Value="40"/>-->
+         <Setter Property="HeightRequest">
+            <Setter.Value>
+                <OnPlatform Android="40" iOS="80" />
+            </Setter.Value>
+        </Setter>
+         <Setter Property="WidthRequest">
+            <Setter.Value>
+                <OnPlatform Android="40" iOS="80" />
+            </Setter.Value>
+        </Setter>
+         <Setter Property="CornerRadius">
+            <Setter.Value>
+                <OnPlatform Android="100" iOS="40" />
+            </Setter.Value>
+        </Setter>
+        <!--<Setter Property="WidthRequest" Value="40"/>-->
     </Style>
 
     <Style x:Key="lblAnnouncementStyle" TargetType="Label">
@@ -224,8 +252,14 @@
     </Style>
 
     <Style x:Key="lblForViewAllLabelContainerStyle" TargetType="Frame">
-        <Setter Property="CornerRadius" Value="25"/>
+        <!--<Setter Property="CornerRadius" Value="25"/> -->
+        <Setter Property="CornerRadius">
+            <Setter.Value>
+                <OnPlatform Android="25" iOS="10" />
+            </Setter.Value>
+        </Setter>
         <Setter Property="Padding" Value="15,3"/>
+         <Setter Property="HasShadow" Value="False"/>
     </Style>
 
     <Style x:Key="lblSpeechTipsStyle" TargetType="Label">
@@ -358,7 +392,7 @@
 
     <Style x:Key="lblMealTitleStyle" TargetType="Label" BasedOn="{StaticResource CommonlblMealTitleStyle}">
         <Setter Property="FontSize" Value="{StaticResource lblLarge}"/>
-        <Setter Property="FontFamily" Value="Montserrat-SemiBold"/>
+        <Setter Property="FontFamily" Value="Montserrat-Bold"/>
     </Style>
 
     <Style x:Key="lblToastWithJamStyle" TargetType="Label">
@@ -397,10 +431,15 @@
     <Style x:Key="lblOptionsCircleStyle" TargetType="Frame" BasedOn="{StaticResource CommonlblOptionsCircleStyle}">
         <Setter Property="HeightRequest" Value="30"/>
         <Setter Property="WidthRequest" Value="30"/>
+        <Setter Property="CornerRadius">
+            <Setter.Value>
+                <OnPlatform Android="100" iOS="15" />
+            </Setter.Value>
+        </Setter>
     </Style>
 
     <Style x:Key="lblOptionsTitleStyle" TargetType="Label">
-        <Setter Property="FontSize" Value="{StaticResource lblSmall}"/>
+        <Setter Property="FontSize" Value="{StaticResource lblMedium}"/>
         <Setter Property="FontFamily" Value="Montserrat-SemiBold"/>
     </Style>
 
@@ -414,7 +453,7 @@
     </Style>
 
     <Style x:Key="lblOptionsTitleMainContainerStyle" TargetType="Frame">
-        <Setter Property="CornerRadius" Value="20"/>
+        <Setter Property="CornerRadius" Value="40"/>
         <Setter Property="Padding" Value="6"/>
     </Style>
 

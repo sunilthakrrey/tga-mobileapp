@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <shared:BaseContentView xmlns="http://xamarin.com/schemas/2014/forms" 
                         xmlns:shared="clr-namespace:ParentPortal.Views.Shared"
                         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -11,6 +11,7 @@
     <ContentView.Resources>
         <converters:MultiValueConverter x:Key="multivalueconverter"></converters:MultiValueConverter>
         <converters:BooleanToReverseConverter x:Key="boolToreverseconverter"></converters:BooleanToReverseConverter>
+        <converters:StatusTovisibilityConverter x:Key="testConverter"></converters:StatusTovisibilityConverter>
        
     </ContentView.Resources>
     <ContentView.Content>
@@ -35,36 +36,52 @@
 
                     <StackLayout Grid.Column="0" Spacing="0">
                         <Label Text="{Binding Source={x:Static sys:DateTime.Now}, StringFormat='{}{0:ddd dd MMM}'}" TextTransform="Uppercase" TextColor="{DynamicResource Feijoa}" Style="{StaticResource lblForDateStyle}"/>
-                        <Label Text="{Binding ParentkidsDetails.name,Mode=TwoWay}" TextColor="{DynamicResource Black}" Style="{StaticResource lblGreetingStyle}"/>
+                        <Label Text="{Binding ParentkidsDetails.name,Mode=TwoWay}"  TextColor="{DynamicResource Black}" Style="{StaticResource lblGreetingStyle}"/>
                     </StackLayout>
 
                     <StackLayout Grid.Column="1" Orientation="Horizontal" HorizontalOptions="End">
-                        <Frame IsVisible="{Binding isVisibleAll}" BackgroundColor="{DynamicResource SilverChalice}" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource lblForAllLabelContainerStyle}">
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="selectAllKids_Tapped"/>
-                            </Frame.GestureRecognizers>
-                            <Label Text="All" VerticalOptions="Center" TextColor="{DynamicResource White}" Style="{StaticResource lblForAllLabelStyle}"/>
-                        </Frame>
+                        <StackLayout VerticalOptions="Center"  IsVisible="{Binding isVisibleAll}">
+                            <Frame IsVisible="{Binding IsHighlightAllKidsOption}"  HasShadow="False" BackgroundColor="{DynamicResource KidsOptionHighlighColor}" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource lblForAllLabelContainerStyle}">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="selectAllKids_Tapped"/>   
+                                </Frame.GestureRecognizers>
+                                <Label Text="All" VerticalOptions="Center" TextColor="{DynamicResource White}" Style="{StaticResource lblForAllLabelStyle}"/>
+                            </Frame>
+
+                           
+
+                            <Frame IsVisible="{Binding IsHighlightAllKidsOption, Converter={StaticResource boolToreverseconverter}}"  HasShadow="False" IsClippedToBounds="True" BackgroundColor="{DynamicResource SilverChalice}" VerticalOptions="Center" HorizontalOptions="Center" Style="{StaticResource lblForAllLabelContainerStyle}">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="selectAllKids_Tapped"/>
+                                </Frame.GestureRecognizers>
+                                <Label Text="All" VerticalOptions="Center" TextColor="{DynamicResource White}" Style="{StaticResource lblForAllLabelStyle}"/>
+                            </Frame>
+                        </StackLayout>
                         <!--<Frame BorderColor="{DynamicResource Feijoa}" Style="{StaticResource ImageUserCircleStyle}">
                             <ffsvg:SvgCachedImage Source="user_f.svg" Style="{StaticResource ImageUserPicStyle}"/>
                         </Frame>
                         <Frame BorderColor="{DynamicResource Feijoa}" Style="{StaticResource ImageUserCircleStyle}">
                             <ffsvg:SvgCachedImage Source="user_s.svg" Style="{StaticResource ImageUserPicStyle}"/>
                         </Frame>-->
-                        <StackLayout Orientation="Horizontal"  BindableLayout.ItemsSource="{Binding ParentkidsDetails.kids, Mode=TwoWay}">
-                            <BindableLayout.ItemTemplate>
-                                <DataTemplate>
-                                    <StackLayout>
-                                        <StackLayout.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="kidselection_changed" CommandParameter="{Binding Id}"/>
-                                        </StackLayout.GestureRecognizers>
-                                        <customControls:UserInfo  IsNameDisplay="false" ImageSize="Medium"  UserId="{Binding Id}" ></customControls:UserInfo>
-                                    </StackLayout>
-                                    
-                                    <!--<customControls:IndividualFrameComponent BindingContext="{Binding .}"></customControls:IndividualFrameComponent>-->
-                                </DataTemplate>
-                            </BindableLayout.ItemTemplate>
-                        </StackLayout>
+                        <Frame x:Name="nameFrame"  BorderColor="Transparent" Padding="2" HorizontalOptions="Center" HasShadow="False" VerticalOptions="Center" CornerRadius="100">
+                            <StackLayout Orientation="Horizontal"  BindableLayout.ItemsSource="{Binding ParentkidsDetails.kids, Mode=TwoWay}">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout>
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="kidselection_changed" CommandParameter="{Binding Id}"/>
+                                            </StackLayout.GestureRecognizers>
+                                            <!--<Frame   x:Name="imgFrame" BorderColor="{Binding IsSelected, Converter={StaticResource testConverter}}"  Padding="4" HorizontalOptions="Center" VerticalOptions="Center" CornerRadius="100">
+                                                <customControls:UserInfo   IsNameDisplay="false" ImageSize="Medium"  UserId="{Binding Id}" ></customControls:UserInfo>
+                                            </Frame>-->
+
+                                            <customControls:UserInfo IsSelected="{Binding IsHighlighted}"  IsNameDisplay="false" ImageSize="Medium"  UserId="{Binding Id}" ></customControls:UserInfo>
+                                            
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </StackLayout>
+                        </Frame>
 
                     </StackLayout>
 
@@ -80,34 +97,44 @@
                     </Grid.ColumnDefinitions>
 
 
-                    <Frame Grid.Column="0" BackgroundColor="{DynamicResource Skeptic}" Style="{StaticResource DashboardCircularFrameStyle}">
+                    <Frame Grid.Column="0" BackgroundColor="{DynamicResource Skeptic}"  Style="{StaticResource DashboardCircularFrameStyle}">
                         <StackLayout  Style="{StaticResource CommonDashboardCircularStackStyle}">
                             <ffsvg:SvgCachedImage Source="food_Icon.svg" Style="{StaticResource ImageEventIconStyle}"/>
                             <Label Text="Food" TextColor="{DynamicResource MonteCarlo}" Style="{StaticResource lblEventTitleStyle}"/>
                         </StackLayout>
                     </Frame>
 
-                    <Frame Grid.Column="1" BackgroundColor="{DynamicResource PeriwinkleGray}" Style="{StaticResource DashboardCircularFrameStyle}">
+                    <Frame Grid.Column="1" BackgroundColor="{DynamicResource PeriwinkleGray}"  Style="{StaticResource DashboardCircularFrameStyle}">
                         <StackLayout Style="{StaticResource CommonDashboardCircularStackStyle}">
                             <ffsvg:SvgCachedImage Source="sleep_Icon.svg" Style="{StaticResource ImageEventIconStyle}"/>
                             <Label Text="Sleep"  TextColor="{DynamicResource PoloBlue}" Style="{StaticResource lblEventTitleStyle}"/>
                         </StackLayout>
                     </Frame>
 
-                    <Frame Grid.Column="2" BackgroundColor="{DynamicResource DairyCream}" Style="{StaticResource DashboardCircularFrameStyle}">
+                    <Frame Grid.Column="2" BackgroundColor="{DynamicResource DairyCream}"  Style="{StaticResource DashboardCircularFrameStyle}">
                         <StackLayout Style="{StaticResource CommonDashboardCircularStackStyle}">
                             <ffsvg:SvgCachedImage Source="photos_Icon.svg" Style="{StaticResource ImageEventIconStyle}"/>
                             <Label Text="Photos" TextColor="{DynamicResource LightningYellow}" Style="{StaticResource lblEventTitleStyle}"/>
                         </StackLayout>
                     </Frame>
 
-                    <Frame Grid.Column="3" BackgroundColor="{DynamicResource BeautyBush}" Style="{StaticResource DashboardCircularFrameStyle}">
+                    <Frame Grid.Column="3" BackgroundColor="{DynamicResource BeautyBush}"  Style="{StaticResource DashboardCircularFrameStyle}">
                         <StackLayout Style="{StaticResource CommonDashboardCircularStackStyle}">
                             <ffsvg:SvgCachedImage Source="events_Icon.svg" Style="{StaticResource ImageEventIconStyle}"/>
                             <Label Text="Events" TextColor="{DynamicResource Sunglo}" Style="{StaticResource lblEventTitleStyle}"/>
                         </StackLayout>
                     </Frame>
 
+
+                    
+                    <!--<Frame Grid.Column="0" BackgroundColor="{DynamicResource BeautyBush}" HeightRequest="80" WidthRequest="80" CornerRadius="40" Padding="0" Style="{StaticResource DashboardCircularFrameStyle}">
+ <StackLayout Style="{StaticResource CommonDashboardCircularStackStyle}" >   
+                            <ffsvg:SvgCachedImage Source="food_Icon.svg" Style="{StaticResource ImageEventIconStyle}"/>
+                            <Label Text="Events" TextColor="{DynamicResource Sunglo}" Style="{StaticResource lblEventTitleStyle}"/>
+                        </StackLayout></Frame>-->     
+     
+                        
+                       
                 </Grid>
 
                 <Grid x:Name="GridAnnouncement" Grid.Row="2" Margin="0,20,0,30">
@@ -122,17 +149,17 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="0" Text="Announcements" TextColor="{DynamicResource Black}" Style="{StaticResource SubHeadingStyle}"/>
-                        <Frame Grid.Column="1" VerticalOptions="Center" HorizontalOptions="End" BackgroundColor="{DynamicResource SilverChalice}" Style="{StaticResource lblForViewAllLabelContainerStyle}">
+                        <Frame Grid.Column="1" VerticalOptions="Center"  HorizontalOptions="End" BackgroundColor="{DynamicResource SilverChalice}" Style="{StaticResource lblForViewAllLabelContainerStyle}">
                             <Label Text="View All" TextColor="{DynamicResource White}" Style="{StaticResource lblForViewAllLabelStyle}"/>
                         </Frame>
                     </Grid>
 
                     <panckeview:PancakeView Grid.Row="1"  VerticalOptions="Center" BackgroundColor="{DynamicResource White}" Style="{StaticResource lblMonthOnlyMainContainerStyle}">
                         <panckeview:PancakeView.Shadow>
-                            <panckeview:DropShadow BlurRadius="12" Opacity="0.7"   x:Name="shadow" Color="Black" Offset="10,10" />
+                            <panckeview:DropShadow BlurRadius="5"  Opacity="0.2"   x:Name="shadow" Color="Black" Offset="0,10" />
                         </panckeview:PancakeView.Shadow>
                         <Grid ColumnSpacing="25">
-                            <Grid.ColumnDefinitions>
+                            <Grid.ColumnDefinitions>   
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
@@ -186,9 +213,9 @@
                       BindableLayout.ItemsSource="{Binding PollData,Mode=TwoWay}">
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
-                            <panckeview:PancakeView BindingContext="{Binding .}"   x:Name="pancake"  VerticalOptions="Center" Padding="0" BackgroundColor="{DynamicResource White}" Style="{StaticResource OptionsMainContainerStyle}">
+                            <panckeview:PancakeView BindingContext="{Binding .}"  x:Name="pancake"  VerticalOptions="Center" Padding="0" BackgroundColor="{DynamicResource White}" Style="{StaticResource OptionsMainContainerStyle}">
                                 <panckeview:PancakeView.Shadow>
-                                    <panckeview:DropShadow BlurRadius="10" Opacity="0.9"    Color="Black" Offset="20,20" />
+                                    <panckeview:DropShadow BlurRadius="5"  Opacity="0.2"  Color="Black" Offset="0,10" />
                                 </panckeview:PancakeView.Shadow>
 
                                 <Grid Padding="0,0,0,20">
@@ -206,11 +233,11 @@
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>-->
-                                        <StackLayout x:Name="stackpoll"  BindableLayout.ItemsSource="{Binding Options,Mode=TwoWay}">
+                                        <StackLayout x:Name="stackpoll" Spacing="17" BindableLayout.ItemsSource="{Binding Options,Mode=TwoWay}">
                                            
                                             <BindableLayout.ItemTemplate>
                                                 <DataTemplate>
-                                                    <Frame  x:Name="optionFrame" BackgroundColor="{Binding BackgroundColor,Mode=TwoWay}"  HasShadow="False" BorderColor="{DynamicResource Gray}" Style="{StaticResource lblOptionsTitleMainContainerStyle}">
+                                                    <Frame  x:Name="optionFrame" CornerRadius="20" IsClippedToBounds="True" BackgroundColor="{Binding BackgroundColor,Mode=TwoWay}"  HasShadow="False" BorderColor="{DynamicResource Gray}" Style="{StaticResource lblOptionsTitleMainContainerStyle}">
                                                         <Frame.GestureRecognizers>
                                                             <TapGestureRecognizer  Tapped="optionSelected_Clicked">
                                                                 <TapGestureRecognizer.CommandParameter>
@@ -222,8 +249,12 @@
                                                             </TapGestureRecognizer>
                                                         </Frame.GestureRecognizers>
                                                         <StackLayout  Orientation="Horizontal" Style="{StaticResource lblOptionsTitleContainerStyle}">
-                                                            <Frame BackgroundColor="{Binding BackgroundColor,Mode=TwoWay}" BorderColor="{DynamicResource Gray}" Style="{StaticResource lblOptionsCircleStyle}">
-                                                                <Label Text="A"  TextColor="{DynamicResource Gray}" Style="{StaticResource lblOptionsNoStyle}"/>
+
+                                                           
+
+                                                            <Frame  BackgroundColor="{Binding BackgroundColor,Mode=TwoWay}"  BorderColor="{DynamicResource Gray}"  Style="{StaticResource lblOptionsCircleStyle}">
+                                                                <Label Text="{Binding OptionIndex}"   TextColor="{DynamicResource Gray}" Style="{StaticResource lblOptionsNoStyle}"/>
+
                                                             </Frame>
                                                             <Label Text="{Binding Name}" VerticalOptions="Center" TextColor="{DynamicResource Gray}" Style="{StaticResource lblOptionsTitleStyle}"/>
                                                         </StackLayout>

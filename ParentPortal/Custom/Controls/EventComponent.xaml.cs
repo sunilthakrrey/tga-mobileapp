@@ -90,10 +90,11 @@ namespace ParentPortal.Custom.Controls
                 var control = (EventComponent)bindable;
                 Feed newsFeed = (Feed)newvalue;
                 control.BindingContext = newsFeed;
-                control.titleWebView.Source = new HtmlWebViewSource
-                {
-                    Html = string.Format("<label style='font-size:17px;'>{0}</label>", newsFeed.title) 
-                };
+                control.title.Text = newsFeed.title;
+                //control.titleWebView.Source = new HtmlWebViewSource
+                //{
+                //    Html = string.Format("<label style='font-size:17px;'>{0}</label>", newsFeed.title) 
+                //};
                 control.DescriptionWebView.Source = new HtmlWebViewSource
                 {
                     Html = newsFeed.description
