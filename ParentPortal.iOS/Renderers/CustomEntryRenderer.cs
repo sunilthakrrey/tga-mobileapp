@@ -23,7 +23,9 @@ namespace ParentPortal.iOS.Renderers
                 Control.LeftViewMode = UITextFieldViewMode.Always;
                 Control.KeyboardAppearance = UIKeyboardAppearance.Dark;
                 Control.ReturnKeyType = UIReturnKeyType.Done;
-                Control.Layer.BackgroundColor = view.BackgroundColor.ToCGColor();
+                // Control.Layer.BackgroundColor = Color.Red.ToCGColor();
+                Control.BackgroundColor = Color.Red.ToUIColor();
+
                 Control.Layer.CornerRadius = Convert.ToSingle(view.CornerRadius);
                 Control.Layer.BorderColor = Color.Transparent.ToCGColor();
                 Control.Layer.BorderWidth = view.BorderWidth;
